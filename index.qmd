@@ -45,13 +45,13 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 - Mesa API documentation: [Mesa API](https://mesa.readthedocs.io/latest/apis/api_main.html)
 - Mesa overview: [Tutorial](https://mesa.readthedocs.io/latest/overview.html)
-- [Mesa core example model library](https://github.com/projectmesa/mesa-examples)
+- [Mesa core example model library](https://github.com/projectmesa/mesa/tree/main/mesa/examples)
 - Netlogo getting started tutorials
   - [Tutorial #1: Models](https://ccl.northwestern.edu/netlogo/docs/tutorial1.html),
   - [Tutorial #2: Commands](https://ccl.northwestern.edu/netlogo/docs/tutorial2.html)
   - [Tutorial #3: Procedures](https://ccl.northwestern.edu/netlogo/docs/tutorial3.html)
-- Netlogo model library by [@wilenskyIntroductionAgentBasedModeling2015]
-- Netlogo model library [@romanowskaAgentBasedModelingArchaeology2021]
+- [Netlogo model library](https://ccl.northwestern.edu/netlogo/models/) by [@wilenskyIntroductionAgentBasedModeling2015]
+- [Netlogo model library](https://github.com/SantaFeInstitute/ABMA) by [@romanowskaAgentBasedModelingArchaeology2021]
 
 # Learning goals per practicum
 
@@ -109,7 +109,7 @@ You can download Netlogo from the official website: [Netlogo Download](https://c
 
 This installation I have tested on multiple machines. Feel free to deviate if you have different preferences for your python installation.
 
-Install anaconda.
+Install anaconda [quick guide here](https://researchguides.uoregon.edu/library_workshops/install_anaconda).
 
 Install Visual Studio Code (but feel free to use any other IDE you like, such as PyCharm, JupyterLab, etc.).
 
@@ -126,6 +126,13 @@ pip install jupyter notebook scipy seaborn pandas numpy matplotlib ipykernel
 
 python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
 ```
+
+The models are all jupyter notebooks, so you can run them using the following command:
+```bash
+jupyter notebook
+```
+Or you can simply open them in Visual Studio Code, which has a built-in jupyter notebook viewer.
+
 ::::
 
 :::

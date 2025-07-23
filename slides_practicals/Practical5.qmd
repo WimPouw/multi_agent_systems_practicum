@@ -1,0 +1,14 @@
+---
+title: "Practicum 5: FORTHCOMING"
+author: "Wim Pouw"
+format:
+  revealjs:
+    controls: true
+    navigationMode: default
+---
+
+## Practicum 5: Objectives
+
+
+
+

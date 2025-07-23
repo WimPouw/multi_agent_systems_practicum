@@ -1,0 +1,737 @@
+---
+title: "Landing Page Practicum Multi-agent Systems"
+subtitle: "Agent-based modeling using Netlogo and Python"
+date: "today"
+author:
+  - name: Wim Pouw ([www.wimpouw.com](https://wimpouw.com/))
+    affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
+  - name: Travis Wiltshire
+    affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
+contact:
+  - name: Wim Pouw
+    email: w.pouw@tilburguniversity.edu
+  - name: Travis Wiltshire
+    email: t.wiltshire@tilburguniversity.edu
+bibliography: quarto_dependencies/references/refs.bib
+theme: flatly
+css: quarto_dependencies/styles/styles.css
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-title: "Contents"
+    toc-depth: 3
+    number-sections: false
+    code-fold: true
+    code-tools: true
+engine: quarto
+---
+
+![](images/placeholder.gif)
+
+# Overview
+
+Welcome to the landing page for the for the Practicum Multi-agent Systems 2025-2026. Every time the practicum starts you can keep this page open as a reference. 
+
+While the lectures focus on the theoretical background of multi-agent systems and gaining a better understanding how simple principles can percolate into complex behavior, the practicals focus on getting you ready to setting up your own data-generating agent based model.
+
+# Programming language of choice
+We will use Netlogo and Python for this course. Most textbooks and high-quality learning materials teach agent-based modeling using Netlogo. Netlogo was designed to be an intuitive language to learn and reads almost as [pseudocode](https://en.wikipedia.org/wiki/Pseudocode). For this course we will however learn to build our own agent-based models using python, specifically we will make use of PyPi package Mesa [@kazilUtilizingPythonAgentBased2020]. Why? Well you know why! Python is becoming a standard language in the field of computer science and cognitive science, and you already have some familiarity with this language through previous programming course(s). It is good to learn more languages, but it is empowering to know one language well. Since you probably will be using python most during your studies, we have made the decision to have for each netlogo model a python version. We will run and refer the netlogo models as well, as our reference for translating things to python. 
+
+Note that if you prefer to use Netlogo for your group project, you are free to do so. 
+
+# Additional Resources
+We have a limited amount of time in this course. Therefore, we will not cover all the details of Netlogo and Mesa. But throughout this document we provide you with resources to learn further, help debug, and explore Netlogo and Mesa models. Sick of reading? Or need inspiration for your group project? Go to the [inspiration section](#inspiration-section) for lectures and podcasts that we enjoyed ourselves on these topics, and for a selection of recent publications where state-of-the art agent-based modeling is employed.
+
+- Mesa API documentation: [Mesa API](https://mesa.readthedocs.io/latest/apis/api_main.html)
+- Mesa overview: [Tutorial](https://mesa.readthedocs.io/latest/overview.html)
+- [Mesa core example model library](https://github.com/projectmesa/mesa-examples)
+- Netlogo getting started tutorials
+  - [Tutorial #1: Models](https://ccl.northwestern.edu/netlogo/docs/tutorial1.html),
+  - [Tutorial #2: Commands](https://ccl.northwestern.edu/netlogo/docs/tutorial2.html)
+  - [Tutorial #3: Procedures](https://ccl.northwestern.edu/netlogo/docs/tutorial3.html)
+- Netlogo model library by [@wilenskyIntroductionAgentBasedModeling2015]
+- Netlogo model library [@romanowskaAgentBasedModelingArchaeology2021]
+
+# Learning goals per practicum
+
+::: {.panel-tabset}
+
+## Practicum 1
+
+* **Overview:** Introduction to the practicum.
+* **Setup:** NetLogo and Python Mesa environment setup.
+* **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the flocking and fire models.
+* **Basics:** Initialize basic setups.
+
+## Practicum 2
+
+* **Dispersal Model (NetLogo):** Introduction to the dispersal model in NetLogo.
+* **Python Equivalent:** Coding up a Python equivalent of the dispersal model.
+* **Python Challenge:** Can we adjust Mesa to work with a custom map?
+
+## Practicum 3
+
+* **Challenge Review:** Review of the previous challenge.
+* **El Faro Model:** Introduction to the El Faro model.
+* **Data Handling:** Collecting and plotting data in Mesa.
+
+## Practicum 4
+
+* **Part 1:** Wolf-sheep model and Amphor model.
+* **Part 2:** More advanced analyzing of data in Mesa.
+
+## Practicum 5
+
+* **Part 1:** Possible slot for remaining matters and review.
+* **Part 2:** Dedicated work session on your own model together.
+
+## Practicum 6
+
+* **Model Development:** Continue working on your own model collaboratively.
+
+:::
+
+## Installation
+
+::: {.callout-note .callout-download collapse="true"}
+## Installation Section
+
+:::: {.callout-note .callout-download collapse="true"}
+## Installation Guide Netlogo
+You can download Netlogo from the official website: [Netlogo Download](https://ccl.northwestern.edu/netlogo/download.shtml). Just fill in your credentials and download the latest version of Netlogo.
+::::
+
+### Python, PyPi package Mesa, and installation
+
+:::: {.callout-note .callout-download collapse="true"}
+## Installation guide python using anaconda + mesa
+
+This installation I have tested on multiple machines. Feel free to deviate if you have different preferences for your python installation.
+
+Install anaconda.
+
+Install Visual Studio Code (but feel free to use any other IDE you like, such as PyCharm, JupyterLab, etc.).
+
+After installing anaconda, you can install mesa using the following command in your terminal:
+
+```bash
+conda create -n mesa-env python=3.11
+
+conda activate mesa-env
+
+pip install mesa[all]==3.2.0
+
+pip install jupyter notebook scipy seaborn pandas numpy matplotlib ipykernel
+
+python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
+```
+::::
+
+:::
+
+## Some basic differences in coding style
+::: {.panel-tabset}
+
+## Python
+
+::: {.panel-tabset}
+
+## Basics
+```python
+# This is a comment in Python - use # for single line comments
+print("Hello, World!")  # This prints a message to the console
+
+# Variables - store data with descriptive names
+my_variable = 42  # Integer (whole number)
+name = "Agent"    # String (text)
+
+# Lists - collections of items in square brackets
+my_list = [1, 2, 3, 4]
+random_item = random.choice(my_list)  # Pick random item from list
+```
+
+## Set up agent for grid
+```python
+# Import Mesa - the agent-based modeling framework
+import mesa
+from mesa.discrete_space import CellAgent, OrthogonalMooreGrid
+
+# Define our agent class - inherits from CellAgent (built for grid movement)
+class SimpleGridAgent(CellAgent):
+    def __init__(self, model, cell):
+        # Call parent class constructor - this sets up basic agent properties
+        super().__init__(model)
+        # Assign agent to a specific cell on the grid
+        self.cell = cell
+
+# Define our model class - this manages the simulation
+class SimpleGridModel(mesa.Model):
+    def __init__(self, width=20, height=20):
+        # Call parent class constructor - sets up basic model
+        super().__init__()
+        # Create grid: (width, height), wraps around edges, uses model's randomizer
+        self.grid = OrthogonalMooreGrid((width, height), torus=True, random=self.random)
+        # Create one agent and place it randomly on the grid
+        random_cell = self.random.choice(list(self.grid.all_cells.cells))
+        SimpleGridAgent(self, random_cell)
+```
+
+## Set up agent for continuous
+```python
+# Import Mesa components for continuous (smooth) movement
+import mesa
+from mesa.experimental.continuous_space import ContinuousSpaceAgent, ContinuousSpace
+import numpy as np  # For mathematical operations and arrays
+
+# Agent that can move smoothly in any direction
+class SimpleAgent(ContinuousSpaceAgent):
+    def __init__(self, model, space, position=(0, 0), speed=1):
+        # Call parent constructor - sets up continuous space agent
+        super().__init__(space, model)
+        # Position as numpy array for easy math operations
+        self.position = np.array(position, dtype=float)
+        # How fast agent moves each step
+        self.speed = speed
+        
+        # Generate random direction (angle between 0 and 2π radians)
+        angle = self.model.rng.uniform(0, 2 * np.pi)
+        # Convert angle to direction vector (x, y components)
+        self.direction = np.array([np.cos(angle), np.sin(angle)])
+
+# Model for continuous space simulation
+class SimpleModel(mesa.Model):
+    def __init__(self, width=100, height=100):
+        super().__init__()
+        # Create continuous space: [[x_min, x_max], [y_min, y_max]]
+        # torus=True means edges wrap around (like Pac-Man)
+        self.space = ContinuousSpace([[0, width], [0, height]], 
+                                   torus=True, random=self.random)
+        
+        # Create agent at random position within the space bounds
+        position = self.rng.random(2) * np.array([width, height])
+        agent = SimpleAgent(self, self.space, position)
+        # Add agent to model's agent collection
+        self.agents.add(agent)
+```
+
+## Grid movement
+```python
+def step(self):
+    # Get current position
+    x, y = self.cell.coordinate
+    w, h = self.model.grid.dimensions
+    
+    # Define possible moves: North, East, South, West
+    moves = [
+        (x, (y+1) % h),  # North note modulo (%) functions as a wrap-around for toroidal grid
+        ((x+1) % w, y),  # East 
+        (x, (y-1) % h),  # South 
+        ((x-1) % w, y)   # West
+    ]
+    
+    # Pick random direction and move there
+    new_x, new_y = self.random.choice(moves)
+    
+    # Find the cell at new position
+    for cell in self.model.grid.all_cells.cells:
+        if cell.coordinate == (new_x, new_y):
+            self.cell = cell
+            break
+
+# In the model
+def step(self):
+    self.agents.do("step")
+```
+
+## Continuous movement
+```python
+def step(self):
+    """Agent's step method - called every simulation tick"""
+    # Move forward in current direction
+    # position + (direction_vector * speed) = new_position
+    self.position += self.direction * self.speed
+
+# In the model class
+def step(self):
+    """Model's step method - runs the simulation forward one tick"""
+    # Tell all agents to perform their step() method
+    self.agents.do("step")
+```
+
+## Complete grid example
+```python
+# Import Mesa components for grid-based modeling
+import mesa
+from mesa.discrete_space import CellAgent, OrthogonalMooreGrid
+from mesa.visualization import SolaraViz, make_space_component
+
+class SimpleGridAgent(CellAgent):
+    """Agent that moves randomly on a discrete grid"""
+    def __init__(self, model, cell):
+        # Initialize parent CellAgent class
+        super().__init__(model)
+        # Assign agent to specific grid cell
+        self.cell = cell
+        
+    def step(self):
+        """Move to adjacent cell in cardinal direction (N, E, S, W)"""
+        # Get current position coordinates
+        x, y = self.cell.coordinate
+        w, h = self.model.grid.dimensions  # Grid width and height
+        
+        # Define possible moves: North, East, South, West
+        # Using modulo (%) for torus wrapping - edges connect to opposite side
+        moves = [
+            (x, (y+1) % h),  # North - move up, wrap to bottom if at top
+            ((x+1) % w, y),  # East - move right, wrap to left if at right edge
+            (x, (y-1) % h),  # South - move down, wrap to top if at bottom
+            ((x-1) % w, y)   # West - move left, wrap to right if at left edge
+        ]
+        
+        # Pick random direction from available moves
+        new_x, new_y = self.random.choice(moves)
+        
+        # Find the cell object at the new position
+        # (Grid stores cells, we need the cell object, not just coordinates)
+        for cell in self.model.grid.all_cells.cells:
+            if cell.coordinate == (new_x, new_y):
+                self.cell = cell  # Move agent to new cell
+                break  # Stop searching once found
+
+class SimpleGridModel(mesa.Model):
+    """Model with discrete grid and one moving agent"""
+    def __init__(self, width=20, height=20):
+        super().__init__()
+        # Create orthogonal grid (4-connected, not diagonal)
+        # torus=True means edges wrap around
+        self.grid = OrthogonalMooreGrid((width, height), torus=True, random=self.random)
+        
+        # Create one agent and place it randomly
+        random_cell = self.random.choice(list(self.grid.all_cells.cells))
+        SimpleGridAgent(self, random_cell)
+    
+    def step(self):
+        """Run one simulation step - all agents act"""
+        self.agents.do("step")  # Tell all agents to perform their step
+
+# Visualization function - defines how agents look on screen
+def agent_portrayal(agent):
+    """Draw agent as red circle"""
+    return {"color": "#FF0000", "size": 0.5}  # Red color, small size
+
+# Create model and set up visualization
+model = SimpleGridModel()
+page = SolaraViz(model, [make_space_component(agent_portrayal=agent_portrayal)], 
+                name="Grid Agent")
+```
+
+## Complete continuous example
+```python
+# Import all necessary libraries
+import numpy as np  # For mathematical operations
+import mesa         # Main ABM framework
+from mesa.experimental.continuous_space import ContinuousSpaceAgent, ContinuousSpace
+from mesa.visualization import SolaraViz, make_space_component
+from matplotlib.markers import MarkerStyle  # For arrow visualization
+
+class SimpleAgent(ContinuousSpaceAgent):
+    """An agent that moves smoothly through continuous space"""
+    def __init__(self, model, space, position=(0, 0), speed=1):
+        # Initialize parent class
+        super().__init__(space, model)
+        # Store position as numpy array for vector math
+        self.position = np.array(position, dtype=float)
+        self.speed = speed
+        
+        # Generate random starting direction
+        angle = self.model.rng.uniform(0, 2 * np.pi)  # Random angle in radians
+        # Convert angle to unit vector (direction with length 1)
+        self.direction = np.array([np.cos(angle), np.sin(angle)])
+    
+    def step(self):
+        """Move agent forward in its current direction"""
+        # Vector addition: new_position = old_position + (direction * speed)
+        self.position += self.direction * self.speed
+
+class SimpleModel(mesa.Model):
+    """Model containing agents in continuous space"""
+    def __init__(self, width=100, height=100):
+        super().__init__()
+        # Create 2D continuous space with specified dimensions
+        self.space = ContinuousSpace([[0, width], [0, height]], 
+                                   torus=True, random=self.random)
+        
+        # Create single agent at random starting position
+        position = self.rng.random(2) * np.array([width, height])
+        agent = SimpleAgent(self, self.space, position)
+        self.agents.add(agent)
+    
+    def step(self):
+        """Advance simulation by one time step"""
+        self.agents.do("step")
+
+# Visualization function - defines how agents appear
+def agent_draw(agent):
+    """Draw agent as arrow pointing in movement direction"""
+    # Calculate angle from direction vector
+    angle_rad = np.arctan2(agent.direction[1], agent.direction[0])  # y, x for correct angle
+    angle_deg = np.degrees(angle_rad)  # Convert to degrees for marker
+    
+    # Create arrow marker and rotate it to show direction
+    marker = MarkerStyle(marker='>')  # Right-pointing arrow
+    marker._transform = marker.get_transform().rotate_deg(angle_deg)
+    
+    # Return visualization properties
+    return {"color": "blue", "size": 15, "marker": marker}
+
+# Create and run the simulation
+model = SimpleModel()
+page = SolaraViz(model, [make_space_component(agent_portrayal=agent_draw, 
+                        backend="matplotlib")], name="Continuous Agent")
+```
+
+:::
+
+## NetLogo
+
+::: {.panel-tabset}
+
+## Basics
+```netlogo
+;; This is a comment in NetLogo - use semicolons
+print "Hello, World!"  ;; This prints a message when run in the command center
+
+;; Variables - NetLogo has different ways to create variables
+let my-variable 42     ;; Local variable (exists only in this procedure)
+set name "Agent"       ;; Set a global or existing variable
+
+;; Lists - collections of items in square brackets
+let my-list [1 2 3 4]
+let random-item one-of my-list  ;; Pick random item from list
+```
+
+## Set up agent for grid
+```netlogo
+to setup
+  clear-all              ;; Clear the world and reset everything
+  color-grid            ;; Call our custom procedure to color patches
+  create-turtles 1 [    ;; Create 1 turtle (agent)
+    set size 1.5                          ;; Make turtle visible
+    setxy random-pxcor random-pycor       ;; Random patch coordinates (integers)
+    set color green                       ;; Color the turtle green
+  ]
+  reset-ticks           ;; Reset the tick counter to 0
+end
+
+to color-grid
+  ask patches [         ;; Tell every patch to do the following:
+    ;; Create checkerboard pattern: if sum of coordinates is even, color white
+    if (pxcor + pycor) mod 2 = 0 [ set pcolor white ]
+    ;; Patches default to black, so odd sums stay black
+  ]
+end
+```
+
+## Set up agent for continuous
+```netlogo
+to setup
+  clear-all                    ;; Clear everything and start fresh
+  create-turtles 1 [          ;; Create 1 turtle (agent)
+    set size 3                              ;; Make turtle bigger and visible
+    setxy random-xcor random-ycor           ;; Random float coordinates anywhere
+    set heading random 360                  ;; Random direction (0-359 degrees)
+  ]
+  reset-ticks                 ;; Reset simulation time to 0
+end
+```
+
+## Grid movement
+```netlogo
+to go
+  ask turtles [                          ;; Tell all turtles to:
+    let direction one-of [0 90 180 270]    ;; Pick random cardinal direction
+    ;; 0=North, 90=East, 180=South, 270=West
+    set heading direction                  ;; Face that direction
+    fd 1                                   ;; Move forward 1 patch
+  ]
+  tick                                   ;; Advance time by 1 tick
+end
+```
+
+## Continuous movement
+```netlogo
+to go
+  ask turtles [                    ;; Tell all turtles to:
+    forward 1                        ;; Move forward 1 unit in current direction
+    ;; Turtle keeps same heading, just moves forward smoothly
+  ]
+  tick                             ;; Advance simulation time by 1 tick
+end
+```
+
+## Complete grid example
+```netlogo
+;; Complete NetLogo model for grid-based random walk
+
+to setup
+  clear-all                    ;; Reset the world
+  color-grid                  ;; Create checkerboard pattern
+  create-turtles 1 [          ;; Create single agent
+    set size 1.5                        ;; Make agent visible
+    setxy random-pxcor random-pycor     ;; Place on random patch (grid cell)
+    set color green                     ;; Color it green
+  ]
+  reset-ticks                 ;; Start time counter at 0
+end
+
+to color-grid
+  ask patches [               ;; For every patch (grid cell):
+    ;; Create alternating pattern based on coordinate sum
+    if (pxcor + pycor) mod 2 = 0 [ 
+      set pcolor white        ;; Even sum = white patch
+    ]
+    ;; Odd sum patches stay default black
+  ]
+end
+
+to go
+  ask turtles [                          ;; Each turtle does:
+    let direction one-of [0 90 180 270]    ;; Pick random cardinal direction
+    set heading direction                  ;; Turn to face that direction  
+    fd 1                                   ;; Move forward 1 patch
+  ]
+  tick                                   ;; Increment time counter
+end
+```
+
+## Complete continuous example
+```netlogo
+;; Complete NetLogo model for continuous space movement
+
+to setup
+  clear-all                    ;; Reset simulation
+  create-turtles 1 [          ;; Create single agent
+    set size 3                          ;; Make turtle large and visible
+    setxy random-xcor random-ycor       ;; Random position (any x,y coordinates)
+    set heading random 360              ;; Random initial direction (0-359 degrees)
+  ]
+  reset-ticks                 ;; Start time at 0
+end
+
+to go
+  ask turtles [               ;; Each turtle:
+    forward 1                   ;; Move forward 1 unit in current heading
+    ;; Agent moves smoothly - can be at any decimal coordinates like (15.7, 23.2)
+  ]
+  tick                        ;; Advance time by 1 step
+end
+```
+
+:::
+
+:::
+
+# Model library for this course
+Note we have stored the models in a .rar file. You can download the models and extract them using a program like WinRAR or 7-Zip.
+
+::: {.callout-note .callout-download collapse="true"}
+
+## Basic models
+* [Basic Grid and Continuous Model Folder Python](./models/fire_model_python.rar)
+* [Basic Grid and Continuous Model Folder Netlogo](./models/fire_model_netlogo.rar)
+
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Dispersal model and DIY
+* [Download Model Folder Netlogo](./pdfs/Romanowska_ABMA_Chapter_1.pdf)
+
+We will not actually give you the python version of the model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature).
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+
+## Criticality Fire model
+* [Download Criticality Fire Model Folder Python](./models/fire_model_python.rar)
+* [Download Criticality Fire Model Folder Netlogo](./models/fire_model_netlogo.rar)
+
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Flocking model
+* [Flocking Model Folder Python](./models/flocking_model_netlogo.rar)
+* [Flocking Model Folder Netlogo](./models/flocking_model_python.rar)
+:::
+::: {.callout-note .callout-download collapse="true"}
+## El Farol Model
+* [El Farol Model Folder Python](./models/el_farol_model_netlogo.rar)
+* [El Farol Model Folder Netlogo](./models/el_farol_model_python.rar)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Amphor Model
+* TODO Python
+* [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.rar)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Wolf-Sheep Model
+* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_netlogo.rar.rar)
+* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_python.rar)
+:::
+
+# Slides
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 1
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+:::
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 2
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 3
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 4
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 5
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 6
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+:::
+
+# Key literature per practicum 
+
+::: {.callout-note .callout-download collapse="true"}
+## Book chapter about dispersal model
+## Chapter 1 [@romanowskaAgentBasedModelingArchaeology2021]
+This book chapter goes into the [dispersal model](#model-library-for-this-course)
+
+<embed src="./pdfs/Romanowska_ABMA_Chapter_1.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/Romanowska_ABMA_Chapter_1.pdf)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Book chapter about fire model
+## Chapter 3 [@wilenskyIntroductionAgentBasedModeling2015]
+This book chapter goes into the [fire model](#model-library-for-this-course)
+
+<embed src="./pdfs/WilenskyRand_ABM_Chapter_3.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/WilenskyRand_ABM_Chapter_3.pdf)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Book chapter about el farol model
+## Chapter 3 [@wilenskyIntroductionAgentBasedModeling2015]
+This book chapter goes into the [el farol model](#model-library-for-this-course)
+
+<embed src="./pdfs/WilenskyRand_ABM_Chapter_3.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/WilenskyRand_ABM_Chapter_3.pdf)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Book chapters about flocking model
+## Chapter 2 [@smaldinoModelingSocialBehavior2023]
+This book chapter goes into the [flocking](#model-library-for-this-course)
+
+<embed src="./pdfs/Smaldino_ModelingSocialBehavior_Chapter_2.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/Smaldino_ModelingSocialBehavior_Chapter_2.pdf)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Book chapters about wolf-sheep model
+## Chapter 4 [@wilenskyIntroductionAgentBasedModeling2015]
+This book chapter goes into the [wolf sheep model](#model-library-for-this-course)
+
+<embed src="./pdfs/WilenskyRand_ABM_Chapter_4.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/WilenskyRand_ABM_Chapter_4.pdf)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Book chapter about amphor model
+## Chapter 6 [@romanowskaAgentBasedModelingArchaeology2021]
+This book chapter goes into the [amphor model](#model-library-for-this-course)
+
+<embed src="./pdfs/Romanowska_ABMA_Chapter_6.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/Romanowska_ABMA_Chapter_6.pdf)
+:::
+
+# Inspiration section
+::: {.card .border-primary .mb-4}
+::: {.card-header .bg-primary .text-white}
+<a class="btn btn-primary w-100 text-start d-flex justify-content-between align-items-center text-decoration-none" data-bs-toggle="collapse" href="#inspirationCollapse" role="button" aria-expanded="false" aria-controls="inspirationCollapse">
+  <span><i class="fas fa-brain me-2"></i><strong>Click here for inspiration</strong></span>
+  <span><i class="fas fa-chevron-down"></i></span>
+</a>
+:::
+
+::: {.collapse#inspirationCollapse}
+## Additional Multimedia Resources
+- [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)
+- [BJKS podcast: Paul Smaldino on ABM Modeling of Social Behavior](https://www.buzzsprout.com/1390924/episodes/13689768-75-paul-smaldino-modeling-social-behavior-the-value-of-false-models-and-research-beyond-traditional-disciplines)
+- [Braininspired podcast: David Krakauer on how to think like a complexity scientist](https://open.spotify.com/episode/1qwx0kgYC3Lj5FDXSCBt7D)
+- [Interacting Minds Seminar: Marieke Woensdregt on ABM and language learning](https://www.youtube.com/watch?v=6e1yu_nNr4E&ab_channel=InteractingMindsAU) 
+- [Carlos Gershenson on the Slower is Faster Effect](https://www.youtube.com/watch?v=1sHBRNLJXqA&ab_channel=CentrodeCienciasdelaComplejidad)
+
+## Research papers on modeling or patterns ripe for ABM modeling
+- "An agent-based model of citation behavior" [@chackoAgentbasedModelCitation2025] (download [PDF](./pdfs/chakoetal2025.pdf))
+- "Evolving general cooperation with a Bayesian theory of mind" [@kleiman-weinerEvolvingGeneralCooperation2025] (download [PDF](./pdfs/kleimanetal2025.pdf))
+- "Evolution of foraging behaviour induces variable complexity-stability relationships in mutualist-exploiter-predator communities" [@wangEvolutionForagingBehaviour2025] (download [PDF](./pdfs/wangetal2025.pdf))
+- "Diffusion of complex contagions is shaped by a trade-off between reach and reinforcement" [@wanDiffusionComplexContagions2025] (download [PDF](./pdfs/wanetal2025.pdf))
+- "Reciprocity evolves more readily in competitive than cooperative socio-ecologies" [@romanoReciprocityEvolvesMore2025] (download [PDF](./pdfs/romanoetal2025.pdf))
+- "An evolutionary model of rhythmic accelerando in animal vocal signalling" [@jadoulEvolutionaryModelRhythmic2025] (download [PDF](./pdfs/jadouletal2025.pdf))
+:::
+:::
+
+
+
+
+# References

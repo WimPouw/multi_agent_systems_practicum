@@ -1,0 +1,47 @@
+---
+title: "Practicum 1: Setting up Netlogo and Python"
+author: "Wim Pouw"
+format:
+  revealjs:
+    controls: true
+    navigationMode: default
+---
+
+## Practicum 1: Objectives
+
+* **Overview:** Introduction to the practicum.
+* **Setup:** NetLogo and Python Mesa environment setup.
+* **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the flocking and fire models.
+* **Basics:** Initialize basic setups.
+
+# Overview of the practicum
+- We have one landing page: [Practicum Landing Page](https://example.com)
+- Models, slides, and literature.
+
+# Getting set up with Netlogo
+- getting started with Netlogo
+- Download and install: [Netlogo Download](https://ccl.northwestern.edu/netlogo/download.shtml).
+
+## Installing Mesa
+```bash
+conda create -n mesa-env python=3.11
+conda activate mesa-env
+pip install mesa[all]==3.2.0
+pip install jupyter notebook seaborn pandas numpy matplotlib
+python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
+```
+
+## Installing Mesa
+- Of course feel free to use your own Python environment, but we will use a conda environment for the practicum as the recommended procedure. 
+
+# Downloading models
+- Lets download models from our practicum landing page
+- Lets download the basic Netlogo models
+- Lets download the basic Mesa models
+
+# Start to take notes!
+- Start to build your own notes
+- How do you set up a group of agents on a grid in NetLogo and Mesa?
+- How do you set up a group of agents on a continuous space in NetLogo and Mesa?
+
+

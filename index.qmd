@@ -45,6 +45,7 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 - Mesa API documentation: [Mesa API](https://mesa.readthedocs.io/latest/apis/api_main.html)
 - Mesa overview: [Tutorial](https://mesa.readthedocs.io/latest/overview.html)
+- Mesa video tutorials by Zak Jost: [Swarm Intelligence and Agent Based Modeling](https://www.youtube.com/playlist?list=PLSgGvve8UweGk2TLSO-q5OSH59Q00ZxCQ)
 - [Mesa core example model library](https://github.com/projectmesa/mesa/tree/main/mesa/examples)
 - Netlogo getting started tutorials
   - [Tutorial #1: Models](https://ccl.northwestern.edu/netlogo/docs/tutorial1.html),

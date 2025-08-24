@@ -86,30 +86,12 @@ NIL
 1
 
 @#$#@#$#@
-## Model Information and Materials
+## This is where you put a description of your model
 
-This model is original material created by Paul E. Smaldino.  
+* It is is formatted in Markdown. 
+* **How convenient!**'
 
-## References and Citation
-
-For this model:
-
-* Smaldino PE (2023). Particles. Modeling Social Behavior.  https://github.com/psmaldino/modsoc/
-
-For the book:
-
-* Smaldino PE (2023). Modeling Social Behavior: Mathematical and Agent-Based Models of Social Dynamics and Cultural Evolution. Princeton University Press. 
-
-For the NetLogo:
-
-* Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
-
-
-## Licence
-
-![CC BY-NC-SA 4.0](http://ccl.northwestern.edu/images/creativecommons/byncsa.png)
-
-This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. http://creativecommons.org/licenses/by-nc-sa/4.0/
+## References
 @#$#@#$#@
 default
 true

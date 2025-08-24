@@ -29,11 +29,17 @@ revealjs-plugins:
 - We have one landing page: [Practicum Landing Page](https://example.com)
 - Models, slides, and literature.
 
+# Tips
+- Start to build your own notes and annotated model library
+- The info page in netlogo is formatted in the markup language Markdown
+- Jupyter notebooks allow you to preface your code in Markdown too
+- Rmarkdown is similar to jupyter as it mix R code with... well you get it.
+
 # Getting set up with Netlogo
 - getting started with Netlogo
 - Download and install: [Netlogo Download](https://ccl.northwestern.edu/netlogo/download.shtml).
 
-## Installing Mesa
+# Installing Mesa
 ```bash
 conda create -n mesa-env python=3.11
 conda activate mesa-env
@@ -42,18 +48,13 @@ pip install jupyter notebook seaborn pandas numpy matplotlib
 python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
 ```
 
-## Installing Mesa
+# Installing Mesa
 - Of course feel free to use your own Python environment, but we will use a conda environment for the practicum as the recommended procedure. 
 
 # Downloading models
 - Lets download models from our practicum landing page
 - Lets download the basic Netlogo models
 - Lets download the basic Mesa models
-
-# Start to take notes!
-- Start to build your own notes
-- How do you set up a group of agents on a grid in NetLogo and Mesa?
-- How do you set up a group of agents on a continuous space in NetLogo and Mesa?
 
 # Quick Check: Installation {.quiz-question}
 

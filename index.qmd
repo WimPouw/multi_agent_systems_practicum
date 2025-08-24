@@ -62,8 +62,8 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 * **Overview:** Introduction to the practicum.
 * **Setup:** NetLogo and Python Mesa environment setup.
-* **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the flocking and fire models.
-* **Basics:** Initialize basic setups.
+* **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the basic models (and fire model).
+* **Basics:** Initialize and investigate basic setups.
 
 ## Practicum 2
 
@@ -546,8 +546,8 @@ Note we have stored the models in a .rar file. You can download the models and e
 ::: {.callout-note .callout-download collapse="true"}
 
 ## Basic models
-* [Basic Grid and Continuous Model Folder Python](./models/fire_model_python.rar)
-* [Basic Grid and Continuous Model Folder Netlogo](./models/fire_model_netlogo.rar)
+* [Basic Grid, Continuous, Network Model Folder Python](./models/basic_python_models.rar)
+* [Basic Grid, Continuous, Network Model Folder Netlogo](./models/basic_netlogo_models.rar)
 
 :::
 
@@ -589,10 +589,10 @@ We will not actually give you the python version of the model, because we are go
 * [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_python.rar)
 :::
 
-# Slides
+# Slides and exercises
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 1
+## Slides practicum 1
 <iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical1.html)

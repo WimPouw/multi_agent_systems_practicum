@@ -99,6 +99,7 @@
   <link href="Practical1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Practical1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Practical1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Practical1_files/libs/revealjs/plugin/reveal-quiz/quiz.css" rel="stylesheet">
   <link href="Practical1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -259,6 +260,20 @@ Wim Pouw
 <li>How do you set up a group of agents on a grid in NetLogo and Mesa?</li>
 <li>How do you set up a group of agents on a continuous space in NetLogo and Mesa?</li>
 </ul>
+</section>
+
+<section id="quick-check-installation" class="title-slide slide level1 quiz-question center">
+<h1>Quick Check: Installation</h1>
+<p>Which command creates a new conda environment with Python 3.11 for this practicum?</p>
+<ul>
+<li>pip install mesa python=3.11</li>
+<li>conda install -n mesa-env python=3.11</li>
+<li><span class="correct" data-explanation="This creates a new isolated environment named 'mesa-env' with Python 3.11.">conda create -n mesa-env python=3.11</span></li>
+<li>python -m venv mesa-env python=3.11</li>
+</ul>
+<div class="footer">
+<p>Use ‘c’ to check your answer, ‘q’ to reset, or number keys to select options.</p>
+</div>
 
 </section>
     </div>
@@ -275,6 +290,7 @@ Wim Pouw
   <script src="Practical1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="Practical1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="Practical1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Practical1_files/libs/revealjs/plugin/reveal-quiz/quiz.js"></script>
   <script src="Practical1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -297,6 +313,7 @@ Wim Pouw
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'quiz': {"checkKey":"c","resetKey":"q","shuffleKey":"t","allowNumberKeys":true,"disableOnCheck":false,"shuffleOptions":true,"defaultCorrect":"","defaultIncorrect":"","includeScore":false,"disableReset":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -467,7 +484,7 @@ Wim Pouw
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealQuiz, QuartoSupport,
 
           RevealMath,
           RevealNotes,

@@ -5,6 +5,17 @@ format:
   revealjs:
     controls: true
     navigationMode: default
+    quiz: 
+      checkKey: 'c'
+      resetKey: 'q'
+      shuffleKey: 't'
+      allowNumberKeys: true
+      disableOnCheck: false
+      disableReset: false
+      shuffleOptions: true
+      includeScore: false
+revealjs-plugins:
+  - quiz
 ---
 
 ## Practicum 1: Objectives
@@ -44,4 +55,15 @@ python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
 - How do you set up a group of agents on a grid in NetLogo and Mesa?
 - How do you set up a group of agents on a continuous space in NetLogo and Mesa?
 
+# Quick Check: Installation {.quiz-question}
 
+Which command creates a new conda environment with Python 3.11 for this practicum?
+
+- pip install mesa python=3.11
+- conda install -n mesa-env python=3.11
+- [conda create -n mesa-env python=3.11]{.correct data-explanation="This creates a new isolated environment named 'mesa-env' with Python 3.11."}
+- python -m venv mesa-env python=3.11
+
+::: footer
+Use 'c' to check your answer, 'q' to reset, or number keys to select options.
+:::

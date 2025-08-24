@@ -210,8 +210,15 @@ Wim Pouw
 <ul>
 <li><strong>Overview:</strong> Introduction to the practicum.</li>
 <li><strong>Setup:</strong> NetLogo and Python Mesa environment setup.</li>
-<li><strong>Coding Style:</strong> Study coding style differences in NetLogo and Python, focusing on the flocking and fire models.</li>
-<li><strong>Basics:</strong> Initialize basic setups.</li>
+<li><strong>Coding Style:</strong> Study coding style differences in NetLogo and Python.</li>
+<li><strong>Basics:</strong> Initialize basic setups and models, and tweaking and breaking them.</li>
+</ul>
+</section>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<ul>
+<li>Intro and live setup and how to with Wim</li>
+<li>Self-work with assignments</li>
 </ul>
 </section>
 <section id="overview-of-the-practicum" class="title-slide slide level1 center">
@@ -222,28 +229,47 @@ Wim Pouw
 </ul>
 </section>
 
-<section>
+<section id="tips" class="title-slide slide level1 center">
+<h1>Tips</h1>
+<ul>
+<li>Start to build your own notes and annotated model library</li>
+<li>The info page in netlogo is formatted in the markup language Markdown</li>
+<li>Jupyter notebooks allow you to preface your code in Markdown too</li>
+<li>Rmarkdown is similar to jupyter as it mix R code with… well you get it.</li>
+<li><a href="https://www.markdownguide.org/cheat-sheet/">Markdown Cheat Sheet</a></li>
+</ul>
+</section>
+
 <section id="getting-set-up-with-netlogo" class="title-slide slide level1 center">
 <h1>Getting set up with Netlogo</h1>
 <ul>
 <li>getting started with Netlogo</li>
 <li>Download and install: <a href="https://ccl.northwestern.edu/netlogo/download.shtml">Netlogo Download</a>.</li>
+<li>Open one of the models (not the basics), press setup and then go (things should move/change; it works)</li>
 </ul>
 </section>
-<section id="installing-mesa" class="slide level2">
-<h2>Installing Mesa</h2>
+
+<section id="python-installing-mesa-our-go-to-abm-python-package" class="title-slide slide level1 center">
+<h1>Python: Installing Mesa (our go to ABM python package)</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> mesa-env python=3.11</span>
 <span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
 <span id="cb1-3"><a href=""></a><span class="ex">pip</span> install mesa<span class="pp">[</span><span class="ss">all</span><span class="pp">]</span>==3.2.0</span>
 <span id="cb1-4"><a href=""></a><span class="ex">pip</span> install jupyter notebook seaborn pandas numpy matplotlib</span>
 <span id="cb1-5"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(f'Mesa version: {mesa.__version__}')"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="installing-mesa-1" class="slide level2">
-<h2>Installing Mesa</h2>
+<p><br></p>
 <ul>
-<li>Of course feel free to use your own Python environment, but we will use a conda environment for the practicum as the recommended procedure.</li>
+<li>Of course feel free to use your own Python environment, or clone repo and install locally (<code>pip install .</code>). This is the recommended and tested procedure however.</li>
 </ul>
-</section></section>
+</section>
+
+<section id="jupyter-notebooks" class="title-slide slide level1 center">
+<h1>Jupyter Notebooks</h1>
+<ul>
+<li>We will be using Jupyter Notebooks for our Python code with Visual Studio Code (and our environment setup initialized in VS code).</li>
+<li>But feel free to use your own IDE and organization.</li>
+</ul>
+</section>
+
 <section id="downloading-models" class="title-slide slide level1 center">
 <h1>Downloading models</h1>
 <ul>
@@ -253,27 +279,129 @@ Wim Pouw
 </ul>
 </section>
 
-<section id="start-to-take-notes" class="title-slide slide level1 center">
-<h1>Start to take notes!</h1>
+<section id="demonstration-of-basic-functionality" class="title-slide slide level1 center">
+<h1>Demonstration of basic functionality</h1>
 <ul>
-<li>Start to build your own notes</li>
-<li>How do you set up a group of agents on a grid in NetLogo and Mesa?</li>
-<li>How do you set up a group of agents on a continuous space in NetLogo and Mesa?</li>
+<li>Netlogo</li>
+<li>Python Mesa</li>
 </ul>
 </section>
 
-<section id="quick-check-installation" class="title-slide slide level1 quiz-question center">
-<h1>Quick Check: Installation</h1>
-<p>Which command creates a new conda environment with Python 3.11 for this practicum?</p>
+<section id="do-it-yourself-assignment-general" class="title-slide slide level1 center">
+<h1>Do it yourself assignment (general)</h1>
 <ul>
-<li>pip install mesa python=3.11</li>
-<li>conda install -n mesa-env python=3.11</li>
-<li><span class="correct" data-explanation="This creates a new isolated environment named 'mesa-env' with Python 3.11.">conda create -n mesa-env python=3.11</span></li>
-<li>python -m venv mesa-env python=3.11</li>
+<li>For each practicum I want you to organize your own model library</li>
+<li>This model library has well-annotated markdown-edited notebooks (Python) or info tabs (Netlogo)</li>
+<li>What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.</li>
+<li>A personal model library will serve future you well</li>
 </ul>
-<div class="footer">
-<p>Use ‘c’ to check your answer, ‘q’ to reset, or number keys to select options.</p>
-</div>
+</section>
+
+<section id="do-it-yourself-assignments-and-quizes" class="title-slide slide level1 center">
+<h1>Do it yourself assignments and quizes</h1>
+<p>Run both netlogo and python basic models and inspect them carefully. What do these simple models do?</p>
+</section>
+
+<section id="grid-model-questions" class="title-slide slide level1 quiz-question center">
+<h1>Grid Model Questions</h1>
+<p>In the NetLogo grid model, what initializes the turtles position randomly?</p>
+<ul>
+<li><code>let direction one-of [0 90 180 270]</code></li>
+<li><span class="correct" data-explanation="pxcor and pycor give integer patch coordinates, snapping the turtle to a random location at SETUP."><code>setxy random-pxcor random-pycor</code></span></li>
+<li><code>ask patches [if (pxcor + pycor) mod 2 = 0 [ set pcolor white ]]</code></li>
+<li><code>set heading direction</code></li>
+</ul>
+</section>
+
+<section id="grid-model-questions-1" class="title-slide slide level1 quiz-question center">
+<h1>Grid Model Questions</h1>
+<p>What characterizes the agents move posibility? (google terms if needed)</p>
+<ul>
+<li><span class="correct" data-explanation="Correct! Since we have cardinal directions from move to move (up, down, left, right) without diagonal neighboring cells that the agent move to.">The agent can only move to a cell in a Von Neumann neighborhood</span></li>
+<li>The agent can only move to a cell in a Moore neighborhood</li>
+<li>The possibilities of the agent moves itself change randomly</li>
+<li>None of these</li>
+</ul>
+</section>
+
+<section id="grid-model-questions-2" class="title-slide slide level1 quiz-question center">
+<h1>Grid Model Questions</h1>
+<p>In the Mesa grid model, what does <code>possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]</code> represent?</p>
+<ul>
+<li>We move the agent to a random position</li>
+<li><span class="correct" data-explanation="Correct! These are the four adjacent cells, with modulo (%) providing torus wrapping, since if the position exceeds the grid boundary (set by height or width), the modulus ensures that the position is reset to 0 if exceeded.">The four cardinal directions that the agent could go to (North, East, South, West) but with explicit torus wrapping</span></li>
+<li>Diagonal movement options</li>
+<li>All possible grid positions</li>
+</ul>
+</section>
+
+<section id="grid-model-questions-3" class="title-slide slide level1 quiz-question center">
+<h1>Grid Model Questions</h1>
+<p>What is the difference in implementation of the agent movement in NetLogo and Mesa?</p>
+<ul>
+<li>NetLogo uses coordinates, Mesa uses direction and forward movement</li>
+<li><span class="correct" data-explanation="NetLogo sets the turtle's direction then moves forward 1 step, while Mesa agent does not have a direction and picks a new coordinate position from possible move locations.">NetLogo uses <code>set heading</code> and <code>fd 1</code>, Mesa calculates new coordinates directly</span></li>
+<li>Both use the same movement approach</li>
+<li>Mesa calculates based on possible moves, while netlogo does not</li>
+</ul>
+</section>
+
+<section id="grid-model-questions-open-question" class="title-slide slide level1 center">
+<h1>Grid Model Questions (Open Question)</h1>
+<p>Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in netlogo? What would you change in Python?</p>
+</section>
+
+<section id="grid-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
+<h1>Grid Model Questions (Use your own imagination)</h1>
+<p>Make a copy of the grid models. And try to think of a simple thing you can add that make your model behave slightly more interesting from your perspective. Try to implement the change both in Netlogo and in Python.</p>
+</section>
+
+<section id="continuous-model-questions" class="title-slide slide level1 quiz-question quiz-multiple center">
+<h1>Continuous Model Questions</h1>
+<p>Which Mesa components are essential for a basic continuous space model? (Select all correct)</p>
+<ul>
+<li><span class="correct">ContinuousSpace to define the simulation space</span></li>
+<li><span class="correct">ContinuousSpaceAgent as the base class for agents</span></li>
+<li>OrthogonalMooreGrid for discrete cells</li>
+<li><span class="correct">mesa.Model as the base class for the simulation model</span></li>
+</ul>
+</section>
+
+<section id="continuous-model-questions-1" class="title-slide slide level1 quiz-question center">
+<h1>Continuous Model Questions</h1>
+<p>What happens if you don’t call <code>self.agents.add(agent)</code> after creating an agent?</p>
+<ul>
+<li>The agent moves randomly anyway</li>
+<li>The model crashes immediately</li>
+<li><span class="correct" data-explanation="The agent object exists in memory, but the model doesn't know about it, so it won't be activated during simulation steps.">The agent exists but won’t be included in model.agents.do(“step”)</span></li>
+<li>The visualization will not work</li>
+</ul>
+</section>
+
+<section id="continuous-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
+<h1>Continuous Model Questions (Use your own imagination)</h1>
+<p>Modify the Mesa continuous model so that the model behavior is slightly different or more complex.</p>
+</section>
+
+<section id="network-model-questions" class="title-slide slide level1 center">
+<h1>Network Model Questions</h1>
+<p>Check out the network basic models.</p>
+</section>
+
+<section id="network-model-questions-1" class="title-slide slide level1 quiz-question center">
+<h1>Network Model Questions</h1>
+<p>For the python implementation, what’s the key difference between this network visualization and the previous grid/continuous visualizations?</p>
+<ul>
+<li>Network visualization is faster to render</li>
+<li><span class="correct" data-explanation="Grid and continuous models use Mesa's built-in make_space_component() with agent_portrayal functions, while for the network we use a custom matplotlib code for drawing nodes and edges.">Network uses custom matplotlib plotting while grid/continuous use Mesa’s make_space_component</span></li>
+<li>Network models can’t use Mesa’s visualization system</li>
+<li>Custom plotting only works for small networks</li>
+</ul>
+</section>
+
+<section id="self-study" class="title-slide slide level1 quiz-question center">
+<h1>Self-study</h1>
+<p>During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections and save it for future reference (in your personal model library).</p>
 
 </section>
     </div>

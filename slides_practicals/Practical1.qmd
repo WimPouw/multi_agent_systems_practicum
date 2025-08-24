@@ -22,8 +22,12 @@ revealjs-plugins:
 
 * **Overview:** Introduction to the practicum.
 * **Setup:** NetLogo and Python Mesa environment setup.
-* **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the flocking and fire models.
-* **Basics:** Initialize basic setups.
+* **Coding Style:** Study coding style differences in NetLogo and Python.
+* **Basics:** Initialize basic setups and models, and tweaking and breaking them.
+
+## Agenda
+- Intro and live setup and how to with Wim
+- Self-work with assignments
 
 # Overview of the practicum
 - We have one landing page: [Practicum Landing Page](https://example.com)
@@ -34,12 +38,14 @@ revealjs-plugins:
 - The info page in netlogo is formatted in the markup language Markdown
 - Jupyter notebooks allow you to preface your code in Markdown too
 - Rmarkdown is similar to jupyter as it mix R code with... well you get it.
+- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 
 # Getting set up with Netlogo
 - getting started with Netlogo
 - Download and install: [Netlogo Download](https://ccl.northwestern.edu/netlogo/download.shtml).
+- Open one of the models (not the basics), press setup and then go (things should move/change; it works)
 
-# Installing Mesa
+# Python: Installing Mesa (our go to ABM python package)
 ```bash
 conda create -n mesa-env python=3.11
 conda activate mesa-env
@@ -47,24 +53,99 @@ pip install mesa[all]==3.2.0
 pip install jupyter notebook seaborn pandas numpy matplotlib
 python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
 ```
+<br>
 
-# Installing Mesa
-- Of course feel free to use your own Python environment, but we will use a conda environment for the practicum as the recommended procedure. 
+- Of course feel free to use your own Python environment, or clone repo and install locally (`pip install .`). This is the recommended and tested procedure however. 
+
+# Jupyter Notebooks
+- We will be using Jupyter Notebooks for our Python code with Visual Studio Code (and our environment setup initialized in VS code). 
+- But feel free to use your own IDE and organization.
 
 # Downloading models
 - Lets download models from our practicum landing page
 - Lets download the basic Netlogo models
 - Lets download the basic Mesa models
 
-# Quick Check: Installation {.quiz-question}
+# Demonstration of basic functionality
+- Netlogo
+- Python Mesa
 
-Which command creates a new conda environment with Python 3.11 for this practicum?
+# Do it yourself assignment (general)
+- For each practicum I want you to organize your own model library
+- This model library has well-annotated markdown-edited notebooks (Python) or info tabs (Netlogo)
+- What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.
+- A personal model library will serve future you well
 
-- pip install mesa python=3.11
-- conda install -n mesa-env python=3.11
-- [conda create -n mesa-env python=3.11]{.correct data-explanation="This creates a new isolated environment named 'mesa-env' with Python 3.11."}
-- python -m venv mesa-env python=3.11
+# Do it yourself assignments and quizes 
+Run both netlogo and python basic models and inspect them carefully. What do these simple models do?
 
-::: footer
-Use 'c' to check your answer, 'q' to reset, or number keys to select options.
-:::
+# Grid Model Questions {.quiz-question}
+In the NetLogo grid model, what initializes the turtles position randomly?
+
+- `let direction one-of [0 90 180 270]`
+- [`setxy random-pxcor random-pycor`]{.correct data-explanation="pxcor and pycor give integer patch coordinates, snapping the turtle to a random location at SETUP."}
+- `ask patches [if (pxcor + pycor) mod 2 = 0 [ set pcolor white ]]`
+- `set heading direction`
+
+# Grid Model Questions {.quiz-question}
+What characterizes the agents move posibility? (google terms if needed)
+
+- [The agent can only move to a cell in a Von Neumann neighborhood]{.correct data-explanation="Correct! Since we have cardinal directions from move to move (up, down, left, right) without diagonal neighboring cells that the agent move to."}
+- The agent can only move to a cell in a Moore neighborhood
+- The possibilities of the agent moves itself change randomly
+- None of these
+
+# Grid Model Questions {.quiz-question}
+In the Mesa grid model, what does `possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]` represent?
+
+- We move the agent to a random position
+- [The four cardinal directions that the agent could go to (North, East, South, West) but with explicit torus wrapping]{.correct data-explanation="Correct! These are the four adjacent cells, with modulo (%) providing torus wrapping, since if the position exceeds the grid boundary (set by height or width), the modulus ensures that the position is reset to 0 if exceeded."}
+- Diagonal movement options
+- All possible grid positions
+
+# Grid Model Questions {.quiz-question}
+What is the difference in implementation of the agent movement in NetLogo and Mesa?
+
+- NetLogo uses coordinates, Mesa uses direction and forward movement
+- [NetLogo uses `set heading` and `fd 1`, Mesa calculates new coordinates directly]{.correct data-explanation="NetLogo sets the turtle's direction then moves forward 1 step, while Mesa agent does not have a direction and picks a new coordinate position from possible move locations."}
+- Both use the same movement approach
+- Mesa calculates based on possible moves, while netlogo does not
+
+# Grid Model Questions (Open Question)
+Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in netlogo? What would you change in Python?
+
+# Grid Model Questions (Use your own imagination)
+Make a copy of the grid models. And try to think of a simple thing you can add that make your model behave slightly more interesting from your perspective. Try to implement the change both in Netlogo and in Python.
+
+# Continuous Model Questions {.quiz-question .quiz-multiple}
+Which Mesa components are essential for a basic continuous space model? (Select all correct)
+
+- [ContinuousSpace to define the simulation space]{.correct}
+- [ContinuousSpaceAgent as the base class for agents]{.correct}
+- OrthogonalMooreGrid for discrete cells
+- [mesa.Model as the base class for the simulation model]{.correct}
+
+# Continuous Model Questions {.quiz-question}
+What happens if you don't call `self.agents.add(agent)` after creating an agent?
+
+- The agent moves randomly anyway
+- The model crashes immediately
+- [The agent exists but won't be included in model.agents.do("step")]{.correct data-explanation="The agent object exists in memory, but the model doesn't know about it, so it won't be activated during simulation steps."}
+- The visualization will not work
+
+# Continuous Model Questions (Use your own imagination)
+Modify the Mesa continuous model so that the model behavior is slightly different or more complex.
+
+# Network Model Questions
+Check out the network basic models.
+
+# Network Model Questions {.quiz-question}
+For the python implementation, what's the key difference between this network visualization and the previous grid/continuous visualizations?
+
+- Network visualization is faster to render
+- [Network uses custom matplotlib plotting while grid/continuous use Mesa's make_space_component]{.correct data-explanation="Grid and continuous models use Mesa's built-in make_space_component() with agent_portrayal functions, while for the network we use a custom matplotlib code for drawing nodes and edges."}
+- Network models can't use Mesa's visualization system
+- Custom plotting only works for small networks
+
+# Self-study {.quiz-question}
+During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections and save it for future reference (in your personal model library). 

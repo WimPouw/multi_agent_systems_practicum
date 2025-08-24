@@ -3,7 +3,7 @@ to setup
   color-grid
   create-turtles 1 [
     set size 1.5
-    setxy random-pxcor random-pycor
+    setxy
     set color green
   ]
   reset-ticks

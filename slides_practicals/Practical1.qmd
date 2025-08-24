@@ -147,5 +147,5 @@ For the python implementation, what's the key difference between this network vi
 - Network models can't use Mesa's visualization system
 - Custom plotting only works for small networks
 
-# Self-study {.quiz-question}
+# Self-study
 During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections and save it for future reference (in your personal model library). 

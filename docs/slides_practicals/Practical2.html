@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="Practical1_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Practical1_files/libs/quarto-html/tabby.min.js"></script>
-<script src="Practical1_files/libs/quarto-html/popper.min.js"></script>
-<script src="Practical1_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="Practical1_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Practical1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="Practical2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Practical2_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Practical2_files/libs/quarto-html/popper.min.js"></script>
+<script src="Practical2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Practical2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Practical2_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Practical2_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Practicum 1: Setting up Netlogo and Python</title>
+  <title>Practicum 2: FORTHCOMING</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,79 +28,12 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
-  <link href="Practical1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="Practical1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="Practical1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="Practical1_files/libs/revealjs/plugin/reveal-quiz/quiz.css" rel="stylesheet">
-  <link href="Practical1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link href="Practical2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Practical2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Practical2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Practical2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -194,7 +127,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Practicum 1: Setting up Netlogo and Python</h1>
+  <h1 class="title">Practicum 2: FORTHCOMING</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -205,203 +138,8 @@ Wim Pouw
 </div>
 
 </section>
-<section id="practicum-1-objectives" class="slide level2">
-<h2>Practicum 1: Objectives</h2>
-<ul>
-<li><strong>Overview:</strong> Introduction to the practicum.</li>
-<li><strong>Setup:</strong> NetLogo and Python Mesa environment setup.</li>
-<li><strong>Coding Style:</strong> Study coding style differences in NetLogo and Python.</li>
-<li><strong>Basics:</strong> Initialize basic setups and models, and tweaking and breaking them.</li>
-</ul>
-</section>
-<section id="agenda" class="slide level2">
-<h2>Agenda</h2>
-<ul>
-<li>Intro and live setup and how to with Wim</li>
-<li>Self-work with assignments</li>
-</ul>
-</section>
-<section id="overview-of-the-practicum" class="title-slide slide level1 center">
-<h1>Overview of the practicum</h1>
-<ul>
-<li>We have one landing page: <a href="https://example.com">Practicum Landing Page</a></li>
-<li>Models, slides, and literature.</li>
-</ul>
-</section>
-
-<section id="tips" class="title-slide slide level1 center">
-<h1>Tips</h1>
-<ul>
-<li>Start to build your own notes and annotated model library</li>
-<li>The info page in netlogo is formatted in the markup language Markdown</li>
-<li>Jupyter notebooks allow you to preface your code in Markdown too</li>
-<li>Rmarkdown is similar to jupyter as it mix R code with… well you get it.</li>
-<li><a href="https://www.markdownguide.org/cheat-sheet/">Markdown Cheat Sheet</a></li>
-</ul>
-</section>
-
-<section id="getting-set-up-with-netlogo" class="title-slide slide level1 center">
-<h1>Getting set up with Netlogo</h1>
-<ul>
-<li>getting started with Netlogo</li>
-<li>Download and install: <a href="https://ccl.northwestern.edu/netlogo/download.shtml">Netlogo Download</a>.</li>
-<li>Open one of the models (not the basics), press setup and then go (things should move/change; it works)</li>
-</ul>
-</section>
-
-<section id="python-installing-mesa-our-go-to-abm-python-package" class="title-slide slide level1 center">
-<h1>Python: Installing Mesa (our go to ABM python package)</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> mesa-env python=3.11</span>
-<span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
-<span id="cb1-3"><a href=""></a><span class="ex">pip</span> install mesa<span class="pp">[</span><span class="ss">all</span><span class="pp">]</span>==3.2.0</span>
-<span id="cb1-4"><a href=""></a><span class="ex">pip</span> install jupyter notebook seaborn pandas numpy matplotlib</span>
-<span id="cb1-5"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(f'Mesa version: {mesa.__version__}')"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br></p>
-<ul>
-<li>Of course feel free to use your own Python environment, or clone repo and install locally (<code>pip install .</code>). This is the recommended and tested procedure however.</li>
-</ul>
-</section>
-
-<section id="jupyter-notebooks" class="title-slide slide level1 center">
-<h1>Jupyter Notebooks</h1>
-<ul>
-<li>We will be using Jupyter Notebooks for our Python code with Visual Studio Code (and our environment setup initialized in VS code).</li>
-<li>But feel free to use your own IDE and organization.</li>
-</ul>
-</section>
-
-<section id="downloading-models" class="title-slide slide level1 center">
-<h1>Downloading models</h1>
-<ul>
-<li>Lets download models from our practicum landing page</li>
-<li>Lets download the basic Netlogo models</li>
-<li>Lets download the basic Mesa models</li>
-</ul>
-</section>
-
-<section id="demonstration-of-basic-functionality" class="title-slide slide level1 center">
-<h1>Demonstration of basic functionality</h1>
-<ul>
-<li>Netlogo</li>
-<li>Python Mesa</li>
-</ul>
-</section>
-
-<section id="do-it-yourself-assignment-general" class="title-slide slide level1 center">
-<h1>Do it yourself assignment (general)</h1>
-<ul>
-<li>For each practicum I want you to organize your own model library</li>
-<li>This model library has well-annotated markdown-edited notebooks (Python) or info tabs (Netlogo)</li>
-<li>What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.</li>
-<li>A personal model library will serve future you well</li>
-</ul>
-</section>
-
-<section id="do-it-yourself-assignments-and-quizes" class="title-slide slide level1 center">
-<h1>Do it yourself assignments and quizes</h1>
-<p>Run both netlogo and python basic models and inspect them carefully. What do these simple models do?</p>
-</section>
-
-<section id="grid-model-questions" class="title-slide slide level1 quiz-question center">
-<h1>Grid Model Questions</h1>
-<p>In the NetLogo grid model, what initializes the turtles position randomly?</p>
-<ul>
-<li><code>let direction one-of [0 90 180 270]</code></li>
-<li><span class="correct" data-explanation="pxcor and pycor give integer patch coordinates, snapping the turtle to a random location at SETUP."><code>setxy random-pxcor random-pycor</code></span></li>
-<li><code>ask patches [if (pxcor + pycor) mod 2 = 0 [ set pcolor white ]]</code></li>
-<li><code>set heading direction</code></li>
-</ul>
-</section>
-
-<section id="grid-model-questions-1" class="title-slide slide level1 quiz-question center">
-<h1>Grid Model Questions</h1>
-<p>What characterizes the agents move posibility? (google terms if needed)</p>
-<ul>
-<li><span class="correct" data-explanation="Correct! Since we have cardinal directions from move to move (up, down, left, right) without diagonal neighboring cells that the agent move to.">The agent can only move to a cell in a Von Neumann neighborhood</span></li>
-<li>The agent can only move to a cell in a Moore neighborhood</li>
-<li>The possibilities of the agent moves itself change randomly</li>
-<li>None of these</li>
-</ul>
-</section>
-
-<section id="grid-model-questions-2" class="title-slide slide level1 quiz-question center">
-<h1>Grid Model Questions</h1>
-<p>In the Mesa grid model, what does <code>possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]</code> represent?</p>
-<ul>
-<li>We move the agent to a random position</li>
-<li><span class="correct" data-explanation="Correct! These are the four adjacent cells, with modulo (%) providing torus wrapping, since if the position exceeds the grid boundary (set by height or width), the modulus ensures that the position is reset to 0 if exceeded.">The four cardinal directions that the agent could go to (North, East, South, West) but with explicit torus wrapping</span></li>
-<li>Diagonal movement options</li>
-<li>All possible grid positions</li>
-</ul>
-</section>
-
-<section id="grid-model-questions-3" class="title-slide slide level1 quiz-question center">
-<h1>Grid Model Questions</h1>
-<p>What is the difference in implementation of the agent movement in NetLogo and Mesa?</p>
-<ul>
-<li>NetLogo uses coordinates, Mesa uses direction and forward movement</li>
-<li><span class="correct" data-explanation="NetLogo sets the turtle's direction then moves forward 1 step, while Mesa agent does not have a direction and picks a new coordinate position from possible move locations.">NetLogo uses <code>set heading</code> and <code>fd 1</code>, Mesa calculates new coordinates directly</span></li>
-<li>Both use the same movement approach</li>
-<li>Mesa calculates based on possible moves, while netlogo does not</li>
-</ul>
-</section>
-
-<section id="grid-model-questions-open-question" class="title-slide slide level1 center">
-<h1>Grid Model Questions (Open Question)</h1>
-<p>Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in netlogo? What would you change in Python?</p>
-</section>
-
-<section id="grid-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
-<h1>Grid Model Questions (Use your own imagination)</h1>
-<p>Make a copy of the grid models. And try to think of a simple thing you can add that make your model behave slightly more interesting from your perspective. Try to implement the change both in Netlogo and in Python.</p>
-</section>
-
-<section id="continuous-model-questions" class="title-slide slide level1 quiz-question quiz-multiple center">
-<h1>Continuous Model Questions</h1>
-<p>Which Mesa components are essential for a basic continuous space model? (Select all correct)</p>
-<ul>
-<li><span class="correct">ContinuousSpace to define the simulation space</span></li>
-<li><span class="correct">ContinuousSpaceAgent as the base class for agents</span></li>
-<li>OrthogonalMooreGrid for discrete cells</li>
-<li><span class="correct">mesa.Model as the base class for the simulation model</span></li>
-</ul>
-</section>
-
-<section id="continuous-model-questions-1" class="title-slide slide level1 quiz-question center">
-<h1>Continuous Model Questions</h1>
-<p>What happens if you don’t call <code>self.agents.add(agent)</code> after creating an agent?</p>
-<ul>
-<li>The agent moves randomly anyway</li>
-<li>The model crashes immediately</li>
-<li><span class="correct" data-explanation="The agent object exists in memory, but the model doesn't know about it, so it won't be activated during simulation steps.">The agent exists but won’t be included in model.agents.do(“step”)</span></li>
-<li>The visualization will not work</li>
-</ul>
-</section>
-
-<section id="continuous-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
-<h1>Continuous Model Questions (Use your own imagination)</h1>
-<p>Modify the Mesa continuous model so that the model behavior is slightly different or more complex.</p>
-</section>
-
-<section id="network-model-questions" class="title-slide slide level1 center">
-<h1>Network Model Questions</h1>
-<p>Check out the network basic models.</p>
-</section>
-
-<section id="network-model-questions-1" class="title-slide slide level1 quiz-question center">
-<h1>Network Model Questions</h1>
-<p>For the python implementation, what’s the key difference between this network visualization and the previous grid/continuous visualizations?</p>
-<ul>
-<li>Network visualization is faster to render</li>
-<li><span class="correct" data-explanation="Grid and continuous models use Mesa's built-in make_space_component() with agent_portrayal functions, while for the network we use a custom matplotlib code for drawing nodes and edges.">Network uses custom matplotlib plotting while grid/continuous use Mesa’s make_space_component</span></li>
-<li>Network models can’t use Mesa’s visualization system</li>
-<li>Custom plotting only works for small networks</li>
-</ul>
-</section>
-
-<section id="self-study" class="title-slide slide level1 center">
-<h1>Self-study</h1>
-<p>During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections and save it for future reference (in your personal model library).</p>
+<section id="practicum-2-objectives" class="slide level2">
+<h2>Practicum 2: Objectives</h2>
 
 </section>
     </div>
@@ -412,20 +150,19 @@ Wim Pouw
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="Practical1_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="Practical2_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="Practical1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/reveal-quiz/quiz.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="Practical1_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="Practical1_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Practical2_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -441,7 +178,6 @@ Wim Pouw
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'quiz': {"checkKey":"c","resetKey":"q","shuffleKey":"t","allowNumberKeys":true,"disableOnCheck":false,"shuffleOptions":true,"defaultCorrect":"","defaultIncorrect":"","includeScore":false,"disableReset":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -612,7 +348,7 @@ Wim Pouw
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealQuiz, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,

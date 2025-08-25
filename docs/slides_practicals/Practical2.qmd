@@ -1,0 +1,14 @@
+---
+title: "Practicum 2: FORTHCOMING"
+author: "Wim Pouw"
+format:
+  revealjs:
+    controls: true
+    navigationMode: default
+---
+
+## Practicum 2: Objectives
+
+
+
+

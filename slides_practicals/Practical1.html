@@ -6,8 +6,8 @@
 <script src="Practical1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Practical1_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Practical1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.30">
 
   <meta name="author" content="Wim Pouw">
   <title>Practicum 1: Setting up Netlogo and Python</title>
@@ -218,7 +218,8 @@ Wim Pouw
 <h2>Agenda</h2>
 <ul>
 <li>Intro and live setup and how to with Wim</li>
-<li>Self-work with assignments</li>
+<li>Self-work with quiz-questions</li>
+<li>Self-work annotate code for future self, by breaking and fixing code</li>
 </ul>
 </section>
 <section id="overview-of-the-practicum" class="title-slide slide level1 center">
@@ -226,6 +227,8 @@ Wim Pouw
 <ul>
 <li>We have one landing page: <a href="https://example.com">Practicum Landing Page</a></li>
 <li>Models, slides, and literature.</li>
+<li>Slides will be available before the practicum</li>
+<li>Living document (I hope to build out more over time based on your feedback)</li>
 </ul>
 </section>
 
@@ -240,12 +243,19 @@ Wim Pouw
 </ul>
 </section>
 
-<section id="getting-set-up-with-netlogo" class="title-slide slide level1 center">
-<h1>Getting set up with Netlogo</h1>
+<section id="installing-netlogo" class="title-slide slide level1 center">
+<h1>Installing Netlogo</h1>
 <ul>
 <li>getting started with Netlogo</li>
 <li>Download and install: <a href="https://ccl.northwestern.edu/netlogo/download.shtml">Netlogo Download</a>.</li>
-<li>Open one of the models (not the basics), press setup and then go (things should move/change; it works)</li>
+</ul>
+</section>
+
+<section id="downloading-netlogo-models" class="title-slide slide level1 center">
+<h1>Downloading netlogo models</h1>
+<ul>
+<li>Lets download the basic Netlogo models</li>
+<li>Unpack using 7zip, Winrar, or your OS built-in unpacker</li>
 </ul>
 </section>
 
@@ -256,9 +266,9 @@ Wim Pouw
 <span id="cb1-3"><a href=""></a><span class="ex">pip</span> install mesa<span class="pp">[</span><span class="ss">all</span><span class="pp">]</span>==3.2.0</span>
 <span id="cb1-4"><a href=""></a><span class="ex">pip</span> install jupyter notebook seaborn pandas numpy matplotlib</span>
 <span id="cb1-5"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(f'Mesa version: {mesa.__version__}')"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br></p>
 <ul>
-<li>Of course feel free to use your own Python environment, or clone repo and install locally (<code>pip install .</code>). This is the recommended and tested procedure however.</li>
+<li><p>Of course feel free to use your own Python environment, or clone repo and install locally (<code>pip install .</code>). This is the recommended and tested procedure however.</p></li>
+<li><p>Tested on the practicum PC (and my own Windows laptop)</p></li>
 </ul>
 </section>
 
@@ -273,17 +283,19 @@ Wim Pouw
 <section id="downloading-models" class="title-slide slide level1 center">
 <h1>Downloading models</h1>
 <ul>
-<li>Lets download models from our practicum landing page</li>
-<li>Lets download the basic Netlogo models</li>
 <li>Lets download the basic Mesa models</li>
 </ul>
 </section>
 
-<section id="demonstration-of-basic-functionality" class="title-slide slide level1 center">
-<h1>Demonstration of basic functionality</h1>
+<section id="we-can-run-models-now" class="title-slide slide level1 center">
+<h1>We can run models now</h1>
+<p>Run all netlogo and python basic models and inspect them carefully. What do these simple models do?</p>
+</section>
+
+<section id="runthrough-of-netlogo-things-and-mesa-code" class="title-slide slide level1 center">
+<h1>Runthrough of netlogo things and mesa code</h1>
 <ul>
-<li>Netlogo</li>
-<li>Python Mesa</li>
+<li>with some highlights by Wim</li>
 </ul>
 </section>
 
@@ -295,11 +307,6 @@ Wim Pouw
 <li>What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.</li>
 <li>A personal model library will serve future you well</li>
 </ul>
-</section>
-
-<section id="do-it-yourself-assignments-and-quizes" class="title-slide slide level1 center">
-<h1>Do it yourself assignments and quizes</h1>
-<p>Run both netlogo and python basic models and inspect them carefully. What do these simple models do?</p>
 </section>
 
 <section id="grid-model-questions" class="title-slide slide level1 quiz-question center">
@@ -319,36 +326,34 @@ Wim Pouw
 <ul>
 <li><span class="correct" data-explanation="Correct! Since we have cardinal directions from move to move (up, down, left, right) without diagonal neighboring cells that the agent move to.">The agent can only move to a cell in a Von Neumann neighborhood</span></li>
 <li>The agent can only move to a cell in a Moore neighborhood</li>
-<li>The possibilities of the agent moves itself change randomly</li>
+<li>The number of move options of the agents changes randomly</li>
 <li>None of these</li>
 </ul>
 </section>
 
 <section id="grid-model-questions-2" class="title-slide slide level1 quiz-question center">
 <h1>Grid Model Questions</h1>
-<p>In the Mesa grid model, what does <code>possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]</code> represent?</p>
+<p>What does <code>possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]</code> represent?</p>
 <ul>
 <li>We move the agent to a random position</li>
-<li><span class="correct" data-explanation="Correct! These are the four adjacent cells, with modulo (%) providing torus wrapping, since if the position exceeds the grid boundary (set by height or width), the modulus ensures that the position is reset to 0 if exceeded.">The four cardinal directions that the agent could go to (North, East, South, West) but with explicit torus wrapping</span></li>
+<li><span class="correct" data-explanation="Correct! These are the four adjacent cells, with modulo (%) providing torus wrapping, since if the position exceeds the grid boundary (set by height or width), the modulus ensures that the position is reset to 0 if exceeded.">The directions that the agent could go to with torus wrapping</span></li>
 <li>Diagonal movement options</li>
-<li>All possible grid positions</li>
 </ul>
 </section>
 
 <section id="grid-model-questions-3" class="title-slide slide level1 quiz-question center">
 <h1>Grid Model Questions</h1>
-<p>What is the difference in implementation of the agent movement in NetLogo and Mesa?</p>
+<p>Compare the implementation of the agent movement in NetLogo and Mesa.</p>
 <ul>
-<li>NetLogo uses coordinates, Mesa uses direction and forward movement</li>
-<li><span class="correct" data-explanation="NetLogo sets the turtle's direction then moves forward 1 step, while Mesa agent does not have a direction and picks a new coordinate position from possible move locations.">NetLogo uses <code>set heading</code> and <code>fd 1</code>, Mesa calculates new coordinates directly</span></li>
-<li>Both use the same movement approach</li>
-<li>Mesa calculates based on possible moves, while netlogo does not</li>
+<li><span class="correct" data-explanation="NetLogo sets the turtle's direction then moves forward 1 step, while Mesa agent does not have a direction and picks a new coordinate position from possible move locations.">NetLogo sets direction and moves, Mesa selects coordinates directly</span></li>
+<li>Both use the same movement implementation</li>
+<li>Only Mesa calculates possible moves</li>
 </ul>
 </section>
 
 <section id="grid-model-questions-open-question" class="title-slide slide level1 center">
 <h1>Grid Model Questions (Open Question)</h1>
-<p>Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in netlogo? What would you change in Python?</p>
+<p>Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in netlogo? What would you change in Python? Impress your neighbor, and explain what you did to them (and vice versa).</p>
 </section>
 
 <section id="grid-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
@@ -380,7 +385,7 @@ Wim Pouw
 
 <section id="continuous-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
 <h1>Continuous Model Questions (Use your own imagination)</h1>
-<p>Modify the Mesa continuous model so that the model behavior is slightly different or more complex.</p>
+<p>Modify the Mesa continuous model so that the model behavior is slightly different or more complex. Impress your neighbor, and explain what you did to them (and vice versa).</p>
 </section>
 
 <section id="network-model-questions" class="title-slide slide level1 center">

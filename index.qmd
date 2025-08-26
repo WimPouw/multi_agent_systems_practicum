@@ -128,11 +128,7 @@ pip install jupyter notebook scipy seaborn pandas numpy matplotlib ipykernel
 python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
 ```
 
-The models are all jupyter notebooks, so you can run them using the following command:
-```bash
-jupyter notebook
-```
-Or you can simply open them in Visual Studio Code, which has a built-in jupyter notebook viewer.
+We will use Visual Studio Code which has a built-in jupyter notebook viewer. We will do that as the default. Do note that you need to "trust" the notebook or the model folder when you open it for the first time (otherwise you get issues activating your environment). When you run your notebook chunks, make sure you select the right kernel (mesa-env).
 
 ::::
 
@@ -568,8 +564,8 @@ We will not actually give you the python version of the model, because we are go
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Flocking model
-* [Flocking Model Folder Python](./models/flocking_model_netlogo.rar)
-* [Flocking Model Folder Netlogo](./models/flocking_model_python.rar)
+* [Flocking Model Folder Python](./models/flocking_model_python.rar)
+* [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.rar)
 :::
 ::: {.callout-note .callout-download collapse="true"}
 ## El Farol Model
@@ -585,7 +581,7 @@ We will not actually give you the python version of the model, because we are go
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Wolf-Sheep Model
-* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_netlogo.rar.rar)
+* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_netlogo.rar)
 * [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_python.rar)
 :::
 
@@ -632,7 +628,22 @@ We will not actually give you the python version of the model, because we are go
 [Open slides in new window](./slides_practicals/Practical1.html)
 :::
 
-# Key literature per practicum 
+# Key background literature for the models
+
+::: {.callout-note .callout-download collapse="true"}
+## Materials for basic models
+For understanding the structure of the python mesa base models, you can can have a look at the their [tutorial](https://mesa.readthedocs.io/latest/tutorials/0_first_model.html) by [@kazilUtilizingPythonAgentBased2020].
+
+## For Netlogo: Chapter 1 [@romanowskaAgentBasedModelingArchaeology2021]
+This book chapter goes into the some basics of netlogo that is helpful for getting started with the  [base models](#model-library-for-this-course). 
+
+<embed src="./pdfs/Romanowska_ABMA_Chapter_1.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/Romanowska_ABMA_Chapter_1.pdf)
+:::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Book chapter about dispersal model

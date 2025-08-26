@@ -4,7 +4,7 @@ The main landing page is where it is at.
 
 # Main Landing page
 
-https://wimpouw.github.io/multi\_agent\_systems\_practicum/
+https://wimpouw.github.io/multi_agent_systems_practicum
 
 
 
@@ -41,4 +41,5 @@ conda install jupyter notebook scipy seaborn pandas numpy matplotlib ipykernel
 
 
 pip install mesa\[all]==3.2.0
+
 

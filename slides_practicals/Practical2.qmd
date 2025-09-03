@@ -1,13 +1,72 @@
 ---
-title: "Practicum 2: FORTHCOMING"
+title: "Multi-Agent Systems Practicum 2"
+subtitle: "Translating a netlogo model to Python Mesa"
 author: "Wim Pouw"
 format:
   revealjs:
     controls: true
     navigationMode: default
+    quiz: 
+      checkKey: 'c'
+      resetKey: 'q'
+      shuffleKey: 't'
+      allowNumberKeys: true
+      disableOnCheck: false
+      disableReset: false
+      shuffleOptions: true
+      includeScore: false
+revealjs-plugins:
+  - quiz
 ---
 
+## Recap content so far 
+#### Practicum 1 + lectures 1-2
+
+* **Getting setup:** NetLogo and Python Mesa environment setup.
+* **Coding Style:** Briefly inspected some coding style differences in NetLogo and Python.
+* **Lectures**: Basics of agent-based modeling, Netlogo overview & inspection of model variety.
+
 ## Practicum 2: Objectives
+
+* **Basic mesa components:** Introduction mesa standards through inspecting a basic model.
+* **Translation:** Translating a netlogo model into python mesa.
+
+## Agenda
+- Introduction to basic mesa components with Wim
+- Live coding: Translation to netlogo model to python mesa with Wim
+- Challenge: Enrich translation of the netlogo model to python mesa and go beyond, will continue into practicum 3
+
+## Part 1: Basic model in Mesa Grid
+- Lets inspect the "basic data-generating grid model" in mesa
+  - Download from the [Practicum Landing Page](https://example.com) (basic models section)
+- Open the notebook `basic_grid_model.ipynb` in visual studio code (and make sure your mesa environment is activated)
+- Wim will guide you through the basic components of a mesa model
+
+## Some quiz questions about the basic model
+Write an agent class that initializes that initializes an agent with a random position on a 20x20 grid and has a step function that moves the agent to a random neighboring cell.
+
+## Part 2: Translating a netlogo model to python mesa
+- With our knowledge of grid models, lets translate a netlogo model to python mesa
+- Dispersal Netlogo model
+  - Download from the [Practicum Landing Page](https://example.com) (netlogo models section)
+
+## Part 2: The dispersal netlogo model
+- The Africa Origin hypothesis
+- The model simulates the migration of early humans out of Africa
+- Original paper (Young & Bettinger, 1995)
+
+## Part 2: Lets think it through
+- What are the agents, environment, and processes in the netlogo model?
+- How can we represent these in python mesa?
+- What data do we want to collect?
+- How can we visualize this data? 
+- WAIT, can we start simpler? 
+
+
+## Part 2: Lets think it through
+- So lets assume want to test the multi-origin hypothesis of human origin
+
+
 
 
 

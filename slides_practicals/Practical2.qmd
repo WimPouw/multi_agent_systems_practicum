@@ -32,13 +32,13 @@ revealjs-plugins:
 * **Translation:** Translating a netlogo model into python mesa.
 
 ## Agenda
-- Introduction to basic mesa components with Wim
-- Live coding: Translation to netlogo model to python mesa with Wim
+- Overview mesa functionality with Wim
+- Start of translation to netlogo model to python mesa
 - Challenge: Enrich translation of the netlogo model to python mesa and go beyond, will continue into practicum 3
 
-## Part 1: Data-generating basic model in Mesa Grid
+## Part 1: Fully functional basic grid model
 - Lets inspect the "basic data-generating grid model" in mesa
-  - Download from the [Practicum Landing Page](https://example.com) (basic models section)
+  - Download from the [Practicum Landing Page](https://example.com) (mesa functionality demo model section)
 - Open the notebook `basic_grid_model.ipynb` in visual studio code (and make sure your mesa environment is activated)
 - Wim will guide you through the basic components of a mesa model
 

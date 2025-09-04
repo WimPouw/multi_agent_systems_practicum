@@ -1,5 +1,6 @@
 ---
-title: "Practicum 1: Setting up Netlogo and Python"
+title: "Multi-Agent Systems Practicum 1"
+subtitle: "Getting started with NetLogo and Python Mesa"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -57,18 +58,21 @@ conda create -n mesa-env python=3.11
 conda activate mesa-env
 pip install mesa[all]==3.2.0
 pip install jupyter notebook seaborn pandas numpy matplotlib
-python -c "import mesa; print(f'Mesa version: {mesa.__version__}')"
+python -c "import mesa; print(mesa.__version__)"
 ```
 - Of course feel free to use your own Python environment, or clone repo and install locally (`pip install .`). This is the recommended and tested procedure however. 
 
 - Tested on the practicum PC (and my own Windows laptop)
+
+- MACOS users: See the landing page installation section
 
 # Jupyter Notebooks
 - We will be using Jupyter Notebooks for our Python code with Visual Studio Code (and our environment setup initialized in VS code). 
 - But feel free to use your own IDE and organization.
 
 # Downloading models
-- Lets download the basic Mesa models
+- Lets download the basic Mesa models from the landing page
+- Unpack using 7zip, Winrar, or your OS built-in unpacker
 
 # We can run models now
 Run all netlogo and python basic models and inspect them carefully. What do these simple models do?
@@ -81,6 +85,9 @@ Run all netlogo and python basic models and inspect them carefully. What do thes
 - This model library has well-annotated markdown-edited notebooks (Python) or info tabs (Netlogo)
 - What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.
 - A personal model library will serve future you well
+
+# Practice questions
+- Next are some quiz questions to guide you to look at some details of the basic models
 
 # Grid Model Questions {.quiz-question}
 In the NetLogo grid model, what initializes the turtles position randomly?
@@ -149,4 +156,4 @@ For the python implementation, what's the key difference between this network vi
 - Custom plotting only works for small networks
 
 # Self-study
-During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections and save it for future reference (in your personal model library). 
+During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections or inline comments and save it for future reference (in your personal model library). 

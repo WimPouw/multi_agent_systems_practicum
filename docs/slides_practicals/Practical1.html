@@ -6,11 +6,11 @@
 <script src="Practical1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Practical1_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Practical1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.30">
+<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Practicum 1: Setting up Netlogo and Python</title>
+  <title>Multi-Agent Systems Practicum 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,7 +194,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Practicum 1: Setting up Netlogo and Python</h1>
+  <h1 class="title">Multi-Agent Systems Practicum 1</h1>
+  <p class="subtitle">Getting started with NetLogo and Python Mesa</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -265,10 +266,11 @@ Wim Pouw
 <span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
 <span id="cb1-3"><a href=""></a><span class="ex">pip</span> install mesa<span class="pp">[</span><span class="ss">all</span><span class="pp">]</span>==3.2.0</span>
 <span id="cb1-4"><a href=""></a><span class="ex">pip</span> install jupyter notebook seaborn pandas numpy matplotlib</span>
-<span id="cb1-5"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(f'Mesa version: {mesa.__version__}')"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(mesa.__version__)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Of course feel free to use your own Python environment, or clone repo and install locally (<code>pip install .</code>). This is the recommended and tested procedure however.</p></li>
 <li><p>Tested on the practicum PC (and my own Windows laptop)</p></li>
+<li><p>MACOS users: See the landing page installation section</p></li>
 </ul>
 </section>
 
@@ -283,7 +285,8 @@ Wim Pouw
 <section id="downloading-models" class="title-slide slide level1 center">
 <h1>Downloading models</h1>
 <ul>
-<li>Lets download the basic Mesa models</li>
+<li>Lets download the basic Mesa models from the landing page</li>
+<li>Unpack using 7zip, Winrar, or your OS built-in unpacker</li>
 </ul>
 </section>
 
@@ -306,6 +309,13 @@ Wim Pouw
 <li>This model library has well-annotated markdown-edited notebooks (Python) or info tabs (Netlogo)</li>
 <li>What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.</li>
 <li>A personal model library will serve future you well</li>
+</ul>
+</section>
+
+<section id="practice-questions" class="title-slide slide level1 center">
+<h1>Practice questions</h1>
+<ul>
+<li>Next are some quiz questions to guide you to look at some details of the basic models</li>
 </ul>
 </section>
 
@@ -406,7 +416,7 @@ Wim Pouw
 
 <section id="self-study" class="title-slide slide level1 center">
 <h1>Self-study</h1>
-<p>During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections and save it for future reference (in your personal model library).</p>
+<p>During this first practicum you were likely lost because many operations are foreign. The only way to learn is to look up things in the python code you do not understand. Then once you understand you write it out in your own words in the jupyter notebook Markdown sections or inline comments and save it for future reference (in your personal model library).</p>
 
 </section>
     </div>

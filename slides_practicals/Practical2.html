@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link href="Practical2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -155,11 +221,11 @@ Wim Pouw
 <li><strong>Crashcourse mesa functionality:</strong> Introduction mesa key functionalities.
 <ul>
 <li>Data collection</li>
-<li>Custom visualization</li>
+<li>Model + data visualization</li>
 <li>Multi-iteration runs</li>
-<li>Data saving</li>
+<li>Data saving and post-hoc plotting</li>
 </ul></li>
-<li><strong>Translation:</strong> Start translating a netlogo model into python mesa.</li>
+<li><strong>Translation:</strong> Making a start in translating a netlogo model into python mesa.</li>
 </ul>
 </section>
 <section id="agenda" class="slide level2">
@@ -167,28 +233,35 @@ Wim Pouw
 <ul>
 <li>Overview mesa functionality with Wim</li>
 <li>Start of translation to netlogo model to python mesa</li>
-<li>Challenge: Enrich translation of the netlogo model to python mesa and go beyond, will continue into practicum 3</li>
+<li>Challenge: Continue translation at home</li>
 </ul>
 </section>
 <section id="part-1-fully-functional-basic-grid-model" class="slide level2">
 <h2>Part 1: Fully functional basic grid model</h2>
 <ul>
-<li>Lets inspect the “basic data-generating grid model” in mesa
+<li>Lets inspect the “full functionality grid model” in mesa
 <ul>
-<li>Download from the <a href="https://example.com">Practicum Landing Page</a> (mesa functionality demo model section)</li>
+<li>Download from the <a href="https://wimpouw.github.io/multi_agent_systems_practicum">Practicum Landing Page</a> model library section</li>
 </ul></li>
-<li>Open the notebook <code>basic_grid_model.ipynb</code> in visual studio code (and make sure your mesa environment is activated)</li>
-<li>Wim will guide you through the basic components of a mesa model</li>
+<li>Open the notebook <code>full_func_multiagent_grid.ipynb</code> in visual studio code (and make sure your mesa environment is activated)</li>
+<li>Wim will guide you through the basic components of this mesa model</li>
 </ul>
 </section>
-<section id="some-quiz-questions-about-the-basic-model" class="slide level2">
-<h2>Some quiz questions about the basic model</h2>
-<p>Write an agent class that initializes that initializes an agent with a random position on a 20x20 grid and has a step function that moves the agent to a random neighboring cell.</p>
+<section id="part-1-crashcourse-finished" class="slide level2">
+<h2>Part 1: Crashcourse finished</h2>
+<p>You know have <strong>some</strong> familiarity with:</p>
+<ul>
+<li>Basic mesa model structure</li>
+<li>Data collection</li>
+<li>Model + data visualization</li>
+<li>Multi-iteration runs and parameter sweeping</li>
+<li>Data saving and post-hoc plotting</li>
+</ul>
 </section>
 <section id="part-2-translating-a-netlogo-model-to-python-mesa" class="slide level2">
 <h2>Part 2: Translating a netlogo model to python mesa</h2>
 <ul>
-<li>With our knowledge of grid models, lets translate a netlogo model to python mesa</li>
+<li>With our knowledge of grid models, lets start to translate a netlogo model to python mesa</li>
 <li>Dispersal Netlogo model
 <ul>
 <li>Download from the <a href="https://example.com">Practicum Landing Page</a> (netlogo models section)</li>
@@ -201,22 +274,52 @@ Wim Pouw
 <li>The Africa Origin hypothesis</li>
 <li>The model simulates the migration of early humans out of Africa</li>
 <li>Original paper (Young &amp; Bettinger, 1995)</li>
+<li>Lets inspect it together first</li>
 </ul>
 </section>
-<section id="part-2-lets-think-it-through" class="slide level2">
-<h2>Part 2: Lets think it through</h2>
+<section id="lets-think-it-through" class="slide level2">
+<h2>Lets think it through</h2>
 <ul>
-<li>What are the agents, environment, and processes in the netlogo model?</li>
-<li>How can we represent these in python mesa?</li>
-<li>What data do we want to collect?</li>
-<li>How can we visualize this data?</li>
-<li>WAIT, can we start simpler?</li>
+<li><p>What are the agents, environment, and processes in the netlogo model?</p></li>
+<li><p>How can we represent these in python mesa?</p></li>
+<li><p>What data do we want to collect?</p></li>
+<li><p>How can we visualize this data?</p></li>
+<li><p>Wait, can we start simple? And break up the complexity?</p></li>
 </ul>
 </section>
-<section id="part-2-lets-think-it-through-1" class="slide level2">
-<h2>Part 2: Lets think it through</h2>
+<section id="lets-create-a-jupyter-notebook-for-making-a-basic-dispersal-model-from-scratch" class="slide level2">
+<h2>Lets create a jupyter notebook for making a basic dispersal model from scratch</h2>
+<p>In the first Markdown chunk of the notebook:</p>
 <ul>
-<li>So lets assume want to test the multi-origin hypothesis of human origin</li>
+<li>Title it “Basic Dispersal Model”</li>
+<li>Write a brief description of the model and its purpose</li>
+</ul>
+<p>First python chunck:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href=""></a><span class="im">import</span> mesa</span>
+<span id="cb1-4"><a href=""></a><span class="im">from</span> mesa.discrete_space <span class="im">import</span> CellAgent, OrthogonalMooreGrid</span>
+<span id="cb1-5"><a href=""></a><span class="im">from</span> mesa.visualization <span class="im">import</span> SolaraViz, make_plot_component, make_space_component</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="then-we-know-the-drill" class="slide level2">
+<h2>Then we know the drill</h2>
+<ul>
+<li><p>Create agent class and let it do things</p></li>
+<li><p>Create model class, collect some data</p></li>
+<li><p>Create simple visualization</p></li>
+<li><p>Run the model, save some data</p></li>
+<li><p>check back to the fullfunc grid model</p></li>
+<li><p><strong>Also here - work in managable steps!</strong> (first get agents initialized properly, then get them moving, then think about data collection, then think about further visualizations)</p></li>
+</ul>
+</section>
+<section id="challenge-for-the-full-model-translation" class="slide level2">
+<h2>Challenge for the full model translation</h2>
+<ul>
+<li>How to implement the entire model that interfaces with the world map picture?</li>
+<li>The spreading of humans can only be across the landscape</li>
+<li>How to make the world only wrap horizontally?</li>
+<li>can you see more things that we might want to translate from Netlogo</li>
+<li>Again start with priorities (probably implementing the map)</li>
 </ul>
 
 </section>

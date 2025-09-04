@@ -30,28 +30,35 @@ revealjs-plugins:
 
 * **Crashcourse mesa functionality:** Introduction mesa key functionalities.
   - Data collection
-  - Custom visualization
+  - Model + data visualization
   - Multi-iteration runs
-  - Data saving
-  
-* **Translation:** Start translating a netlogo model into python mesa.
+  - Data saving and post-hoc plotting
+
+* **Translation:** Making a start in translating a netlogo model into python mesa.
 
 ## Agenda
 - Overview mesa functionality with Wim
 - Start of translation to netlogo model to python mesa
-- Challenge: Enrich translation of the netlogo model to python mesa and go beyond, will continue into practicum 3
+- Challenge: Continue translation at home
 
 ## Part 1: Fully functional basic grid model
-- Lets inspect the "basic data-generating grid model" in mesa
-  - Download from the [Practicum Landing Page](https://example.com) (mesa functionality demo model section)
-- Open the notebook `basic_grid_model.ipynb` in visual studio code (and make sure your mesa environment is activated)
-- Wim will guide you through the basic components of a mesa model
+- Lets inspect the "full functionality grid model" in mesa
+  - Download from the [Practicum Landing Page](https://wimpouw.github.io/multi_agent_systems_practicum) model library section
+- Open the notebook `full_func_multiagent_grid.ipynb` in visual studio code (and make sure your mesa environment is activated)
+- Wim will guide you through the basic components of this mesa model
 
-## Some quiz questions about the basic model
-Write an agent class that initializes that initializes an agent with a random position on a 20x20 grid and has a step function that moves the agent to a random neighboring cell.
+## Part 1: Crashcourse finished
+You know have **some** familiarity with:
+
+  - Basic mesa model structure
+  - Data collection
+  - Model + data visualization
+  - Multi-iteration runs and parameter sweeping
+  - Data saving and post-hoc plotting
+  
 
 ## Part 2: Translating a netlogo model to python mesa
-- With our knowledge of grid models, lets translate a netlogo model to python mesa
+- With our knowledge of grid models, lets start to translate a netlogo model to python mesa
 - Dispersal Netlogo model
   - Download from the [Practicum Landing Page](https://example.com) (netlogo models section)
 
@@ -59,17 +66,47 @@ Write an agent class that initializes that initializes an agent with a random po
 - The Africa Origin hypothesis
 - The model simulates the migration of early humans out of Africa
 - Original paper (Young & Bettinger, 1995)
+- Lets inspect it together first
 
-## Part 2: Lets think it through
+## Lets think it through
 - What are the agents, environment, and processes in the netlogo model?
 - How can we represent these in python mesa?
 - What data do we want to collect?
 - How can we visualize this data? 
-- WAIT, can we start simpler? 
+
+- Wait, can we start simple? And break up the complexity?
+
+## Lets create a jupyter notebook for making a basic dispersal model from scratch
+In the first Markdown chunk of the notebook:
+
+- Title it "Basic Dispersal Model"
+- Write a brief description of the model and its purpose
+
+First python chunck:
+```python 
+import numpy as np
+import pandas as pd
+import mesa
+from mesa.discrete_space import CellAgent, OrthogonalMooreGrid
+from mesa.visualization import SolaraViz, make_plot_component, make_space_component
+```
+## Then we know the drill
+- Create agent class and let it do things
+- Create model class, collect some data
+- Create simple visualization
+- Run the model, save some data
+
+* check back to the fullfunc grid model
+* **Also here - work in managable steps!** (first get agents initialized properly, then get them moving, then think about data collection, then think about further visualizations)
+
+## Challenge for the full model translation
+* How to implement the entire model that interfaces with the world map picture?
+- The spreading of humans can only be across the landscape
+* How to make the world only wrap horizontally?
+* can you see more things that we might want to translate from Netlogo
+* Again start with priorities (probably implementing the map)
 
 
-## Part 2: Lets think it through
-- So lets assume want to test the multi-origin hypothesis of human origin
 
 
 

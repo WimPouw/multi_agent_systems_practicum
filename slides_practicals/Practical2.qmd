@@ -28,8 +28,13 @@ revealjs-plugins:
 
 ## Practicum 2: Objectives
 
-* **Basic mesa components:** Introduction mesa standards through inspecting a basic model.
-* **Translation:** Translating a netlogo model into python mesa.
+* **Crashcourse mesa functionality:** Introduction mesa key functionalities.
+  - Data collection
+  - Custom visualization
+  - Multi-iteration runs
+  - Data saving
+  
+* **Translation:** Start translating a netlogo model into python mesa.
 
 ## Agenda
 - Overview mesa functionality with Wim

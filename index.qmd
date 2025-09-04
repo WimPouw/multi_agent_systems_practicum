@@ -65,20 +65,19 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the basic models (and fire model).
 * **Basics:** Initialize and investigate basic setups.
 
-## Practicum 2
+## Practicum 2 {.active}
 
-* **Dispersal Model (NetLogo):** Introduction to the dispersal model in NetLogo.
-* **Python Equivalent:** Coding up a Python equivalent of the dispersal model.
-* **Python Challenge:** Can we adjust Mesa to work with a custom map?
+* **Crashcourse:** Understand what key functionality Mesa has for agent-based modeling.
+* **Dispersal:** Learn about the dispersal model and deconstruct it conceptually for translation.
+* **Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
+* **Python Challenge:** Continue the translation on your own.
 
 ## Practicum 3
-
-* **Challenge Review:** Review of the previous challenge.
+* **Challenge Review:** Review of the previous challenge. Finish the dispersal model translation.
 * **El Faro Model:** Introduction to the El Faro model.
 * **Data Handling:** Collecting and plotting data in Mesa.
 
 ## Practicum 4
-
 * **Part 1:** Wolf-sheep model and Amphor model.
 * **Part 2:** More advanced analyzing of data in Mesa.
 

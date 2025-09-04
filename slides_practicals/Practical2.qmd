@@ -61,6 +61,7 @@ You know have **some** familiarity with:
 - With our knowledge of grid models, lets start to translate a netlogo model to python mesa
 - Dispersal Netlogo model
   - Download from the [Practicum Landing Page](https://example.com) (netlogo models section)
+  - Or download directly here: [netlogo dispersal model .rar](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_netlogo.rar)
 
 ## Part 2: The dispersal netlogo model
 - The Africa Origin hypothesis

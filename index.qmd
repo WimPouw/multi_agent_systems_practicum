@@ -781,6 +781,7 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 - "Diffusion of complex contagions is shaped by a trade-off between reach and reinforcement" [@wanDiffusionComplexContagions2025] (download [PDF](./pdfs/wanetal2025.pdf))
 - "Reciprocity evolves more readily in competitive than cooperative socio-ecologies" [@romanoReciprocityEvolvesMore2025] (download [PDF](./pdfs/romanoetal2025.pdf))
 - "An evolutionary model of rhythmic accelerando in animal vocal signalling" [@jadoulEvolutionaryModelRhythmic2025] (download [PDF](./pdfs/jadouletal2025.pdf))
+- "Modeling Multi-Agent Self-Organization through the Lens of Higher Order Attractor Dynamics" [@butnerModelingMultiAgentSelfOrganization2017] (download [PDF](./pdfs/butneretal2017.pdf))
 :::
 :::
 

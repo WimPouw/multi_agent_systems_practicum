@@ -27,7 +27,7 @@ format:
   * Make the model more complex
 
 ## Practicum 3: Continue our translation (Part 2)
-* Download the setup: [dispersal_translationPII_python](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_translationPII_python.rar)
+* Download the setup: [Part II notebook setup](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_partII.rar)
 * Continue our translation of a netlogo model to Python Mesa
 * Quick coding up to checkpoint:
   * Set up CellAgent class initalized with cell position and dispersal/hatch rate

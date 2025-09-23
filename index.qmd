@@ -73,9 +73,9 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 ## Practicum 3 {.active}
 
-* **Part II: Implementation from scratch:** We continue to practice model translation.
-* **Solving problems yourself**: Visualization,  agent behavior, and data plotting.
-* **Creative adaptation.**: Create your own variation of the model.
+* **Implementation from scratch Part II:** We continue to practice model translation.
+* **Solving problems yourself:** Visualization,  agent behavior, and data plotting.
+* **Creative adaptation:** Create your own variation of the model.
 * **Python Challenge to take home:** Try to implement the dispersal model on the map.
 
 ## Practicum 4
@@ -89,9 +89,9 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 ## Practicum 5
 
 * **Introduction to Agent sets**: Learn how to use agent sets in Mesa.
-* **Models**: Wolf-sheep model & Amphor model.
+* **Models:** Wolf-sheep model & Amphor model.
 * **Mesa's Data Collector:** Running an experiment and statistically analyzing data.
-* **Analysis**: Using your knowledge from Statistics II.
+* **Analysis:** Using your knowledge from Statistics II.
 
 ## Practicum 6
 * **DIY building models yourself**: Code up your own simple model and collect some data.

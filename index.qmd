@@ -65,30 +65,37 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the basic models (and fire model).
 * **Basics:** Initialize and investigate basic setups.
 
-## Practicum 2 {.active}
+## Practicum 2 
 
 * **Crashcourse:** Understand what key functionality Mesa has for agent-based modeling.
 * **Dispersal:** Learn about the dispersal model and deconstruct it conceptually for translation.
-* **Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
-* **Python Challenge:** Continue the translation on your own.
+* **Part I: Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
 
-## Practicum 3
-* **Challenge Review:** Review of the previous challenge. Finish the dispersal model translation.
-* **El Faro Model:** Introduction to the El Faro model.
-* **Data Handling:** Collecting and plotting data in Mesa.
+## Practicum 3 {.active}
+
+* **Part II: Implementation from scratch:** We continue to practice model translation.
+* **Solving problems yourself**: Visualization,  agent behavior, and data plotting.
+* **Creative adaptation.**: Create your own variation of the model.
+* **Python Challenge to take home:** Try to implement the dispersal model on the map.
 
 ## Practicum 4
-* **Part 1:** Wolf-sheep model and Amphor model.
-* **Part 2:** More advanced analyzing of data in Mesa.
+
+* **Python Challenge:** Showing the dispersal map implementation.
+* **Learn to create your own visualizations**. Using Solara and Matplotlib.
+* **Model:** Introduction to the El Faro model.
+* **Mesa's Data Collector:** Running and collecting data.
+* **Run a formal experiemnt**: Using Mesa batch we will performa an experiment.
 
 ## Practicum 5
 
-* **Part 1:** Possible slot for remaining matters and review.
-* **Part 2:** Dedicated work session on your own model together.
+* **Introduction to Agent sets**: Learn how to use agent sets in Mesa.
+* **Models**: Wolf-sheep model & Amphor model.
+* **Mesa's Data Collector:** Running an experiment and statistically analyzing data.
+* **Analysis**: Using your knowledge from Statistics II.
 
 ## Practicum 6
-
-* **Model Development:** Continue working on your own model collaboratively.
+* **DIY building models yourself**: Code up your own simple model and collect some data.
+* **Feasibility**: You will learn your limitations and feasable scope of a model.
 
 :::
 
@@ -584,6 +591,8 @@ Note we have stored the models in a .rar file. You can download the models and e
 * [Download Model Folder Netlogo](./models/dispersal_netlogo.rar)
 
 We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature). For the final fully implemented one one we are going to give you a hint and you can check out a start here:
+
+* [Dispersal Model Basic Folder Python (incomplete)](./models/dispersal_python_partII.rar)
 
 * [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)
 :::

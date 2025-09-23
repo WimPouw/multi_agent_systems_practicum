@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Practicum 3: FORTHCOMING</title>
+  <title>Practicum 3: Part II translating a netlogo model to Python Mesa</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -127,7 +127,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Practicum 3: FORTHCOMING</h1>
+  <h1 class="title">Practicum 3: Part II translating a netlogo model to Python Mesa</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -138,8 +138,104 @@ Wim Pouw
 </div>
 
 </section>
-<section id="practicum-3-objectives" class="slide level2">
-<h2>Practicum 3: Objectives</h2>
+<section id="what-we-have-done-so-far" class="slide level2">
+<h2>What we have done so far</h2>
+<ul>
+<li>Practiced running and debugging Netlogo models and Mesa models.</li>
+<li>Crashcourse basic functionality Mesa (with the FullFunc Model; <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">quick view full func</a>).</li>
+<li>Deconstructed the dispersal model conceptually into a simple steps.</li>
+<li>Began translating the dispersal model to Python Mesa.</li>
+</ul>
+</section>
+<section id="checkpoint-part-1-dispersal-model" class="slide level2">
+<h2>Checkpoint Part 1 Dispersal model</h2>
+<ul>
+<li>Create cell agent class with a cell location</li>
+<li>Create model class</li>
+<li>Let the agents shout out “Hey I am agent # x and I am at position (x,y)”</li>
+</ul>
+</section>
+<section id="practicum-3-objectives-today" class="slide level2">
+<h2>Practicum 3: Objectives today</h2>
+<ul>
+<li>Continue our translation of a netlogo model to Python Mesa</li>
+<li>Learn to program aspects of the model yourself
+<ul>
+<li>Create visualization</li>
+<li>Create agent duplication</li>
+<li>Measure and plot model data collection</li>
+<li>Make the model more complex</li>
+</ul></li>
+</ul>
+</section>
+<section id="practicum-3-continue-our-translation-part-2" class="slide level2">
+<h2>Practicum 3: Continue our translation (Part 2)</h2>
+<ul>
+<li>Download the setup: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_translationPII_python.rar">dispersal_translationPII_python</a></li>
+<li>Continue our translation of a netlogo model to Python Mesa</li>
+<li>Quick coding up to checkpoint:
+<ul>
+<li>Set up CellAgent class initalized with cell position and dispersal/hatch rate</li>
+<li>Initialized 25x25 grid model</li>
+<li>Model sets dispersal rate, space size, initial population, and sets seed</li>
+<li>Checkpoint</li>
+<li>“Hey I am an Agent # x and I am at position (x,y)”</li>
+</ul></li>
+</ul>
+</section>
+<section id="visualization-5-10-min" class="slide level2">
+<h2>Visualization (5-10 min)</h2>
+<ul>
+<li>Initialize a visualization with a slider for dispersal rate and number of agents</li>
+<li>Make the agents green</li>
+<li>Use FullFunc model as a guide if necessary (<a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">quick view full func</a>)</li>
+</ul>
+</section>
+<section id="agent-duplication-step-2-5-10-min" class="slide level2">
+<h2>Agent duplication (Step 2) (5-10 min)</h2>
+<ul>
+<li>Implement agent duplication (hatching) based on dispersal rate</li>
+<li>Run visualization to check if it works</li>
+</ul>
+</section>
+<section id="collecting-data-15-min" class="slide level2">
+<h2>Collecting data (15 min)</h2>
+<ul>
+<li>Lets analyze the full func model again</li>
+<li>Now lets create our own data collection function
+<ul>
+<li>Lets measure the percent of the grid occupied</li>
+<li>Check full func model (<a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">quick view full func</a>)</li>
+</ul></li>
+<li>Plot the data in the visualization using <code>mesa.visualization</code>’s <code>make_plot_component</code></li>
+</ul>
+</section>
+<section id="complexifying-the-model-30-min" class="slide level2">
+<h2>Complexifying the model (30 min)</h2>
+<ul>
+<li>Be creative create your own more complex model by tweaking behavior</li>
+<li>Look up the mesa documentation for cool features:</li>
+<li>For example:
+<ul>
+<li>Add death rate</li>
+<li>random Variation in dispersal rate</li>
+<li>Create obstacles (e.g., implement a random maze)</li>
+<li>Add a virus that randomly picks an agent after 20 steps, and disperse death, through the population</li>
+</ul></li>
+<li>Show your work</li>
+</ul>
+</section>
+<section id="diy-challenge-for-the-full-model-translation" class="slide level2">
+<h2>DIY: Challenge for the full model translation</h2>
+<ul>
+<li>How to implement the entire model that interfaces with the world map picture?
+<ul>
+<li>Make sure the world wraps horizontally?</li>
+</ul></li>
+<li>The spreading of humans can only be across the landscape, not across the ocean</li>
+<li>You can start from here: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_model_incomplete.rar">incomplete_dispersal_worldmap</a></li>
+<li>From <a href="https://wimpouw.github.io/multi_agent_systems_practicum">landing page</a> go to model library section, and download the incomplete dispersal model python</li>
+</ul>
 
 </section>
     </div>

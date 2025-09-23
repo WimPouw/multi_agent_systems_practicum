@@ -585,7 +585,9 @@ Note we have stored the models in a .rar file. You can download the models and e
 
 We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature). For the final fully implemented one one we are going to give you a hint and you can check out a start here:
 
-* [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)
+* [Translation part II: Dispersal Model Basic (incomplete)](./models/dispersal_python_partII.rar)
+
+* [Python Challenge: Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)
 :::
 
 ::: {.callout-note .callout-download collapse="true"}

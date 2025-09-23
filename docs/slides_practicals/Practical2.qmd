@@ -93,26 +93,10 @@ import mesa
 from mesa.discrete_space import CellAgent, OrthogonalMooreGrid
 from mesa.visualization import SolaraViz, make_plot_component, make_space_component
 ```
-## Then we know the drill
+## Live translation of the dispersal model (Part 1)
 - Create agent class and let it do things
 - Create model class, collect some data
-- Create simple visualization
-- Run the model, save some data
-
-* check back to the fullfunc grid model
-* **Also here - work in managable steps!** (first get agents initialized properly, then get them moving, then think about data collection, then think about further visualizations)
-
-## Challenge for the full model translation
-* How to implement the entire model that interfaces with the world map picture?
-- The spreading of humans can only be across the landscape
-* How to make the world only wrap horizontally?
-* can you see more things that we might want to translate from Netlogo
-* Again start with priorities (probably implementing the map)
-
-## Challenge for the full model translation
-* You can start from here if you want: [incomplete_dispersal_worldmap](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_model_incomplete.rar)
-* From [landing page](https://wimpouw.github.io/multi_agent_systems_practicum) go to model library section, and download the incomplete dispersal model python
-
+- Let the agents shout out "Hey I am agent # x and I am at position (x,y)"
 
 
 

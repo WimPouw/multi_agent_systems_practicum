@@ -1,0 +1,67 @@
+Agent-based modeling
+Multi-agent systems
+Emergence
+Autonomous agents
+Agent-environment interaction
+Agent-agent interaction
+Perception-action capabilities
+Decentralized control
+Self-organization
+Complex systems
+Computational simulation
+Bottom-up modeling
+Individual-level behavior
+Population-level phenomena
+Heterogeneous agents
+Agent properties
+Agent rules
+Environmental dynamics
+Spatial distribution
+Temporal evolution
+Feedback loops
+Collective behavior
+Swarm intelligence
+NetLogo programming
+Turtles and patches
+Model validation
+Model calibration
+Parameter sensitivity
+Stochastic processes
+Cognitive modeling
+Social simulation
+Behavioral rules
+Interaction networks
+System-level outcomes
+Microscopic specifications
+Macroscopic patterns
+Generative modeling
+Computational social science
+Agent heterogeneity
+Environmental sensing
+Adaptive behavior
+Local interactions
+Global patterns
+Model verification
+Experimental design
+Sensitivity analysis
+Robustness testing
+Scaling effects
+Contingent behaviors
+Social norms evolution
+Cultural transmission
+Information spread
+Collective decision-making
+Coordination mechanisms
+Game theory applications
+Network effects
+Path dependence
+Phase transitions
+Critical thresholds
+Percolation theory
+Cellular automata
+Discrete event simulation
+Monte Carlo methods
+Statistical analysis
+Data visualization
+Model documentation
+Replication studies

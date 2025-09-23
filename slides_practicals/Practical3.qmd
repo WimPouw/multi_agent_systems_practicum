@@ -1,11 +1,14 @@
 ---
-title: "Practicum 3: FORTHCOMING"
+title: "Practicum 3: Part II translating a netlogo model to Python Mesa"
 author: "Wim Pouw"
 format:
   revealjs:
     controls: true
     navigationMode: default
 ---
+
+## Recap content so far
+* Setup, coding style difference
 
 ## Practicum 3: Objectives
 

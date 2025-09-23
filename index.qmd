@@ -581,19 +581,21 @@ Note we have stored the models in a .rar file. You can download the models and e
 ::: {.callout-note .callout-download collapse="true"}
 
 ## Full functionality grid model
-* [Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.rar)
+* [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.rar)
 
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Dispersal model and DIY
-* [Download Model Folder Netlogo](./models/dispersal_netlogo.rar)
+* [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.rar)
 
 We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature). For the final fully implemented one one we are going to give you a hint and you can check out a start here:
 
-* [Dispersal Model Basic Folder Python (incomplete)](./models/dispersal_python_partII.rar)
+### Translating part II (Practicum 3)
+* [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.rar)
 
+### Python challenge
 * [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)
 :::
 

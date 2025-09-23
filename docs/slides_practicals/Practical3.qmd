@@ -31,10 +31,8 @@ format:
 * Continue our translation of a netlogo model to Python Mesa
 * Quick coding up to checkpoint:
   * Set up CellAgent class initalized with cell position and dispersal/hatch rate
-  * Initialized 25x25 grid model
-  * Model sets dispersal rate, space size, initial population, and sets seed
-  * Checkpoint
-  * "Hey I am an Agent # x and I am at position (x,y)"
+  * Model (grid 25x25) sets dispersal rate, space size, initial population, and sets seed
+  * Checkpoint: "Hey I am an Agent # x and I am at position (x,y)"
 
 ## Visualization (5-10 min)
 * Initialize a visualization with a slider for dispersal rate and number of agents

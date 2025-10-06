@@ -1,10 +1,15 @@
 ---
 title: "Practicum 4: Recap and basic model tinkering"
 author: "Wim Pouw"
+image: "./videos/dispersion.gif"
 format:
   revealjs:
     controls: true
     navigationMode: default
+    title-slide-attributes:
+      data-background-image: "./videos/dispersion.gif"
+      data-background-size: contain
+      data-background-opacity: "0.3"
 ---
 
 ## Practicum 4: Objectives
@@ -23,8 +28,8 @@ format:
 
 ## Why python?
 * Go-to language for data science and AI tasks
-  * This ensures skills will easily transfer to your future courses and career
-* Flexible to combine with other packages that will allow you to do more advanced things (reinforcement learning, physics engines, etc.)
+  * We want to ensure that skills are also transferrable to your future courses and career
+* Flexible for future projects (reinforcement learning, physics engines, etc.)
 * But... steeper learning curve than Netlogo for sure
 
 ## Why anaconda
@@ -84,7 +89,45 @@ format:
 * Starting simple, you coded up a basic dispersal model
 * Last checkpoint solution:
   * [Simple Dispersal Model After Practicum 3](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar)
-  * 
+![](./videos/dispersion.gif){width=80%}
+
+## And now...
+::: {.center}
+![](./images/location.jpg){width=50% fig-align="center"}
+
+*Image from [Freepik](https://www.freepik.com)*
+:::
 
 ## Lets look at the dispersal model afresh
 * Download: [Simple Dispersal Model After Practicum 3](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar)
+* Open in visual studio code, run everything
+* Understand the components, and ask questions if you have them
+
+## Practicum 4: Objectives
+* ~~Recapping what we have done so far~~
+* Designing and plotting model measurements
+* Revisiting and changing other basic models
+
+## Tinkering
+* Tinker with the code a bit
+  * Let agents die after they hatch
+    * Use (`self.remove()` function) for dieing behavior
+    * Update behaviorname
+  * Intialize model to 40 agents
+
+## Designing a measure and collect data
+* Lets design a measure the diffusion of the population
+* `positions_x = [agent.cell.coordinate[0] for agent in model.agents]`
+* `positions_y = [agent.cell.coordinate[1] for agent in model.agents]`
+  * implement the measure, by creating a function that you input into the data collector
+    * look up  [full func model](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html) model for how to create a measure
+  * setup model data collector in model class
+* Plot it (using `make_plot_component`)
+
+## Do it yourself (basic models)
+* Open the continuous and network space model
+  * Basic models: [basic models landing page](https://wimpouw.github.io/multi_agent_systems_practicum/models/basic_python_models.rar)
+* Tinker with them to change the nature of the simulation
+* Design a relevant measure for your change, and collect and plot data
+* Plot it (using `make_plot_component`)
+  

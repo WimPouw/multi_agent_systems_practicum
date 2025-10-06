@@ -126,7 +126,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-image="./videos/dispersion.gif" data-background-opacity="0.3" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">Practicum 4: Recap and basic model tinkering</h1>
 
 <div class="quarto-title-authors">
@@ -164,9 +164,9 @@ Wim Pouw
 <ul>
 <li>Go-to language for data science and AI tasks
 <ul>
-<li>This ensures skills will easily transfer to your future courses and career</li>
+<li>We want to ensure that skills are also transferrable to your future courses and career</li>
 </ul></li>
-<li>Flexible to combine with other packages that will allow you to do more advanced things (reinforcement learning, physics engines, etc.)</li>
+<li>Flexible for future projects (reinforcement learning, physics engines, etc.)</li>
 <li>But… steeper learning curve than Netlogo for sure</li>
 </ul>
 </section>
@@ -273,15 +273,76 @@ Wim Pouw
 <li>Starting simple, you coded up a basic dispersal model</li>
 <li>Last checkpoint solution:
 <ul>
-<li><a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar">Simple Dispersal Model After Practicum 3</a></li>
-<li></li>
+<li><a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar">Simple Dispersal Model After Practicum 3</a> <img data-src="./videos/dispersion.gif" style="width:80.0%"></li>
 </ul></li>
 </ul>
+</section>
+<section id="and-now" class="slide level2">
+<h2>And now…</h2>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/location.jpg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<p><em>Image from <a href="https://www.freepik.com">Freepik</a></em></p>
+</div>
 </section>
 <section id="lets-look-at-the-dispersal-model-afresh" class="slide level2">
 <h2>Lets look at the dispersal model afresh</h2>
 <ul>
 <li>Download: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar">Simple Dispersal Model After Practicum 3</a></li>
+<li>Open in visual studio code, run everything</li>
+<li>Understand the components, and ask questions if you have them</li>
+</ul>
+</section>
+<section id="practicum-4-objectives-1" class="slide level2">
+<h2>Practicum 4: Objectives</h2>
+<ul>
+<li><del>Recapping what we have done so far</del></li>
+<li>Designing and plotting model measurements</li>
+<li>Revisiting and changing other basic models</li>
+</ul>
+</section>
+<section id="tinkering" class="slide level2">
+<h2>Tinkering</h2>
+<ul>
+<li>Tinker with the code a bit
+<ul>
+<li>Let agents die after they hatch
+<ul>
+<li>Use (<code>self.remove()</code> function) for dieing behavior</li>
+<li>Update behaviorname</li>
+</ul></li>
+<li>Intialize model to 40 agents</li>
+</ul></li>
+</ul>
+</section>
+<section id="designing-a-measure-and-collect-data" class="slide level2">
+<h2>Designing a measure and collect data</h2>
+<ul>
+<li>Lets design a measure the diffusion of the population</li>
+<li><code>positions = [agent.cell.coordinate for agent in model.agents]</code>
+<ul>
+<li>change of center of mass of the population
+<ul>
+<li>look up <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">full func model</a> model for how to create a measure</li>
+</ul></li>
+<li>setup model data collector in model class</li>
+</ul></li>
+<li>Plot it (using <code>make_plot_component</code>)</li>
+</ul>
+</section>
+<section id="do-it-yourself" class="slide level2">
+<h2>Do it yourself</h2>
+<ul>
+<li>Open the continuous and network space model
+<ul>
+<li>Basic models: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/basic_python_models.rar">basic models landing page</a></li>
+</ul></li>
+<li>Tinker with them to make them more interesting</li>
+<li>Design a measure, and collect data</li>
+<li>Plot it (using <code>make_plot_component</code>)</li>
 </ul>
 
 </section>

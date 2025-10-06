@@ -590,7 +590,7 @@ We will not actually give you the python version of the to be translated model, 
 * [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.rar)
 
 ### Simple Dispersal Model After Practicum 3
-* [Dispersal Model Simple Folder Python (incomplete)](./models/dispersal_python_afterpartII.rar)
+* [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.rar)
 
 ### Python challenge
 * [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)

@@ -71,25 +71,21 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Dispersal:** Learn about the dispersal model and deconstruct it conceptually for translation.
 * **Part I: Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
 
-## Practicum 3 {.active}
+## Practicum 3
 
 * **Implementation from scratch Part II:** We continue to practice model translation.
 * **Solving problems yourself:** Visualization,  agent behavior, and data plotting.
-* **Creative adaptation:** Create your own variation of the model.
-* **Python Challenge to take home:** Try to implement the dispersal model on the map.
 
-## Practicum 4
+## Practicum 4  {.active}
 
-* **Python Challenge:** Showing the dispersal map implementation.
-* **Learn to create your own visualizations**. Using Solara and Matplotlib.
-* **Model:** Introduction to the El Faro model.
-* **Mesa's Data Collector:** Running and collecting data.
-* **Run a formal experiment**: Using Mesa batch we will performa an experiment.
+* **Recap:** Recap of previous materials.
+* **Creative adaptation:** Create your own model variations.
+* **Create measurements**. Design measures and use Mesa's data collector and native plotting.
 
 ## Practicum 5
-
+* **Introduction to Adaptive agents**: How to have your agents have memory and adapt.
 * **Introduction to Agent sets**: Learn how to use agent sets in Mesa.
-* **Models:** Wolf-sheep model & Amphor model.
+* **Models:** El Faro & Wolf-sheep model.
 * **Mesa's Data Collector:** Running an experiment and statistically analyzing data.
 * **Analysis:** Using your knowledge from Statistics II.
 
@@ -644,7 +640,7 @@ We will not actually give you the python version of the to be translated model, 
 [Open slides in new window](./slides_practicals/Practical3.html)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 4
 <iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 

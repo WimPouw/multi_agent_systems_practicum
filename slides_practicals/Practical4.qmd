@@ -1,5 +1,5 @@
 ---
-title: "Practicum 4: FORTHCOMING"
+title: "Practicum 4: Recapping and basic model tinkering"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -7,7 +7,54 @@ format:
     navigationMode: default
 ---
 
-## Practicum 3: Objectives
+## Practicum 4: Objectives
+* Recapping what we have done so far
+* Designing and plotting model measurements
+* Revisiting and changing other basic models
+
+## Recap
+* Anaconda, conda environments, and visual studio code
+* Introduction Python Mesa framework
+* Basic models: grid model, continuous space model, and network model
+* Overview mesa functions (full func model)
+* Coding up from scratch: A basic dispersal model
+
+## Python, Anaconda, and visual studio code (IDEs)
+
+## Why python?
+* Go-to language for data science and AI tasks
+  * This ensures skills will easily transfer to your future courses and career
+* Flexible to combine with other packages that will allow you to do more advanced things (reinforcement learning, physics engines, etc.)
+* But... steeper learning curve than Netlogo for sure
+
+## Why anaconda
+* Creates isolated environments for different projects
+* Eliminates "it works on my machine" problems
+* Ensures everyone has the same setup
+* You learn how to keep things computationally reproducible
+
+## What is an IDE?
+* IDE = Integrated Development Environment
+* A specialized workspace that combines multiple tools in one place:
+  * Code editor (with syntax highlighting and auto-completion)
+  * Way to run and test your code
+  * Many other things (e.g., version control, debugging tools, etc.)
+
+## Visual Studio as IDE
+* Free and cross-platform
+* One of the most popular IDEs in industry and academia
+* Jupyter notebook/Jupyter fails on python `mesa`'s `solara` visualization 
+  * This is because (things like Solara, Dash, Streamlit) need their own local server to run on
+
+## Setting up anaconda, visual studio code, and mesa
+* Installation section on the landing page
+  * [install section landing page](https://wimpouw.github.io/multi_agent_systems_practicum/#installation)
+* Here is a video that runs the through the basics:
+  * [link to instruction video](https://wimpouw.com/videos/introsettinguppythonmesa.mp4)
+* If you still have problems come by, and if we cannot fix it during the practical, you can also come by my office at my next troubleshoot slot: 10th of October, D130, 12:45-14:30.
+
+### 
+
 
 
 

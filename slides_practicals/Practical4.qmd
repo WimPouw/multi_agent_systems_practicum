@@ -1,5 +1,5 @@
 ---
-title: "Practicum 4: Recapping and basic model tinkering"
+title: "Practicum 4: Recap and basic model tinkering"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -46,16 +46,45 @@ format:
 * Jupyter notebook/Jupyter fails on python `mesa`'s `solara` visualization 
   * This is because (things like Solara, Dash, Streamlit) need their own local server to run on
 
-## Setting up anaconda, visual studio code, and mesa
+## Setting up anaconda, visual studio code, and mesa (practicum 1)
 * Installation section on the landing page
   * [install section landing page](https://wimpouw.github.io/multi_agent_systems_practicum/#installation)
 * Here is a video that runs the through the basics:
   * [link to instruction video](https://wimpouw.com/videos/introsettinguppythonmesa.mp4)
 * If you still have problems come by, and if we cannot fix it during the practical, you can also come by my office at my next troubleshoot slot: 10th of October, D130, 12:45-14:30.
 
-### 
+## Basic python Mesa models (practicum 1)
+* Grid space model, Continuous space model, Network model
+* Downloadable from the landing page:
+  * [basic models landing page](https://wimpouw.github.io/multi_agent_systems_practicum/models/basic_python_models.rar)
 
+* But we have not really tinkered with them yet
+  * Difficult to tinker, if you dont understand the components
+  * But now you have some understanding!
 
+## Basics Mesa (practicum 2)
+* Agent class (`class MyAgent(mesa.CellAgent): ...`)
+  * Agent behavior (e.g., `def shout_out(self): ...`)
+* Model class (`class MyModel(mesa.Model): ...`)
+  * Space (`self.grid = OrthogoalMooreGrid(...)`)
+  * Agent creation (`my_agent.create_agents(...)`)
+  * Step (`def step(self): ...`)
+* Visualization server (`page = SolaraViz(model, [spaceviz], name="Grid Agent")`)
+  * Solara vizualization (`make_space_component`)
 
+## Further functionality Mesa (practicum 2)
+* Model class (continued)
+  * Data collector (briefly shown in [full func model](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html), `self.datacollector = mesa.DataCollector(...)`)
+* Data collection after model run
+  * Getting data out of the model (`model.datacollector.get_model_vars_dataframe()`, `model.datacollector.get_agent_vars_dataframe()`)
 
+## Coding from scratch (practicum 3)
+* Inspired by the Netlogo model
+  * [Netlogo Dispersal model](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_netlogo.rar)
+* Starting simple, you coded up a basic dispersal model
+* Last checkpoint solution:
+  * [Simple Dispersal Model After Practicum 3](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar)
+  * 
 
+## Lets look at the dispersal model afresh
+* Download: [Simple Dispersal Model After Practicum 3](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_afterpartII.rar)

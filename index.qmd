@@ -147,11 +147,6 @@ pip install mesa
 
 pip install jupyter notebook seaborn pandas numpy matplotlib networkx altair solara
 
-python
-
-print(mesa.__version__)
-
-exit()
 ```
 :::::
 

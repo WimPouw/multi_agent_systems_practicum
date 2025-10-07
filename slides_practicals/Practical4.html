@@ -6,8 +6,8 @@
 <script src="Practical4_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Practical4_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Practical4_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical4_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="Practical4_files/libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.30">
 
   <meta name="author" content="Wim Pouw">
   <title>Practicum 4: Recap and basic model tinkering</title>
@@ -301,7 +301,11 @@ Wim Pouw
 <ul>
 <li><del>Recapping what we have done so far</del></li>
 <li>Designing and plotting model measurements</li>
-<li>Revisiting and changing other basic models</li>
+<li>Revisiting and changing other basic models
+<ul>
+<li>Implement a change to the model</li>
+<li>Design a measure that is relevant to the behavior change</li>
+</ul></li>
 </ul>
 </section>
 <section id="tinkering" class="slide level2">
@@ -321,10 +325,12 @@ Wim Pouw
 <section id="designing-a-measure-and-collect-data" class="slide level2">
 <h2>Designing a measure and collect data</h2>
 <ul>
-<li>Lets design a measure the diffusion of the population</li>
-<li><code>positions = [agent.cell.coordinate for agent in model.agents]</code>
+<li>You have now created a <a href="https://en.wikipedia.org/wiki/Diffusion">diffusion model</a></li>
+<li>Lets design a measure the diffusion of the population (e.g., the variance in x and y coordinates of agents)
 <ul>
-<li>change of center of mass of the population
+<li><code>positions = [agent.cell.coordinate for agent in model.agents]</code></li>
+<li><code>x_coords = [pos[0] for pos in positions]</code></li>
+<li>implement the measure, by creating a function that you input into the data collector
 <ul>
 <li>look up <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">full func model</a> model for how to create a measure</li>
 </ul></li>
@@ -333,16 +339,29 @@ Wim Pouw
 <li>Plot it (using <code>make_plot_component</code>)</li>
 </ul>
 </section>
-<section id="do-it-yourself" class="slide level2">
-<h2>Do it yourself</h2>
+<section id="do-it-yourself-basic-models" class="slide level2">
+<h2>Do it yourself (basic models)</h2>
 <ul>
 <li>Open the continuous and network space model
 <ul>
 <li>Basic models: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/basic_python_models.rar">basic models landing page</a></li>
 </ul></li>
-<li>Tinker with them to make them more interesting</li>
-<li>Design a measure, and collect data</li>
+<li>Tinker with them to change the nature of the simulation</li>
+<li>Design a relevant measure for your change, and collect and plot data</li>
 <li>Plot it (using <code>make_plot_component</code>)</li>
+<li>If too difficult, take the current model, and change it, and make a new measurement.</li>
+</ul>
+</section>
+<section id="practicum-4-objectives-2" class="slide level2">
+<h2>Practicum 4: Objectives</h2>
+<ul>
+<li>Recapping what we have done so far</li>
+<li>Designing and plotting model measurements</li>
+<li>Revisiting and changing other basic models
+<ul>
+<li>Implement a change to the model</li>
+<li>Design a measure that is relevant to the behavior change</li>
+</ul></li>
 </ul>
 
 </section>

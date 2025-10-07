@@ -107,6 +107,8 @@ format:
 * ~~Recapping what we have done so far~~
 * Designing and plotting model measurements
 * Revisiting and changing other basic models
+  * Implement a change to the model
+  * Design a measure that is relevant to the behavior change
 
 ## Tinkering
 * Tinker with the code a bit
@@ -116,9 +118,10 @@ format:
   * Intialize model to 40 agents
 
 ## Designing a measure and collect data
-* Lets design a measure the diffusion of the population
-* `positions_x = [agent.cell.coordinate[0] for agent in model.agents]`
-* `positions_y = [agent.cell.coordinate[1] for agent in model.agents]`
+* You have now created a [diffusion model](https://en.wikipedia.org/wiki/Diffusion)
+* Lets design a measure the diffusion of the population (e.g., the variance in x and y coordinates of agents)
+  * `positions = [agent.cell.coordinate for agent in model.agents]`
+  * `x_coords = [pos[0] for pos in positions]`
   * implement the measure, by creating a function that you input into the data collector
     * look up  [full func model](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html) model for how to create a measure
   * setup model data collector in model class
@@ -130,4 +133,11 @@ format:
 * Tinker with them to change the nature of the simulation
 * Design a relevant measure for your change, and collect and plot data
 * Plot it (using `make_plot_component`)
-  
+* If too difficult, take the current model, and change it, and make a new measurement.
+
+## Practicum 4: Objectives
+* Recapping what we have done so far
+* Designing and plotting model measurements
+* Revisiting and changing other basic models
+  * Implement a change to the model
+  * Design a measure that is relevant to the behavior change

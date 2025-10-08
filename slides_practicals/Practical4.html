@@ -241,7 +241,7 @@ Wim Pouw
 <li>Model class (<code>class MyModel(mesa.Model): ...</code>)
 <ul>
 <li>Space (<code>self.grid = OrthogoalMooreGrid(...)</code>)</li>
-<li>Agent creation (<code>my_agent.create_agents(...)</code>)</li>
+<li>Agent creation (<code>MyAgent.create_agents(...)</code>)</li>
 <li>Step (<code>def step(self): ...</code>)</li>
 </ul></li>
 <li>Visualization server (<code>page = SolaraViz(model, [spaceviz], name="Grid Agent")</code>)
@@ -257,10 +257,9 @@ Wim Pouw
 <ul>
 <li>Data collector (briefly shown in <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">full func model</a>, <code>self.datacollector = mesa.DataCollector(...)</code>)</li>
 </ul></li>
-<li>Data collection after model run
-<ul>
-<li>Getting data out of the model (<code>model.datacollector.get_model_vars_dataframe()</code>, <code>model.datacollector.get_agent_vars_dataframe()</code>)</li>
-</ul></li>
+<li>Making sliders in Solara</li>
+<li>Data collection after model run</li>
+<li>Running multiple models using Batch runner</li>
 </ul>
 </section>
 <section id="coding-from-scratch-practicum-3" class="slide level2">
@@ -326,8 +325,7 @@ Wim Pouw
 <h2>Designing a measure and collect data</h2>
 <ul>
 <li>You have now created a <a href="https://en.wikipedia.org/wiki/Diffusion">diffusion model</a></li>
-<li>Lets design a measure the diffusion of the population (e.g., the variance in x and y coordinates of agents)
-<ul>
+<li>Lets design a measure the diffusion of the population (e.g., the variance (<code>np.var()</code>) in x and y coordinates of agents)</li>
 <li><code>positions = [agent.cell.coordinate for agent in model.agents]</code></li>
 <li><code>x_coords = [pos[0] for pos in positions]</code></li>
 <li>implement the measure, by creating a function that you input into the data collector
@@ -335,7 +333,6 @@ Wim Pouw
 <li>look up <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">full func model</a> model for how to create a measure</li>
 </ul></li>
 <li>setup model data collector in model class</li>
-</ul></li>
 <li>Plot it (using <code>make_plot_component</code>)</li>
 </ul>
 </section>
@@ -350,6 +347,23 @@ Wim Pouw
 <li>Design a relevant measure for your change, and collect and plot data</li>
 <li>Plot it (using <code>make_plot_component</code>)</li>
 <li>If too difficult, take the current model, and change it, and make a new measurement.</li>
+</ul>
+</section>
+<section id="do-it-yourself-basic-models-1" class="slide level2">
+<h2>Do it yourself (basic models)</h2>
+<ul>
+<li>Cant think of anything to change and measure?
+<ul>
+<li>Go to the landing page
+<ul>
+<li>Look up mesa model examples</li>
+<li>Check the mesa api for functionalities
+<ul>
+<li>Continuous space agents, network agents, Agents</li>
+</ul></li>
+<li>Look up Netlogo examples</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 <section id="practicum-4-objectives-2" class="slide level2">

@@ -72,7 +72,7 @@ format:
   * Agent behavior (e.g., `def shout_out(self): ...`)
 * Model class (`class MyModel(mesa.Model): ...`)
   * Space (`self.grid = OrthogoalMooreGrid(...)`)
-  * Agent creation (`my_agent.create_agents(...)`)
+  * Agent creation (`MyAgent.create_agents(...)`)
   * Step (`def step(self): ...`)
 * Visualization server (`page = SolaraViz(model, [spaceviz], name="Grid Agent")`)
   * Solara vizualization (`make_space_component`)
@@ -80,8 +80,11 @@ format:
 ## Further functionality Mesa (practicum 2)
 * Model class (continued)
   * Data collector (briefly shown in [full func model](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html), `self.datacollector = mesa.DataCollector(...)`)
+* Making sliders in Solara
 * Data collection after model run
-  * Getting data out of the model (`model.datacollector.get_model_vars_dataframe()`, `model.datacollector.get_agent_vars_dataframe()`)
+* Running multiple models using Batch runner
+
+
 
 ## Coding from scratch (practicum 3)
 * Inspired by the Netlogo model
@@ -119,12 +122,12 @@ format:
 
 ## Designing a measure and collect data
 * You have now created a [diffusion model](https://en.wikipedia.org/wiki/Diffusion)
-* Lets design a measure the diffusion of the population (e.g., the variance in x and y coordinates of agents)
-  * `positions = [agent.cell.coordinate for agent in model.agents]`
-  * `x_coords = [pos[0] for pos in positions]`
-  * implement the measure, by creating a function that you input into the data collector
+* Lets design a measure the diffusion of the population (e.g., the variance (`np.var()`) in x and y coordinates of agents)
+* `positions = [agent.cell.coordinate for agent in model.agents]`
+* `x_coords = [pos[0] for pos in positions]`
+* implement the measure, by creating a function that you input into the data collector
     * look up  [full func model](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html) model for how to create a measure
-  * setup model data collector in model class
+* setup model data collector in model class
 * Plot it (using `make_plot_component`)
 
 ## Do it yourself (basic models)
@@ -134,6 +137,14 @@ format:
 * Design a relevant measure for your change, and collect and plot data
 * Plot it (using `make_plot_component`)
 * If too difficult, take the current model, and change it, and make a new measurement.
+
+## Do it yourself (basic models)
+* Cant think of anything to change and measure?
+  * Go to the landing page
+    * Look up mesa model examples
+    * Check the mesa api for functionalities
+      * Continuous space agents, network agents, Agents
+    * Look up Netlogo examples
 
 ## Practicum 4: Objectives
 * Recapping what we have done so far

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Practicum 5: FORTHCOMING</title>
+  <title>Practicum 5: Adaptive agents and and parameter sweeping</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,6 +33,7 @@
   <link href="Practical5_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Practical5_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Practical5_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Practical5_files/libs/revealjs/plugin/reveal-quiz/quiz.css" rel="stylesheet">
   <link href="Practical5_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -126,8 +127,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Practicum 5: FORTHCOMING</h1>
+<section id="title-slide" data-background-image="./videos/elfarol.gif" data-background-opacity="0.3" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">Practicum 5: Adaptive agents and and parameter sweeping</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -140,6 +141,144 @@ Wim Pouw
 </section>
 <section id="practicum-5-objectives" class="slide level2">
 <h2>Practicum 5: Objectives</h2>
+<ul>
+<li>Understand a complex model of adaptive agents (El farol bar problem) (part 1)</li>
+<li>Adding a measurement to the model data collector (recap) (part 2)</li>
+<li>Running and exporting data of an experiment with batch runner (part 2)</li>
+<li>Saving and plotting the results (part 2)</li>
+</ul>
+</section>
+<section id="recap-of-covered-functionalities" class="slide level2">
+<h2>Recap of covered functionalities</h2>
+<ul>
+<li>Basic model structure (Model, Agent, Scheduler, Space) (Practicum 1-2)</li>
+<li>Coding a grid model from scratch (Dispersal) (Practicum 3)</li>
+<li>Basic mesa functions (Measurement design, DataCollector) (Practicum 4)</li>
+<li>Mesa visualization + Mesa data plotting (variability basic dispersal) (Practicum 4)</li>
+</ul>
+</section>
+<section id="el-farol-bar-problem" class="title-slide slide level1 center">
+<h1>El farol bar problem</h1>
+<ul>
+<li>Go to model library on the landing page</li>
+<li>Or download El Farol Model Python directly here: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/elfarol_model_python.rar">here</a></li>
+<li>Lets take a look…</li>
+</ul>
+</section>
+
+<section id="el-farol-bar-problem-1" class="title-slide slide level1 center">
+<h1>El farol bar problem</h1>
+<ul>
+<li>Embraces complexity science</li>
+<li>Bounded rationality (agents with limited information)</li>
+<li>Adaptive behavior (agents change their behavior based on past experiences)</li>
+<li>Emergent phenomena (collective patterns arise from individual actions)
+<ul>
+<li>How often is the bar overcrowded? (The degree of overcrowding can sometimes be efficiently low, despite individual strategies)</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="break" class="title-slide slide level1 center">
+<h1>Break</h1>
+
+</section>
+
+<section id="questions-el-farol-bar-problem" class="title-slide slide level1 center">
+<h1>Questions el farol bar problem</h1>
+
+</section>
+
+<section id="prediction-formula" class="title-slide slide level1 quiz-question quiz-single center">
+<h1>Prediction Formula</h1>
+<p>In the El Farol prediction formula p(t) = N<em>c + Σ(w_i </em> A(t-i)), what does the constant ‘c’ represent?</p>
+<ul>
+<li>The current attendance level</li>
+<li>The overcrowding threshold</li>
+<li><span class="correct">A baseline prediction scaled by the number of agents</span></li>
+<li>The average of all previous predictions</li>
+</ul>
+</section>
+
+<section id="strategy-weights" class="title-slide slide level1 quiz-question quiz-multiple center">
+<h1>Strategy Weights</h1>
+<p>Which statements about strategy weights in the El Farol model are correct? (Select all correct)</p>
+<ul>
+<li><span class="correct">Weights are randomly generated between -1 and 1</span></li>
+<li>Weights are always positive numbers</li>
+<li><span class="correct">Each agent can have multiple strategies with different weights</span></li>
+<li><span class="correct">Negative weights suggest inverse relationships (e.g., high past attendance predicts low future attendance)</span></li>
+</ul>
+</section>
+
+<section id="attendance-decision-rule" class="title-slide slide level1 quiz-question quiz-single center">
+<h1>Attendance Decision Rule</h1>
+<p>According to the model, when does an agent decide to attend the bar?</p>
+<ul>
+<li>When their prediction equals the threshold</li>
+<li><span class="correct">When their prediction is below or equal to the overcrowding threshold</span></li>
+<li>When their prediction is above the threshold</li>
+<li>When they have the best strategy</li>
+</ul>
+</section>
+
+<section id="adaptive-behavior" class="title-slide slide level1 quiz-question quiz-single center">
+<h1>Adaptive Behavior</h1>
+<p>What makes the El Farol model “adaptive”?</p>
+<ul>
+<li>Agents generate new strategies every round</li>
+<li>The overcrowding threshold changes over time</li>
+<li><span class="correct">Agents select their best-performing strategy based on past prediction accuracy</span></li>
+<li>Agents learn from other agents’ strategies</li>
+</ul>
+</section>
+
+<section id="prediction-calculation-example" class="title-slide slide level1 quiz-question quiz-single center">
+<h1>Prediction Calculation Example</h1>
+<p>Given N=100, c=0.5, M=1, w₁=-0.5, and A(t-1)=80, what is the predicted attendance p(t)?</p>
+<ul>
+<li>30</li>
+<li>40</li>
+<li><span class="correct" data-explanation="p(t) = 100*0.5 + (-0.5 * 80) = 50 - 40 = 10">10</span></li>
+<li>64</li>
+</ul>
+</section>
+
+<section id="the-challenge-for-today" class="title-slide slide level1 center">
+<h1>The challenge for today</h1>
+<ul>
+<li>Collect the prediction_error for each agent</li>
+<li>Run multiple simulations using<code>mesa.batch_run</code> (see <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">full func model</a>)
+<ul>
+<li>Varying
+<ul>
+<li>Number of strategies (1, 5, 10, 20)</li>
+<li>Memory length (1, 5, 10, 20)</li>
+<li>For each combination, run 2 simulations</li>
+<li>With a 50 steps</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="analysis" class="title-slide slide level1 center">
+<h1>Analysis</h1>
+<ul>
+<li>Save the median prediction error per experiment (using pandas)
+<ul>
+<li><code>median_errors = results_5seeds.groupby(['number_of_strategies', 'memory_size'])['prediction_error'].median().reset_index()</code></li>
+</ul></li>
+<li>Find out which strategy has the lowest median prediction error</li>
+</ul>
+</section>
+
+<section id="lets-compare-results" class="title-slide slide level1 center">
+<h1>Lets compare results</h1>
+<ul>
+<li>What combination of parameters led to the lowest prediction error?</li>
+<li>If results differ, what can we do to see if its just chance?</li>
+<li>Is there reason to change the parameter space? When would you want to explore more?</li>
+</ul>
 
 </section>
     </div>
@@ -156,6 +295,7 @@ Wim Pouw
   <script src="Practical5_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="Practical5_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="Practical5_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Practical5_files/libs/revealjs/plugin/reveal-quiz/quiz.js"></script>
   <script src="Practical5_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -178,6 +318,7 @@ Wim Pouw
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'quiz': {"checkKey":"c","resetKey":"q","shuffleKey":"t","allowNumberKeys":true,"disableOnCheck":false,"shuffleOptions":true,"defaultCorrect":"","defaultIncorrect":"","includeScore":false,"disableReset":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -348,7 +489,7 @@ Wim Pouw
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealQuiz, QuartoSupport,
 
           RevealMath,
           RevealNotes,

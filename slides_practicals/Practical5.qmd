@@ -29,7 +29,7 @@ format:
 * Saving and plotting the results (part 2)
 
 ## Recap of covered functionalities
-* Basic model structure (Model, Agent, Scheduler, Space) (Practicum 1-2)
+* Basic model structure (Model, Agent, Space, SolaraViz) (Practicum 1-2)
 * Coding a grid model from scratch (Dispersal) (Practicum 3)
 * Basic mesa functions (Measurement design, DataCollector) (Practicum 4)
 * Mesa visualization + Mesa data plotting (variability basic dispersal) (Practicum 4)

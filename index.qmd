@@ -600,9 +600,9 @@ We will not actually give you the python version of the to be translated model, 
 :::
 ::: {.callout-note .callout-download collapse="true"}
 ## El Farol Model
-* [El Farol Model Folder Python](./models/el_farol_model_netlogo.rar)
-  * [El Farol Solution Practicum 5](./models/el_farol_model_netlogo.rar)
-* [El Farol Model Folder Netlogo](./models/el_farol_model_python.rar)
+* [El Farol Model Folder Python](./models/el_farol_model_python.rar)
+  * [El Farol Solution Practicum 5](./models/el_farol_model_extended.rar)
+* [El Farol Model Folder Netlogo](./models/el_farol_model_netlogo.rar)
 :::
 
 ::: {.callout-note .callout-download collapse="true"}

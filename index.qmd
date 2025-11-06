@@ -5,7 +5,7 @@ date: "today"
 author:
   - name: Wim Pouw ([www.wimpouw.com](https://wimpouw.com/))
     affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
-  - name: Travis Wiltshire
+  - name: Travis Wiltshire ([travisjwiltshire.com](https://travisjwiltshire.com/))
     affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
 contact:
   - name: Wim Pouw
@@ -773,6 +773,7 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 - [Carlos Gershenson on the Slower is Faster Effect](https://www.youtube.com/watch?v=1sHBRNLJXqA&ab_channel=CentrodeCienciasdelaComplejidad)
 
 ## Research papers on modeling or patterns ripe for ABM modeling
+- "Allocentric flocking" (download [PDF](./pdfs/Salahshour_Couzin_2025_Allocentric flocking.pdf)) [@salahshourAllocentricFlocking2025]
 - "An agent-based model of citation behavior" [@chackoAgentbasedModelCitation2025] (download [PDF](./pdfs/chakoetal2025.pdf))
 - "Evolving general cooperation with a Bayesian theory of mind" [@kleiman-weinerEvolvingGeneralCooperation2025] (download [PDF](./pdfs/kleimanetal2025.pdf))
 - "Evolution of foraging behaviour induces variable complexity-stability relationships in mutualist-exploiter-predator communities" [@wangEvolutionForagingBehaviour2025] (download [PDF](./pdfs/wangetal2025.pdf))
@@ -781,6 +782,21 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 - "An evolutionary model of rhythmic accelerando in animal vocal signalling" [@jadoulEvolutionaryModelRhythmic2025] (download [PDF](./pdfs/jadouletal2025.pdf))
 - "Modeling Multi-Agent Self-Organization through the Lens of Higher Order Attractor Dynamics" [@butnerModelingMultiAgentSelfOrganization2017] (download [PDF](./pdfs/butneretal2017.pdf))
 :::
+:::
+
+# Student model library section
+::: {.card .border-success .mb-4}
+::: {.card-header .bg-success .text-white}
+<a class="btn btn-success w-100 text-start d-flex justify-content-between align-items-center text-decoration-none" data-bs-toggle="collapse" href="#modelLibraryCollapse" role="button" aria-expanded="false" aria-controls="modelLibraryCollapse">
+  <span><i class="fas fa-code me-2"></i><strong>Model Library</strong></span>
+  <span><i class="fas fa-chevron-down"></i></span>
+</a>
+:::
+
+::: {.collapse#modelLibraryCollapse}
+Forthcoming student model library with models created by students during the course.
+:::
+
 :::
 
 

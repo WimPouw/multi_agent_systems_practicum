@@ -1,0 +1,6 @@
+,RunId,iteration,Step,initial_sheep,initial_wolves,sheep_reproduce,wolf_reproduce,wolf_gain_from_food,sheep_gain_from_food,grass,grass_regrowth_time,Wolves,Sheep,Grass
+500,0,0,500,50,5,0.04,0.1,22,5,True,10,0,0,400
+1001,1,1,500,50,5,0.04,0.1,22,5,True,10,0,210,40
+1502,2,2,500,50,5,0.04,0.1,22,5,True,10,0,201,44
+2003,3,3,500,50,5,0.04,0.1,22,5,True,10,0,198,44
+2504,4,4,500,50,5,0.04,0.1,22,5,True,10,0,0,400

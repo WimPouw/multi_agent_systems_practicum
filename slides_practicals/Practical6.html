@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Practicum 6: FORTHCOMING</title>
+  <title>Practicum 6: Answering research questions predator-prey</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -127,7 +127,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Practicum 6: FORTHCOMING</h1>
+  <h1 class="title">Practicum 6: Answering research questions predator-prey</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -140,6 +140,92 @@ Wim Pouw
 </section>
 <section id="practicum-6-objectives" class="slide level2">
 <h2>Practicum 6: Objectives</h2>
+<ul>
+<li><strong>Resources for your python group projects</strong>: Some new resources for your upcoming group projects.</li>
+<li><strong>Intro to agent-sets</strong>: Short introduction to agent-sets via the predator-prey model.</li>
+<li><strong>Analysis</strong>: Python time series analysis, statistical analysis and visualization of results.</li>
+</ul>
+</section>
+<section id="group-project-resources" class="slide level2">
+<h2>Group Project Resources</h2>
+<ul>
+<li>Added a new folder with some custom visualization functions to help you get started.
+<ul>
+<li><a href="https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course">Model library “Custom visualizations example models”</a></li>
+</ul></li>
+<li>These contain
+<ul>
+<li>Custom space visualizatiosn</li>
+<li>Visualization of results</li>
+<li>Picture-model interaction (dispersal)</li>
+<li>Avoiding solara viz, and making a GIF instead</li>
+</ul></li>
+<li>Lets have a quick look…</li>
+</ul>
+</section>
+<section id="goal-today" class="slide level2">
+<h2>Goal today</h2>
+<ul>
+<li>We take a model from the python mesa example library
+<ul>
+<li>Sheep-wolf model (get it <a href="./models/wolfsheep_model_python.rar">here</a>)</li>
+<li>Or go to model library <a href="https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course">here</a></li>
+</ul></li>
+<li>You design a parameter sweep experiment (like last week)</li>
+<li>Save and collect the data</li>
+<li>And then lets ask some research questions</li>
+</ul>
+</section>
+<section id="parameter-sweep-experiment-1" class="title-slide slide level1 center">
+<h1>Parameter sweep Experiment 1</h1>
+<ul>
+<li>Lets first start with a broad parameter sweep of 100 steps</li>
+<li>Are there some parameter settings where neither wolf nor sheep are extinct by a 100 steps?
+<ul>
+<li>Pick the best setting for later</li>
+</ul></li>
+<li>What population ratio of sheep to wolves seems to lead to more stable outcomes?
+<ul>
+<li>Can we do a statistical test to confirm this?</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="parameter-sweep-experiment-2" class="title-slide slide level1 center">
+<h1>Parameter sweep Experiment 2</h1>
+<ul>
+<li>Identify the best parameter settings from experiment 1, that you think likely reflect possible stable system</li>
+<li>Now do a batch_run with these settings with 500 step runs, and 5 different seeds</li>
+<li>Are they truly stable? Are there any stable parameter settings?</li>
+</ul>
+</section>
+
+<section id="plot-timeseries" class="title-slide slide level1 center">
+<h1>Plot timeseries</h1>
+<ul>
+<li>Lets plot the timeseries of one of these 500 step runs</li>
+<li>Can we measure the number of peaks in the sheep and wolf populations (before any die out)?
+<ul>
+<li>Take a look at <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html">scipy find_peaks function</a>, see if you can implement it</li>
+</ul></li>
+<li>Could you measure the periodicity of any osscilations of the via the peaks?</li>
+</ul>
+</section>
+
+<section id="lesson-of-today-and-final-lesson-of-the-practicum" class="title-slide slide level1 center">
+<h1>Lesson of today, and final lesson of the practicum</h1>
+<ul>
+<li>With so many variables we can explore quickly some promising models</li>
+<li>Then we can do further experiments to zoom in on interesting parameter settings</li>
+<li>This is a common workflow in agent-based modeling</li>
+</ul>
+</section>
+
+<section id="wrapping-up" class="title-slide slide level1 center">
+<h1>Wrapping up</h1>
+<ul>
+<li>Solution of today is here (password = “practicum6”): <a href="./models/wolfsheep_solution_python.rar">wolfsheep_solution_python.rar</a></li>
+</ul>
 
 </section>
     </div>

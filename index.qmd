@@ -88,9 +88,8 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Introduction to Parameter sweeps**: Learn how to do parameter sweeps and report results.
 
 ## Practicum 6 {.active}
-* **Tips for your python group projects**: Some comments on your upcoming group projects.
 * **Intro to agent-sets**: Introduction to agent-sets via the predator-prey model.
-* **Analysis**: Python time series analysis, statistical analysis and visualization of results.
+* **Analysis**: Python (time series) analysis and visualization of results.
 
 
 :::
@@ -629,8 +628,9 @@ We will not actually give you the python version of the to be translated model, 
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Wolf-Sheep Model
-* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_netlogo.rar)
-* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_python.rar)
+* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.rar)
+* [Wolf-Sheep Model Folder Python (practicum 6 solution)](./models/wolfsheep_solution_python.rar)
+* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.rar)
 :::
 
 # Slides and exercises
@@ -785,7 +785,7 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 - [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)
 - [BJKS podcast: Paul Smaldino on ABM Modeling of Social Behavior](https://www.buzzsprout.com/1390924/episodes/13689768-75-paul-smaldino-modeling-social-behavior-the-value-of-false-models-and-research-beyond-traditional-disciplines)
 - [Braininspired podcast: David Krakauer on how to think like a complexity scientist](https://open.spotify.com/episode/1qwx0kgYC3Lj5FDXSCBt7D)
-- [Interacting Minds Seminar: Marieke Woensdregt on ABM and language learning](https://www.youtube.com/watch?v=6e1yu_nNr4E&ab_channel=InteractingMindsAU) 
+- [Interacting Minds Seminar: Marieke Woensdregt on ABM and language learning](https://www.youtube.com/watch?v=6e1yu_nNr4E&ab_channel=InteractingMindsAU)
 - [Carlos Gershenson on the Slower is Faster Effect](https://www.youtube.com/watch?v=1sHBRNLJXqA&ab_channel=CentrodeCienciasdelaComplejidad)
 
 ## Research papers on modeling or patterns ripe for ABM modeling

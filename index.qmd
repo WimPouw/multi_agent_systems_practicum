@@ -82,14 +82,16 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Creative adaptation:** Create your own model variations.
 * **Create measurements**. Design measures and use Mesa's data collector and native plotting.
 
-## Practicum 5 {.active}
+## Practicum 5 
 * **Introduction to adaptive agents**: How to have your agents have memory and adapt.
 * **Models:** Detailed understanding of El Farol model.
 * **Introduction to Parameter sweeps**: Learn how to do parameter sweeps and report results.
 
-## Practicum 6
-* **Intro to agent-sets**: Code up your own simple model and collect some data.
-* **Analysis**: Statistical analysis and visualization of results.
+## Practicum 6 {.active}
+* **Tips for your python group projects**: Some comments on your upcoming group projects.
+* **Intro to agent-sets**: Introduction to agent-sets via the predator-prey model.
+* **Analysis**: Python time series analysis, statistical analysis and visualization of results.
+
 
 :::
 
@@ -107,6 +109,10 @@ You can download Netlogo from the official website: [Netlogo Download](https://c
 
 :::: {.callout-note .callout-download collapse="true"}
 ## Installation guide python using anaconda + mesa
+
+{{< video https://wimpouw.com/videos/introsettinguppythonmesa.mp4 
+    width="400" 
+    height="300" >}}
 
 This installation I have tested on the practical machines and on a windows PC. Feel free to deviate if you have different preferences for your python installation.
 
@@ -563,6 +569,15 @@ Note we have stored the models in a .rar file. You can download the models and e
 
 ::: {.callout-note .callout-download collapse="true"}
 
+## Custom visualizations example models
+Examples of models with custom space and plot visualizations (e.g., creating animations without solara).
+
+* [Example custom visualizations folder](./models/examples_custom_visualizations.rar)
+
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+
 ## Full functionality grid model
 * [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.rar)
 
@@ -583,6 +598,7 @@ We will not actually give you the python version of the to be translated model, 
 
 ### Python challenge
 * [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)
+* [Dispersal Model with Worldmap Folder Python (complete)](./models/dispersal_python_model_complete.rar)
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
@@ -646,14 +662,14 @@ We will not actually give you the python version of the to be translated model, 
 [Open slides in new window](./slides_practicals/Practical4.html)
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 5
 <iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical5.html)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 6
 <iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
@@ -785,6 +801,8 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 :::
 
 # Student model library section
+Upload/push your project model to [gitlab.uvt.nl/](https://gitlab.uvt.nl/) or [github.com](www.github.com), set it to public, and share the link here for others to see and use. Make sure you have a nice README file that explains what your model does and provide a citation, perhaps some contact information.
+
 ::: {.card .border-success .mb-4}
 ::: {.card-header .bg-success .text-white}
 <a class="btn btn-success w-100 text-start d-flex justify-content-between align-items-center text-decoration-none" data-bs-toggle="collapse" href="#modelLibraryCollapse" role="button" aria-expanded="false" aria-controls="modelLibraryCollapse">

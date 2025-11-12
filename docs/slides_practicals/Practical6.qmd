@@ -24,7 +24,7 @@ format:
 
 ## Goal today
 * We take a model from the python mesa example library
-  * Sheep-wolf model (get it [here](./models/wolfsheep_model_python.rar))
+  * Sheep-wolf model (get it [here](../models/wolfsheep_model_python.rar))
   * Or go to model library [here](https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course)
 * You design a parameter sweep experiment (like last week)
 * Save and collect the data
@@ -54,7 +54,7 @@ format:
 * This is a common workflow in agent-based modeling
 
 # Wrapping up
-* Solution of today is here (password = "practicum6"): [wolfsheep_solution_python.rar](./models/wolfsheep_solution_python.rar)
+* Solution of today is here (password = "practicum6"): [wolfsheep_solution_python.rar](../models/wolfsheep_solution_python.rar)
 
 
 

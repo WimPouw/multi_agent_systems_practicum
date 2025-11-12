@@ -1,0 +1,72 @@
+---
+title: "Practicum 6: Answering research questions predator-prey"
+author: "Wim Pouw"
+format:
+  revealjs:
+    controls: true
+    navigationMode: default
+---
+
+## Practicum 6: Objectives
+* **Resources for your python group projects**: Some new resources for your upcoming group projects.
+* **Intro to agent-sets**: Short introduction to agent-sets via the predator-prey model.
+* **Analysis**: Python time series analysis, statistical analysis and visualization of results.
+
+## Group Project Resources
+* Added a new folder with some custom visualization functions to help you get started.
+  * [Model library "Custom visualizations example models"](https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course)
+* These contain
+  * Custom space visualizatiosn
+  * Visualization of results
+  * Picture-model interaction (dispersal)
+  * Avoiding solara viz, and making a GIF instead
+* Lets have a quick look...
+
+## Goal today
+* We take a model from the python mesa example library
+  * Sheep-wolf model (get it [here](../models/wolfsheep_model_python.rar))
+  * Or go to model library [here](https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course)
+* You design a parameter sweep experiment (like last week)
+* Save and collect the data
+* And then lets ask some research questions
+
+# Parameter sweep Experiment 1
+* Lets first start with a broad parameter sweep of 100 steps
+* Are there some parameter settings where neither wolf nor sheep are extinct by a 100 steps?
+  * Pick the best setting for later
+* What population ratio of sheep to wolves seems to lead to more stable outcomes?
+  * Can we do a statistical test to confirm this?
+
+# Parameter sweep Experiment 2
+* Identify the best parameter settings from experiment 1, that you think likely reflect possible stable system
+* Now do a batch_run with these settings with 500 step runs, and 5 different seeds
+* Are they truly stable? Are there any stable parameter settings?
+
+# Plot timeseries
+* Lets plot the timeseries of one of these 500 step runs
+* Can we measure the number of peaks in the sheep and wolf populations (before any die out)?
+  * Take a look at [scipy find_peaks function](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html), see if you can implement it
+* Could you measure the periodicity of any osscilations of the via the peaks?
+
+# Lesson of today, and final lesson of the practicum
+* With so many variables we can explore quickly some promising models
+* Then we can do further experiments to zoom in on interesting parameter settings
+* This is a common workflow in agent-based modeling
+
+# Wrapping up
+* Solution of today is here (password = "practicum6"): [wolfsheep_solution_python.rar](../models/wolfsheep_solution_python.rar)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

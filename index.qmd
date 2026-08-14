@@ -121,32 +121,26 @@ Install Visual Studio Code from [here](https://code.visualstudio.com/download) (
 
 After installing anaconda, you can install mesa using the following command in your terminal. Run each line seperately (so dont copy paste the entire block at once in your anaconda prompt):
 
+## Method 1
 ```bash
 conda create -n mesa-env python=3.11
 
 conda activate mesa-env
 
-pip install mesa[all]==3.2.0
+pip install "mesa[rec]==3.2.0"
 
-pip install jupyter notebook scipy seaborn pandas numpy matplotlib ipykernel
+pip install jupyter notebook scipy seaborn pandas altair ipykernel
 ```
 
+## Method 2
+Download the environment.yml file here [environment.yml](./quarto_dependencies/mesa_env/environment.yml) and run the following command in your terminal:
+
+```bash
+conda env create -f environment.yml
+conda activate mesa-env
+```
 We will use Visual Studio Code which has a built-in jupyter notebook viewer. We will do that as the default. Do note that you need to "trust" the notebook or the model folder when you open it for the first time (otherwise you get issues activating your environment). When you run your notebook chunks, make sure you select the right kernel (mesa-env).
 
-::::: {.callout-note .callout-download collapse="true"}
-## For mac OS: Installation guide python using anaconda + mesa
-For Mac users the above procedure does not work and you need to follower a slightly different procedure. After installing anaconde you need to run conda commands in your terminal instead (you can search for your "terminal" in the MAC OS search panel). And another key difference is that we do not explicitly set the version for mesa (and you need download extra dependencies such as networkx in addition). So MAC OS users please look below:
-
-```bash
-conda create -n mesa-env python=3.11
-
-conda activate mesa-env
-
-pip install mesa
-
-pip install jupyter notebook seaborn pandas numpy matplotlib networkx altair solara
-
-```
 :::::
 
 ::::

@@ -15,8 +15,14 @@ contact:
 bibliography: quarto_dependencies/references/refs.bib
 theme: flatly
 css: quarto_dependencies/styles/styles.css
+pyodide:
+  packages:
+    - numpy
 format:
-  html:
+  live-html:
+    format-links: false
+    include-after-body:
+    - theme/chalk-controls.html
     toc: true
     toc-location: left
     toc-title: "Contents"
@@ -24,7 +30,11 @@ format:
     number-sections: false
     code-fold: true
     code-tools: true
-engine: quarto
+  live-revealjs:
+    theme: simple
+    chalkboard: true
+    
+engine: knitr
 ---
 
 ![](images/placeholder.gif)
@@ -145,7 +155,9 @@ We will use Visual Studio Code which has a built-in jupyter notebook viewer. We 
 
 ::::
 
-:::
+
+
+
 
 ## Some basic differences in coding style
 ::: {.panel-tabset}
@@ -548,6 +560,22 @@ end
 :::
 
 :::
+
+
+## Live excercises with runnable python code
+:::: {.panel-tabset}
+
+## Practicum x
+```{pyodide}
+#| setup: true
+#| exercise: threshold
+import numpy as np
+hours = np.arange(0, 24, 0.5)
+activity = np.exp(-((hours - 5.5) ** 2) / 2)
+print("hello world")
+```
+
+::::
 
 # Model library for this course
 Note we have stored the models in a .rar file. You can download the models and extract them using a program like WinRAR or 7-Zip.

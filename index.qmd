@@ -4,9 +4,9 @@ subtitle: "Agent-based modeling using Netlogo and Python"
 date: "today"
 author:
   - name: Wim Pouw ([www.wimpouw.com](https://wimpouw.com/))
-    affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
+    affiliation: "Department of Computational Cognitive Science, Tilburg University, Netherlands"
   - name: Travis Wiltshire ([travisjwiltshire.com](https://travisjwiltshire.com/))
-    affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
+    affiliation: "Department of Computational Cognitive Science, Tilburg University, Netherlands"
 contact:
   - name: Wim Pouw
     email: w.pouw@tilburguniversity.edu
@@ -28,7 +28,7 @@ format:
     toc-title: "Contents"
     toc-depth: 3
     number-sections: false
-    code-fold: true
+    code-fold: false
     code-tools: true
   live-revealjs:
     theme: simple
@@ -68,45 +68,81 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 ::: {.panel-tabset}
 
-## Practicum 1
+## Practicum 1a  {.active}
+
+* **Overview:** Introduction to the practicum.
+* **Setup:** NetLogo and Python Mesa environment setup.
+* **Coding Style:** Some key components of Python mesa models.
+* **Basics:** Initialize and investigate basic setups.
+
+## Practicum 1b
 
 * **Overview:** Introduction to the practicum.
 * **Setup:** NetLogo and Python Mesa environment setup.
 * **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the basic models (and fire model).
 * **Basics:** Initialize and investigate basic setups.
 
-## Practicum 2 
+## Practicum 2a
 
 * **Crashcourse:** Understand what key functionality Mesa has for agent-based modeling.
 * **Dispersal:** Learn about the dispersal model and deconstruct it conceptually for translation.
 * **Part I: Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
 
-## Practicum 3
+## Practicum 2b
+
+* **Crashcourse:** Understand what key functionality Mesa has for agent-based modeling.
+* **Dispersal:** Learn about the dispersal model and deconstruct it conceptually for translation.
+* **Part I: Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
+
+## Practicum 3a
 
 * **Implementation from scratch Part II:** We continue to practice model translation.
 * **Solving problems yourself:** Visualization,  agent behavior, and data plotting.
 
-## Practicum 4  
+## Practicum 3b
+
+* **Implementation from scratch Part II:** We continue to practice model translation.
+* **Solving problems yourself:** Visualization,  agent behavior, and data plotting.
+
+## Practicum 4a  
 
 * **Recap:** Recap of previous materials.
 * **Creative adaptation:** Create your own model variations.
 * **Create measurements**. Design measures and use Mesa's data collector and native plotting.
 
-## Practicum 5 
+## Practicum 4b
+
+* **Recap:** Recap of previous materials.
+* **Creative adaptation:** Create your own model variations.
+* **Create measurements**. Design measures and use Mesa's data collector and native plotting.
+
+## Practicum 5a
+
 * **Introduction to adaptive agents**: How to have your agents have memory and adapt.
 * **Models:** Detailed understanding of El Farol model.
 * **Introduction to Parameter sweeps**: Learn how to do parameter sweeps and report results.
 
-## Practicum 6 {.active}
+## Practicum 5b
+
+* **Introduction to adaptive agents**: How to have your agents have memory and adapt.
+* **Models:** Detailed understanding of El Farol model.
+* **Introduction to Parameter sweeps**: Learn how to do parameter sweeps and report results.
+
+## Practicum 6a
+
 * **Intro to agent-sets**: Introduction to agent-sets via the predator-prey model.
 * **Analysis**: Python (time series) analysis and visualization of results.
 
+## Practicum 6b
+
+* **Intro to agent-sets**: Introduction to agent-sets via the predator-prey model.
+* **Analysis**: Python (time series) analysis and visualization of results.
 
 :::
 
 ## Installation
 
-::: {.callout-note .callout-download collapse="true"}
+::::: {.callout-note .callout-download collapse="true"}
 ## Installation Section
 
 :::: {.callout-note .callout-download collapse="true"}
@@ -151,22 +187,22 @@ conda activate mesa-env
 ```
 We will use Visual Studio Code which has a built-in jupyter notebook viewer. We will do that as the default. Do note that you need to "trust" the notebook or the model folder when you open it for the first time (otherwise you get issues activating your environment). When you run your notebook chunks, make sure you select the right kernel (mesa-env).
 
-:::::
-
 ::::
+
+:::::
 
 
 
 
 
 ## Some basic differences in coding style
-::: {.panel-tabset}
+::::: {.panel-tabset}
 
 ## Python
 
-::: {.panel-tabset}
+:::: {.panel-tabset}
 
-## Basics
+### Basics
 ```python
 # This is a comment in Python - use # for single line comments
 print("Hello, World!")  # This prints a message to the console
@@ -180,7 +216,7 @@ my_list = [1, 2, 3, 4]
 random_item = random.choice(my_list)  # Pick random item from list
 ```
 
-## Set up agent for grid
+### Set up agent for grid
 ```python
 # Import Mesa - the agent-based modeling framework
 import mesa
@@ -206,7 +242,7 @@ class SimpleGridModel(mesa.Model):
         SimpleGridAgent(self, random_cell)
 ```
 
-## Set up agent for continuous
+### Set up agent for continuous
 ```python
 # Import Mesa components for continuous (smooth) movement
 import mesa
@@ -244,7 +280,7 @@ class SimpleModel(mesa.Model):
         self.agents.add(agent)
 ```
 
-## Grid movement
+### Grid movement
 ```python
 def step(self):
     # Get current position
@@ -273,7 +309,7 @@ def step(self):
     self.agents.do("step")
 ```
 
-## Continuous movement
+### Continuous movement
 ```python
 def step(self):
     """Agent's step method - called every simulation tick"""
@@ -288,7 +324,7 @@ def step(self):
     self.agents.do("step")
 ```
 
-## Complete grid example
+### Complete grid example
 ```python
 # Import Mesa components for grid-based modeling
 import mesa
@@ -355,7 +391,7 @@ page = SolaraViz(model, [make_space_component(agent_portrayal=agent_portrayal)],
                 name="Grid Agent")
 ```
 
-## Complete continuous example
+### Complete continuous example
 ```python
 # Import all necessary libraries
 import numpy as np  # For mathematical operations
@@ -420,13 +456,13 @@ page = SolaraViz(model, [make_space_component(agent_portrayal=agent_draw,
                         backend="matplotlib")], name="Continuous Agent")
 ```
 
-:::
+::::
 
 ## NetLogo
 
-::: {.panel-tabset}
+:::: {.panel-tabset}
 
-## Basics
+### Basics
 ```netlogo
 ;; This is a comment in NetLogo - use semicolons
 print "Hello, World!"  ;; This prints a message when run in the command center
@@ -440,7 +476,7 @@ let my-list [1 2 3 4]
 let random-item one-of my-list  ;; Pick random item from list
 ```
 
-## Set up agent for grid
+### Set up agent for grid
 ```netlogo
 to setup
   clear-all              ;; Clear the world and reset everything
@@ -462,7 +498,7 @@ to color-grid
 end
 ```
 
-## Set up agent for continuous
+### Set up agent for continuous
 ```netlogo
 to setup
   clear-all                    ;; Clear everything and start fresh
@@ -475,7 +511,7 @@ to setup
 end
 ```
 
-## Grid movement
+### Grid movement
 ```netlogo
 to go
   ask turtles [                          ;; Tell all turtles to:
@@ -488,7 +524,7 @@ to go
 end
 ```
 
-## Continuous movement
+### Continuous movement
 ```netlogo
 to go
   ask turtles [                    ;; Tell all turtles to:
@@ -499,7 +535,7 @@ to go
 end
 ```
 
-## Complete grid example
+### Complete grid example
 ```netlogo
 ;; Complete NetLogo model for grid-based random walk
 
@@ -534,7 +570,7 @@ to go
 end
 ```
 
-## Complete continuous example
+### Complete continuous example
 ```netlogo
 ;; Complete NetLogo model for continuous space movement
 
@@ -557,25 +593,10 @@ to go
 end
 ```
 
-:::
-
-:::
-
-
-## Live excercises with runnable python code
-:::: {.panel-tabset}
-
-## Practicum x
-```{pyodide}
-#| setup: true
-#| exercise: threshold
-import numpy as np
-hours = np.arange(0, 24, 0.5)
-activity = np.exp(-((hours - 5.5) ** 2) / 2)
-print("hello world")
-```
-
 ::::
+
+:::::
+
 
 # Model library for this course
 Note we have stored the models in a .rar file. You can download the models and extract them using a program like WinRAR or 7-Zip.
@@ -655,7 +676,7 @@ We will not actually give you the python version of the to be translated model, 
 * [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.rar)
 :::
 
-# Slides and exercises
+# Slides
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Slides practicum 1a
@@ -735,9 +756,10 @@ We will not actually give you the python version of the to be translated model, 
 <iframe src="slides_practicals/Practical3.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical3.html)
+-->
 :::
 
--->
+
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 5b
@@ -746,8 +768,9 @@ We will not actually give you the python version of the to be translated model, 
 <iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical4.html)
-:::
+
 -->
+:::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 6a
@@ -755,8 +778,9 @@ We will not actually give you the python version of the to be translated model, 
 <iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical5.html)
-:::
 -->
+:::
+
 ::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 6b
 
@@ -862,6 +886,272 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 [Download PDF](./pdfs/Romanowska_ABMA_Chapter_6.pdf)
 :::
 
+# Live excercises
+
+::::: {.panel-tabset}
+
+## Practicum 1a {#ex-1a}
+
+:::: {.panel-tabset}
+
+### Exercise 1: what is a class {#ex-1a-1}
+
+A class is a template. It says what an object knows (attributes) and what it can do (methods). You can make an instance of a class, and another separate instance, which then becomes a separate version of the template. `self` is the particular instance the method runs on, and it is initialized with certain attributes.
+
+Run this: `a` and `b` are separate objects from one template.
+
+```{pyodide}
+#| autorun: false
+class Agent:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"I am {self.name}")
+
+a = Agent("turtle-0")
+b = Agent("turtle-1")
+a.greet()
+b.greet()
+```
+
+**Your turn.** Fill in the two gaps so the sheep has an `energy` attribute and an `eat` method that adds 5. Running it should print 15.
+
+```{pyodide}
+#| autorun: false
+class Sheep:
+    def __init__(self, energy):
+        self.??? = energy
+
+    def eat(self):
+        self.energy ??? 5
+
+s = Sheep(10)
+s.eat()
+print(s.energy)
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+Attributes are stored on `self`, and the name you store under is the name you read back later. To add in place, use `+=`.
+:::
+
+### Exercise 2: why super() {#ex-1a-2}
+
+In your python mesa models you often see `class SimpleGridAgent(CellAgent)`, which means that your class inherits methods from `CellAgent`. The parent's `__init__` does bookkeeping, such that it registers the agent with the model, handing out a unique id, or for example attaching a random generator. Writing your own `__init__` would overwrite the parent class' `__init__`, were it not for `super().__init__(...)`, which runs the parent's version first.
+
+Run this, then comment out the `super()` line and run it again. What error do you get, and why?
+
+```{pyodide}
+#| autorun: false
+class BaseAgent:
+    def __init__(self, model):
+        self.model = model
+        self.unique_id = model.next_id()
+
+class MyAgent(BaseAgent):
+    def __init__(self, model, colour):
+        super().__init__(model)     # comment me out
+        self.colour = colour
+
+class FakeModel:
+    def __init__(self):
+        self._id = 0
+    def next_id(self):
+        self._id += 1
+        return self._id
+
+a = MyAgent(FakeModel(), "green")
+print(a.unique_id, a.colour)
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+Read the error message carefully. Which attribute is missing, and which class was supposed to create it?
+:::
+
+### Exercise 3: inherit and extend {#ex-1a-3}
+
+Make `Wolf` inherit from `Animal`, reuse the parent for `energy`, and add only `hunger`. It should print `20 3`.
+
+```{pyodide}
+#| autorun: false
+class Animal:
+    def __init__(self, energy):
+        self.energy = energy
+
+class Wolf(???):
+    def __init__(self, energy, hunger):
+        ???
+        self.hunger = hunger
+
+w = Wolf(20, 3)
+print(w.energy, w.hunger)
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+The parent class goes in the brackets after the class name. The second gap needs to hand `energy` up to the parent, so it takes an argument.
+:::
+
+::::
+
+## Practicum 1b {#ex-1b}
+
+
+:::: {.panel-tabset}
+
+### Exercise 1
+TBA
+
+::: {.callout-tip collapse="true"}
+## Hint
+TBA
+:::
+
+### Exercise 2: the space and torus wrapping {#ex-1b-2}
+
+
+::: {.callout-tip collapse="true"}
+## Hint
+TBA
+:::
+
+### Exercise 3: measurement by hand {#ex-1b-3}
+TBA
+
+::: {.callout-tip collapse="true"}
+## Hint
+TBA
+:::
+
+::::
+
+## Practicum 2a {#ex-2a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-2a-1}
+TBA
+
+### Exercise 2 {#ex-2a-2}
+TBA
+
+::::
+
+## Practicum 2b {#ex-2b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-2b-1}
+TBA
+
+### Exercise 2 {#ex-2b-2}
+TBA
+
+::::
+
+## Practicum 3a {#ex-3a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-3a-1}
+TBA
+
+### Exercise 2 {#ex-3a-2}
+TBA
+
+::::
+
+## Practicum 3b {#ex-3b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-3b-1}
+TBA
+
+### Exercise 2 {#ex-3b-2}
+TBA
+
+::::
+
+## Practicum 4a {#ex-4a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-4a-1}
+TBA
+
+### Exercise 2 {#ex-4a-2}
+TBA
+
+::::
+
+## Practicum 4b {#ex-4b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-4b-1}
+TBA
+
+### Exercise 2 {#ex-4b-2}
+TBA
+
+::::
+
+## Practicum 5a {#ex-5a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-5a-1}
+TBA
+
+### Exercise 2 {#ex-5a-2}
+TBA
+
+::::
+
+## Practicum 5b {#ex-5b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-5b-1}
+TBA
+
+### Exercise 2 {#ex-5b-2}
+TBA
+
+::::
+
+## Practicum 6a {#ex-6a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-6a-1}
+TBA
+
+### Exercise 2 {#ex-6a-2}
+TBA
+
+::::
+
+## Practicum 6b {#ex-6b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-6b-1}
+TBA
+
+### Exercise 2 {#ex-6b-2}
+TBA
+
+::::
+
+:::::
+
+# Practical recordings
+TBA
+
 # Inspiration section
 ::: {.card .border-primary .mb-4}
 ::: {.card-header .bg-primary .text-white}
@@ -871,7 +1161,7 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 </a>
 :::
 
-::: {.collapse#inspirationCollapse}
+::: {#inspirationCollapse .collapse}
 ## Additional Multimedia Resources
 - [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)
 - [BJKS podcast: Paul Smaldino on ABM Modeling of Social Behavior](https://www.buzzsprout.com/1390924/episodes/13689768-75-paul-smaldino-modeling-social-behavior-the-value-of-false-models-and-research-beyond-traditional-disciplines)
@@ -902,13 +1192,10 @@ Upload/push your project model to [gitlab.uvt.nl/](https://gitlab.uvt.nl/) or [g
 </a>
 :::
 
-::: {.collapse#modelLibraryCollapse}
+::: {#modelLibraryCollapse .collapse}
 Forthcoming student model library with models created by students during the course.
 :::
 
 :::
-
-
-
 
 # References

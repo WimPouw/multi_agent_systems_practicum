@@ -658,44 +658,113 @@ We will not actually give you the python version of the to be translated model, 
 # Slides and exercises
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides practicum 1
+## Slides practicum 1a
 <iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical1.html)
 :::
+
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 2
+## Slides Practicum 1b
+<!--
+<iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical2.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 2a
+<!--
+<iframe src="slides_practicals/Practical3.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical3.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 2b
+<!--
+<iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical4.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 3a
+<!--
+
+<iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical5.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="false"}
+## Slides Practicum 3b
+<!--
+
+<iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical6.html)
+-->
+:::
+
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides practicum 4a
+<!--
+
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+-->
+:::
+::: {.callout-note .callout-download collapse="true"}
+
+## Slides Practicum 4b
 <iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical2.html)
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 3
+## Slides Practicum 5a
+<!--
 <iframe src="slides_practicals/Practical3.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical3.html)
 :::
 
+-->
+
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 4
+## Slides Practicum 5b
+<!--
+
 <iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical4.html)
 :::
+-->
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 5
+## Slides Practicum 6a
+<!--
 <iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical5.html)
 :::
-
+-->
 ::: {.callout-note .callout-download collapse="false"}
-## Slides Practicum 6
+## Slides Practicum 6b
+
+<!--
 <iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical6.html)
+-->
 :::
 
 # Key background literature for the models

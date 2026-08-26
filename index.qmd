@@ -1260,6 +1260,7 @@ TBA
 
 ::: {#inspirationCollapse .collapse}
 ## Additional Multimedia Resources
+- [Youtube video Cellular automata called Lenia](https://www.youtube.com/watch?v=6kiBYjvyojQ)
 - [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)
 - [BJKS podcast: Paul Smaldino on ABM Modeling of Social Behavior](https://www.buzzsprout.com/1390924/episodes/13689768-75-paul-smaldino-modeling-social-behavior-the-value-of-false-models-and-research-beyond-traditional-disciplines)
 - [Braininspired podcast: David Krakauer on how to think like a complexity scientist](https://open.spotify.com/episode/1qwx0kgYC3Lj5FDXSCBt7D)

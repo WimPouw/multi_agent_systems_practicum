@@ -189,6 +189,21 @@ We will use Visual Studio Code which has a built-in jupyter notebook viewer. We 
 
 ::::
 
+::: {.callout-warning collapse="true"}
+## Troubleshooting
+
+Most errors come from your python interpreter pointing to the wrong python. If you have multiple python installations, this is a common source of errors. Here is to properly connect visual studio code to your anaconda python installation:
+
+1. In Visual Studio Code, press `Ctrl + Shift + P`
+2. Type "Python: Select Interpreter"
+3. Select the python interpreter that is part of your anaconda installation (e.g., `C:\Users\yourusername\anaconda3\python.exe`)
+4. Restart visual studio code and try again
+
+From there you can also select your anaconda environments, like the one you just made (`mesa-env`).
+
+If you still have issues, let me know and well troubleshoot.
+:::
+
 :::::
 
 

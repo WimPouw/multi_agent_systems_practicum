@@ -1,0 +1,113 @@
+---
+title: "Practicum 5: Adaptive agents and and parameter sweeping"
+author: "Wim Pouw"
+format:
+  revealjs:
+    controls: true
+    navigationMode: default
+    title-slide-attributes:
+      data-background-image: "./videos/elfarol.gif"
+      data-background-size: contain
+      data-background-opacity: "0.3"
+    quiz: 
+      checkKey: 'c'
+      resetKey: 'q'
+      shuffleKey: 't'
+      allowNumberKeys: true
+      disableOnCheck: false
+      disableReset: false
+      shuffleOptions: true
+      includeScore: false
+    revealjs-plugins:
+    - quiz
+---
+
+## Practicum 5: Objectives
+* Understand a complex model of adaptive agents (El farol bar problem) (part 1)
+* Adding a measurement to the model data collector (recap) (part 2)
+* Running and exporting data of an experiment with batch runner (part 2)
+* Saving and plotting the results (part 2)
+
+## Recap of covered functionalities
+* Basic model structure (Model, Agent, Space, SolaraViz) (Practicum 1-2)
+* Coding a grid model from scratch (Dispersal) (Practicum 3)
+* Basic mesa functions (Measurement design, DataCollector) (Practicum 4)
+* Mesa visualization + Mesa data plotting (variability basic dispersal) (Practicum 4)
+
+# El farol bar problem
+* Go to model library on the landing page
+* Or download El Farol Model Python directly here: [here](https://wimpouw.github.io/multi_agent_systems_practicum/models/elfarol_model_python.rar)
+* Lets take a look...
+
+# El farol bar problem
+* Embraces complexity science
+* Bounded rationality (agents with limited information)
+* Adaptive behavior (agents change their behavior based on past experiences)
+* Emergent phenomena (collective patterns arise from individual actions)
+  * How often is the bar overcrowded? (The degree of overcrowding can sometimes be efficiently low, despite individual strategies)
+
+# Break
+
+# Questions el farol bar problem
+# Prediction Formula {.quiz-question .quiz-single}
+In the El Farol prediction formula p(t) = N*c + Σ(w_i * A(t-i)), what does the constant 'c' represent?
+
+- The current attendance level
+- The overcrowding threshold
+- [A baseline prediction scaled by the number of agents]{.correct}
+- The average of all previous predictions
+
+# Strategy Weights {.quiz-question .quiz-multiple}
+Which statements about strategy weights in the El Farol model are correct? (Select all correct)
+
+- [Weights are randomly generated between -1 and 1]{.correct}
+- Weights are always positive numbers
+- [Each agent can have multiple strategies with different weights]{.correct}
+- [Negative weights suggest inverse relationships (e.g., high past attendance predicts low future attendance)]{.correct}
+
+# Attendance Decision Rule {.quiz-question .quiz-single}
+According to the model, when does an agent decide to attend the bar?
+
+- When their prediction equals the threshold
+- [When their prediction is below or equal to the overcrowding threshold]{.correct}
+- When their prediction is above the threshold
+- When they have the best strategy
+
+# Adaptive Behavior {.quiz-question .quiz-single}
+What makes the El Farol model "adaptive"?
+
+- Agents generate new strategies every round
+- The overcrowding threshold changes over time
+- [Agents select their best-performing strategy based on past prediction accuracy]{.correct}
+- Agents learn from other agents' strategies
+
+# Prediction Calculation Example {.quiz-question .quiz-single}
+Given N=100, c=0.5, M=1, w₁=-0.5, and A(t-1)=80, what is the predicted attendance p(t)?
+
+- 30
+- 40
+- [10]{.correct data-explanation="p(t) = 100*0.5 + (-0.5 * 80) = 50 - 40 = 10"}
+- 64
+
+# The challenge for today
+* Collect the prediction_error for each agent
+* Run multiple simulations using`mesa.batch_run` (see [full func model](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html))
+  * Varying
+    * Number of strategies (1, 5, 10, 20)
+    * Memory length (1, 5, 10, 20)
+    * For each combination, run 2 simulations
+    * With a 50 steps
+
+# Analysis
+* Save the median prediction error per experiment (using pandas)
+  * `median_errors = results_5seeds.groupby(['number_of_strategies', 'memory_size'])['prediction_error'].median().reset_index()`
+* Find out which strategy has the lowest median prediction error
+
+# Lets compare results
+* What combination of parameters led to the lowest prediction error?
+* If results differ, what can we do to see if its just chance?
+* Is there reason to change the parameter space? When would you want to explore more?
+
+
+
+

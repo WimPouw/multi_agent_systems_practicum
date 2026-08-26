@@ -1,0 +1,13 @@
+name: mesa-env
+channels: [conda-forge]
+dependencies:
+  - python=3.11
+  - jupyter
+  - notebook
+  - ipykernel
+  - pip
+  - pip:
+      - "mesa[rec]==3.2.0"
+      - scipy
+      - seaborn
+      - altair

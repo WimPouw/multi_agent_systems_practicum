@@ -159,7 +159,7 @@ You can download Netlogo from the official website: [Netlogo Download](https://c
     width="400" 
     height="300" >}}
 
-This installation I have tested on the practical machines and on a windows PC. Feel free to deviate if you have different preferences for your python installation.
+This installation I have tested on the practical machines and on a windows PC and Linux Laptop.
 
 Install anaconda [quick guide here](https://researchguides.uoregon.edu/library_workshops/install_anaconda).
 
@@ -936,65 +936,6 @@ print(s.energy)
 Attributes are stored on `self`, and the name you store under is the name you read back later. To add in place, use `+=`.
 :::
 
-### Exercise 2: why super() {#ex-1a-2}
-
-In your python mesa models you often see `class SimpleGridAgent(CellAgent)`, which means that your class inherits methods from `CellAgent`. The parent's `__init__` does bookkeeping, such that it registers the agent with the model, handing out a unique id, or for example attaching a random generator. Writing your own `__init__` would overwrite the parent class' `__init__`, were it not for `super().__init__(...)`, which runs the parent's version first.
-
-Run this, then comment out the `super()` line and run it again. What error do you get, and why?
-
-```{pyodide}
-#| autorun: false
-class BaseAgent:
-    def __init__(self, model):
-        self.model = model
-        self.unique_id = model.next_id()
-
-class MyAgent(BaseAgent):
-    def __init__(self, model, colour):
-        super().__init__(model)     # comment me out
-        self.colour = colour
-
-class FakeModel:
-    def __init__(self):
-        self._id = 0
-    def next_id(self):
-        self._id += 1
-        return self._id
-
-a = MyAgent(FakeModel(), "green")
-print(a.unique_id, a.colour)
-```
-
-::: {.callout-tip collapse="true"}
-## Hint
-Read the error message carefully. Which attribute is missing, and which class was supposed to create it?
-:::
-
-### Exercise 3: inherit and extend {#ex-1a-3}
-
-Make `Wolf` inherit from `Animal`, reuse the parent for `energy`, and add only `hunger`. It should print `20 3`.
-
-```{pyodide}
-#| autorun: false
-class Animal:
-    def __init__(self, energy):
-        self.energy = energy
-
-class Wolf(???):
-    def __init__(self, energy, hunger):
-        ???
-        self.hunger = hunger
-
-w = Wolf(20, 3)
-print(w.energy, w.hunger)
-```
-
-::: {.callout-tip collapse="true"}
-## Hint
-The parent class goes in the brackets after the class name. The second gap needs to hand `energy` up to the parent, so it takes an argument.
-:::
-
-::::
 
 ## Practicum 1b {#ex-1b}
 

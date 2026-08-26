@@ -20,7 +20,6 @@ revealjs-plugins:
 ---
 
 ## Practicum 1: Objectives
-
 * **Overview:** Introduction to the practicum.
 * **Setup:** NetLogo and Python Mesa environment setup.
 * **Coding Style:** Study coding style differences in NetLogo and Python.
@@ -30,64 +29,6 @@ revealjs-plugins:
 - Intro and live setup and how to with Wim
 - Self-work with quiz-questions
 - Self-work annotate code for future self, by breaking and fixing code
-
-# Overview of the practicum
-- We have one landing page: [Practicum Landing Page](https://example.com)
-- Models, slides, and literature.
-- Slides will be available before the practicum
-- Living document (I hope to build out more over time based on your feedback)
-
-# Tips
-- Start to build your own notes and annotated model library
-- The info page in netlogo is formatted in the markup language Markdown
-- Jupyter notebooks allow you to preface your code in Markdown too
-- Rmarkdown is similar to jupyter as it mix R code with... well you get it.
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
-
-# Installing Netlogo
-- getting started with Netlogo
-- Download and install: [Netlogo Download](https://ccl.northwestern.edu/netlogo/download.shtml).
-
-# Downloading netlogo models
-- Lets download the basic Netlogo models
-- Unpack using 7zip, Winrar, or your OS built-in unpacker
-
-# Python: Installing Mesa (our go to ABM python package)
-```bash
-conda create -n mesa-env python=3.11
-conda activate mesa-env
-pip install mesa[all]==3.2.0
-pip install jupyter notebook seaborn pandas numpy matplotlib
-python -c "import mesa; print(mesa.__version__)"
-```
-- Of course feel free to use your own Python environment, or clone repo and install locally (`pip install .`). This is the recommended and tested procedure however. 
-
-- Tested on the practicum PC (and my own Windows laptop)
-
-- MACOS users: See the landing page installation section
-
-# Jupyter Notebooks
-- We will be using Jupyter Notebooks for our Python code with Visual Studio Code (and our environment setup initialized in VS code). 
-- But feel free to use your own IDE and organization.
-
-# Downloading models
-- Lets download the basic Mesa models from the landing page
-- Unpack using 7zip, Winrar, or your OS built-in unpacker
-
-# We can run models now
-Run all netlogo and python basic models and inspect them carefully. What do these simple models do?
-
-# Runthrough of netlogo things and mesa code
-- with some highlights by Wim
-
-# Do it yourself assignment (general)
-- For each practicum I want you to organize your own model library
-- This model library has well-annotated markdown-edited notebooks (Python) or info tabs (Netlogo)
-- What does this model do, what are chunks of code that are complicated, and what could I use this for? Use the online documentation for explanations.
-- A personal model library will serve future you well
-
-# Practice questions
-- Next are some quiz questions to guide you to look at some details of the basic models
 
 # Grid Model Questions {.quiz-question}
 In the NetLogo grid model, what initializes the turtles position randomly?

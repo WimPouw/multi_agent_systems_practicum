@@ -190,6 +190,8 @@ conda activate mesa-env
 pip install "mesa[rec]==3.2.0"
 
 pip install jupyter notebook scipy seaborn pandas altair ipykernel
+
+pip install "solara==1.58.2" "solara-assets==1.58.2" "ipyvuetify<2" "ipyvue<2"
 ```
 
 ## Method 2

@@ -1299,9 +1299,12 @@ Forthcoming student model library with models created by students during the cou
 
 # Practical recordings
 
+You can watch the recordings here if you are logged into edge browser with your account. Otherwise just follow the panopto link and log in with your credentials. **Remember** Please enjoy the online recordings, but if no one *as a consequence* shows up I might decide to stop recording.
+
 ::: {.callout-note .callout-download collapse="false"}
 ## Recording Practicum 1a
 
+[Recording link to Panopto](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9c6fef3d-758a-4560-a0d6-b4b400b16663)
 ```{=html}
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
 <iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=9c6fef3d-758a-4560-a0d6-b4b400b16663&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
@@ -1314,9 +1317,5 @@ aria-label="Practical 1a MAS 2026/2027">
 ```
 :::
 
-::: {.callout-note .callout-download collapse="true"}
-## Recording Practicum 1b
-TBA
-:::
 
 # References

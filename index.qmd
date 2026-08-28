@@ -630,11 +630,12 @@ end
 # Model library for this course
 Note we have stored the models in a .zip file. You can download the models and extract them (otherwise look up how to on the web).
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"} 
 
 ## Basic models
-* [Basic Grid, Continuous, Network Model Folder Python](./models/basic_python_models.zip)
-* [Basic Grid, Continuous, Network Model Folder Netlogo](./models/basic_netlogo_models.zip)
+* [Basic Grid, Continuous, Network Model Folder Python](./models/basic_python_models.zip){download=""}
+
+* [Basic Grid, Continuous, Network Model Folder Netlogo](./models/basic_netlogo_models.zip){download=""}
 
 :::
 
@@ -643,29 +644,29 @@ Note we have stored the models in a .zip file. You can download the models and e
 ## Custom visualizations example models
 Examples of models with custom space and plot visualizations (e.g., creating animations without solara).
 
-* [Example custom visualizations folder](./models/examples_custom_visualizations.zip)
+* [Example custom visualizations folder](./models/examples_custom_visualizations.zip){download=""}
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 
 ## Full functionality grid model
-* [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.zip)
+* [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.zip){download=""}
 
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Dispersal model and DIY
-* [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip)
+* [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip){download=""}
 
 We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature). For the final fully implemented one one we are going to give you a hint and you can check out a start here:
 
 ### Translating part II (Practicum 3)
-* [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.zip)
+* [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.zip){download=""}
 
 ### Simple Dispersal Model After Practicum 3
-* [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.zip)
+* [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.zip){download=""}
 
 ### Python challenge
 * [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.zip)
@@ -675,39 +676,39 @@ We will not actually give you the python version of the to be translated model, 
 ::: {.callout-note .callout-download collapse="true"}
 
 ## Criticality Fire model
-* [Download Criticality Fire Model Folder Python](./models/fire_model_python.zip)
-* [Download Criticality Fire Model Folder Netlogo](./models/fire_model_netlogo.zip)
+* [Download Criticality Fire Model Folder Python](./models/fire_model_python.zip){download=""}
+* [Download Criticality Fire Model Folder Netlogo](./models/fire_model_netlogo.zip){download=""}
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Flocking model
-* [Flocking Model Folder Python](./models/flocking_model_python.zip)
-* [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip)
+* [Flocking Model Folder Python](./models/flocking_model_python.zip){download=""}
+* [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip){download=""}
 :::
 ::: {.callout-note .callout-download collapse="true"}
 ## El Farol Model
-* [El Farol Model Folder Python](./models/elfarol_model_python.zip)
-  * [El Farol Solution Practicum 5](./models/elfarol_model_extended.zip)
-* [El Farol Model Folder Netlogo](./models/elfarol_model_netlogo.zip)
+* [El Farol Model Folder Python](./models/elfarol_model_python.zip){download=""}
+  * [El Farol Solution Practicum 5](./models/elfarol_model_extended.zip){download=""}
+* [El Farol Model Folder Netlogo](./models/elfarol_model_netlogo.zip){download=""}
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Amphor Model
 * TODO Python
-* [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.zip)
+* [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.zip){download=""}
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Wolf-Sheep Model
-* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.zip)
+* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.zip){download=""}
 * [Wolf-Sheep Model Folder Python (practicum 6 solution)](./models/wolfsheep_solution_python.zip)
-* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.zip)
+* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.zip){download=""}
 :::
 
 # Slides
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides practicum 1a
 <iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 

@@ -193,7 +193,7 @@ pip install jupyter notebook scipy seaborn pandas altair ipykernel
 ```
 
 ## Method 2
-Download the environment.yml file here [environment.yml](./quarto_dependencies/mesa_env/environment.yml) and run the following command in your terminal:
+Download the environment.yml file here [environment.yml](./quarto_dependencies/mesa_env/environment.yml){download=""} and run the following command in your terminal:
 
 ```bash
 conda env create -f environment.yml

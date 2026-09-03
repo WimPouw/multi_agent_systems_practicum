@@ -68,14 +68,14 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 ::: {.panel-tabset}
 
-## Practicum 1a {.active}
+## Practicum 1a 
 
 * **Setup:** Install and configure NetLogo, Anaconda, Python Mesa, and VS Code.
 * **First run:** Run all basic NetLogo and Mesa models (grid, continuous, network).
 * **Model library:** Start your personal annotated model library.
 * **In class:** Installing dependencies and error-handling.
 
-## Practicum 1b
+## Practicum 1b {.active}
 
 * **Coding style:** Compare NetLogo and Python in the grid, continuous, and network models.
 * **Movement logic:** Quiz questions on movement rules and torus wrapping.
@@ -675,7 +675,7 @@ We will not actually give you the python version of the to be translated model, 
 * [Dispersal Model with Worldmap Folder Python (complete)](./models/dispersal_python_model_complete.zip)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"} 
 
 ## Criticality Fire model
 * [Download Criticality Fire Model Folder Python](./models/fire_model_python.zip){download=""}
@@ -683,7 +683,7 @@ We will not actually give you the python version of the to be translated model, 
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Flocking model
 * [Flocking Model Folder Python](./models/flocking_model_python.zip){download=""}
 * [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip){download=""}
@@ -710,19 +710,19 @@ We will not actually give you the python version of the to be translated model, 
 
 # Slides
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides practicum 1a
 <iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical1.html)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 1b
 
-<iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+<iframe src="slides_practicals/Practical1b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical2.html)
+[Open slides in new window](./slides_practicals/Practical1b.html)
 
 :::
 
@@ -1033,7 +1033,7 @@ print(s.energy)
 Inside a method, other methods on the same object are reached through `self`, and you still need the brackets to actually call them. Leave the brackets off and nothing happens.
 :::
 
-### Exercise 4: many instances at once {#ex-1a-4}
+### Exercise 4: many instances at once {#ex-1a-4} 
 
 A model holds a collection of agents and tells all of them to act. In Mesa that is `self.agents.do("step")`. Underneath, it is just a loop.
 
@@ -1067,14 +1067,13 @@ The loop body calls the method on the loop variable. For the count, the conditio
 
 ::::
 
-## Practicum 1b {#ex-1b}
+## Practicum 1b {#ex-1b .active}
 
-:::: {.panel-tabset}
+:::: {.panel-tabset} 
 
 ### Exercise 1: why super() {#ex-1b-1}
 
-<!--
-When you write `class SimpleGridAgent(CellAgent)` your class inherits from `CellAgent`. The parent's `__init__` does bookkeeping: registering the agent with the model, handing out a unique id, attaching a random generator. Writing your own `__init__` overwrites it. `super().__init__(...)` runs the parent's version first.
+When you write `class SimpleGridAgent(CellAgent)` your class inherits from `CellAgent`. The parent's `__init__` does bookkeeping: registering the agent with the model, handing out a unique id, attaching a random generator. Writing your own `__init__` overwrites it. However, when we use `super().__init__(...)` we can run the parent's version first so that we get to inherit those settings.
 
 Run this, then comment out the `super()` line and run it again. What error do you get, and why?
 
@@ -1105,25 +1104,180 @@ print(a.unique_id, a.colour)
 ## Hint
 Read the error message carefully. Which attribute is missing, and which class was supposed to create it?
 :::
--->
 
-TBA
+### Exercise 2: what super() does {#ex-1b-2}
 
-### Exercise 2: the space and torus wrapping {#ex-1b-2}
-TBA
+In exercise 1 leaving out `super()` gave you an error. But what if you leave it out in a model that does not use the missing attribute? The model will run, but the agent will never be asked to act.
+
+In mesa, `super().__init__(model)` is what registers the agent into `model.agents`, and that collection is what `self.agents.do("step")` loops over. An agent that never registers still exists, still has a fine `step` method, but it is just never asked to do anything. Nothing will crashe, but your model simply has fewer agents than you think.
+
+Predict the three numbers before you run this.
+
+```{pyodide}
+#| autorun: false
+class BaseAgent:
+    def __init__(self, model):
+        self.model = model
+        self.unique_id = len(model.agents)
+        model.agents.append(self)      # the registration step
+
+class GoodAgent(BaseAgent):
+    def __init__(self, model):
+        super().__init__(model)
+        self.acted = 0
+
+    def step(self):
+        self.acted += 1
+
+class LoneAgent(BaseAgent):
+    def __init__(self, model):
+        self.acted = 0                 # no super() call
+
+    def step(self):
+        self.acted += 1
+
+class MiniModel:
+    def __init__(self):
+        self.agents = []
+
+    def step(self):
+        for agent in self.agents:      # this is mesa's self.agents.do("step")
+            agent.step()
+
+model = MiniModel()
+good = GoodAgent(model)
+lone = LoneAgent(model)
+
+for _ in range(3):
+    model.step()
+
+print("agents in the model:", len(model.agents))
+print("good acted:", good.acted, "times")
+print("lone acted:", lone.acted, "times")
+```
+
+Now fix `LoneAgent` so it joins the model and both agents act three times.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-TBA
+One line at the top of `LoneAgent.__init__`. Note that a missing `super()` can be a silent bug, not a crash, so get in the habit of printing `len(self.agents)` after setup. In fact get in the habit of printing certain dynamic variables in general.
 :::
 
-### Exercise 3: measurement by hand {#ex-1b-3}
-TBA
+### Exercise 3: agents doing things {#ex-1b-3}
+
+Agents do things. Here is a very small model where local action produces a global pattern.
+
+Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. No car can see the road, and nothing in the code mentions a traffic jam.
+
+Fill in the one gap and run it and assess what happens.
+
+```{pyodide}
+#| autorun: false
+import random
+
+class Car:
+    def __init__(self, model, position):
+        self.model = model
+        self.position = position
+
+    def step(self, taken):
+        ahead = (self.position + 1) % self.model.n_cells   # ring, so modulo again
+        if ahead in taken:
+            return                    # blocked, stay where you are
+        self.position = ???           # otherwise move up
+
+class Road:
+    def __init__(self, n_cells=40, n_cars=24, seed=3):
+        self.random = random.Random(seed)
+        self.n_cells = n_cells
+        self.agents = [Car(self, p) for p in self.random.sample(range(n_cells), n_cars)]
+
+    def step(self):
+        taken = {a.position for a in self.agents}    # everyone looks before anyone moves
+        for agent in self.agents:
+            agent.step(taken)
+
+    def show(self, t):
+        cells = ["."] * self.n_cells
+        for agent in self.agents:
+            cells[agent.position] = "C"
+        print(f"{t:>3} " + "".join(cells))
+
+road = Road()
+road.show(0)
+for t in range(1, 26):
+    road.step()
+    road.show(t)
+```
+
+Two things to look at:
+
+1. Follow the block of `CCCC` down the rows. Every car in it is trying to go right, and the block itself travels left, one cell per tick. That is a traffic jam! We have simulated a traffic jam! The rest of the road settles into `C.C.C.` where everybody moves every tick.
+2. Lower `n_cars` to 12 and run again (add an input to an argument that belongs to `Road()`). You will see that there are no jams. So somewhere in between is a density where the road tips from flowing to jamming (which is the same kind of tipping point you will meet as critical density in the fire model; the beauty of critical values).
+
+
+### Exercise 4: the fire model, key components {#ex-1b-4}
+
+You need to become literature in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: `"Fine"`, `"On Fire"`, `"Burned Out"`. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.
+
+
+```{pyodide}
+#| autorun: false
+FINE, ON_FIRE, BURNED = "Fine", "On Fire", "Burned Out"
+
+class Tree:
+    def __init__(self, forest, x):
+        self.forest = forest
+        self.x = x
+        self.condition = ???            # what state does a tree start in?
+
+    def neighbours(self):
+        return [t for t in self.forest if abs(t.x - self.x) == 1]
+
+    def step(self):
+        if self.condition == ON_FIRE:
+            for neighbour in self.neighbours():
+                if neighbour.condition == FINE:
+                    neighbour.condition = ???     # what happens to that neighbour?
+            self.condition = BURNED               # and I am done burning
+
+ground = "TTTTTTTTTTTT"        # T is a tree, a space is bare ground
+
+forest = [Tree(None, x) for x, spot in enumerate(ground) if spot == "T"]
+for tree in forest:
+    tree.forest = forest
+forest[0].condition = ON_FIRE  # light the tree on the left
+
+def show(t):
+    marks = {FINE: ".", ON_FIRE: "*", BURNED: "x"}
+    row = [" "] * len(ground)
+    for tree in forest:
+        row[tree.x] = marks[tree.condition]
+    print(f"{t:>3} " + "".join(row))
+
+show(0)
+t = 0
+while True:
+    burning = [tree for tree in forest if tree.condition == ON_FIRE]
+    if not burning:
+        break
+    for tree in burning:
+        tree.step()
+    t += 1
+    show(t)
+
+print("burned", sum(1 for tree in forest if tree.condition == BURNED), "of", len(forest))
+```
+
+Then:
+
+1. Put a space in the middle of `ground`, so `"TTTTT TTTTTT"`, and run again. The fire stops dead. Fire needs a connected path, and how likely that path is depends on how full the forest is. That is what the density parameter does in the real model.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-TBA
+Both gaps are one of the three condition names defined on the first line.
 :::
+
 
 ::::
 

@@ -6,20 +6,17 @@
 <script src="Practical1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Practical1_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Practical1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="Practical1_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Multi-Agent Systems Practicum 1</title>
+  <title>Multi-Agent Systems Practicum 1a</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="Practical1_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link href="Practical1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Practical1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Practical1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -197,7 +194,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Multi-Agent Systems Practicum 1</h1>
+  <h1 class="title">Multi-Agent Systems Practicum 1a</h1>
   <p class="subtitle">Getting started with NetLogo and Python Mesa</p>
 
 <div class="quarto-title-authors">
@@ -265,12 +262,12 @@ Wim Pouw
 
 <section id="python-installing-mesa-our-go-to-abm-python-package" class="title-slide slide level1 center">
 <h1>Python: Installing Mesa (our go to ABM python package)</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> mesa-env python=3.11</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> mesa-env python=3.11</span>
 <span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
 <span id="cb1-3"><a href=""></a><span class="ex">pip</span> install <span class="st">"mesa[rec]==3.2.0"</span></span>
 <span id="cb1-4"><a href=""></a><span class="ex">pip</span> install jupyter notebook scipy seaborn pandas altair ipykernel</span>
 <span id="cb1-5"><a href=""></a><span class="ex">pip</span> install <span class="st">"solara==1.58.2"</span> <span class="st">"solara-assets==1.58.2"</span> <span class="st">"ipyvuetify&lt;2"</span> <span class="st">"ipyvue&lt;2"</span></span>
-<span id="cb1-6"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(mesa.__version__)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href=""></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import mesa; print(mesa.__version__)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Tested on the practicum PC (and my own Windows PC and Linux laptop), should work for OS. Otherwise well troubleshoot, there is time!</li>
 </ul>
@@ -534,7 +531,7 @@ Wim Pouw
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -608,14 +605,13 @@ Wim Pouw
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

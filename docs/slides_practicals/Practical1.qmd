@@ -1,5 +1,5 @@
 ---
-title: "Multi-Agent Systems Practicum 1"
+title: "Multi-Agent Systems Practicum 1a"
 subtitle: "Getting started with NetLogo and Python Mesa"
 author: "Wim Pouw"
 format:

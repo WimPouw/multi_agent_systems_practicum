@@ -1167,7 +1167,7 @@ One line at the top of `LoneAgent.__init__`. Note that a missing `super()` can b
 
 Agents do things. Here is a very small model where local action produces a global pattern.
 
-Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. No car can see the road, and nothing in the code mentions a traffic jam.
+Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. This generates a traffic jam, which is a block of cars that cannot move because they are all blocked by the car in front of them. It is the simplest emergent, which means a global pattern that arises from simple local rules.
 
 Fill in the one gap and run it and assess what happens.
 
@@ -1218,7 +1218,7 @@ Two things to look at:
 
 ### Exercise 4: the fire model, key components {#ex-1b-4}
 
-You need to become literature in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: `"Fine"`, `"On Fire"`, `"Burned Out"`. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.
+You need to become literate in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: `"Fine"`, `"On Fire"`, `"Burned Out"`. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.
 
 
 ```{pyodide}

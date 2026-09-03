@@ -1584,7 +1584,7 @@ Hint
 </div>
 <div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
 <p>Agents do things. Here is a very small model where local action produces a global pattern.</p>
-<p>Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. No car can see the road, and nothing in the code mentions a traffic jam.</p>
+<p>Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. This generates a traffic jam, which is a block of cars that cannot move because they are all blocked by the car in front of them. It is the simplest emergent, which means a global pattern that arises from simple local rules.</p>
 <p>Fill in the one gap and run it and assess what happens.</p>
 <div class="cell" data-autorun="false">
 <div>
@@ -1603,7 +1603,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IHJhbmRvbVxuXG5j
 </ol>
 </div>
 <div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
-<p>You need to become literature in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: <code>"Fine"</code>, <code>"On Fire"</code>, <code>"Burned Out"</code>. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.</p>
+<p>You need to become literate in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: <code>"Fine"</code>, <code>"On Fire"</code>, <code>"Burned Out"</code>. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="pyodide-9" class="exercise-cell">
@@ -3754,7 +3754,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb17-1181"><a href="#cb17-1181" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-1182"><a href="#cb17-1182" aria-hidden="true" tabindex="-1"></a>Agents do things. Here is a very small model where local action produces a global pattern.</span>
 <span id="cb17-1183"><a href="#cb17-1183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-1184"><a href="#cb17-1184" aria-hidden="true" tabindex="-1"></a>Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. No car can see the road, and nothing in the code mentions a traffic jam.</span>
+<span id="cb17-1184"><a href="#cb17-1184" aria-hidden="true" tabindex="-1"></a>Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. This generates a traffic jam, which is a block of cars that cannot move because they are all blocked by the car in front of them. It is the simplest emergent, which means a global pattern that arises from simple local rules.</span>
 <span id="cb17-1185"><a href="#cb17-1185" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-1186"><a href="#cb17-1186" aria-hidden="true" tabindex="-1"></a>Fill in the one gap and run it and assess what happens.</span>
 <span id="cb17-1187"><a href="#cb17-1187" aria-hidden="true" tabindex="-1"></a></span>
@@ -3805,7 +3805,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb17-1234"><a href="#cb17-1234" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-1235"><a href="#cb17-1235" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise 4: the fire model, key components {#ex-1b-4}</span></span>
 <span id="cb17-1236"><a href="#cb17-1236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-1237"><a href="#cb17-1237" aria-hidden="true" tabindex="-1"></a>You need to become literature in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: <span class="in">`"Fine"`</span>, <span class="in">`"On Fire"`</span>, <span class="in">`"Burned Out"`</span>. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.</span>
+<span id="cb17-1237"><a href="#cb17-1237" aria-hidden="true" tabindex="-1"></a>You need to become literate in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: <span class="in">`"Fine"`</span>, <span class="in">`"On Fire"`</span>, <span class="in">`"Burned Out"`</span>. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.</span>
 <span id="cb17-1238"><a href="#cb17-1238" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-1239"><a href="#cb17-1239" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-1242"><a href="#cb17-1242" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>

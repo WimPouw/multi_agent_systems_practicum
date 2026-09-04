@@ -1455,13 +1455,29 @@ Forthcoming student model library with models created by students during the cou
 
 You can watch the recordings here if you are logged into edge browser with your account. Otherwise just follow the panopto link and log in with your credentials. **Remember** Please enjoy the online recordings, but if no one *as a consequence* shows up I might decide to stop recording.
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Recording Practicum 1a
 
 [Recording link to Panopto](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9c6fef3d-758a-4560-a0d6-b4b400b16663)
 ```{=html}
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
 <iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=9c6fef3d-758a-4560-a0d6-b4b400b16663&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
+style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"
+allowfullscreen
+allow="autoplay"
+aria-label="Practical 1a MAS 2026/2027">
+</iframe>
+</div>
+```
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Recording Practicum 1b
+
+[Recording link to Panopto](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8d0b2170-812c-4527-8e4a-b4bb00927137)
+```{=html}
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8d0b2170-812c-4527-8e4a-b4bb00927137&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
 style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"
 allowfullscreen
 allow="autoplay"

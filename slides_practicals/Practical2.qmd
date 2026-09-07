@@ -40,21 +40,19 @@ revealjs-plugins:
 
 - lets instead do the following, at the top we run:
 ```python
-import http.server
-import socketserver
+import solara.server.starlette
 import threading
 import webbrowser
 
-PORT = 8000
+# your model + page setup here
+page = SolaraViz(model, [...], name="My Model")
 
-def start_server():
-    handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", PORT), handler) as httpd:
-        httpd.serve_forever()
+# serve it in the background and open in browser
+def run():
+    solara.server.starlette.main(host="localhost", port=8765)
 
-# Start dashboard server in background thread
-threading.Thread(target=start_server, daemon=True).start()
-webbrowser.open(f'http://localhost:{PORT}'
+threading.Thread(target=run, daemon=True).start()
+webbrowser.open("http://localhost:8765")
 ```
 
 

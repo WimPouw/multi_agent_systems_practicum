@@ -1,6 +1,6 @@
 ---
-title: "Multi-Agent Systems Practicum 2"
-subtitle: "Translating a netlogo model to Python Mesa"
+title: "Multi-Agent Systems Practicum 2a"
+subtitle: "Crashcourse mesa functionality"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -20,35 +20,61 @@ revealjs-plugins:
 ---
 
 ## Recap content so far 
-#### Practicum 1 + lectures 1-2
+#### Practicum 1a and 1b
 
 * **Getting setup:** NetLogo and Python Mesa environment setup.
 * **Coding Style:** Briefly inspected some coding style differences in NetLogo and Python.
 * **Lectures**: Basics of agent-based modeling, Netlogo overview & inspection of model variety.
 
-## Practicum 2: Objectives
-
+## Practicum 2a: Objectives
+* Finish some excercises with basic models
+* How to run your app outside of jupyter notebook
 * **Crashcourse mesa functionality:** Introduction mesa key functionalities.
   - Data collection
   - Model + data visualization
   - Multi-iteration runs
   - Data saving and post-hoc plotting
 
-* **Translation:** Making a start in translating a netlogo model into python mesa.
+## Running your app outside of jupyter notebook
+- a handful of students cant display their solara dashboard in jupyter notebook
 
-## Agenda
-- Overview mesa functionality with Wim
-- Start of translation to netlogo model to python mesa
-- Challenge: Continue translation at home
+- lets instead do the following, at the top we run:
+```python
+import http.server
+import socketserver
+import threading
+import webbrowser
 
-## Part 1: Fully functional basic grid model
+PORT = 8000
+
+def start_server():
+    handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", PORT), handler) as httpd:
+        httpd.serve_forever()
+
+# Start dashboard server in background thread
+threading.Thread(target=start_server, daemon=True).start()
+webbrowser.open(f'http://localhost:{PORT}'
+```
+
+
+## Some further tinkering with models
+# Grid Model Questions (Open Question)
+Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in python mesa grid model?
+
+# Grid, network,  Model Questions (Use your own imagination)
+Make a copy of the grid models. And try to think of a simple thing you can add that make your model behave slightly more interesting from your perspective. Try to implement the change both in Netlogo and in Python.
+
+
+
+## Fully functional basic grid model
 - Lets inspect the "full functionality grid model" in mesa
   - Download from the [Practicum Landing Page](https://wimpouw.github.io/multi_agent_systems_practicum) model library section
 - Open the notebook `full_func_multiagent_grid.ipynb` in visual studio code (and make sure your mesa environment is activated)
 - Wim will guide you through the basic components of this mesa model
 
 ## Part 1: Crashcourse finished
-You know have **some** familiarity with:
+You now have **some** familiarity with:
 
   - Basic mesa model structure
   - Data collection

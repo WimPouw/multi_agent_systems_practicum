@@ -49,7 +49,7 @@ In the NetLogo grid model, what initializes the turtles position randomly?
 - `set heading direction`
 
 # Grid Model Questions {.quiz-question}
-What characterizes the agents move posibility? (google terms if needed)
+What characterizes the agents move posibility in netlogo? (google terms if needed)
 
 - [The agent can only move to a cell in a Von Neumann neighborhood]{.correct data-explanation="Correct! Since we have cardinal directions from move to move (up, down, left, right) without diagonal neighboring cells that the agent move to."}
 - The agent can only move to a cell in a Moore neighborhood
@@ -57,18 +57,11 @@ What characterizes the agents move posibility? (google terms if needed)
 - None of these
 
 # Grid Model Questions {.quiz-question}
-What does `possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]` represent?
+In python Mesa what does `possible_moves = [(x, (y+1)%h), ((x+1)%w, y), (x, (y-1)%h), ((x-1)%w, y)]` represent?
 
 - We move the agent to a random position
 - [The directions that the agent could go to with torus wrapping]{.correct data-explanation="Correct! These are the four adjacent cells, with modulo (%) providing torus wrapping, since if the position exceeds the grid boundary (set by height or width), the modulus ensures that the position is reset to 0 if exceeded."}
 - Diagonal movement options
-
-# Grid Model Questions {.quiz-question}
-Compare the implementation of the agent movement in NetLogo and Mesa.
-
-- [NetLogo sets direction and moves, Mesa selects coordinates directly]{.correct data-explanation="NetLogo sets the turtle's direction then moves forward 1 step, while Mesa agent does not have a direction and picks a new coordinate position from possible move locations."}
-- Both use the same movement implementation
-- Only Mesa calculates possible moves
 
 # Grid Model Questions (Open Question)
 Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in netlogo? What would you change in Python? Impress your neighbor, and explain what you did to them (and vice versa).

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Wim Pouw">
-  <title>Multi-Agent Systems Practicum 2</title>
+  <title>Multi-Agent Systems Practicum 2a</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,8 +194,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Multi-Agent Systems Practicum 2</h1>
-  <p class="subtitle">Translating a netlogo model to Python Mesa</p>
+  <h1 class="title">Multi-Agent Systems Practicum 2a</h1>
+  <p class="subtitle">Crashcourse mesa functionality</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -206,18 +206,22 @@ Wim Pouw
 </div>
 
 </section>
-<section id="recap-content-so-far" class="slide level2">
-<h2>Recap content so far</h2>
-<h4 id="practicum-1-lectures-1-2">Practicum 1 + lectures 1-2</h4>
+<section>
+<section id="recap-content-so-far" class="title-slide slide level1 center">
+<h1>Recap content so far</h1>
+
+</section>
+<h4 id="practicum-1a-and-1b">Practicum 1a and 1b</h4>
 <ul>
 <li><strong>Getting setup:</strong> NetLogo and Python Mesa environment setup.</li>
 <li><strong>Coding Style:</strong> Briefly inspected some coding style differences in NetLogo and Python.</li>
 <li><strong>Lectures</strong>: Basics of agent-based modeling, Netlogo overview &amp; inspection of model variety.</li>
-</ul>
-</section>
-<section id="practicum-2-objectives" class="slide level2">
-<h2>Practicum 2: Objectives</h2>
+</ul></section>
+<section id="practicum-2a-objectives" class="title-slide slide level1 center">
+<h1>Practicum 2a: Objectives</h1>
 <ul>
+<li>Finish some excercises with basic models</li>
+<li>How to run your app outside of jupyter notebook</li>
 <li><strong>Crashcourse mesa functionality:</strong> Introduction mesa key functionalities.
 <ul>
 <li>Data collection</li>
@@ -225,19 +229,58 @@ Wim Pouw
 <li>Multi-iteration runs</li>
 <li>Data saving and post-hoc plotting</li>
 </ul></li>
-<li><strong>Translation:</strong> Making a start in translating a netlogo model into python mesa.</li>
+<li>Maintain your python mesa notes in your own jupyter notebook</li>
 </ul>
 </section>
-<section id="agenda" class="slide level2">
-<h2>Agenda</h2>
+
+<section id="running-your-app-outside-of-jupyter-notebook" class="title-slide slide level1 center">
+<h1>Running your app outside of jupyter notebook</h1>
 <ul>
-<li>Overview mesa functionality with Wim</li>
-<li>Start of translation to netlogo model to python mesa</li>
-<li>Challenge: Continue translation at home</li>
+<li>a handful of students cant display their solara dashboard in jupyter notebook</li>
+<li>well find a solution</li>
 </ul>
 </section>
-<section id="part-1-fully-functional-basic-grid-model" class="slide level2">
-<h2>Part 1: Fully functional basic grid model</h2>
+
+<section id="solution-run-the-solara-dashboard-from-your-terminal" class="title-slide slide level1 center">
+<h1>Solution: Run the solara dashboard from your terminal</h1>
+<p>VS Code has a built-in terminal (<code>Ctrl+ or View → Terminal</code>). We can run solara on your <code>.ipynb</code>. It will check where you call page and open a new tab in your browser with the solara dashboard.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
+<span id="cb1-2"><a href=""></a><span class="ex">solara</span> run notebook_name.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to autorestart when you edit the notebook, you can add the <code>--autoreload</code> flag:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">solara</span> run your_notebook.ipynb <span class="at">--auto-restart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="if-the-solution-doesnt-work" class="title-slide slide level1 center">
+<h1>If the solution doesnt work</h1>
+<ul>
+<li>Visual studio code is not the problem…</li>
+<li>Practical computers for following along (this works)</li>
+<li>Next week ill see if we have another solution</li>
+</ul>
+</section>
+
+<section id="some-further-tinkering-with-models" class="title-slide slide level1 center">
+<h1>Some further tinkering with models</h1>
+
+</section>
+
+<section id="grid-model-questions-open-question" class="title-slide slide level1 center">
+<h1>Grid Model Questions (Open Question)</h1>
+<p>Lets say we now want to have the agents be able to move to any patch surrounding the current patch, including the diagonals. What would you change in python mesa grid model?</p>
+</section>
+
+<section id="grid-network-model-questions-use-your-own-imagination" class="title-slide slide level1 center">
+<h1>Grid, network, Model Questions (Use your own imagination)</h1>
+<p>Make a copy of the models. And try to think of a simple thing you can add that make your model behave slightly more interesting from your perspective. You can try to implement the change both in Netlogo and in Python.</p>
+</section>
+
+<section id="fire-model-open-question" class="title-slide slide level1 center">
+<h1>Fire model (Open Question)</h1>
+<p>Open the fire python mesa model. There is no dashboard. It just collects and plots some data from a running model. Could you implement a solaraviz however, based on what the basic models look like?</p>
+</section>
+
+<section id="fully-functional-basic-grid-model" class="title-slide slide level1 center">
+<h1>Fully functional basic grid model</h1>
 <ul>
 <li>Lets inspect the “full functionality grid model” in mesa
 <ul>
@@ -247,9 +290,10 @@ Wim Pouw
 <li>Wim will guide you through the basic components of this mesa model</li>
 </ul>
 </section>
-<section id="part-1-crashcourse-finished" class="slide level2">
-<h2>Part 1: Crashcourse finished</h2>
-<p>You know have <strong>some</strong> familiarity with:</p>
+
+<section id="crashcourse-finished" class="title-slide slide level1 center">
+<h1>Crashcourse finished</h1>
+<p>You now have <strong>some</strong> familiarity with:</p>
 <ul>
 <li><p>Basic mesa model structure</p></li>
 <li><p>Data collection</p></li>
@@ -260,60 +304,9 @@ Wim Pouw
 <li><strong>We might forget of course, so we can always revisit the “fullfunc”<sup>1</sup> model</strong></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>As in, it has all the funk</p></li></ol></aside></section>
-<section id="part-2-translating-a-netlogo-model-to-python-mesa" class="slide level2">
-<h2>Part 2: Translating a netlogo model to python mesa</h2>
-<ul>
-<li>With our knowledge of grid models, lets start to translate a netlogo model to python mesa</li>
-<li>Dispersal Netlogo model
-<ul>
-<li>Download from the <a href="https://example.com">Practicum Landing Page</a> (netlogo models section)</li>
-<li>Or download directly here: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_netlogo.rar">netlogo dispersal model .rar</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="part-2-the-dispersal-netlogo-model" class="slide level2">
-<h2>Part 2: The dispersal netlogo model</h2>
-<ul>
-<li>The Africa Origin hypothesis</li>
-<li>The model simulates the migration of early humans out of Africa</li>
-<li>Original paper (Young &amp; Bettinger, 1995)</li>
-<li>Lets inspect it together first</li>
-</ul>
-</section>
-<section id="lets-think-it-through" class="slide level2">
-<h2>Lets think it through</h2>
-<ul>
-<li><p>What are the agents, environment, and processes in the netlogo model?</p></li>
-<li><p>How can we represent these in python mesa?</p></li>
-<li><p>What data do we want to collect?</p></li>
-<li><p>How can we visualize this data?</p></li>
-<li><p>Wait, can we start simple? And break up the complexity?</p></li>
-</ul>
-</section>
-<section id="lets-create-a-jupyter-notebook-for-making-a-basic-dispersal-model-from-scratch" class="slide level2">
-<h2>Lets create a jupyter notebook for making a basic dispersal model from scratch</h2>
-<p>In the first Markdown chunk of the notebook:</p>
-<ul>
-<li>Title it “Basic Dispersal Model”</li>
-<li>Write a brief description of the model and its purpose</li>
-</ul>
-<p>First python chunck:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href=""></a><span class="im">import</span> mesa</span>
-<span id="cb1-4"><a href=""></a><span class="im">from</span> mesa.discrete_space <span class="im">import</span> CellAgent, OrthogonalMooreGrid</span>
-<span id="cb1-5"><a href=""></a><span class="im">from</span> mesa.visualization <span class="im">import</span> SolaraViz, make_plot_component, make_space_component</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="live-translation-of-the-dispersal-model-part-1" class="slide level2">
-<h2>Live translation of the dispersal model (Part 1)</h2>
-<ul>
-<li>Create agent class and let it do things</li>
-<li>Create model class, collect some data</li>
-<li>Let the agents shout out “Hey I am agent # x and I am at position (x,y)”</li>
-</ul>
 
-</section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>As in, it has all the funk</p></li></ol></aside></section>
+
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

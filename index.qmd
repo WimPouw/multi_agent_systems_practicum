@@ -75,14 +75,14 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Model library:** Start your personal annotated model library.
 * **In class:** Installing dependencies and error-handling.
 
-## Practicum 1b {.active}
+## Practicum 1b 
 
 * **Coding style:** Compare NetLogo and Python in the grid, continuous, and network models.
 * **Movement logic:** Quiz questions on movement rules and torus wrapping.
 * **Extra models:** Flocking and fire models as further reference.
 * **In class:** Identify Mesa components by studying model code, and continue your notebook template.
 
-## Practicum 2a
+## Practicum 2a {.active}
 
 * **Crashcourse:** Mesa's key functionality via the full-functionality grid model.
 * **Pipeline:** Data collection, Solara visualization, multi-iteration batch runs, data saving, post-hoc plotting.
@@ -650,7 +650,7 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="False"}
 
 ## Full functionality grid model
 * [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.zip){download=""}
@@ -683,7 +683,7 @@ We will not actually give you the python version of the to be translated model, 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Flocking model
 * [Flocking Model Folder Python](./models/flocking_model_python.zip){download=""}
 * [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip){download=""}
@@ -717,7 +717,7 @@ We will not actually give you the python version of the to be translated model, 
 [Open slides in new window](./slides_practicals/Practical1.html)
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 1b
 
 <iframe src="slides_practicals/Practical1b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
@@ -726,13 +726,13 @@ We will not actually give you the python version of the to be translated model, 
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 2a
-<!--
-<iframe src="slides_practicals/Practical3.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+<iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical3.html)
--->
+
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
@@ -1067,7 +1067,7 @@ The loop body calls the method on the loop variable. For the count, the conditio
 
 ::::
 
-## Practicum 1b {#ex-1b .active}
+## Practicum 1b {#ex-1b}
 
 :::: {.panel-tabset} 
 
@@ -1278,18 +1278,94 @@ Then:
 Both gaps are one of the three condition names defined on the first line.
 :::
 
-
 ::::
 
-## Practicum 2a {#ex-2a}
+## Practicum 2a {#ex-2a .active}
+
+Mesa's DataCollector is quite simple. The DataCollector is called at every step, and `batch_run` is a loop inside a loop (but with parralelization). You could of course code up such a thing by hand. Run this first.
+
+```{pyodide}
+#| autorun: true
+import random
+
+class Model:
+    def __init__(self, numagents=2, seed=None):
+        self.random = random.Random(seed)
+        self.xs = [self.random.randrange(10) for _ in range(numagents)]
+
+    def step(self):
+        self.xs = [(x + self.random.choice([-1, 1])) % 10 for x in self.xs]
+
+print("ready")
+```
 
 :::: {.panel-tabset}
 
-### Exercise 1 {#ex-2a-1}
-TBA
+### Exercise 1: a model reporter {#ex-2a-1}
 
-### Exercise 2 {#ex-2a-2}
-TBA
+In the fullfunc notebook, `maxdistance(model)` is a plain function that takes the model and returns one number. Mesa just calls it this reporter function for you.
+
+Write `spread`, returning the distance between the leftmost and rightmost agent.
+
+```{pyodide}
+#| autorun: false
+def spread(model):
+    return max(model.xs) - ???
+
+print(spread(Model(numagents=10, seed=1)))   # 8
+```
+
+::: {.callout-tip collapse="true" title="Hint"}
+The widest gap in a list of numbers is the largest minus the smallest.
+:::
+
+### Exercise 2: collecting over time {#ex-2a-2}
+
+A DataCollector calls the reporter every step and appends the result to a growing table. Do that by hand. You should get 21 numbers: one from setup, plus one per step.
+
+```{pyodide}
+#| autorun: false
+def spread(model):
+    return max(model.xs) - min(model.xs)
+
+m = Model(numagents=10, seed=1)
+history = [spread(m)]        # collect once at setup, as the notebook does
+
+for _ in range(20):
+    m.step()
+    ???
+
+print(len(history), history)
+```
+
+::: {.callout-tip collapse="true" title="Hint"}
+The line in the loop is the simlar as the one above it, appending after each step instead.
+:::
+
+In Mesa calling the spread function via the DataCollector looks like this: `mesa.DataCollector(model_reporters={"spread": spread})` plus `self.datacollector.collect(self)` at the end of `step`.
+
+### Exercise 3: a batch run is two loops {#ex-2a-3}
+
+One run tells you little about your typical model dynamics. Different seeds will give different starting positions. `batch_run` runs every parameter setting several times. Handcoded it would look something like this: outer loop over parameters, inner loop over seeds. Fill in both. You want 15 rows of result data.
+
+```{pyodide}
+#| autorun: false
+def spread(model):
+    return max(model.xs) - min(model.xs)
+
+results = []
+for numagents in [2, 5, 10]:
+    for seed in range(???):
+        m = Model(numagents=numagents, seed=seed)
+        for _ in range(20):
+            m.step()
+        results.append({"numagents": numagents, 
+            "seed": seed, "spread": ???})
+
+print(len(results), results[:3])
+```
+
+Note in Mesa this would like look: `mesa.batch_run(Model, parameters={"numagents": (2, 5, 10)}, iterations=5, max_steps=20)`. Same three nested things, as keyword arguments.
 
 ::::
 

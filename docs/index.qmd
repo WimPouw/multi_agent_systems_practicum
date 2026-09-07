@@ -4,9 +4,9 @@ subtitle: "Agent-based modeling using Netlogo and Python"
 date: "today"
 author:
   - name: Wim Pouw ([www.wimpouw.com](https://wimpouw.com/))
-    affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
+    affiliation: "Department of Computational Cognitive Science, Tilburg University, Netherlands"
   - name: Travis Wiltshire ([travisjwiltshire.com](https://travisjwiltshire.com/))
-    affiliation: "Department of Cognitive Science and AI, Tilburg University, Netherlands"
+    affiliation: "Department of Computational Cognitive Science, Tilburg University, Netherlands"
 contact:
   - name: Wim Pouw
     email: w.pouw@tilburguniversity.edu
@@ -15,16 +15,26 @@ contact:
 bibliography: quarto_dependencies/references/refs.bib
 theme: flatly
 css: quarto_dependencies/styles/styles.css
+pyodide:
+  packages:
+    - numpy
 format:
-  html:
+  live-html:
+    format-links: false
+    include-after-body:
+    - theme/chalk-controls.html
     toc: true
     toc-location: left
     toc-title: "Contents"
     toc-depth: 3
     number-sections: false
-    code-fold: true
+    code-fold: false
     code-tools: true
-engine: quarto
+  live-revealjs:
+    theme: simple
+    chalkboard: true
+    
+engine: knitr
 ---
 
 ![](images/placeholder.gif)
@@ -58,44 +68,95 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 ::: {.panel-tabset}
 
-## Practicum 1
+## Practicum 1a 
 
-* **Overview:** Introduction to the practicum.
-* **Setup:** NetLogo and Python Mesa environment setup.
-* **Coding Style:** Study coding style differences in NetLogo and Python, focusing on the basic models (and fire model).
-* **Basics:** Initialize and investigate basic setups.
+* **Setup:** Install and configure NetLogo, Anaconda, Python Mesa, and VS Code.
+* **First run:** Run all basic NetLogo and Mesa models (grid, continuous, network).
+* **Model library:** Start your personal annotated model library.
+* **In class:** Installing dependencies and error-handling.
 
-## Practicum 2 
+## Practicum 1b 
 
-* **Crashcourse:** Understand what key functionality Mesa has for agent-based modeling.
-* **Dispersal:** Learn about the dispersal model and deconstruct it conceptually for translation.
-* **Part I: Python implementation from scratch:** Learn how to begin translating a NetLogo model to Python Mesa.
+* **Coding style:** Compare NetLogo and Python in the grid, continuous, and network models.
+* **Movement logic:** Quiz questions on movement rules and torus wrapping.
+* **Extra models:** Flocking and fire models as further reference.
+* **In class:** Identify Mesa components by studying model code, and continue your notebook template.
 
-## Practicum 3
+## Practicum 2a {.active}
 
-* **Implementation from scratch Part II:** We continue to practice model translation.
-* **Solving problems yourself:** Visualization,  agent behavior, and data plotting.
+* **Crashcourse:** Mesa's key functionality via the full-functionality grid model.
+* **Pipeline:** Data collection, Solara visualization, multi-iteration batch runs, data saving, post-hoc plotting.
+* **In class:** Extend your notebook template with notes on Mesa's optional components.
 
-## Practicum 4  
+## Practicum 2b
 
-* **Recap:** Recap of previous materials.
-* **Creative adaptation:** Create your own model variations.
-* **Create measurements**. Design measures and use Mesa's data collector and native plotting.
+* **Dispersal model:** Introduction via the Africa Origin hypothesis.
+* **Deconstruction:** Take apart agents, environment, and processes conceptually before translating.
+* **Translation Part I:** Agent class, model class, grid setup. Checkpoint: agents report their position.
+* **In class:** Start translating, working from the notebook template you already built.
 
-## Practicum 5 {.active}
-* **Introduction to adaptive agents**: How to have your agents have memory and adapt.
-* **Models:** Detailed understanding of El Farol model.
-* **Introduction to Parameter sweeps**: Learn how to do parameter sweeps and report results.
+## Practicum 3a
 
-## Practicum 6
-* **Intro to agent-sets**: Code up your own simple model and collect some data.
-* **Analysis**: Statistical analysis and visualization of results.
+* **Translation Part II:** Add Solara visualization with sliders.
+* **Agent hatching:** Implement agent duplication based on dispersal rate.
+* **Verify:** Run the model and check the behavior is what you expect.
+* **In class:** Continue translating the model.
+
+## Practicum 3b
+
+* **Measurement:** Add a DataCollector to measure percentage of grid occupied.
+* **Live plotting:** Plot data as it comes in with `make_plot_component`.
+* **Complexify:** Creatively extend the model, for example death rate, obstacles, or virus spread.
+* **In class:** Make meaningful adjustments while measuring their effects, and work with visualizations.
+
+## Practicum 4a
+
+* **Recap:** Revisit the dispersal and diffusion model.
+* **Agent death:** Implement removal with `self.remove()`.
+* **Design a measure:** Spatial diffusion as variance in x and y coordinates.
+
+## Practicum 4b
+
+* **Creative adaptation:** Tinker with the continuous and network models.
+* **Custom measures:** Design and collect your own measure for each.
+* **In class:** Plot results using DataCollector and `make_plot_component`.
+
+## Practicum 5a
+
+* **Adaptive agents:** How agents get memory and adapt.
+* **El Farol:** Bounded rationality, adaptive strategy selection, emergent collective patterns.
+* **In class:** Quiz questions on the prediction formula, strategy weights, and adaptive mechanics.
+
+## Practicum 5b
+
+* **New measure:** Add prediction error to the El Farol DataCollector.
+* **Parameter sweeps:** Batch runs with `mesa.batch_run`, varying number of strategies (1/5/10/20) and memory length (1/5/10/20).
+* **Reporting:** Save results and find the combination with lowest median prediction error.
+* **In class:** Code up parameter sweeps and data collection.
+
+## Practicum 6a
+
+* **Group projects:** Overview of custom visualization resources.
+* **Agent-sets:** Introduced via the Wolf-Sheep predator-prey model.
+* **Broad sweep:** 100 steps, find settings where neither population goes extinct, assess how sheep-to-wolf ratio affects stability.
+* **In class:** Code up parameter sweeps and start the data analysis.
+
+## Practicum 6b
+
+* **Deep sweep:** 500 steps and 5 seeds on the best settings from 6a.
+* **Time series analysis:** Plot population dynamics, measure oscillation peaks with `scipy.signal.find_peaks`, assess periodicity.
+* **Workflow:** Discuss the ABM analysis workflow you can reuse in your group project.
+* **In class:** Finish the analysis and visualization, plus Q&A.
+
+## Practicum 7
+
+* **Practicum 7 (advanced):** A practical introduction to (multi-agent) reinforcement learning.
 
 :::
 
 ## Installation
 
-::: {.callout-note .callout-download collapse="true"}
+::::: {.callout-note .callout-download collapse="true"}
 ## Installation Section
 
 :::: {.callout-note .callout-download collapse="true"}
@@ -108,7 +169,11 @@ You can download Netlogo from the official website: [Netlogo Download](https://c
 :::: {.callout-note .callout-download collapse="true"}
 ## Installation guide python using anaconda + mesa
 
-This installation I have tested on the practical machines and on a windows PC. Feel free to deviate if you have different preferences for your python installation.
+{{< video https://wimpouw.com/videos/introsettinguppythonmesa.mp4 
+    width="400" 
+    height="300" >}}
+
+This installation I have tested on the practical machines and on a windows PC and Linux Laptop.
 
 Install anaconda [quick guide here](https://researchguides.uoregon.edu/library_workshops/install_anaconda).
 
@@ -116,46 +181,59 @@ Install Visual Studio Code from [here](https://code.visualstudio.com/download) (
 
 After installing anaconda, you can install mesa using the following command in your terminal. Run each line seperately (so dont copy paste the entire block at once in your anaconda prompt):
 
+## Method 1
 ```bash
 conda create -n mesa-env python=3.11
 
 conda activate mesa-env
 
-pip install mesa[all]==3.2.0
+pip install "mesa[rec]==3.2.0"
 
-pip install jupyter notebook scipy seaborn pandas numpy matplotlib ipykernel
+pip install jupyter notebook scipy seaborn pandas altair ipykernel
+
+pip install "solara==1.58.2" "solara-assets==1.58.2" "ipyvuetify<2" "ipyvue<2"
 ```
 
+## Method 2
+Download the environment.yml file here [environment.yml](./quarto_dependencies/mesa_env/environment.yml){download=""} and run the following command in your terminal:
+
+```bash
+conda env create -f environment.yml
+conda activate mesa-env
+```
 We will use Visual Studio Code which has a built-in jupyter notebook viewer. We will do that as the default. Do note that you need to "trust" the notebook or the model folder when you open it for the first time (otherwise you get issues activating your environment). When you run your notebook chunks, make sure you select the right kernel (mesa-env).
-
-::::: {.callout-note .callout-download collapse="true"}
-## For mac OS: Installation guide python using anaconda + mesa
-For Mac users the above procedure does not work and you need to follower a slightly different procedure. After installing anaconde you need to run conda commands in your terminal instead (you can search for your "terminal" in the MAC OS search panel). And another key difference is that we do not explicitly set the version for mesa (and you need download extra dependencies such as networkx in addition). So MAC OS users please look below:
-
-```bash
-conda create -n mesa-env python=3.11
-
-conda activate mesa-env
-
-pip install mesa
-
-pip install jupyter notebook seaborn pandas numpy matplotlib networkx altair solara
-
-```
-:::::
 
 ::::
 
+::: {.callout-warning collapse="true"}
+## Troubleshooting
+
+Most errors come from your python interpreter pointing to the wrong python. If you have multiple python installations, this is a common source of errors. Here is to properly connect visual studio code to your anaconda python installation:
+
+1. In Visual Studio Code, press `Ctrl + Shift + P`
+2. Type "Python: Select Interpreter"
+3. Select the python interpreter that is part of your anaconda installation (e.g., `C:\Users\yourusername\anaconda3\python.exe`)
+4. Restart visual studio code and try again
+
+From there you can also select your anaconda environments, like the one you just made (`mesa-env`).
+
+If you still have issues, let me know and well troubleshoot.
 :::
 
+:::::
+
+
+
+
+
 ## Some basic differences in coding style
-::: {.panel-tabset}
+::::: {.panel-tabset}
 
 ## Python
 
-::: {.panel-tabset}
+:::: {.panel-tabset}
 
-## Basics
+### Basics
 ```python
 # This is a comment in Python - use # for single line comments
 print("Hello, World!")  # This prints a message to the console
@@ -169,7 +247,7 @@ my_list = [1, 2, 3, 4]
 random_item = random.choice(my_list)  # Pick random item from list
 ```
 
-## Set up agent for grid
+### Set up agent for grid
 ```python
 # Import Mesa - the agent-based modeling framework
 import mesa
@@ -195,7 +273,7 @@ class SimpleGridModel(mesa.Model):
         SimpleGridAgent(self, random_cell)
 ```
 
-## Set up agent for continuous
+### Set up agent for continuous
 ```python
 # Import Mesa components for continuous (smooth) movement
 import mesa
@@ -233,7 +311,7 @@ class SimpleModel(mesa.Model):
         self.agents.add(agent)
 ```
 
-## Grid movement
+### Grid movement
 ```python
 def step(self):
     # Get current position
@@ -262,7 +340,7 @@ def step(self):
     self.agents.do("step")
 ```
 
-## Continuous movement
+### Continuous movement
 ```python
 def step(self):
     """Agent's step method - called every simulation tick"""
@@ -277,7 +355,7 @@ def step(self):
     self.agents.do("step")
 ```
 
-## Complete grid example
+### Complete grid example
 ```python
 # Import Mesa components for grid-based modeling
 import mesa
@@ -344,7 +422,7 @@ page = SolaraViz(model, [make_space_component(agent_portrayal=agent_portrayal)],
                 name="Grid Agent")
 ```
 
-## Complete continuous example
+### Complete continuous example
 ```python
 # Import all necessary libraries
 import numpy as np  # For mathematical operations
@@ -409,13 +487,13 @@ page = SolaraViz(model, [make_space_component(agent_portrayal=agent_draw,
                         backend="matplotlib")], name="Continuous Agent")
 ```
 
-:::
+::::
 
 ## NetLogo
 
-::: {.panel-tabset}
+:::: {.panel-tabset}
 
-## Basics
+### Basics
 ```netlogo
 ;; This is a comment in NetLogo - use semicolons
 print "Hello, World!"  ;; This prints a message when run in the command center
@@ -429,7 +507,7 @@ let my-list [1 2 3 4]
 let random-item one-of my-list  ;; Pick random item from list
 ```
 
-## Set up agent for grid
+### Set up agent for grid
 ```netlogo
 to setup
   clear-all              ;; Clear the world and reset everything
@@ -451,7 +529,7 @@ to color-grid
 end
 ```
 
-## Set up agent for continuous
+### Set up agent for continuous
 ```netlogo
 to setup
   clear-all                    ;; Clear everything and start fresh
@@ -464,7 +542,7 @@ to setup
 end
 ```
 
-## Grid movement
+### Grid movement
 ```netlogo
 to go
   ask turtles [                          ;; Tell all turtles to:
@@ -477,7 +555,7 @@ to go
 end
 ```
 
-## Continuous movement
+### Continuous movement
 ```netlogo
 to go
   ask turtles [                    ;; Tell all turtles to:
@@ -488,7 +566,7 @@ to go
 end
 ```
 
-## Complete grid example
+### Complete grid example
 ```netlogo
 ;; Complete NetLogo model for grid-based random walk
 
@@ -523,7 +601,7 @@ to go
 end
 ```
 
-## Complete continuous example
+### Complete continuous example
 ```netlogo
 ;; Complete NetLogo model for continuous space movement
 
@@ -546,118 +624,203 @@ to go
 end
 ```
 
-:::
+::::
 
-:::
+:::::
+
 
 # Model library for this course
-Note we have stored the models in a .rar file. You can download the models and extract them using a program like WinRAR or 7-Zip.
+Note we have stored the models in a .zip file. You can download the models and extract them (otherwise look up how to on the web).
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"} 
 
 ## Basic models
-* [Basic Grid, Continuous, Network Model Folder Python](./models/basic_python_models.rar)
-* [Basic Grid, Continuous, Network Model Folder Netlogo](./models/basic_netlogo_models.rar)
+* [Basic Grid, Continuous, Network Model Folder Python](./models/basic_python_models.zip){download=""}
+
+* [Basic Grid, Continuous, Network Model Folder Netlogo](./models/basic_netlogo_models.zip){download=""}
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 
+## Custom visualizations example models
+Examples of models with custom space and plot visualizations (e.g., creating animations without solara).
+
+* [Example custom visualizations folder](./models/examples_custom_visualizations.zip){download=""}
+
+:::
+
+::: {.callout-note .callout-download collapse="False"}
+
 ## Full functionality grid model
-* [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.rar)
+* [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.zip){download=""}
 
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Dispersal model and DIY
-* [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.rar)
+* [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip){download=""}
 
 We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature). For the final fully implemented one one we are going to give you a hint and you can check out a start here:
 
 ### Translating part II (Practicum 3)
-* [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.rar)
+* [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.zip){download=""}
 
 ### Simple Dispersal Model After Practicum 3
-* [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.rar)
+* [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.zip){download=""}
 
 ### Python challenge
-* [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.rar)
+* [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.zip)
+* [Dispersal Model with Worldmap Folder Python (complete)](./models/dispersal_python_model_complete.zip)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"} 
 
 ## Criticality Fire model
-* [Download Criticality Fire Model Folder Python](./models/fire_model_python.rar)
-* [Download Criticality Fire Model Folder Netlogo](./models/fire_model_netlogo.rar)
+* [Download Criticality Fire Model Folder Python](./models/fire_model_python.zip){download=""}
+* [Download Criticality Fire Model Folder Netlogo](./models/fire_model_netlogo.zip){download=""}
 
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Flocking model
-* [Flocking Model Folder Python](./models/flocking_model_python.rar)
-* [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.rar)
+* [Flocking Model Folder Python](./models/flocking_model_python.zip){download=""}
+* [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip){download=""}
 :::
 ::: {.callout-note .callout-download collapse="true"}
 ## El Farol Model
-* [El Farol Model Folder Python](./models/elfarol_model_python.rar)
-  * [El Farol Solution Practicum 5](./models/elfarol_model_extended.rar)
-* [El Farol Model Folder Netlogo](./models/elfarol_model_netlogo.rar)
+* [El Farol Model Folder Python](./models/elfarol_model_python.zip){download=""}
+  * [El Farol Solution Practicum 5](./models/elfarol_model_extended.zip){download=""}
+* [El Farol Model Folder Netlogo](./models/elfarol_model_netlogo.zip){download=""}
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Amphor Model
 * TODO Python
-* [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.rar)
+* [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.zip){download=""}
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Wolf-Sheep Model
-* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_netlogo.rar)
-* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_python.rar)
+* [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.zip){download=""}
+* [Wolf-Sheep Model Folder Python (practicum 6 solution)](./models/wolfsheep_solution_python.zip)
+* [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.zip){download=""}
 :::
 
-# Slides and exercises
+# Slides
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides practicum 1
+## Slides practicum 1a
 <iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical1.html)
 :::
+
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 2
+## Slides Practicum 1b
+
+<iframe src="slides_practicals/Practical1b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1b.html)
+
+:::
+
+::: {.callout-note .callout-download collapse="false"}
+## Slides Practicum 2a
+
+<iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical3.html)
+
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 2b
+<!--
+<iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical4.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Practicum 3a
+<!--
+
+<iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical5.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="false"}
+## Slides Practicum 3b
+<!--
+
+<iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical6.html)
+-->
+:::
+
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides practicum 4a
+<!--
+
+<iframe src="slides_practicals/Practical1.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical1.html)
+-->
+:::
+::: {.callout-note .callout-download collapse="true"}
+
+## Slides Practicum 4b
 <iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical2.html)
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 3
+## Slides Practicum 5a
+<!--
 <iframe src="slides_practicals/Practical3.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical3.html)
+-->
 :::
 
+
+
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 4
+## Slides Practicum 5b
+<!--
+
 <iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical4.html)
-:::
 
-::: {.callout-note .callout-download collapse="false"}
-## Slides Practicum 5
-<iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
-
-[Open slides in new window](./slides_practicals/Practical5.html)
+-->
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 6
+## Slides Practicum 6a
+<!--
+<iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical5.html)
+-->
+:::
+
+::: {.callout-note .callout-download collapse="false"}
+## Slides Practicum 6b
+
+<!--
 <iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical6.html)
+-->
 :::
 
 # Key background literature for the models
@@ -755,6 +918,567 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 [Download PDF](./pdfs/Romanowska_ABMA_Chapter_6.pdf)
 :::
 
+# Live exercises
+
+::::: {.panel-tabset}
+
+## Practicum 1a {#ex-1a}
+
+Every Mesa model you will read this course is written as a set of classes. If class syntax is unfamiliar you might have difficulty reading the code. These four exercises are about reading that python syntax, not about agent-based modeling yet.
+
+:::: {.panel-tabset}
+
+### Exercise 1: instances {#ex-1a-1}
+
+A class is a template that you can reuse and summon instances of. Making an instance from it gives you one object with its own copy of the attributes. `self` is whichever instance the method is currently running on (you can imagine each instance having a `self`).
+
+Run this and note that `a` and `b` have separate names.
+
+```{pyodide}
+#| autorun: false
+class Agent:
+    def __init__(self, name):
+        self.name = name            # Attribute
+
+    def greet(self):                # Method that uses the attribute
+        print(f"I am {self.name}")  
+
+a = Agent("turtle-0")
+b = Agent("turtle-1")
+a.greet()
+b.greet()
+```
+
+Now it is your turn. Add a third agent called `c` with the name "turtle-2" and have it greet. Then predict, before running, what `a.name` prints after you add the line `a.name = "renamed"`.
+
+```{pyodide}
+#| autorun: false
+class Agent:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"I am {self.name}")
+
+a = Agent("turtle-0")
+b = Agent("turtle-1")
+???
+
+a.name = "renamed"
+a.greet()
+b.greet()
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+You make an instance by calling the class like a function: `c = Agent(...)`. Changing `a.name` touches only `a`, because each instance holds its own attributes.
+:::
+
+### Exercise 2: attributes and methods {#ex-1a-2}
+
+`__init__` runs once, when the instance is made, and sets up what the object knows. Other methods are things it can do later.
+
+Fill the two gaps so the sheep has an `energy` attribute and an `eat` method that adds 5. It should print 15.
+
+```{pyodide}
+#| autorun: false
+class Sheep:
+    def __init__(self, energy):
+        self.??? = energy
+
+    def eat(self):
+        self.energy ??? 5
+
+s = Sheep(10)
+s.eat()
+print(s.energy)
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+The name you store under is the name you read back later. To add in place, use `+=`.
+:::
+
+### Exercise 3: methods calling methods {#ex-1a-3}
+
+Mesa agents almost always have one method that calls several others. This is the shape you will see everywhere: a `step` that delegates.
+
+Complete `step` so the sheep first moves and then eats. It should print `moved`, `ate`, and then 13.
+
+```{pyodide}
+#| autorun: false
+class Sheep:
+    def __init__(self, energy):
+        self.energy = energy
+
+    def move(self):
+        self.energy -= 2
+        print("moved")
+
+    def eat(self):
+        self.energy += 5
+        print("ate")
+
+    def step(self):
+        self.???()
+        self.???()
+
+s = Sheep(10)
+s.step()
+print(s.energy)
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+Inside a method, other methods on the same object are reached through `self`, and you still need the brackets to actually call them. Leave the brackets off and nothing happens.
+:::
+
+### Exercise 4: many instances at once {#ex-1a-4} 
+
+A model holds a collection of agents and tells all of them to act. In Mesa that is `self.agents.do("step")`. Underneath, it is just a loop.
+
+Make ten sheep with random starting energy, step each one, then print how many have energy above 12.
+
+```{pyodide}
+#| autorun: false
+import random
+
+class Sheep:
+    def __init__(self, energy):
+        self.energy = energy
+
+    def step(self):
+        self.energy += random.choice([-2, 5])
+
+flock = [Sheep(random.randrange(8, 13)) for _ in range(10)]
+
+for sheep in flock:
+    ???
+
+above = sum(1 for s in flock if ???)
+print([s.energy for s in flock])
+print(above, "sheep above 12")
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+The loop body calls the method on the loop variable. For the count, the condition compares each sheep's energy attribute against 12.
+:::
+
+::::
+
+## Practicum 1b {#ex-1b}
+
+:::: {.panel-tabset} 
+
+### Exercise 1: why super() {#ex-1b-1}
+
+When you write `class SimpleGridAgent(CellAgent)` your class inherits from `CellAgent`. The parent's `__init__` does bookkeeping: registering the agent with the model, handing out a unique id, attaching a random generator. Writing your own `__init__` overwrites it. However, when we use `super().__init__(...)` we can run the parent's version first so that we get to inherit those settings.
+
+Run this, then comment out the `super()` line and run it again. What error do you get, and why?
+
+```{pyodide}
+#| autorun: false
+class BaseAgent:
+    def __init__(self, model):
+        self.model = model
+        self.unique_id = model.next_id()
+
+class MyAgent(BaseAgent):
+    def __init__(self, model, colour):
+        super().__init__(model)     # comment me out
+        self.colour = colour
+
+class FakeModel:
+    def __init__(self):
+        self._id = 0
+    def next_id(self):
+        self._id += 1
+        return self._id
+
+a = MyAgent(FakeModel(), "green")
+print(a.unique_id, a.colour)
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+Read the error message carefully. Which attribute is missing, and which class was supposed to create it?
+:::
+
+### Exercise 2: what super() does {#ex-1b-2}
+
+In exercise 1 leaving out `super()` gave you an error. But what if you leave it out in a model that does not use the missing attribute? The model will run, but the agent will never be asked to act.
+
+In mesa, `super().__init__(model)` is what registers the agent into `model.agents`, and that collection is what `self.agents.do("step")` loops over. An agent that never registers still exists, still has a fine `step` method, but it is just never asked to do anything. Nothing will crashe, but your model simply has fewer agents than you think.
+
+Predict the three numbers before you run this.
+
+```{pyodide}
+#| autorun: false
+class BaseAgent:
+    def __init__(self, model):
+        self.model = model
+        self.unique_id = len(model.agents)
+        model.agents.append(self)      # the registration step
+
+class GoodAgent(BaseAgent):
+    def __init__(self, model):
+        super().__init__(model)
+        self.acted = 0
+
+    def step(self):
+        self.acted += 1
+
+class LoneAgent(BaseAgent):
+    def __init__(self, model):
+        self.acted = 0                 # no super() call
+
+    def step(self):
+        self.acted += 1
+
+class MiniModel:
+    def __init__(self):
+        self.agents = []
+
+    def step(self):
+        for agent in self.agents:      # this is mesa's self.agents.do("step")
+            agent.step()
+
+model = MiniModel()
+good = GoodAgent(model)
+lone = LoneAgent(model)
+
+for _ in range(3):
+    model.step()
+
+print("agents in the model:", len(model.agents))
+print("good acted:", good.acted, "times")
+print("lone acted:", lone.acted, "times")
+```
+
+Now fix `LoneAgent` so it joins the model and both agents act three times.
+
+::: {.callout-tip collapse="true"}
+## Hint
+One line at the top of `LoneAgent.__init__`. Note that a missing `super()` can be a silent bug, not a crash, so get in the habit of printing `len(self.agents)` after setup. In fact get in the habit of printing certain dynamic variables in general.
+:::
+
+### Exercise 3: agents doing things {#ex-1b-3}
+
+Agents do things. Here is a very small model where local action produces a global pattern.
+
+Forty cells of road, bent into a ring (so the end is connected to the start), with twenty-four cars on it. Each car follows one rule: move forward one cell if the cell ahead is free, otherwise stay put. This generates a traffic jam, which is a block of cars that cannot move because they are all blocked by the car in front of them. It is the simplest emergent, which means a global pattern that arises from simple local rules.
+
+Fill in the one gap and run it and assess what happens.
+
+```{pyodide}
+#| autorun: false
+import random
+
+class Car:
+    def __init__(self, model, position):
+        self.model = model
+        self.position = position
+
+    def step(self, taken):
+        ahead = (self.position + 1) % self.model.n_cells   # ring, so modulo again
+        if ahead in taken:
+            return                    # blocked, stay where you are
+        self.position = ???           # otherwise move up
+
+class Road:
+    def __init__(self, n_cells=40, n_cars=24, seed=3):
+        self.random = random.Random(seed)
+        self.n_cells = n_cells
+        self.agents = [Car(self, p) for p in self.random.sample(range(n_cells), n_cars)]
+
+    def step(self):
+        taken = {a.position for a in self.agents}    # everyone looks before anyone moves
+        for agent in self.agents:
+            agent.step(taken)
+
+    def show(self, t):
+        cells = ["."] * self.n_cells
+        for agent in self.agents:
+            cells[agent.position] = "C"
+        print(f"{t:>3} " + "".join(cells))
+
+road = Road()
+road.show(0)
+for t in range(1, 26):
+    road.step()
+    road.show(t)
+```
+
+Two things to look at:
+
+1. Follow the block of `CCCC` down the rows. Every car in it is trying to go right, and the block itself travels left, one cell per tick. That is a traffic jam! We have simulated a traffic jam! The rest of the road settles into `C.C.C.` where everybody moves every tick.
+2. Lower `n_cars` to 12 and run again (add an input to an argument that belongs to `Road()`). You will see that there are no jams. So somewhere in between is a density where the road tips from flowing to jamming (which is the same kind of tipping point you will meet as critical density in the fire model; the beauty of critical values).
+
+
+### Exercise 4: the fire model, key components {#ex-1b-4}
+
+You need to become literate in reading model code in this course. The fire model from python mesa was still perhaps complex at first glance. Lets start even simpler. Remember, that the fire model has one kind of agent, a tree, and the tree is a state machine with three states: `"Fine"`, `"On Fire"`, `"Burned Out"`. Below is a very small version of it, with a row of trees instead of a grid. The fire spreads to neighbours, and the tree that is on fire burns out.
+
+
+```{pyodide}
+#| autorun: false
+FINE, ON_FIRE, BURNED = "Fine", "On Fire", "Burned Out"
+
+class Tree:
+    def __init__(self, forest, x):
+        self.forest = forest
+        self.x = x
+        self.condition = ???            # what state does a tree start in?
+
+    def neighbours(self):
+        return [t for t in self.forest if abs(t.x - self.x) == 1]
+
+    def step(self):
+        if self.condition == ON_FIRE:
+            for neighbour in self.neighbours():
+                if neighbour.condition == FINE:
+                    neighbour.condition = ???     # what happens to that neighbour?
+            self.condition = BURNED               # and I am done burning
+
+ground = "TTTTTTTTTTTT"        # T is a tree, a space is bare ground
+
+forest = [Tree(None, x) for x, spot in enumerate(ground) if spot == "T"]
+for tree in forest:
+    tree.forest = forest
+forest[0].condition = ON_FIRE  # light the tree on the left
+
+def show(t):
+    marks = {FINE: ".", ON_FIRE: "*", BURNED: "x"}
+    row = [" "] * len(ground)
+    for tree in forest:
+        row[tree.x] = marks[tree.condition]
+    print(f"{t:>3} " + "".join(row))
+
+show(0)
+t = 0
+while True:
+    burning = [tree for tree in forest if tree.condition == ON_FIRE]
+    if not burning:
+        break
+    for tree in burning:
+        tree.step()
+    t += 1
+    show(t)
+
+print("burned", sum(1 for tree in forest if tree.condition == BURNED), "of", len(forest))
+```
+
+Then:
+
+1. Put a space in the middle of `ground`, so `"TTTTT TTTTTT"`, and run again. The fire stops dead. Fire needs a connected path, and how likely that path is depends on how full the forest is. That is what the density parameter does in the real model.
+
+::: {.callout-tip collapse="true"}
+## Hint
+Both gaps are one of the three condition names defined on the first line.
+:::
+
+::::
+
+## Practicum 2a {#ex-2a .active}
+
+Mesa's DataCollector is quite simple. The DataCollector is called at every step, and `batch_run` is a loop inside a loop (but with parralelization). You could of course code up such a thing by hand. Run this first.
+
+```{pyodide}
+#| autorun: true
+import random
+
+class Model:
+    def __init__(self, numagents=2, seed=None):
+        self.random = random.Random(seed)
+        self.xs = [self.random.randrange(10) for _ in range(numagents)]
+
+    def step(self):
+        self.xs = [(x + self.random.choice([-1, 1])) % 10 for x in self.xs]
+
+print("ready")
+```
+
+:::: {.panel-tabset}
+
+### Exercise 1: a model reporter {#ex-2a-1}
+
+In the fullfunc notebook, `maxdistance(model)` is a plain function that takes the model and returns one number. Mesa just calls it this reporter function for you.
+
+Write `spread`, returning the distance between the leftmost and rightmost agent.
+
+```{pyodide}
+#| autorun: false
+def spread(model):
+    return max(model.xs) - ???
+
+print(spread(Model(numagents=10, seed=1)))   # 8
+```
+
+::: {.callout-tip collapse="true" title="Hint"}
+The widest gap in a list of numbers is the largest minus the smallest.
+:::
+
+### Exercise 2: collecting over time {#ex-2a-2}
+
+A DataCollector calls the reporter every step and appends the result to a growing table. Do that by hand. You should get 21 numbers: one from setup, plus one per step.
+
+```{pyodide}
+#| autorun: false
+def spread(model):
+    return max(model.xs) - min(model.xs)
+
+m = Model(numagents=10, seed=1)
+history = [spread(m)]        # collect once at setup, as the notebook does
+
+for _ in range(20):
+    m.step()
+    ???
+
+print(len(history), history)
+```
+
+::: {.callout-tip collapse="true" title="Hint"}
+The line in the loop is the simlar as the one above it, appending after each step instead.
+:::
+
+In Mesa calling the spread function via the DataCollector looks like this: `mesa.DataCollector(model_reporters={"spread": spread})` plus `self.datacollector.collect(self)` at the end of `step`.
+
+### Exercise 3: a batch run is two loops {#ex-2a-3}
+
+One run tells you little about your typical model dynamics. Different seeds will give different starting positions. `batch_run` runs every parameter setting several times. Handcoded it would look something like this: outer loop over parameters, inner loop over seeds. Fill in both. You want 15 rows of result data.
+
+```{pyodide}
+#| autorun: false
+def spread(model):
+    return max(model.xs) - min(model.xs)
+
+results = []
+for numagents in [2, 5, 10]:
+    for seed in range(???):
+        m = Model(numagents=numagents, seed=seed)
+        for _ in range(20):
+            m.step()
+        results.append({"numagents": numagents, 
+            "seed": seed, "spread": ???})
+
+print(len(results), results[:3])
+```
+
+Note in Mesa this would like look: `mesa.batch_run(Model, parameters={"numagents": (2, 5, 10)}, iterations=5, max_steps=20)`. Same three nested things, as keyword arguments.
+
+::::
+
+## Practicum 2b {#ex-2b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-2b-1}
+TBA
+
+### Exercise 2 {#ex-2b-2}
+TBA
+
+::::
+
+## Practicum 3a {#ex-3a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-3a-1}
+TBA
+
+### Exercise 2 {#ex-3a-2}
+TBA
+
+::::
+
+## Practicum 3b {#ex-3b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-3b-1}
+TBA
+
+### Exercise 2 {#ex-3b-2}
+TBA
+
+::::
+
+## Practicum 4a {#ex-4a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-4a-1}
+TBA
+
+### Exercise 2 {#ex-4a-2}
+TBA
+
+::::
+
+## Practicum 4b {#ex-4b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-4b-1}
+TBA
+
+### Exercise 2 {#ex-4b-2}
+TBA
+
+::::
+
+## Practicum 5a {#ex-5a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-5a-1}
+TBA
+
+### Exercise 2 {#ex-5a-2}
+TBA
+
+::::
+
+## Practicum 5b {#ex-5b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-5b-1}
+TBA
+
+### Exercise 2 {#ex-5b-2}
+TBA
+
+::::
+
+## Practicum 6a {#ex-6a}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-6a-1}
+TBA
+
+### Exercise 2 {#ex-6a-2}
+TBA
+
+::::
+
+## Practicum 6b {#ex-6b}
+
+:::: {.panel-tabset}
+
+### Exercise 1 {#ex-6b-1}
+TBA
+
+### Exercise 2 {#ex-6b-2}
+TBA
+
+::::
+
+:::::
+
 # Inspiration section
 ::: {.card .border-primary .mb-4}
 ::: {.card-header .bg-primary .text-white}
@@ -764,12 +1488,13 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 </a>
 :::
 
-::: {.collapse#inspirationCollapse}
+::: {#inspirationCollapse .collapse}
 ## Additional Multimedia Resources
+- [Youtube video Cellular automata called Lenia](https://www.youtube.com/watch?v=6kiBYjvyojQ)
 - [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)
 - [BJKS podcast: Paul Smaldino on ABM Modeling of Social Behavior](https://www.buzzsprout.com/1390924/episodes/13689768-75-paul-smaldino-modeling-social-behavior-the-value-of-false-models-and-research-beyond-traditional-disciplines)
 - [Braininspired podcast: David Krakauer on how to think like a complexity scientist](https://open.spotify.com/episode/1qwx0kgYC3Lj5FDXSCBt7D)
-- [Interacting Minds Seminar: Marieke Woensdregt on ABM and language learning](https://www.youtube.com/watch?v=6e1yu_nNr4E&ab_channel=InteractingMindsAU) 
+- [Interacting Minds Seminar: Marieke Woensdregt on ABM and language learning](https://www.youtube.com/watch?v=6e1yu_nNr4E&ab_channel=InteractingMindsAU)
 - [Carlos Gershenson on the Slower is Faster Effect](https://www.youtube.com/watch?v=1sHBRNLJXqA&ab_channel=CentrodeCienciasdelaComplejidad)
 
 ## Research papers on modeling or patterns ripe for ABM modeling
@@ -785,6 +1510,8 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 :::
 
 # Student model library section
+Upload/push your project model to [gitlab.uvt.nl/](https://gitlab.uvt.nl/) or [github.com](www.github.com), set it to public, and share the link here for others to see and use. Make sure you have a nice README file that explains what your model does and provide a citation, perhaps some contact information.
+
 ::: {.card .border-success .mb-4}
 ::: {.card-header .bg-success .text-white}
 <a class="btn btn-success w-100 text-start d-flex justify-content-between align-items-center text-decoration-none" data-bs-toggle="collapse" href="#modelLibraryCollapse" role="button" aria-expanded="false" aria-controls="modelLibraryCollapse">
@@ -793,13 +1520,48 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 </a>
 :::
 
-::: {.collapse#modelLibraryCollapse}
+::: {#modelLibraryCollapse .collapse}
 Forthcoming student model library with models created by students during the course.
 :::
 
 :::
 
 
+# Practical recordings
+
+You can watch the recordings here if you are logged into edge browser with your account. Otherwise just follow the panopto link and log in with your credentials. **Remember** Please enjoy the online recordings, but if no one *as a consequence* shows up I might decide to stop recording.
+
+::: {.callout-note .callout-download collapse="true"}
+## Recording Practicum 1a
+
+[Recording link to Panopto](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9c6fef3d-758a-4560-a0d6-b4b400b16663)
+```{=html}
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=9c6fef3d-758a-4560-a0d6-b4b400b16663&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
+style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"
+allowfullscreen
+allow="autoplay"
+aria-label="Practical 1a MAS 2026/2027">
+</iframe>
+</div>
+```
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Recording Practicum 1b
+
+[Recording link to Panopto](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8d0b2170-812c-4527-8e4a-b4bb00927137)
+```{=html}
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8d0b2170-812c-4527-8e4a-b4bb00927137&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
+style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"
+allowfullscreen
+allow="autoplay"
+aria-label="Practical 1a MAS 2026/2027">
+</iframe>
+</div>
+```
+:::
 
 
 # References

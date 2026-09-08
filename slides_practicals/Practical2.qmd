@@ -36,6 +36,9 @@ revealjs-plugins:
   - Data saving and post-hoc plotting
 * Maintain your python mesa notes in your own jupyter notebook
 
+#### Inspiration section
+- Quick note on the inspiration section on the landing page
+
 # Running your app outside of jupyter notebook
 - a handful of students cant display their solara dashboard in jupyter notebook
 - well find a solution

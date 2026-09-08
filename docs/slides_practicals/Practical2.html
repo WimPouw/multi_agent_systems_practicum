@@ -6,8 +6,8 @@
 <script src="Practical2_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Practical2_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Practical2_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical2_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="Practical2_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Wim Pouw">
   <title>Multi-Agent Systems Practicum 2a</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="Practical2_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link href="Practical2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Practical2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Practical2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -217,6 +220,7 @@ Wim Pouw
 <li><strong>Coding Style:</strong> Briefly inspected some coding style differences in NetLogo and Python.</li>
 <li><strong>Lectures</strong>: Basics of agent-based modeling, Netlogo overview &amp; inspection of model variety.</li>
 </ul></section>
+<section>
 <section id="practicum-2a-objectives" class="title-slide slide level1 center">
 <h1>Practicum 2a: Objectives</h1>
 <ul>
@@ -232,7 +236,10 @@ Wim Pouw
 <li>Maintain your python mesa notes in your own jupyter notebook</li>
 </ul>
 </section>
-
+<h4 id="inspiration-section">Inspiration section</h4>
+<ul>
+<li>Quick note on the inspiration section on the landing page</li>
+</ul></section>
 <section id="running-your-app-outside-of-jupyter-notebook" class="title-slide slide level1 center">
 <h1>Running your app outside of jupyter notebook</h1>
 <ul>
@@ -244,10 +251,10 @@ Wim Pouw
 <section id="solution-run-the-solara-dashboard-from-your-terminal" class="title-slide slide level1 center">
 <h1>Solution: Run the solara dashboard from your terminal</h1>
 <p>VS Code has a built-in terminal (<code>Ctrl+ or View → Terminal</code>). We can run solara on your <code>.ipynb</code>. It will check where you call page and open a new tab in your browser with the solara dashboard.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
-<span id="cb1-2"><a href=""></a><span class="ex">solara</span> run notebook_name.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> activate mesa-env</span>
+<span id="cb1-2"><a href=""></a><span class="ex">solara</span> run notebook_name.ipynb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you want to autorestart when you edit the notebook, you can add the <code>--autoreload</code> flag:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">solara</span> run your_notebook.ipynb <span class="at">--auto-restart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">solara</span> run your_notebook.ipynb <span class="at">--auto-restart</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 
 <section id="if-the-solution-doesnt-work" class="title-slide slide level1 center">
@@ -499,7 +506,7 @@ Wim Pouw
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -573,13 +580,14 @@ Wim Pouw
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

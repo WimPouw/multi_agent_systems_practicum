@@ -731,7 +731,7 @@ We will not actually give you the python version of the to be translated model, 
 
 <iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical3.html)
+[Open slides in new window](./slides_practicals/Practical2.html)
 
 :::
 

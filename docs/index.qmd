@@ -731,7 +731,7 @@ We will not actually give you the python version of the to be translated model, 
 
 <iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical3.html)
+[Open slides in new window](./slides_practicals/Practical2.html)
 
 :::
 
@@ -1490,6 +1490,7 @@ TBA
 
 ::: {#inspirationCollapse .collapse}
 ## Additional Multimedia Resources
+- [Emergent phenomena from sorting algorithms (with Michael Levin)](https://www.youtube.com/watch?v=jr1sNYY2t9A)
 - [Youtube video Cellular automata called Lenia](https://www.youtube.com/watch?v=6kiBYjvyojQ)
 - [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)
 - [BJKS podcast: Paul Smaldino on ABM Modeling of Social Behavior](https://www.buzzsprout.com/1390924/episodes/13689768-75-paul-smaldino-modeling-social-behavior-the-value-of-false-models-and-research-beyond-traditional-disciplines)
@@ -1498,6 +1499,7 @@ TBA
 - [Carlos Gershenson on the Slower is Faster Effect](https://www.youtube.com/watch?v=1sHBRNLJXqA&ab_channel=CentrodeCienciasdelaComplejidad)
 
 ## Research papers on modeling or patterns ripe for ABM modeling
+- "Agnosiophobia in a virtual agent: behavioral and dynamical architecture in Lenia" (download [PDF](https://arxiv.org/pdf/2605.30708))
 - "Allocentric flocking" (download [PDF](./pdfs/Salahshour_Couzin_2025_Allocentric flocking.pdf)) [@salahshourAllocentricFlocking2025]
 - "An agent-based model of citation behavior" [@chackoAgentbasedModelCitation2025] (download [PDF](./pdfs/chakoetal2025.pdf))
 - "Evolving general cooperation with a Bayesian theory of mind" [@kleiman-weinerEvolvingGeneralCooperation2025] (download [PDF](./pdfs/kleimanetal2025.pdf))

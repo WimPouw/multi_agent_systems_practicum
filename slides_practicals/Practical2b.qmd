@@ -1,5 +1,5 @@
 ---
-title: "Multi-Agent Systems Practicum 2"
+title: "Multi-Agent Systems Practicum 2b"
 subtitle: "Translating a netlogo model to Python Mesa"
 author: "Wim Pouw"
 format:
@@ -20,55 +20,33 @@ revealjs-plugins:
 ---
 
 ## Recap content so far 
-#### Practicum 1 + lectures 1-2
+#### Practicum 1a,1b,1c
+:::{.incremental}
+- Basic setup
+- Seen some basic models and tinkered them slightly
+- Python excercises relevant for Python mesa
+- Full Func Model (for an overview of functionalities of Mesa)
+:::
 
-* **Getting setup:** NetLogo and Python Mesa environment setup.
-* **Coding Style:** Briefly inspected some coding style differences in NetLogo and Python.
-* **Lectures**: Basics of agent-based modeling, Netlogo overview & inspection of model variety.
+## Practicum 2b: Objectives
+:::{.incremental}
+- Dispersal Model
+- Make a start in building from scratch
+  - Use your notes you made in your template notebook
+  - Start simple, a model that has agents that spawn other agents in a dispersal pattern
+  - Later well think about how to exactly translate the netlogo model to python mesa
+:::
 
-## Practicum 2: Objectives
-
-* **Crashcourse mesa functionality:** Introduction mesa key functionalities.
-  - Data collection
-  - Model + data visualization
-  - Multi-iteration runs
-  - Data saving and post-hoc plotting
-
-* **Translation:** Making a start in translating a netlogo model into python mesa.
-
-## Agenda
-- Overview mesa functionality with Wim
-- Start of translation to netlogo model to python mesa
-- Challenge: Continue translation at home
-
-## Part 1: Fully functional basic grid model
-- Lets inspect the "full functionality grid model" in mesa
-  - Download from the [Practicum Landing Page](https://wimpouw.github.io/multi_agent_systems_practicum) model library section
-- Open the notebook `full_func_multiagent_grid.ipynb` in visual studio code (and make sure your mesa environment is activated)
-- Wim will guide you through the basic components of this mesa model
-
-## Part 1: Crashcourse finished
-You know have **some** familiarity with:
-
-  - Basic mesa model structure
-  - Data collection
-  - Model + data visualization
-  - Multi-iteration runs and parameter sweeping
-  - Data saving and post-hoc plotting
-
-  - - **We might forget of course, so we can always revisit the "fullfunc"^[As in, it has all the funk] model**
-  
-
-## Part 2: Translating a netlogo model to python mesa
+## Part 2b: Translating a netlogo model to python mesa
 - With our knowledge of grid models, lets start to translate a netlogo model to python mesa
 - Dispersal Netlogo model
-  - Download from the [Practicum Landing Page](https://example.com) (netlogo models section)
-  - Or download directly here: [netlogo dispersal model .rar](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_netlogo.rar)
+  - Download from the [Practicum Landing Page](https://wimpouw.github.io/multi_agent_systems_practicum/) (netlogo models section)
+  - Or download directly here: [netlogo dispersal model .zip](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_netlogo.zip)
 
-## Part 2: The dispersal netlogo model
+## Part 2b: The dispersal netlogo model
 - The Africa Origin hypothesis
 - The model simulates the migration of early humans out of Africa
-- Original paper (Young & Bettinger, 1995)
+- Original paper [Young & Bettinger, 1995](https://www.sciencedirect.com/science/article/abs/pii/S0305440395801650?via%3Dihub)
 - Lets inspect it together first
 
 ## Lets think it through
@@ -77,7 +55,8 @@ You know have **some** familiarity with:
 - What data do we want to collect?
 - How can we visualize this data? 
 
-- Wait, can we start simple? And break up the complexity?
+## Wait, can we start simple? And break up the complexity?
+- What is the simplest version of the model we can make?
 
 ## Lets create a jupyter notebook for making a basic dispersal model from scratch
 In the first Markdown chunk of the notebook:
@@ -93,10 +72,13 @@ import mesa
 from mesa.discrete_space import CellAgent, OrthogonalMooreGrid
 from mesa.visualization import SolaraViz, make_plot_component, make_space_component
 ```
+
 ## Live translation of the dispersal model (Part 1)
 - Create agent class and let it do things
 - Create model class, collect some data
-- Let the agents shout out "Hey I am agent # x and I am at position (x,y)"
+- Run some model steps: Let the agents shout out "Hey I am agent # x and I am at position (x,y)"
+- Set up the visualization as well
+  - No LLM use! First we need to go throught things ourselves.
 
 
 

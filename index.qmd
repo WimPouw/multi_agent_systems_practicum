@@ -82,13 +82,13 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Extra models:** Flocking and fire models as further reference.
 * **In class:** Identify Mesa components by studying model code, and continue your notebook template.
 
-## Practicum 2a {.active}
+## Practicum 2a
 
 * **Crashcourse:** Mesa's key functionality via the full-functionality grid model.
 * **Pipeline:** Data collection, Solara visualization, multi-iteration batch runs, data saving, post-hoc plotting.
 * **In class:** Extend your notebook template with notes on Mesa's optional components.
 
-## Practicum 2b
+## Practicum 2b {.active}
 
 * **Dispersal model:** Introduction via the Africa Origin hypothesis.
 * **Deconstruction:** Take apart agents, environment, and processes conceptually before translating.
@@ -221,9 +221,6 @@ If you still have issues, let me know and well troubleshoot.
 :::
 
 :::::
-
-
-
 
 
 ## Some basic differences in coding style
@@ -658,24 +655,31 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Dispersal model and DIY
 * [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip){download=""}
 
-We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model and the chapter (see #slides-key-literature). For the final fully implemented one one we are going to give you a hint and you can check out a start here:
+We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model. 
+
+<!--
+For the final fully implemented one one we are going to give you a hint and you can check out a start here:
+
 
 ### Translating part II (Practicum 3)
+-
 * [Download Dispersal Model Translation Part II Folder Python (incomplete)](./models/dispersal_python_partII.zip){download=""}
 
-### Simple Dispersal Model After Practicum 3
+<!--### Simple Dispersal Model After Practicum 3
 * [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.zip){download=""}
+
 
 ### Python challenge
 * [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.zip)
 * [Dispersal Model with Worldmap Folder Python (complete)](./models/dispersal_python_model_complete.zip)
+-->
 :::
 
-::: {.callout-note .callout-download collapse="false"} 
+::: {.callout-note .callout-download collapse="true"} 
 
 ## Criticality Fire model
 * [Download Criticality Fire Model Folder Python](./models/fire_model_python.zip){download=""}
@@ -726,7 +730,7 @@ We will not actually give you the python version of the to be translated model, 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 2a
 
 <iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
@@ -735,13 +739,12 @@ We will not actually give you the python version of the to be translated model, 
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse=false"}
 ## Slides Practicum 2b
-<!--
-<iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+<iframe src="slides_practicals/Practical2b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical4.html)
--->
+[Open slides in new window](./slides_practicals/Practical2b.html)
+
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
@@ -840,7 +843,7 @@ This book chapter goes into the some basics of netlogo that is helpful for getti
 [Download PDF](./pdfs/Romanowska_ABMA_Chapter_1.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Book chapter about dispersal model
 ## Chapter 1 [@romanowskaAgentBasedModelingArchaeology2021]
 This book chapter goes into the [dispersal model](#model-library-for-this-course)
@@ -1280,7 +1283,7 @@ Both gaps are one of the three condition names defined on the first line.
 
 ::::
 
-## Practicum 2a {#ex-2a .active}
+## Practicum 2a {#ex-2a}
 
 Mesa's DataCollector is quite simple. The DataCollector is called at every step, and `batch_run` is a loop inside a loop (but with parralelization). You could of course code up such a thing by hand. Run this first.
 
@@ -1369,15 +1372,96 @@ Note in Mesa this would like look: `mesa.batch_run(Model, parameters={"numagents
 
 ::::
 
-## Practicum 2b {#ex-2b}
+## Practicum 2b {#ex-2b .active}
+
+The dispersal model has agents that do one thing: now and then they make a copy of themselves in a neighbouring cell. These excercises should help generate intutitions for how to implement it in mesa.
 
 :::: {.panel-tabset}
 
-### Exercise 1 {#ex-2b-1}
-TBA
 
-### Exercise 2 {#ex-2b-2}
-TBA
+### Exercise 1: hatching {#ex-2b-1}
+
+Same shape as practicum 1b. `BaseAgent` stands in for mesa's `CellAgent`, and `super().__init__(model)` is what puts the new agent in `model.agents`. An agent hatches a copy of itself with probability `growth_rate`, every step. Fill in the gap.
+
+```{pyodide}
+#| autorun: false
+import random
+
+class BaseAgent:
+    def __init__(self, model):
+        self.model = model
+        model.agents.append(self)          # the registration, as in mesa
+
+class DispersalAgent(BaseAgent):
+    def __init__(self, model, growth_rate):
+        super().__init__(model)            # so the new agent joins model.agents
+        self.growth_rate = growth_rate
+
+    def hatch(self):
+        if self.model.random.random() < self.growth_rate:
+            ???                            # make a new agent, just like me
+
+class DispersalModel:
+    def __init__(self, n=5, growth_rate=0.1, seed=1):
+        self.random = random.Random(seed)
+        self.agents = []
+        for _ in range(n):
+            DispersalAgent(self, growth_rate)
+
+    def step(self):
+        for agent in list(self.agents):    # a copy of the list, see the hint
+            agent.hatch()
+
+model = DispersalModel()
+for t in range(1, 21):
+    model.step()
+    print(t, len(model.agents))
+```
+
+Note that the hatching agent never touches `model.agents` itself. It just makes an instance, and `super()` does the joining. Take the `super()` line out and the population stays at five forever, which is the silent bug you might get when failing to inherit from the parent calss.
+
+Note also that `growth_rate` is per agent per step, so the population does not grow by a fixed amount but by a fixed proportion. Set it to 0.3 and look at the last number.
+
+::: {.callout-tip collapse="true"}
+## Hint
+You can call an agent within the agent class. The new agent is created by calling the class constructor (the class constructor your in, which might be a bit confusing) with the appropriate arguments.
+:::
+
+### Exercise 2: where can I hatch into? {#ex-2b-2}
+
+An agent cannot hatch just anywhere. The new one goes in a neighbouring cell that is free, and in the full model there is water where nobody can live. Fill in the filter.
+
+```{pyodide}
+#| autorun: false
+import random
+
+rng = random.Random(2)
+
+occupied = {(3, 3), (3, 4), (4, 3)}     # cells that already hold an agent
+water    = {(2, 2), (2, 3), (2, 4)}     # cells nobody can live in
+x, y = 3, 3                             # me
+
+neighbours = [(x + dx, y + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+              if (dx, dy) != (0, 0)]
+
+free = [cell for cell in neighbours if ???]
+
+print("neighbours:", sorted(neighbours))
+print("free      :", sorted(free))
+print("hatch into:", rng.choice(free))
+```
+
+You should get three free cells. In the real model these two lines are the same idea:
+
+```python
+empty_cells = [cell for cell in neighbours if len(cell.agents) == 0]
+empty_cells = [cell for cell in empty_cells if binary_matrix[cell.coordinate[1], cell.coordinate[0]] == 1]
+```
+
+::: {.callout-tip collapse="true"}
+## Hint
+Two conditions joined with `and`, both of them a `not in`.
+:::
 
 ::::
 

@@ -1,5 +1,5 @@
 ---
-title: "Practicum 3: Part II translating a netlogo model to Python Mesa"
+title: "Practicum 3a: Part II translating a netlogo model to Python Mesa"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -19,7 +19,7 @@ format:
 - Let the agents shout out "Hey I am agent # x and I am at position (x,y)"
 
 ## Practicum 3: Objectives today
-* Continue our translation of a netlogo model to Python Mesa
+* Continue from scratch our translation of a netlogo model to Python Mesa
 * Learn to program aspects of the model yourself
   * Create visualization
   * Create agent duplication
@@ -27,10 +27,10 @@ format:
   * Make the model more complex
 
 ## Practicum 3: Continue our translation (Part 2)
-* Download the setup: [Part II notebook setup](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_partII.rar)
 * Continue our translation of a netlogo model to Python Mesa
-* Quick coding up to checkpoint:
-  * Set up CellAgent class initalized with cell position and dispersal/hatch rate
+* Lets code quickly up to the checkpoint
+* Checkpoint:
+  * Make sure CellAgent class initalized with cell position and dispersal/hatch rate
   * Model (grid 25x25) sets dispersal rate, space size, initial population, and sets seed
   * Checkpoint: "Hey I am an Agent # x and I am at position (x,y)"
 
@@ -60,14 +60,5 @@ format:
   * Add a virus that randomly picks an agent after 20 steps, and disperse death, through the population
 * Show your work
 
-## DIY: Challenge for the full model translation
-* How to implement the entire model that interfaces with the world map picture?
-  * Make sure the world wraps horizontally?
-- The spreading of humans can only be across the landscape, not across the ocean
-* You can start from here: [incomplete_dispersal_worldmap](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_model_incomplete.rar)
-* From [landing page](https://wimpouw.github.io/multi_agent_systems_practicum) go to model library section, and download the incomplete dispersal model python
-
-
-
-
-
+## Landing page excercises
+- No excercises this round, but make sure that you have done all preceding excercises

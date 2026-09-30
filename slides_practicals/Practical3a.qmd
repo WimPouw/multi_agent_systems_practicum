@@ -18,7 +18,7 @@ format:
 - Create model class
 - Let the agents shout out "Hey I am agent # x and I am at position (x,y)"
 
-## Practicum 3: Objectives today
+## Practicum 3a: Objectives today
 * Continue from scratch our translation of a netlogo model to Python Mesa
 * Learn to program aspects of the model yourself
   * Create visualization

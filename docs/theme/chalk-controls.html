@@ -1,0 +1,220 @@
+<!-- Standalone annotation overlay for Quarto HTML pages.
+     Drop in via:  format: html: include-after-body: theme/chalk-controls.html
+     No reveal.js dependency. -->
+
+<style>
+  .wpchalk-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    touch-action: none;
+  }
+  .wpchalk-canvas.is-active { pointer-events: auto; cursor: crosshair; }
+
+  .wpchalk-veil {
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    background: #14181c;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease;
+  }
+  .wpchalk-veil.is-on { opacity: .82; }
+
+  .wpchalk-bar {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .35rem;
+    border-radius: 999px;
+    background: #22282e;
+    box-shadow: 0 2px 14px rgba(0,0,0,.28);
+    font: 500 12px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #dfe4e8;
+  }
+
+  .wpchalk-bar button {
+    all: unset;
+    box-sizing: border-box;
+    height: 30px;
+    min-width: 30px;
+    padding: 0 .6rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: inherit;
+    white-space: nowrap;
+  }
+  .wpchalk-bar button:hover { background: #313941; }
+  .wpchalk-bar button:focus-visible { outline: 2px solid #7cc7ff; outline-offset: 2px; }
+  .wpchalk-bar button[aria-pressed="true"] { background: #3d4752; color: #fff; }
+
+  .wpchalk-tools { display: none; align-items: center; gap: .35rem; }
+  .wpchalk-tools.is-open { display: flex; }
+
+  .wpchalk-swatch {
+    width: 22px; height: 22px;
+    min-width: 22px;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    border: 2px solid transparent !important;
+  }
+  .wpchalk-swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px #dfe4e8; }
+  .wpchalk-swatch:hover { background: none !important; }
+
+  .wpchalk-sep { width: 1px; height: 18px; background: #3d4752; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wpchalk-veil { transition: none; }
+  }
+  @media print { .wpchalk-bar, .wpchalk-canvas, .wpchalk-veil { display: none !important; } }
+</style>
+
+<div class="wpchalk-veil" id="wpchalkVeil"></div>
+<canvas class="wpchalk-canvas" id="wpchalkCanvas"></canvas>
+
+<div class="wpchalk-bar" role="toolbar" aria-label="Annotation tools">
+  <div class="wpchalk-tools" id="wpchalkTools">
+    <button class="wpchalk-swatch" data-color="#e8453c" style="background:#e8453c" aria-pressed="true" title="Red" aria-label="Red pen"></button>
+    <button class="wpchalk-swatch" data-color="#2b7fd4" style="background:#2b7fd4" aria-pressed="false" title="Blue" aria-label="Blue pen"></button>
+    <button class="wpchalk-swatch" data-color="#f2c744" style="background:#f2c744" aria-pressed="false" title="Yellow" aria-label="Yellow pen"></button>
+    <button class="wpchalk-swatch" data-color="#f4f1ea" style="background:#f4f1ea" aria-pressed="false" title="Chalk" aria-label="Chalk pen"></button>
+    <span class="wpchalk-sep"></span>
+    <button id="wpchalkErase" aria-pressed="false" title="Eraser">Erase</button>
+    <button id="wpchalkBoard" aria-pressed="false" title="Dim the page behind your marks">Board</button>
+    <button id="wpchalkClear" title="Clear all marks">Clear</button>
+    <span class="wpchalk-sep"></span>
+  </div>
+  <button id="wpchalkToggle" aria-pressed="false" title="Toggle annotation (Alt+A)">Annotate</button>
+</div>
+
+<script>
+(function () {
+  var canvas  = document.getElementById('wpchalkCanvas');
+  var veil    = document.getElementById('wpchalkVeil');
+  var tools   = document.getElementById('wpchalkTools');
+  var toggle  = document.getElementById('wpchalkToggle');
+  var eraseBt = document.getElementById('wpchalkErase');
+  var boardBt = document.getElementById('wpchalkBoard');
+  var clearBt = document.getElementById('wpchalkClear');
+  var swatches = Array.prototype.slice.call(document.querySelectorAll('.wpchalk-swatch'));
+
+  var ctx = canvas.getContext('2d');
+  var on = false, erasing = false, drawing = false;
+  var color = '#e8453c', width = 3;
+
+  function sizeCanvas() {
+    var snapshot = canvas.width ? canvas.toDataURL() : null;
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width  = Math.round(window.innerWidth  * dpr);
+    canvas.height = Math.round(window.innerHeight * dpr);
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    if (snapshot) {
+      var img = new Image();
+      img.onload = function () {
+        ctx.drawImage(img, 0, 0, window.innerWidth, window.innerHeight);
+      };
+      img.src = snapshot;
+    }
+  }
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
+
+  function setMode(state) {
+    on = state;
+    canvas.classList.toggle('is-active', on);
+    tools.classList.toggle('is-open', on);
+    toggle.setAttribute('aria-pressed', String(on));
+    toggle.textContent = on ? 'Done' : 'Annotate';
+  }
+
+  toggle.addEventListener('click', function () { setMode(!on); });
+
+  swatches.forEach(function (s) {
+    s.addEventListener('click', function () {
+      color = s.dataset.color;
+      erasing = false;
+      eraseBt.setAttribute('aria-pressed', 'false');
+      swatches.forEach(function (o) {
+        o.setAttribute('aria-pressed', String(o === s));
+      });
+    });
+  });
+
+  eraseBt.addEventListener('click', function () {
+    erasing = !erasing;
+    eraseBt.setAttribute('aria-pressed', String(erasing));
+  });
+
+  boardBt.addEventListener('click', function () {
+    var lit = veil.classList.toggle('is-on');
+    boardBt.setAttribute('aria-pressed', String(lit));
+    if (lit) {
+      // chalk reads better on the dimmed page
+      var chalk = swatches[swatches.length - 1];
+      chalk.click();
+    }
+  });
+
+  clearBt.addEventListener('click', function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  function point(e) {
+    var r = canvas.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  }
+
+  function stroke(e) {
+    var p = point(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  }
+
+  canvas.addEventListener('pointerdown', function (e) {
+    if (!on) return;
+    drawing = true;
+    canvas.setPointerCapture(e.pointerId);
+    ctx.globalCompositeOperation = erasing ? 'destination-out' : 'source-over';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = erasing ? 28 : width;
+    ctx.beginPath();
+    var p = point(e);
+    ctx.moveTo(p.x, p.y);
+    // a dot, so a tap leaves a mark
+    ctx.lineTo(p.x + 0.01, p.y);
+    ctx.stroke();
+  });
+
+  canvas.addEventListener('pointermove', function (e) {
+    if (drawing) stroke(e);
+  });
+
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+    canvas.addEventListener(ev, function () {
+      drawing = false;
+      ctx.globalCompositeOperation = 'source-over';
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable;
+    if (typing) return;
+    if (e.altKey && e.key.toLowerCase() === 'a') { e.preventDefault(); setMode(!on); }
+    if (e.altKey && e.key.toLowerCase() === 'c') { e.preventDefault(); clearBt.click(); }
+    if (e.key === 'Escape' && on) setMode(false);
+  });
+})();
+</script>

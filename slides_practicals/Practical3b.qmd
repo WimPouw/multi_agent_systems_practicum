@@ -1,5 +1,5 @@
 ---
-title: "Practicum 3: Part II translating a netlogo model to Python Mesa"
+title: "Practicum 3b: Measurement, Visualization, Data collection, Complete model"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -7,65 +7,55 @@ format:
     navigationMode: default
 ---
 
-## What we have done so far
+## What we have done so far 1a, 1b, 2a
 * Practiced running and debugging Netlogo models and Mesa models.
 * Crashcourse basic functionality Mesa (with the FullFunc Model; [quick view full func](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html)).
 * Deconstructed the dispersal model conceptually into a simple steps.
 * Began translating the dispersal model to Python Mesa.
 
-## Checkpoint Part 1 Dispersal model
+## Checkpoint 2b: code up mesa model from scratch
 - Create cell agent class with a cell location
 - Create model class
 - Let the agents shout out "Hey I am agent # x and I am at position (x,y)"
 
-## Practicum 3: Objectives today
-* Continue our translation of a netlogo model to Python Mesa
-* Learn to program aspects of the model yourself
-  * Create visualization
-  * Create agent duplication
-  * Measure and plot model data collection
-  * Make the model more complex
-
-## Practicum 3: Continue our translation (Part 2)
-* Download the setup: [Part II notebook setup](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_partII.rar)
+## Practicum 3a: Continue our translation (Part 2) * [Basic Dispersal Model Python]
 * Continue our translation of a netlogo model to Python Mesa
 * Quick coding up to checkpoint:
   * Set up CellAgent class initalized with cell position and dispersal/hatch rate
   * Model (grid 25x25) sets dispersal rate, space size, initial population, and sets seed
   * Checkpoint: "Hey I am an Agent # x and I am at position (x,y)"
+  * Then: Agent duplication at growthrate
 
-## Visualization (5-10 min)
-* Initialize a visualization with a slider for dispersal rate and number of agents
-* Make the agents green
-* Use FullFunc model as a guide if necessary ([quick view full func](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html))
+## Checkpoint
+* Download our last checkpoint: [notebook setup](https://wimpouw.github.io/multi_agent_systems_practicum/models/basic_dispersal_python_completed.zip){download=""}
 
-## Agent duplication (Step 2) (5-10 min)
-* Implement agent duplication (hatching) based on dispersal rate
-* Run visualization to check if it works
+## Practicum 3b: Objectives today
+* Learn to code in the additional aspects of the model yourself
+  * Measure and plot model data collection
+  * Create visualization
+  * Run an experiment
+  * Make the model more complex with a picture
 
 ## Collecting data (15 min)
 * Lets analyze the full func model again
 * Now lets create our own data collection function
   * Lets measure the percent of the grid occupied
   * Check full func model ([quick view full func](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html))
-* Plot the data in the visualization using `mesa.visualization`'s `make_plot_component`
 
-## Complexifying the model (30 min)
-* Be creative create your own more complex model by tweaking behavior
-* Look up the mesa documentation for cool features: 
-* For example:
-  * Add death rate 
-  * random Variation in dispersal rate
-  * Create obstacles (e.g., implement a random maze)
-  * Add a virus that randomly picks an agent after 20 steps, and disperse death, through the population
-* Show your work
+## Visualization (5-10 min)
+* Initialize a visualization with a slider for dispersal rate and number of agents
+* Make the agents green
+* Use FullFunc model as a guide if necessary ([quick view full func](https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html))
+* Plot the measurement data in the visualization using `mesa.visualization`'s `make_plot_component`
 
-## DIY: Challenge for the full model translation
+## Challenge for the full model translation
 * How to implement the entire model that interfaces with the world map picture?
   * Make sure the world wraps horizontally?
 - The spreading of humans can only be across the landscape, not across the ocean
-* You can start from here: [incomplete_dispersal_worldmap](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_model_incomplete.rar)
+* You can start from here: [incomplete_dispersal_worldmap](https://wimpouw.github.io/multi_agent_systems_practicum/models/dispersal_python_model_incomplete.zip)
 * From [landing page](https://wimpouw.github.io/multi_agent_systems_practicum) go to model library section, and download the incomplete dispersal model python
+* Do you have it functional? Implement the measures and the other things
+* Make variations
 
 
 

@@ -104,9 +104,9 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 ## Practicum 3b
 
-* **Measurement:** Add a DataCollector to measure percentage of grid occupied.
+* **Measurement:** Add a DataCollector to measure e.g., percentage of grid occupied.
 * **Live plotting:** Plot data as it comes in with `make_plot_component`.
-* **Complexify:** Creatively extend the model, for example death rate, obstacles, or virus spread.
+* **Complexify:** Start working on the actual implementation of the more complex map-interfacing model.
 * **In class:** Make meaningful adjustments while measuring their effects, and work with visualizations.
 
 ## Practicum 4a
@@ -115,7 +115,7 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Agent death:** Implement removal with `self.remove()`.
 * **Design a measure:** Spatial diffusion as variance in x and y coordinates.
 
-## Practicum 4b
+## Practicum 4a
 
 * **Creative adaptation:** Tinker with the continuous and network models.
 * **Custom measures:** Design and collect your own measure for each.
@@ -659,7 +659,7 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 ## Dispersal model and DIY
 * [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip){download=""}
 
-We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model. 
+* [Basic Dispersal Model Python](./models/basic_dispersal_python_completed.zip){download=""}
 
 <!--
 For the final fully implemented one one we are going to give you a hint and you can check out a start here:
@@ -747,7 +747,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 3a
 
 <iframe src="slides_practicals/Practical3a.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
@@ -758,11 +758,10 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 ::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 3b
-<!--
 
-<iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+<iframe src="slides_practicals/Practical3b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical6.html)
+[Open slides in new window](./slides_practicals/Practical3b.html)
 -->
 :::
 

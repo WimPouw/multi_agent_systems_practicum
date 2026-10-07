@@ -104,9 +104,9 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 
 ## Practicum 3b
 
-* **Measurement:** Add a DataCollector to measure percentage of grid occupied.
+* **Measurement:** Add a DataCollector to measure e.g., percentage of grid occupied.
 * **Live plotting:** Plot data as it comes in with `make_plot_component`.
-* **Complexify:** Creatively extend the model, for example death rate, obstacles, or virus spread.
+* **Complexify:** Start working on the actual implementation of the more complex map-interfacing model.
 * **In class:** Make meaningful adjustments while measuring their effects, and work with visualizations.
 
 ## Practicum 4a
@@ -115,7 +115,7 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Agent death:** Implement removal with `self.remove()`.
 * **Design a measure:** Spatial diffusion as variance in x and y coordinates.
 
-## Practicum 4b
+## Practicum 4a
 
 * **Creative adaptation:** Tinker with the continuous and network models.
 * **Custom measures:** Design and collect your own measure for each.
@@ -659,7 +659,7 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 ## Dispersal model and DIY
 * [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip){download=""}
 
-We will not actually give you the python version of the to be translated model, because we are going to build it together on the basis of the netlogo model. 
+* [Basic Dispersal Model Python](./models/basic_dispersal_python_completed.zip){download=""}
 
 <!--
 For the final fully implemented one one we are going to give you a hint and you can check out a start here:
@@ -747,7 +747,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 3a
 
 <iframe src="slides_practicals/Practical3a.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
@@ -758,11 +758,10 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 ::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 3b
-<!--
 
-<iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+<iframe src="slides_practicals/Practical3b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical6.html)
+[Open slides in new window](./slides_practicals/Practical3b.html)
 -->
 :::
 
@@ -1464,7 +1463,7 @@ Two conditions joined with `and`, both of them a `not in`.
 
 ::::
 
-## Practicum 3a {#ex-3a .active}
+## Practicum 3a {#ex-3a}
 
 :::: {.panel-tabset}
 
@@ -1474,15 +1473,142 @@ No excercises for this practicum. But make sure to catch up, and repeat doing th
 
 ::::
 
-## Practicum 3b {#ex-3b}
+## Practicum 3b {#ex-3b .active}
+
+Today you add a measurement to the dispersal model, and you prepare for the world map version, where the world wraps left-right but not top-bottom.
 
 :::: {.panel-tabset}
 
-### Exercise 1 {#ex-3b-1}
-TBA
+### Exercise 1: a measurement {#ex-3b-1}
 
-### Exercise 2 {#ex-3b-2}
-TBA
+Here is a tiny world map. `L` is empty land, `A` is land with an agent on it, `~` is water. Write the measure: what percent of the land is occupied? It should print 43.75.
+
+```{pyodide}
+#| autorun: false
+world = [
+    "LLA~~~~~~~AA",
+    "LLL~~~~~~AAA",
+    "LL~~~LL~~~~A",
+]
+
+land = sum(row.count("L") + row.count("A") for row in world)
+people = ???
+
+print(100 * ??? / ???)    # 43.75
+```
+
+Why do we divide by the land and not by the whole grid?
+
+Reminder. In Mesa the same idea is a reporter function that gets the model, like `maxdistance` in the fullfunc model:
+
+```python
+def percent_occupied(model):
+    n_cells = len(model.grid.all_cells.cells)
+    return 100 * len(model.agents) / n_cells
+
+# in __init__
+self.datacollector = mesa.DataCollector(model_reporters={"PercentOccupied": percent_occupied})
+# at the end of step
+self.datacollector.collect(self)
+# in SolaraViz
+make_plot_component("PercentOccupied")
+```
+
+### Exercise 2: wrapping only left-right {#ex-3b-2}
+
+Mesa gives you `torus=True` (wrap in both directions) or `torus=False` (no wrapping). But what if you need a horizontal warpping? You can code this in yourself of course, with modulo (`%`).
+
+First see what modulo does. Predict each number, then run.
+
+```{pyodide}
+#| autorun: false
+print(4 % 6)
+print(6 % 6)
+print(7 % 6)
+print(-1 % 6)
+```
+
+Now use it. Fill in the one gap so that x wraps around.
+
+```{pyodide}
+#| autorun: false
+def neighbours_cylinder(x, y, width, height):
+    """Return the coordinates of the 8 cells around (x, y) on a map that
+    wraps left-right (east edge connects to west edge) but not top-bottom.
+    Used to find the cells an agent could hatch into."""
+    out = []
+    for dx in (-1, 0, 1):          # step left, stay, step right
+        for dy in (-1, 0, 1):      # step down, stay, step up
+            if (dx, dy) == (0, 0):
+                continue           # skip my own cell
+            nx = ???               # wraps around
+            ny = y + dy            # does not wrap
+            if 0 <= ny < height:   # rows go from 0 to height - 1, drop the rest
+                out.append((nx, ny))
+    return out
+
+print(neighbours_cylinder(3, 1, 6, 4))   # middle of the map
+print(neighbours_cylinder(0, 1, 6, 4))   # on the west edge
+print(neighbours_cylinder(0, 0, 6, 4))   # in the bottom-left corner
+```
+
+Predict before you run: how many neighbours for each? You should get 8, 8 and 5. Check that the cell on the west edge `(0, 1)` has neighbours with x = 5, on the other side of the map.
+
+In Mesa you would make the grid with `torus=False`, compute the coordinates with this function instead, and get the specific cell from the model like so `self.model.grid[(nx, ny)]`.
+
+### Exercise 3: looking ahead, El Farol, but different {#ex-3b-3}
+
+### Exercise 4: looking ahead, El Farol {#ex-3b-4}
+
+Next weeks we will do El Farol: 100 people, one bar, and the bar is only worth to go to if it is not too crowded. Here is the same idea with just two agents. Ana and Ben like the same tiny bar, but it only fits one person. They cannot talk to each other over who goes. Every week each of them predicts what the other will do, and only goes if they think the other stays home.
+
+Their prediction rule is simple: "the other will do what they did last week."
+
+Fill in the decision and run.
+
+```{pyodide}
+#| autorun: false
+class Friend:
+    def __init__(self, name, went_last_week, rule="same"):
+        self.name = name
+        self.went = went_last_week
+        self.rule = rule
+
+    def predict(self, other):
+        """Predict whether the other goes to the bar this week."""
+        if self.rule == "same":
+            return other.went            # they do what they did last week
+        elif self.rule == "opposite":
+            return not other.went        # they do the opposite of last week
+
+    def decide(self, other):
+        other_will_go = self.predict(other)
+        return ???                       # True means: I go to the bar
+
+def run(ana, ben, weeks=8):
+    for week in range(1, weeks + 1):
+        ana_goes = ana.decide(ben)       # both decide first...
+        ben_goes = ben.decide(ana)
+        ana.went = ana_goes              # ...then both go (or not)
+        ben.went = ben_goes
+        if ana_goes and ben_goes:
+            result = "crowded!"
+        elif not ana_goes and not ben_goes:
+            result = "empty bar"
+        else:
+            result = "nice"
+        print(f"week {week}:  Ana {'bar ' if ana_goes else 'home'}  Ben {'bar ' if ben_goes else 'home'}  {result}")
+
+print("last week both went")
+run(Friend("Ana", True), Friend("Ben", True))
+```
+
+Things to try and think about:
+
+1. Last week both went. What happens now, and why are they wrong every single week?
+2. Change the start so that only Ana went last week (`Friend("Ben", False)`). Now it works, but is it fair to Ben?
+3. Go back to both going last week, but give Ben a different rule: `Friend("Ben", True, rule="opposite")`. Does it help?
+4. In the real El Farol model, every agent has several rules and switches to the one that predicted best recently. Why might that help here?
 
 ::::
 

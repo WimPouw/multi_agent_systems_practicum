@@ -95,7 +95,7 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Translation Part I:** Agent class, model class, grid setup. Checkpoint: agents report their position.
 * **In class:** Start translating, working from the notebook template you already built.
 
-## Practicum 3a {.active}
+## Practicum 3a 
 
 * **Translation Part II:** Add Solara visualization with sliders.
 * **Agent hatching:** Implement agent duplication based on dispersal rate.
@@ -109,17 +109,12 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Complexify:** Start working on the actual implementation of the more complex map-interfacing model.
 * **In class:** Make meaningful adjustments while measuring their effects, and work with visualizations.
 
-## Practicum 4a
+## Practicum 4a {.active}
 
-* **Recap:** Revisit the dispersal and diffusion model.
-* **Agent death:** Implement removal with `self.remove()`.
-* **Design a measure:** Spatial diffusion as variance in x and y coordinates.
-
-## Practicum 4a
-
-* **Creative adaptation:** Tinker with the continuous and network models.
-* **Custom measures:** Design and collect your own measure for each.
-* **In class:** Plot results using DataCollector and `make_plot_component`.
+* **Recap:** Inspect the dispersal model with the worldamp.
+* **Design a measure:** Design a measure to test a hypothesis.
+* **Tinker:** Implement some relevant change to this model removal with `self.remove()`.
+* **Run an experiment**: Run a batch of experiments with `mesa.batch_run` and save and summarize the results.
 
 ## Practicum 5a
 
@@ -661,6 +656,8 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 
 * [Basic Dispersal Model Python](./models/basic_dispersal_python_completed.zip){download=""}
 
+* [Dispersal Model with Worldmap Folder Python (complete)](./models/dispersal_python_model_complete.zip)
+
 <!--
 For the final fully implemented one one we are going to give you a hint and you can check out a start here:
 
@@ -672,10 +669,6 @@ For the final fully implemented one one we are going to give you a hint and you 
 <!--### Simple Dispersal Model After Practicum 3
 * [Dispersal Model Simple Folder Python (partially completed)](./models/dispersal_python_afterpartII.zip){download=""}
 
-
-### Python challenge
-* [Dispersal Model with Worldmap Folder Python (incomplete)](./models/dispersal_python_model_incomplete.zip)
-* [Dispersal Model with Worldmap Folder Python (complete)](./models/dispersal_python_model_complete.zip)
 -->
 :::
 
@@ -1473,7 +1466,7 @@ No excercises for this practicum. But make sure to catch up, and repeat doing th
 
 ::::
 
-## Practicum 3b {#ex-3b .active}
+## Practicum 3b {#ex-3b}
 
 Today you add a measurement to the dispersal model, and you prepare for the world map version, where the world wraps left-right but not top-bottom.
 
@@ -1612,17 +1605,8 @@ Things to try and think about:
 
 ::::
 
-## Practicum 4a {#ex-4a}
-
-:::: {.panel-tabset}
-
-### Exercise 1 {#ex-4a-1}
-TBA
-
-### Exercise 2 {#ex-4a-2}
-TBA
-
-::::
+## Practicum 4a {#ex-4a .active}
+No excercises for this practicum. But make sure to catch up, and repeat doing these excercises.
 
 ## Practicum 4b {#ex-4b}
 
@@ -1813,6 +1797,22 @@ aria-label="Practical 2b MAS 2026/2027">
 ```{=html}
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
 <iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b5c34113-a940-4d00-8473-b4d600768de3&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
+style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"
+allowfullscreen
+allow="autoplay"
+aria-label="Practical 3a MAS 2026/2027">
+</iframe>
+</div>
+```
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Recording Practicum 3b
+
+[Recording link to Panopto](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b0b7b46-6bf2-4041-b39f-b4dd0072d8d5)
+```{=html}
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b0b7b46-6bf2-4041-b39f-b4dd0072d8d5&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all"
 style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"
 allowfullscreen
 allow="autoplay"

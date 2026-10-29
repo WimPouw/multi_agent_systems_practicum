@@ -1,5 +1,5 @@
 ---
-title: "Practicum 5: Adaptive agents and and parameter sweeping"
+title: "Practicum 5a: Adaptive agents and and parameter sweeping"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -36,7 +36,7 @@ format:
 
 # El farol bar problem
 * Go to model library on the landing page
-* Or download El Farol Model Python directly here: [here](https://wimpouw.github.io/multi_agent_systems_practicum/models/elfarol_model_python.rar)
+* Or download El Farol Model Python directly here: [here](https://wimpouw.github.io/multi_agent_systems_practicum/models/elfarol_model_python.zip)
 * Lets take a look...
 
 # El farol bar problem

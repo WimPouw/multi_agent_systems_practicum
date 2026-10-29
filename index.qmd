@@ -109,14 +109,14 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Complexify:** Start working on the actual implementation of the more complex map-interfacing model.
 * **In class:** Make meaningful adjustments while measuring their effects, and work with visualizations.
 
-## Practicum 4a {.active}
+## Practicum 4a
 
 * **Recap:** Inspect the dispersal model with the worldamp.
 * **Design a measure:** Design a measure to test a hypothesis.
 * **Tinker:** Implement some relevant change to this model removal with `self.remove()`.
 * **Run an experiment**: Run a batch of experiments with `mesa.batch_run` and save and summarize the results.
 
-## Practicum 5a
+## Practicum 5a {.active}
 
 * **Adaptive agents:** How agents get memory and adapt.
 * **El Farol:** Bounded rationality, adaptive strategy selection, emergent collective patterns.
@@ -624,7 +624,7 @@ end
 # Model library for this course
 Note we have stored the models in a .zip file. You can download the models and extract them (otherwise look up how to on the web).
 
-::: {.callout-note .callout-download collapse="false"} 
+::: {.callout-note .callout-download collapse="true"} 
 
 ## Basic models
 * [Basic Grid, Continuous, Network Model Folder Python](./models/basic_python_models.zip){download=""}
@@ -650,7 +650,7 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Dispersal model and DIY
 * [Download Dispersal Model Folder Netlogo](./models/dispersal_netlogo.zip){download=""}
 
@@ -685,11 +685,16 @@ For the final fully implemented one one we are going to give you a hint and you 
 * [Flocking Model Folder Python](./models/flocking_model_python.zip){download=""}
 * [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip){download=""}
 :::
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
+
 ## El Farol Model
 * [El Farol Model Folder Python](./models/elfarol_model_python.zip){download=""}
-  * [El Farol Solution Practicum 5](./models/elfarol_model_extended.zip){download=""}
 * [El Farol Model Folder Netlogo](./models/elfarol_model_netlogo.zip){download=""}
+
+<!--
+* [El Farol Solution Practicum 5](./models/elfarol_model_extended.zip){download=""}
+
+-->
 :::
 
 ::: {.callout-note .callout-download collapse="true"}
@@ -759,7 +764,8 @@ For the final fully implemented one one we are going to give you a hint and you 
 :::
 
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
+
 ## Slides practicum 4a
 
 
@@ -768,24 +774,24 @@ For the final fully implemented one one we are going to give you a hint and you 
 [Open slides in new window](./slides_practicals/Practical4.html)
 
 :::
-::: {.callout-note .callout-download collapse="true"}
+<!--
+::: {.callout-note .callout-download collapse="false"}
 
 ## Slides Practicum 4b
 <iframe src="slides_practicals/Practical2.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
 [Open slides in new window](./slides_practicals/Practical2.html)
 :::
-
-::: {.callout-note .callout-download collapse="true"}
-## Slides Practicum 5a
-<!--
-<iframe src="slides_practicals/Practical3.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
-
-[Open slides in new window](./slides_practicals/Practical3.html)
 -->
+::: {.callout-note .callout-download collapse="false"}
+
+## Slides Practicum 5a
+
+<iframe src="slides_practicals/Practical5a.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical5a.html)
+
 :::
-
-
 
 ::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 5b
@@ -834,7 +840,7 @@ This book chapter goes into the some basics of netlogo that is helpful for getti
 [Download PDF](./pdfs/Romanowska_ABMA_Chapter_1.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Book chapter about dispersal model
 ## Chapter 1 [@romanowskaAgentBasedModelingArchaeology2021]
 This book chapter goes into the [dispersal model](#model-library-for-this-course)
@@ -860,7 +866,7 @@ This book chapter goes into the [fire model](#model-library-for-this-course)
 [Download PDF](./pdfs/WilenskyRand_ABM_Chapter_3.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Book chapter about el farol model
 ## Chapter 3 [@wilenskyIntroductionAgentBasedModeling2015]
 This book chapter goes into the [el farol model](#model-library-for-this-course)
@@ -1605,7 +1611,7 @@ Things to try and think about:
 
 ::::
 
-## Practicum 4a {#ex-4a .active}
+## Practicum 4a {#ex-4a}
 No excercises for this practicum. But make sure to catch up, and repeat doing these excercises.
 
 ## Practicum 4b {#ex-4b}
@@ -1620,15 +1626,155 @@ TBA
 
 ::::
 
-## Practicum 5a {#ex-5a}
+## Practicum 5a {#ex-5a .active}
+
+The El Farol model has quite some moving parts. These exercises take it apart so you can see what each part does: the prediction, the choosing of a best strategy, and what happens when you put a hundred of these agents together. Note that in the notebook `history[0]` is last week, `history[1]` the week before, and so on.
 
 :::: {.panel-tabset}
 
-### Exercise 1 {#ex-5a-1}
-TBA
+### Exercise 1: making a prediction {#ex-5a-1}
 
-### Exercise 2 {#ex-5a-2}
-TBA
+A strategy is nothing more than a list of numbers `[c, w1, w2, ...]`. The first number is the constant, the rest are weights for the past weeks. The prediction is p(t) = N·c + w1·A(t-1) + w2·A(t-2) + ...
+
+Fill in the gap. The first print should give 30.0.
+
+```{pyodide}
+#| autorun: false
+N = 100                                     # number of agents
+
+def predict(strategy, history):
+    """Predict this week's attendance with one strategy.
+    strategy: [c, w1, w2, ...], history: [last week, week before, ...]"""
+    prediction = N * strategy[0]            # start with the constant c, scaled by N
+    for i in range(len(strategy) - 1):      # one round per weight (so per remembered week)
+        prediction += ???                   # weight times the attendance of that week
+    return prediction
+
+# c = 0.3, w1 = -0.4, w2 = 0.3, last week 60, the week before 80
+print(predict([0.3, -0.4, 0.3], [60, 80]))  # 30.0
+
+# two easy to read strategies, last week 80 people went
+print("copycat:   ", predict([0.0, 1.0], [80]))    # no constant, weight +1
+print("contrarian:", predict([1.0, -1.0], [80]))   # constant 1 (so N), weight -1
+```
+
+Three things to think about:
+
+1. Why is `c` multiplied by `N`? What would an agent predict that has all its weights at 0?
+2. The copycat thinks this week will be like last week. What does the contrarian think? Which weight makes someone a contrarian?
+3. The threshold is 60, so you go if you predict 60 or less. Who goes to the bar?
+
+::: {.callout-tip collapse="true"}
+## Hint
+The weights start at `strategy[1]`, the history starts at `history[0]`.
+:::
+
+### Exercise 2: which strategy was best? {#ex-5a-2}
+
+This is what makes El Farol adaptive. Every week an agent checks for each of its strategies how well it would have predicted the last few weeks. It then uses the strategy with the lowest error. Fill in the gap so that we add up the error.
+
+```{pyodide}
+#| autorun: false
+N = 100
+
+def predict(strategy, history):
+    prediction = N * strategy[0]
+    for i in range(len(strategy) - 1):
+        prediction += strategy[i + 1] * history[i]
+    return prediction
+
+history = [70, 30, 70, 30, 70]              # history[0] is last week, so the bar goes busy, quiet, busy...
+
+# three strategies this agent can choose from
+strategies = {"copycat": [0.0, 1.0], "contrarian": [1.0, -1.0], "fixed belief": [0.6, 0.0]}
+
+for name, strategy in strategies.items():   # test every strategy
+    error = 0                               # start each strategy with zero error
+    for week in range(3):                   # check the last 3 weeks
+        actual = history[week]              # what really happened that week
+        guess = predict(strategy, history[week + 1:])   # what this strategy would have said, using only the weeks before it
+        error += ???                        # add how far off the guess was
+    print(f"{name:<13} total error {error}")
+```
+
+Then:
+
+1. Which strategy wins? Does that make sense if you look at the history?
+2. Why do we use `history[week + 1:]` for the guess and not the whole history?
+3. Look up `update_strategies` in the notebook. You will find the same loop there. What plays the role of our `3`?
+
+::: {.callout-tip collapse="true"}
+## Hint
+The error is how far the guess was off from what actually happened. It should never be negative.
+:::
+
+### Exercise 3: a hundred agents {#ex-5a-3}
+
+Now we put it all together, but without the grid. Every agent gets some random strategies, picks the best one every week, and decides to go or not. Fill in the one gap: `self.best` should become the position of the smallest error in the list.
+
+```{pyodide}
+#| autorun: false
+import random
+N = 100                                     # number of agents
+threshold = 60                              # more than 60 people is too crowded
+
+def predict(strategy, history):
+    prediction = N * strategy[0]
+    for i in range(len(strategy) - 1):
+        prediction += strategy[i + 1] * history[i]
+    return prediction
+
+class BarAgent:
+    def __init__(self, rng, number_of_strategies, memory_size):
+        self.memory_size = memory_size      # how many past weeks the agent looks at
+        self.strategies = []
+        for _ in range(number_of_strategies):
+            # a constant plus one weight per remembered week, all random between -1 and 1
+            strategy = [rng.uniform(-1, 1) for _ in range(memory_size + 1)]
+            self.strategies.append(strategy)
+        self.best = 0                       # position of the strategy in use, start with the first
+
+    def update_strategies(self, history):
+        """Same as exercise 2: score every strategy on the past weeks."""
+        errors = []                         # one total error per strategy
+        for strategy in self.strategies:
+            error = 0
+            for week in range(self.memory_size):
+                error += abs(history[week] - predict(strategy, history[week + 1:]))
+            errors.append(error)
+        self.best = ???                     # use the strategy with the smallest error
+
+    def decide(self, history):
+        """Go to the bar (True) if the best strategy predicts it is not too crowded."""
+        return predict(self.strategies[self.best], history) <= threshold
+
+def run(number_of_strategies, memory_size=3, weeks=100, seed=1):
+    rng = random.Random(seed)
+    agents = [BarAgent(rng, number_of_strategies, memory_size) for _ in range(N)]
+    history = [rng.randint(0, 99) for _ in range(memory_size * 2)]   # random made up past, as in the notebook
+    attendances = []                        # our measurement, one number per week
+    for week in range(weeks):
+        for agent in agents:
+            agent.update_strategies(history)        # 1. everyone picks their best strategy
+        attendance = sum(1 for agent in agents if agent.decide(history))   # 2. everyone decides, we count who goes
+        history = [attendance] + history[:-1]       # 3. newest week goes in front, oldest drops off
+        attendances.append(attendance)
+    print(f"strategies: {number_of_strategies:>2}   last 10 weeks: {attendances[-10:]}   average: {sum(attendances) / weeks:.0f}")
+
+run(1)                                      # agents have one strategy, so they cannot adapt
+run(10)                                     # agents can switch between 10 strategies
+```
+
+Things to look at:
+
+1. With 1 strategy nobody can adapt. What happens to the attendance?
+2. With 10 strategies the attendance jumps up and down every week. But look at the average. Did any of the agents aim for that number?
+3. Try some other seeds (`run(10, seed=3)`) and memory sizes. Is the average something that belongs to one agent, or to the group? This is what we mean by an emergent pattern.
+
+::: {.callout-tip collapse="true"}
+## Hint
+`min(errors)` gives you the smallest error. `.index(...)` tells you where in the list it sits.
+:::
 
 ::::
 

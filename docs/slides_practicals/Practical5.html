@@ -6,8 +6,8 @@
 <script src="Practical5_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Practical5_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Practical5_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Practical5_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="Practical5_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Wim Pouw">
   <title>Practicum 5: Adaptive agents and and parameter sweeping</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="Practical5_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="Practical5_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="Practical5_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="Practical5_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link href="Practical5_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Practical5_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Practical5_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -264,18 +267,18 @@ Wim Pouw
 <section id="analysis" class="title-slide slide level1 center">
 <h1>Analysis</h1>
 <ul>
-<li>Save the median prediction error per experiment (using pandas)
+<li>Save the median prediction error of each agent per experiment (using pandas)
 <ul>
 <li><code>median_errors = results_5seeds.groupby(['number_of_strategies', 'memory_size'])['prediction_error'].median().reset_index()</code></li>
 </ul></li>
-<li>Find out which strategy has the lowest median prediction error</li>
+<li>Find out which strategy has the lowest median prediction error on the agent level, and then how far the group as a whole is off</li>
 </ul>
 </section>
 
 <section id="lets-compare-results" class="title-slide slide level1 center">
 <h1>Lets compare results</h1>
 <ul>
-<li>What combination of parameters led to the lowest prediction error?</li>
+<li>What combination of parameters led to the lowest prediction error for the agent, versus the group?</li>
 <li>If results differ, what can we do to see if its just chance?</li>
 <li>Is there reason to change the parameter space? When would you want to explore more?</li>
 </ul>
@@ -472,7 +475,7 @@ Wim Pouw
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -546,13 +549,14 @@ Wim Pouw
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

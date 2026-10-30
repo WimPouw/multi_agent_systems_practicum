@@ -99,12 +99,12 @@ Given N=100, c=0.5, M=1, w₁=-0.5, and A(t-1)=80, what is the predicted attenda
     * With a 50 steps
 
 # Analysis
-* Save the median prediction error per experiment (using pandas)
+* Save the median prediction error of each agent per experiment (using pandas)
   * `median_errors = results_5seeds.groupby(['number_of_strategies', 'memory_size'])['prediction_error'].median().reset_index()`
-* Find out which strategy has the lowest median prediction error
+* Find out which strategy has the lowest median prediction error on the agent level, and then how far the group as a whole is off
 
 # Lets compare results
-* What combination of parameters led to the lowest prediction error?
+* What combination of parameters led to the lowest prediction error for the agent, versus the group?
 * If results differ, what can we do to see if its just chance?
 * Is there reason to change the parameter space? When would you want to explore more?
 

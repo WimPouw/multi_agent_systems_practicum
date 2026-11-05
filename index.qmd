@@ -116,13 +116,13 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Tinker:** Implement some relevant change to this model removal with `self.remove()`.
 * **Run an experiment**: Run a batch of experiments with `mesa.batch_run` and save and summarize the results.
 
-## Practicum 5a {.active}
+## Practicum 5a 
 
 * **Adaptive agents:** How agents get memory and adapt.
 * **El Farol:** Bounded rationality, adaptive strategy selection, emergent collective patterns.
 * **In class:** Quiz questions on the prediction formula, strategy weights, and adaptive mechanics.
 
-## Practicum 5b
+## Practicum 5b live exercises
 
 * **New measure:** Add prediction error to the El Farol DataCollector.
 * **Parameter sweeps:** Batch runs with `mesa.batch_run`, varying number of strategies (1/5/10/20) and memory length (1/5/10/20).
@@ -783,7 +783,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 [Open slides in new window](./slides_practicals/Practical2.html)
 :::
 -->
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 
 ## Slides Practicum 5a
 
@@ -793,15 +793,14 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 5b
-<!--
 
-<iframe src="slides_practicals/Practical4.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical4.html)
+<iframe src="slides_practicals/Practical5b.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
--->
+[Open slides in new window](./slides_practicals/Practical5b.html)
+
 :::
 
 ::: {.callout-note .callout-download collapse="true"}

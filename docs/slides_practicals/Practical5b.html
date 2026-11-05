@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Wim Pouw">
-  <title>Practicum 5a: Adaptive agents and and parameter sweeping</title>
+  <title>Practicum 5b: Adaptive agents and and parameter sweeping</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -131,7 +131,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="./videos/elfarol.gif" data-background-opacity="0.3" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Practicum 5a: Adaptive agents and and parameter sweeping</h1>
+  <h1 class="title">Practicum 5b: Adaptive agents and and parameter sweeping</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -142,8 +142,8 @@ Wim Pouw
 </div>
 
 </section>
-<section id="practicum-5-objectives" class="slide level2">
-<h2>Practicum 5: Objectives</h2>
+<section id="practicum-5b-objectives" class="slide level2">
+<h2>Practicum 5b: Objectives</h2>
 <ul>
 <li>Understand a complex model of adaptive agents (El farol bar problem) (part 1)</li>
 <li>Adding a measurement to the model data collector (recap) (part 2)</li>
@@ -151,44 +151,8 @@ Wim Pouw
 <li>Saving and plotting the results (part 2)</li>
 </ul>
 </section>
-<section id="recap-of-covered-functionalities" class="slide level2">
-<h2>Recap of covered functionalities</h2>
-<ul>
-<li>Basic model structure (Model, Agent, Space, SolaraViz) (Practicum 1-2)</li>
-<li>Coding a grid model from scratch (Dispersal) (Practicum 3)</li>
-<li>Basic mesa functions (Measurement design, DataCollector) (Practicum 4)</li>
-<li>Mesa visualization + Mesa data plotting (variability basic dispersal) (Practicum 4)</li>
-</ul>
-</section>
-<section id="el-farol-bar-problem" class="title-slide slide level1 center">
-<h1>El farol bar problem</h1>
-<ul>
-<li>Go to model library on the landing page</li>
-<li>Or download El Farol Model Python directly here: <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/elfarol_model_python.zip">here</a></li>
-<li>Lets take a look…</li>
-</ul>
-</section>
-
-<section id="el-farol-bar-problem-1" class="title-slide slide level1 center">
-<h1>El farol bar problem</h1>
-<ul>
-<li>Embraces complexity science</li>
-<li>Bounded rationality (agents with limited information)</li>
-<li>Adaptive behavior (agents change their behavior based on past experiences)</li>
-<li>Emergent phenomena (collective patterns arise from individual actions)
-<ul>
-<li>How often is the bar overcrowded? (The degree of overcrowding can sometimes be efficiently low, despite individual strategies)</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="break" class="title-slide slide level1 center">
-<h1>Break</h1>
-
-</section>
-
-<section id="questions-el-farol-bar-problem" class="title-slide slide level1 center">
-<h1>Questions el farol bar problem</h1>
+<section id="recap-el-farol-bar-problem" class="title-slide slide level1 center">
+<h1>RECAP el farol bar problem</h1>
 
 </section>
 
@@ -250,28 +214,17 @@ Wim Pouw
 <section id="the-challenge-for-today" class="title-slide slide level1 center">
 <h1>The challenge for today</h1>
 <ul>
-<li>Collect the prediction_error for each agent</li>
+<li>Collect the prediction_error for each agent, and the prediction error of the entire crowd</li>
 <li>Run multiple simulations using<code>mesa.batch_run</code> (see <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/fullfunc_grid_python_model/grid/full_func_multiagent_grid.html">full func model</a>)
 <ul>
 <li>Varying
 <ul>
-<li>Number of strategies (1, 5, 10, 20)</li>
-<li>Memory length (1, 5, 10, 20)</li>
-<li>For each combination, run 2 simulations</li>
-<li>With a 50 steps</li>
+<li>Number of strategies (1, 5, 10, 15, 20)</li>
+<li>Memory length (1, 5, 10, 15, 20)</li>
+<li>For each combination, run 2 seed-iterated simulations</li>
+<li>Lets run it for 100 steps</li>
 </ul></li>
 </ul></li>
-</ul>
-</section>
-
-<section id="analysis" class="title-slide slide level1 center">
-<h1>Analysis</h1>
-<ul>
-<li>Save the median prediction error per experiment (using pandas)
-<ul>
-<li><code>median_errors = results_5seeds.groupby(['number_of_strategies', 'memory_size'])['prediction_error'].median().reset_index()</code></li>
-</ul></li>
-<li>Find out which strategy has the lowest median prediction error</li>
 </ul>
 </section>
 
@@ -279,6 +232,10 @@ Wim Pouw
 <h1>Lets compare results</h1>
 <ul>
 <li>What combination of parameters led to the lowest prediction error?</li>
+<li>How does the group versus the individuals compare in terms of prediction error?
+<ul>
+<li>Why is this?</li>
+</ul></li>
 <li>If results differ, what can we do to see if its just chance?</li>
 <li>Is there reason to change the parameter space? When would you want to explore more?</li>
 </ul>

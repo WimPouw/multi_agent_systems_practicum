@@ -1,0 +1,24 @@
+---
+title: "Practicum 6: Answering research questions predator-prey"
+author: "Wim Pouw"
+format:
+  revealjs:
+    controls: true
+    navigationMode: default
+---
+
+## Markov property
+
+## 
+
+
+
+
+
+
+
+
+
+
+
+

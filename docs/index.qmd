@@ -122,14 +122,14 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **El Farol:** Bounded rationality, adaptive strategy selection, emergent collective patterns.
 * **In class:** Quiz questions on the prediction formula, strategy weights, and adaptive mechanics.
 
-## Practicum 5b live exercises
+## Practicum 5b 
 
 * **New measure:** Add prediction error to the El Farol DataCollector.
 * **Parameter sweeps:** Batch runs with `mesa.batch_run`, varying number of strategies (1/5/10/20) and memory length (1/5/10/20).
 * **Reporting:** Save results and find the combination with lowest median prediction error.
 * **In class:** Code up parameter sweeps and data collection.
 
-## Practicum 6a
+## Practicum 6a {.active}
 
 * **Group projects:** Overview of custom visualization resources.
 * **Agent-sets:** Introduced via the Wolf-Sheep predator-prey model.
@@ -685,7 +685,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 * [Flocking Model Folder Python](./models/flocking_model_python.zip){download=""}
 * [Flocking Model Folder Netlogo](./models/flocking_model_netlogo.zip){download=""}
 :::
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 
 ## El Farol Model
 * [El Farol Model Folder Python](./models/elfarol_model_python.zip){download=""}
@@ -703,7 +703,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 * [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.zip){download=""}
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Wolf-Sheep Model
 * [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.zip){download=""}
 * [Wolf-Sheep Model Folder Python (practicum 6 solution)](./models/wolfsheep_solution_python.zip)
@@ -793,7 +793,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 5b
 
 
@@ -803,13 +803,13 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 6a
-<!--
-<iframe src="slides_practicals/Practical5.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical5.html)
--->
+<iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical6.html)
+
 :::
 
 ::: {.callout-note .callout-download collapse="false"}
@@ -865,7 +865,7 @@ This book chapter goes into the [fire model](#model-library-for-this-course)
 [Download PDF](./pdfs/WilenskyRand_ABM_Chapter_3.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Book chapter about el farol model
 ## Chapter 3 [@wilenskyIntroductionAgentBasedModeling2015]
 This book chapter goes into the [el farol model](#model-library-for-this-course)
@@ -891,7 +891,7 @@ This book chapter goes into the [flocking](#model-library-for-this-course)
 [Download PDF](./pdfs/Smaldino_ModelingSocialBehavior_Chapter_2.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Book chapters about wolf-sheep model
 ## Chapter 4 [@wilenskyIntroductionAgentBasedModeling2015]
 This book chapter goes into the [wolf sheep model](#model-library-for-this-course)
@@ -1625,7 +1625,7 @@ TBA
 
 ::::
 
-## Practicum 5a {#ex-5a .active}
+## Practicum 5a {#ex-5a}
 
 The El Farol model has quite some moving parts. These exercises take it apart so you can see what each part does: the prediction, the choosing of a best strategy, and what happens when you put a hundred of these agents together. Note that in the notebook `history[0]` is last week, `history[1]` the week before, and so on.
 
@@ -1777,27 +1777,131 @@ Things to look at:
 
 ::::
 
-## Practicum 5b {#ex-5b}
+
+## Practicum 6a {#ex-6a .active}
 
 :::: {.panel-tabset}
 
-### Exercise 1 {#ex-5b-1}
-TBA
+### Exercise 1: agent types {#ex-6a-1}
 
-### Exercise 2 {#ex-5b-2}
-TBA
+The wolf-sheep model has two kinds of animals. Both are an `Animal`, so they share the same `step`, but each has its own `feed`. This is the same inheritance trick as `super()` in practicum 1b: the child class gets everything from the parent, and only overwrites what is different.
+
+Run this, then fill in the gap so we also count the wolves.
+
+```{pyodide}
+#| autorun: false
+class Animal:
+    def __init__(self, energy):
+        self.energy = energy
+
+    def feed(self):
+        pass                        # an animal in general does not know how to eat
+
+    def step(self):
+        self.energy -= 1            # walking costs energy
+        self.feed()                 # every animal feeds, but each in its own way
+
+class Sheep(Animal):
+    def feed(self):
+        self.energy += 4            # a sheep eats grass
+
+class Wolf(Animal):
+    def feed(self):
+        self.energy += 20           # a wolf eats a sheep
+
+agents = [Sheep(8), Sheep(8), Wolf(10), Sheep(8), Wolf(10)]
+for agent in agents:
+    agent.step()                    # one loop, but sheep and wolves do different things
+
+print([agent.energy for agent in agents])
+
+n_sheep = sum(1 for agent in agents if isinstance(agent, Sheep))   # isinstance asks: is this agent a Sheep?
+n_wolves = ???
+print(n_sheep, "sheep and", n_wolves, "wolves")
+```
+
+Then:
+
+1. Predict the energies before you run. Where in the code is it decided that a wolf gets 20 and a sheep 4?
+2. What do you get with `isinstance(agent, Animal)`? Why?
+3. In Mesa you do not need to write this count yourself: `model.agents_by_type[Sheep]` gives you all sheep. Find it in the DataCollector of the wolf-sheep notebook.
 
 ::::
 
-## Practicum 6a {#ex-6a}
+The sheep and wolf populations go up and down in waves. Today we want to measure those waves: where are the peaks, and how long does one wave take (the period)? Here we use a made up time series so you can check your answer.
 
 :::: {.panel-tabset}
 
-### Exercise 1 {#ex-6a-1}
-TBA
+### Exercise 1: finding peaks {#ex-6b-1}
 
-### Exercise 2 {#ex-6a-2}
-TBA
+A peak is a step where the value is higher than the step before and higher than the step after. Fill in that condition.
+
+```{pyodide}
+#| autorun: false
+import math
+
+steps = list(range(100))
+wiggle = 4                          # small fast up and down, like noise in a real run
+sheep = [60 + 30 * math.sin(2 * math.pi * t / 20) + wiggle * math.sin(2 * math.pi * t / 3) for t in steps]
+
+peaks = []
+for t in range(1, len(sheep) - 1):  # skip the first and last step, they have only one neighbour
+    if ???:
+        peaks.append(t)
+
+print(len(peaks), "peaks at steps", peaks)
+```
+
+Then:
+
+1. You find 15 peaks, but if you plot the series there are only 5 big waves. Where do the other peaks come from?
+2. Set `wiggle = 0` and run again. How many peaks now?
+3. In the notebook we use `find_peaks(sheep, distance=5)` and smooth with `.rolling(window=5).mean()` first. Which of these two problems does each one solve?
+
+::: {.callout-tip collapse="true"}
+## Hint
+Two comparisons joined with `and`: `sheep[t]` against `sheep[t - 1]`, and against `sheep[t + 1]`.
+:::
+
+### Exercise 2: how long is one wave? {#ex-6b-2}
+
+The period is the time between two peaks. Fill in the gap so we get the distance between each peak and the next one.
+
+```{pyodide}
+#| autorun: false
+import math
+
+steps = list(range(100))
+sheep  = [60 + 30 * math.sin(2 * math.pi * t / 20) for t in steps]
+wolves = [20 + 10 * math.sin(2 * math.pi * (t - 5) / 20) for t in steps]
+
+def find_my_peaks(series):
+    """Our own find_peaks: the steps where the value is higher than both neighbours."""
+    peaks = []
+    for t in range(1, len(series) - 1):
+        if series[t] > series[t - 1] and series[t] > series[t + 1]:
+            peaks.append(t)
+    return peaks
+
+sheep_peaks = find_my_peaks(sheep)
+wolf_peaks = find_my_peaks(wolves)
+print("sheep peaks:", sheep_peaks)
+print("wolf peaks: ", wolf_peaks)
+
+periods = [??? for i in range(len(sheep_peaks) - 1)]   # one number per pair of neighbouring peaks
+print("periods:", periods)
+print("average period:", sum(periods) / len(periods))
+```
+
+Then:
+
+1. In the notebook this line is `steps[sheep_peaks][1:] - steps[sheep_peaks][:-1]`. Can you see that it does the same thing?
+2. Look at the wolf peaks. Do the wolves peak before or after the sheep? Can you explain this from what wolves eat?
+
+::: {.callout-tip collapse="true"}
+## Hint
+For each `i`, take the next peak minus this peak: `sheep_peaks[i + 1]` and `sheep_peaks[i]`.
+:::
 
 ::::
 
@@ -1826,6 +1930,7 @@ TBA
 
 ::: {#inspirationCollapse .collapse}
 ## Additional Multimedia Resources
+- [Santa Fe's The rise of Agent-Based Modeling in Social Science](https://santafe.edu/features/agent-based-modeling-worlds-within-worlds)
 - [Emergent phenomena from sorting algorithms (with Michael Levin)](https://www.youtube.com/watch?v=jr1sNYY2t9A)
 - [Youtube video Cellular automata called Lenia](https://www.youtube.com/watch?v=6kiBYjvyojQ)
 - [Santa Fe Complexity Podcast: The physics of collectives](https://open.spotify.com/episode/45KvcyYeDyreKiDm5qQPFK?si=8Fe-NEIKR7qb4o0OxP6RaQ)

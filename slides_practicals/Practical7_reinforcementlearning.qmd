@@ -354,7 +354,7 @@ $$Q((1,3), right) = 1 \times [-0.1 + 0.9 \times 10] = 8.9$$
   - **Monte Carlo**: play a whole episode, and look back
   - **Temporal difference (TD)**: learn after every step
 
-## Remember Intro to AI2 from year 2
+## Remember Intro to AI2 from year 1!
 
 - Let an agent **wander randomly** through a grid world (many episodes)
 - For every (state, action): compute the **reward-to-go** (= the return $R_t$)

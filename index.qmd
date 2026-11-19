@@ -706,6 +706,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 ::: {.callout-note .callout-download collapse="false"}
 ## Wolf-Sheep Model
 * [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.zip){download=""}
+* [Wolf-Sheep Model Folder Python (checkpoint 2026)](./models/wolfsheep_model_python_checkpoint20262027.zip)
 * [Wolf-Sheep Model Folder Python (practicum 6 solution)](./models/wolfsheep_solution_python.zip)
 * [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.zip){download=""}
 :::
@@ -803,7 +804,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 6a
 
 <iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
@@ -815,11 +816,19 @@ For the final fully implemented one one we are going to give you a hint and you 
 ::: {.callout-note .callout-download collapse="false"}
 ## Slides Practicum 6b
 
-<!--
+
 <iframe src="slides_practicals/Practical6.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 
-[Open slides in new window](./slides_practicals/Practical6.html)
--->
+[Open slides in new window](./slides_practicals/Practical6b.html)
+
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Slides Reinforcement Learning
+
+<iframe src="slides_practicals/Practical7_reinforcementlearning.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+[Open slides in new window](./slides_practicals/Practical7_reinforcementlearning.html)
 :::
 
 # Key background literature for the models
@@ -915,6 +924,18 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
        height="400px" />
 
 [Download PDF](./pdfs/Romanowska_ABMA_Chapter_6.pdf)
+:::
+
+::: {.callout-note .callout-download collapse="true"}
+## Book for intro to Reinforcement Learning
+This book is open sources and a classic for understanding reinforcement learning [@suttonReinforcementLearningIntroduction2018].
+
+<embed src="./pdfs/SuttonBartoIPRLBook2ndEd.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="400px" />
+
+[Download PDF](./pdfs/SuttonBartoIPRLBook2ndEd.pdf)
 :::
 
 # Live exercises
@@ -1910,10 +1931,7 @@ For each `i`, take the next peak minus this peak: `sheep_peaks[i + 1]` and `shee
 :::: {.panel-tabset}
 
 ### Exercise 1 {#ex-6b-1}
-TBA
-
-### Exercise 2 {#ex-6b-2}
-TBA
+No excercises for this practicum. But make sure to catch up, and repeat doing these excercises.
 
 ::::
 

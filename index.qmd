@@ -711,6 +711,11 @@ For the final fully implemented one one we are going to give you a hint and you 
 * [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.zip){download=""}
 :::
 
+::: {.callout-note .callout-download collapse="true"}
+## Model-free On-policy Reinforcement learning
+* [Monte Carlo and SARSA models](./models/reinforcement_learning_python.zip){download=""}
+:::
+
 # Slides
 
 ::: {.callout-note .callout-download collapse="true"}

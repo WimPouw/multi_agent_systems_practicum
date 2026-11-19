@@ -1,5 +1,5 @@
 ---
-title: "Practicum 6: Answering research questions predator-prey"
+title: "Practicum 6b: Analyzing the predator-prey model"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -7,35 +7,20 @@ format:
     navigationMode: default
 ---
 
-## Practicum 6: Objectives
-* **Resources for your python group projects**: Some new resources for your upcoming group projects.
-* **Intro to agent-sets**: Short introduction to agent-sets via the predator-prey model.
+## Practicum 6b: Objectives
+* **Optimal Threshold finding**: Using parameter sweeps to find optimal parameter settings for a model.
 * **Analysis**: Python time series analysis, statistical analysis and visualization of results.
 
 ## Group Project Resources
-* Added a new folder with some custom visualization functions to help you get started.
-  * [Model library "Custom visualizations example models"](https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course)
-* These contain
-  * Custom space visualizatiosn
-  * Visualization of results
-  * Picture-model interaction (dispersal)
-  * Avoiding solara viz, and making a GIF instead
-* Lets have a quick look...
+* Checkpoint download: [Wolf-Sheep Model Folder Python (checkpoint 2026)](./models/wolfsheep_model_python_checkpoint20262027.zip)
+* we did broad parameter sweep of 100 steps of the wolf-sheep model, and saved the results in a csv file
+* Were there some parameter settings where neither wolf nor sheep are extinct by a 100 steps?
 
-## Goal today
-* We take a model from the python mesa example library
-  * Sheep-wolf model (get it [here](../models/wolfsheep_model_python.rar))
-  * Or go to model library [here](https://wimpouw.github.io/multi_agent_systems_practicum/#model-library-for-this-course)
-* You design a parameter sweep experiment (like last week)
-* Save and collect the data
-* And then lets ask some research questions
-
-# Parameter sweep Experiment 1
-* Lets first start with a broad parameter sweep of 100 steps
-* Are there some parameter settings where neither wolf nor sheep are extinct by a 100 steps?
-  * Pick the best setting for later
+## Further exploration
 * What population ratio of sheep to wolves seems to lead to more stable outcomes?
   * Can we do a statistical test to confirm this?
+  * Are there other potentially interesting ratio's or promising settings?
+* Could we look take a deeper look closer to the optimal thresholds?
 
 # Parameter sweep Experiment 2
 * Identify the best parameter settings from experiment 1, that you think likely reflect possible stable system
@@ -43,7 +28,8 @@ format:
 * Are they truly stable? Are there any stable parameter settings?
 
 # Plot timeseries
-* Lets plot the timeseries of one of these 500 step runs
+* Lets plot the timeseries of one of these 500 step run
+* Lets say we now want to further dive into the temporal dynamics of these interesting models
 * Can we measure the number of peaks in the sheep and wolf populations (before any die out)?
   * Take a look at [scipy find_peaks function](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html), see if you can implement it
 * Could you measure the periodicity of any osscilations of the via the peaks?
@@ -52,6 +38,14 @@ format:
 * With so many variables we can explore quickly some promising models
 * Then we can do further experiments to zoom in on interesting parameter settings
 * This is a common workflow in agent-based modeling
+
+# Your project
+* What if you really are stuck with creating a model that is not "interesting enough"?
+* Then try to think about interesting things you can still learn
+    * Maybe you can find a threshold or optimal parameter settings that can inform the domain
+* Also consider, that models are timeverying and dynamic
+    * Perhaps there is interesting temporal dynamics that can be explored?
+    * Time series analysis, spectral analysis, and other statistical methods can be used to analyze the dynamics of the model
 
 # Wrapping up
 * Solution of today is here (password = "practicum6"): [wolfsheep_solution_python.rar](../models/wolfsheep_solution_python.rar)

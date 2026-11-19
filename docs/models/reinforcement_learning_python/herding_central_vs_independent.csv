@@ -1,0 +1,5 @@
+,RunId,iteration,Step,learning,in_pen_share,q_table_size
+0,0,0,1500000,central,0.4228,74800
+1,1,0,1500000,independent,0.4343,29690
+2,2,1,1500000,central,0.4199,74900
+3,3,1,1500000,independent,0.4219,29830

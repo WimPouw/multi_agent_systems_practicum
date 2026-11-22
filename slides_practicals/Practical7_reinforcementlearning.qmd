@@ -79,10 +79,11 @@ format:
 
 ## Caveat
 - We do *not* do the full theory (e.g., why and when these methods converge)
-- The goal for today: understand **what the code does**, and why
+- The goal for today: understand the basic principles of reinforcement learning
+- Then implement those basic principle in python mesa models
 - If you get lost: there is a **cheat sheet** (link at the bottom of every slide)
 
-![](images/iknowkungfu.gif){width="55%"}
+![](images/iknowkungfu.gif){width="40%"}
 
 
 # Minimal foundations: The mathematical framework of RL
@@ -98,6 +99,23 @@ At every step, the agent and the environment take turns:
 The goal of the agent is not to get the biggest reward right now, but the biggest **total reward over time**. We call this total the **return**.
 
 - In the herding task, the dog is the agent. The sheep, the field and the pen are the environment
+- The dog gets a small penalty for every step, and a big reward when the sheep is in the pen
+
+
+## The reinforcement learning loop {.smaller}
+
+![](images/rl_loop_general.png){width="30%"}
+
+At every step, the agent and the environment take turns. The agent sees the **state** $s_t$ and chooses an **action** $a_t$. The environment then changes to a new state $s_{t+1}$, and gives the agent a **reward** $r_{t+1}$.
+
+The goal of the agent is not to get the biggest reward right now, but the biggest **total reward over time**. We call this total the **return**.
+
+## The loop in the herding task {.smaller}
+
+![](images/rl_loop_herding.png){width="30%"}
+
+- The dog is the agent. The sheep, the field and the pen are the environment
+- The dog sees where the sheep is (the state), and moves (the action)
 - The dog gets a small penalty for every step, and a big reward when the sheep is in the pen
 
 ## The Markov property
@@ -125,22 +143,15 @@ Imagine a ball on a table. The wind pushes the ball around a bit.
 - This is a **Markov table**: it gives the probability of the next state, given the current state
 - There is no agent that decides anything here, so the ball only moves because of the wind
 
+## Markov Decision Process (MDP)
 
-## The reinforcement learning loop {.smaller}
+Now we add an agent that **decides**. An MDP has five elements:
 
-![](images/rl_loop_general.png){width="30%"}
-
-At every step, the agent and the environment take turns. The agent sees the **state** $s_t$ and chooses an **action** $a_t$. The environment then changes to a new state $s_{t+1}$, and gives the agent a **reward** $r_{t+1}$.
-
-The goal of the agent is not to get the biggest reward right now, but the biggest **total reward over time**. We call this total the **return**.
-
-## The loop in the herding task {.smaller}
-
-![](images/rl_loop_herding.png){width="30%"}
-
-- The dog is the agent. The sheep, the field and the pen are the environment
-- The dog sees where the sheep is (the state), and moves (the action)
-- The dog gets a small penalty for every step, and a big reward when the sheep is in the pen
+- A set of states $S$
+- A set of actions $A$
+- A transition probability $P^a_{ss'}$: the probability of moving from state $s$ to state $s'$ by performing action $a$
+- A reward function $R^a_{ss'}$: the expected reward for moving from $s$ to $s'$ by performing action $a$
+- A discount factor $\gamma$: how important are future rewards compared to immediate rewards
 
 ## Our mini herding world
 
@@ -205,6 +216,20 @@ This is the Markov table again, but now the next state also depends on the **act
 - If the dog stays, it is not next to the sheep, so the sheep mostly grazes
 - If the dog steps right, it is next to the sheep, so the sheep always steps away
 - For each state and action, the probabilities add up to 1
+
+## MDP element 4: rewards $R^a_{ss'}$
+
+The dog gets $-0.1$ for every step, and $+10$ when the sheep walks into the pen.
+
+| Current state $s$ | Action $a$ | Next state $s'$ | $R^a_{ss'}$ |
+|:-:|:-:|:-:|:-:|
+| `D . S . P` (1, 3) | stay | `D . S . P` (1, 3) | -0.1 |
+| `D . S . P` (1, 3) | right | `. D . S P` (2, 4) | -0.1 |
+| `. D . S P` (2, 4) | right | `. . D . S` (3, 5) | +10 |
+
+- Assume the dog has moved right, so we are now in (2, 4)
+- If the dog steps right again, it is next to the sheep, and the sheep steps away into the pen
+- The step penalty makes the dog hurry: a slow dog collects more penalties
 
 ## Returns
 
@@ -308,9 +333,11 @@ $$Q^{\pi}(s, a) = \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma \sum_{a'} \pi(s', 
 
 ## The Bellman equation is nested {.smaller}
 
-The return already has a nested structure. Each return contains the next return:
+Look at the return again. If we take $\gamma$ out of all rewards after the first one, what is left between the brackets is the return of the next step:
 
-$$R_t = r_{t+1} + \gamma \big(r_{t+2} + \gamma \big(r_{t+3} + \gamma \big(\dots\big)\big)\big) = r_{t+1} + \gamma R_{t+1}$$
+$$R_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \dots = r_{t+1} + \gamma \underbrace{\big(r_{t+2} + \gamma r_{t+3} + \dots\big)}_{R_{t+1}} = r_{t+1} + \gamma R_{t+1}$$
+
+So the return now is the reward now, plus the discounted return from the next step.
 
 The Bellman equation uses the same trick for values. You can read it from the outside in:
 
@@ -479,7 +506,12 @@ $$Q((1,2), stay) = 0.2 + 0.1\,\big(1 + 0.9 \times 0.5 - 0.2\big) = 0.2 + 0.1 \ti
 - **Reward**: closer to the center is better, $-1$ when the ball falls off
 - Exactly the same SARSA update. Each hand has its own Q table, and does not see the other hand
 
-# What we are missing
+# What we are missing, what are the limits
+- Monte carlo and SARSA are actually two extremes of a spectrum of methods
+  - We can do something more balanced, captured by TD ($\lambda$), eligibility traces, and n-step methods)
+- We are basically working with giant tables: one entry for every (state, action) pair.
+- That is not feasible for large state spaces
+   - We had to simplify the board task a lot, and cut the ball's position and velocity into bins
 
 ## Central versus independent learning
 

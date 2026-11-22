@@ -277,11 +277,12 @@ Wim Pouw
 <h2>Caveat</h2>
 <ul>
 <li>We do <em>not</em> do the full theory (e.g., why and when these methods converge)</li>
-<li>The goal for today: understand <strong>what the code does</strong>, and why</li>
+<li>The goal for today: understand the basic principles of reinforcement learning</li>
+<li>Then implement those basic principle in python mesa models</li>
 <li>If you get lost: there is a <strong>cheat sheet</strong> (link at the bottom of every slide)</li>
 </ul>
 
-<img data-src="images/iknowkungfu.gif" style="width:55.0%" class="r-stretch"></section></section>
+<img data-src="images/iknowkungfu.gif" style="width:40.0%" class="r-stretch"></section></section>
 <section>
 <section id="minimal-foundations-the-mathematical-framework-of-rl" class="title-slide slide level1 center">
 <h1>Minimal foundations: The mathematical framework of RL</h1>
@@ -298,6 +299,21 @@ Wim Pouw
 <p>The goal of the agent is not to get the biggest reward right now, but the biggest <strong>total reward over time</strong>. We call this total the <strong>return</strong>.</p>
 <ul>
 <li>In the herding task, the dog is the agent. The sheep, the field and the pen are the environment</li>
+<li>The dog gets a small penalty for every step, and a big reward when the sheep is in the pen</li>
+</ul>
+</section>
+<section id="the-reinforcement-learning-loop-1" class="slide level2 smaller">
+<h2>The reinforcement learning loop</h2>
+
+<img data-src="images/rl_loop_general.png" style="width:30.0%" class="r-stretch"><p>At every step, the agent and the environment take turns. The agent sees the <strong>state</strong> <span class="math inline">\(s_t\)</span> and chooses an <strong>action</strong> <span class="math inline">\(a_t\)</span>. The environment then changes to a new state <span class="math inline">\(s_{t+1}\)</span>, and gives the agent a <strong>reward</strong> <span class="math inline">\(r_{t+1}\)</span>.</p>
+<p>The goal of the agent is not to get the biggest reward right now, but the biggest <strong>total reward over time</strong>. We call this total the <strong>return</strong>.</p>
+</section>
+<section id="the-loop-in-the-herding-task" class="slide level2 smaller">
+<h2>The loop in the herding task</h2>
+
+<img data-src="images/rl_loop_herding.png" style="width:30.0%" class="r-stretch"><ul>
+<li>The dog is the agent. The sheep, the field and the pen are the environment</li>
+<li>The dog sees where the sheep is (the state), and moves (the action)</li>
 <li>The dog gets a small penalty for every step, and a big reward when the sheep is in the pen</li>
 </ul>
 </section>
@@ -357,19 +373,15 @@ Wim Pouw
 <li>There is no agent that decides anything here, so the ball only moves because of the wind</li>
 </ul>
 </section>
-<section id="the-reinforcement-learning-loop-1" class="slide level2 smaller">
-<h2>The reinforcement learning loop</h2>
-
-<img data-src="images/rl_loop_general.png" style="width:30.0%" class="r-stretch"><p>At every step, the agent and the environment take turns. The agent sees the <strong>state</strong> <span class="math inline">\(s_t\)</span> and chooses an <strong>action</strong> <span class="math inline">\(a_t\)</span>. The environment then changes to a new state <span class="math inline">\(s_{t+1}\)</span>, and gives the agent a <strong>reward</strong> <span class="math inline">\(r_{t+1}\)</span>.</p>
-<p>The goal of the agent is not to get the biggest reward right now, but the biggest <strong>total reward over time</strong>. We call this total the <strong>return</strong>.</p>
-</section>
-<section id="the-loop-in-the-herding-task" class="slide level2 smaller">
-<h2>The loop in the herding task</h2>
-
-<img data-src="images/rl_loop_herding.png" style="width:30.0%" class="r-stretch"><ul>
-<li>The dog is the agent. The sheep, the field and the pen are the environment</li>
-<li>The dog sees where the sheep is (the state), and moves (the action)</li>
-<li>The dog gets a small penalty for every step, and a big reward when the sheep is in the pen</li>
+<section id="markov-decision-process-mdp" class="slide level2">
+<h2>Markov Decision Process (MDP)</h2>
+<p>Now we add an agent that <strong>decides</strong>. An MDP has five elements:</p>
+<ul>
+<li>A set of states <span class="math inline">\(S\)</span></li>
+<li>A set of actions <span class="math inline">\(A\)</span></li>
+<li>A transition probability <span class="math inline">\(P^a_{ss'}\)</span>: the probability of moving from state <span class="math inline">\(s\)</span> to state <span class="math inline">\(s'\)</span> by performing action <span class="math inline">\(a\)</span></li>
+<li>A reward function <span class="math inline">\(R^a_{ss'}\)</span>: the expected reward for moving from <span class="math inline">\(s\)</span> to <span class="math inline">\(s'\)</span> by performing action <span class="math inline">\(a\)</span></li>
+<li>A discount factor <span class="math inline">\(\gamma\)</span>: how important are future rewards compared to immediate rewards</li>
 </ul>
 </section>
 <section id="our-mini-herding-world" class="slide level2">
@@ -595,6 +607,45 @@ Wim Pouw
 <li>For each state and action, the probabilities add up to 1</li>
 </ul>
 </section>
+<section id="mdp-element-4-rewards-ra_ss" class="slide level2">
+<h2>MDP element 4: rewards <span class="math inline">\(R^a_{ss'}\)</span></h2>
+<p>The dog gets <span class="math inline">\(-0.1\)</span> for every step, and <span class="math inline">\(+10\)</span> when the sheep walks into the pen.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Current state <span class="math inline">\(s\)</span></th>
+<th style="text-align: center;">Action <span class="math inline">\(a\)</span></th>
+<th style="text-align: center;">Next state <span class="math inline">\(s'\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(R^a_{ss'}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>D . S . P</code> (1, 3)</td>
+<td style="text-align: center;">stay</td>
+<td style="text-align: center;"><code>D . S . P</code> (1, 3)</td>
+<td style="text-align: center;">-0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>D . S . P</code> (1, 3)</td>
+<td style="text-align: center;">right</td>
+<td style="text-align: center;"><code>. D . S P</code> (2, 4)</td>
+<td style="text-align: center;">-0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>. D . S P</code> (2, 4)</td>
+<td style="text-align: center;">right</td>
+<td style="text-align: center;"><code>. . D . S</code> (3, 5)</td>
+<td style="text-align: center;">+10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Assume the dog has moved right, so we are now in (2, 4)</li>
+<li>If the dog steps right again, it is next to the sheep, and the sheep steps away into the pen</li>
+<li>The step penalty makes the dog hurry: a slow dog collects more penalties</li>
+</ul>
+</section>
 <section id="returns" class="slide level2">
 <h2>Returns</h2>
 <p>The agent wants the biggest total reward over time: the <strong>return</strong>. The simplest version just adds up all rewards:</p>
@@ -731,8 +782,9 @@ Wim Pouw
 </section>
 <section id="the-bellman-equation-is-nested" class="slide level2 smaller">
 <h2>The Bellman equation is nested</h2>
-<p>The return already has a nested structure. Each return contains the next return:</p>
-<p><span class="math display">\[R_t = r_{t+1} + \gamma \big(r_{t+2} + \gamma \big(r_{t+3} + \gamma \big(\dots\big)\big)\big) = r_{t+1} + \gamma R_{t+1}\]</span></p>
+<p>Look at the return again. If we take <span class="math inline">\(\gamma\)</span> out of all rewards after the first one, what is left between the brackets is the return of the next step:</p>
+<p><span class="math display">\[R_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \dots = r_{t+1} + \gamma \underbrace{\big(r_{t+2} + \gamma r_{t+3} + \dots\big)}_{R_{t+1}} = r_{t+1} + \gamma R_{t+1}\]</span></p>
+<p>So the return now is the reward now, plus the discounted return from the next step.</p>
 <p>The Bellman equation uses the same trick for values. You can read it from the outside in:</p>
 <p><span class="math display">\[V^{\pi}(s) = \underbrace{\sum_a \pi(s, a)}_{\text{what the dog does}} \; \underbrace{\sum_{s'} P^a_{ss'}}_{\text{what the sheep does}} \Big[\underbrace{R^a_{ss'}}_{\text{reward now}} + \gamma \underbrace{V^{\pi}(s')}_{\text{the same equation again}}\Big]\]</span></p>
 <ul>
@@ -1010,9 +1062,19 @@ Wim Pouw
 </ul>
 </section></section>
 <section>
-<section id="what-we-are-missing" class="title-slide slide level1 center">
-<h1>What we are missing</h1>
-
+<section id="what-we-are-missing-what-are-the-limits" class="title-slide slide level1 center">
+<h1>What we are missing, what are the limits</h1>
+<ul>
+<li>Monte carlo and SARSA are actually two extremes of a spectrum of methods
+<ul>
+<li>We can do something more balanced, captured by TD (<span class="math inline">\(\lambda\)</span>), eligibility traces, and n-step methods)</li>
+</ul></li>
+<li>We are basically working with giant tables: one entry for every (state, action) pair.</li>
+<li>That is not feasible for large state spaces
+<ul>
+<li>We had to simplify the board task a lot, and cut the ball’s position and velocity into bins</li>
+</ul></li>
+</ul>
 </section>
 <section id="central-versus-independent-learning" class="slide level2">
 <h2>Central versus independent learning</h2>

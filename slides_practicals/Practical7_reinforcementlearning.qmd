@@ -1,6 +1,6 @@
 ---
 title: "Bonus Lecture: Reinforcement learning"
-subtitle: "Monte Carlo and Temporal Difference methods (SARSA)"
+subtitle: "Monte Carlo and Temporal Difference methods (SARSA)<br><br><br>**DOWNLOAD MODELS [HERE](https://wimpouw.github.io/multi_agent_systems_practicum/models/reinforcement_learning_python.zip)**"
 author: "Wim Pouw"
 format:
   revealjs:
@@ -20,12 +20,14 @@ format:
 
 ## Rule-based agents
 
-- In this course you built agents that follow rules: boids, El Farol bar goers
+::: {.incremental}
+- In this course you built agents that followed rules: boids, El Farol bar goers
 - That works when **we** know the rules
   - But where do those rules come from?
   - Smart organisms are not born with them. They **learn** them from experience
   - Some rules are hard to write down!
 - Reinforcement learning: the agent learns what to do **from rewards alone**
+:::
 
 ## Task 1, variant 1: get the sheep in the pen {.smaller}
 
@@ -77,7 +79,7 @@ format:
 
 ::::
 
-## Caveat
+## Goal
 - We do *not* do the full theory (e.g., why and when these methods converge)
 - The goal for today: understand the basic principles of reinforcement learning
 - Then implement those basic principle in python mesa models
@@ -92,17 +94,21 @@ format:
 
 At every step, the agent and the environment take turns:
 
+::: {.incremental}
 1. The agent sees the **state** $s_t$ of the environment
 2. The agent chooses an **action** $a_t$
 3. The environment changes to a new state $s_{t+1}$, and gives the agent a **reward** $r_{t+1}$
+:::
+
+. . .
+
+We often write $s$ for the state now and $s'$ for the next state, so $s'$ is the same as $s_{t+1}$.
+
+. . .
 
 The goal of the agent is not to get the biggest reward right now, but the biggest **total reward over time**. We call this total the **return**.
 
-- In the herding task, the dog is the agent. The sheep, the field and the pen are the environment
-- The dog gets a small penalty for every step, and a big reward when the sheep is in the pen
-
-
-## The reinforcement learning loop {.smaller}
+# The reinforcement learning loop {.smaller}
 
 ![](images/rl_loop_general.png){width="30%"}
 
@@ -147,11 +153,15 @@ Imagine a ball on a table. The wind pushes the ball around a bit.
 
 Now we add an agent that **decides**. An MDP has five elements:
 
+:::{.incremental}
+
 - A set of states $S$
 - A set of actions $A$
 - A transition probability $P^a_{ss'}$: the probability of moving from state $s$ to state $s'$ by performing action $a$
 - A reward function $R^a_{ss'}$: the expected reward for moving from $s$ to $s'$ by performing action $a$
 - A discount factor $\gamma$: how important are future rewards compared to immediate rewards
+
+:::
 
 ## Our mini herding world
 
@@ -161,7 +171,11 @@ We use a corridor of 5 cells, with one dog (D), one sheep (S), and the pen (P) a
 |:-:|:-:|:-:|:-:|:-:|
 | D | . | S | . | P |
 
+. . .
+
 The dog is our agent: it learns what to do. The sheep is part of the **environment**, just like the corridor and the pen, and it follows these rules:
+
+. . .
 
 | Situation | What the sheep does | Probability |
 |---|---|---|
@@ -170,7 +184,11 @@ The dog is our agent: it learns what to do. The sheep is part of the **environme
 | | it wanders one step left | 0.1 |
 | | it wanders one step right | 0.1 |
 
-The episode ends when the sheep is in the pen.
+. . .
+
+The episode terminates when the sheep is in the pen (terminal state).
+
+:::
 
 ## MDP element 1: states $S$ {.smaller}
 
@@ -178,7 +196,7 @@ The episode ends when the sheep is in the pen.
 |:-:|:-:|:-:|:-:|:-:|
 | D | . | S | . | P |
 
-- A state describes the environment the dog sees: $s$ = (dog position, sheep position)
+- A state describes the environment the agent (dog) sees: $s$ = (dog position, sheep position)
 - In the picture, the state is $s = (1, 3)$
 - The set of states $S$ contains all combinations of positions:
 
@@ -273,6 +291,15 @@ With $\gamma = 0.9$, the weights are:
 - Problem 2 is solved: dog A gets $0.9 \times 10 = 9$, dog B gets almost 0
 - $\gamma = 0$: only the next reward counts. $\gamma$ close to 1: the far future counts too
 
+## MDP describes the problem, not the solution
+- The 5 elements, $S$, $A$, $P^a_{ss'}$, $R^a_{ss'}$, and $\gamma$, describe the **problem** the agent faces
+- But what is the solution, what should the agent do? That is the **policy** $\pi$.
+
+. . .
+
+- The same MDP allows many policies: a lazy dog, a random dog, a clever dog
+- Next: how do we measure how good a policy is? That is what $V$ and $Q$ do
+
 ## Policy
 
 - The policy $\pi$ says what action to perform in each state
@@ -286,7 +313,7 @@ How good is it for the agent to **be** in state $s$, if it follows policy $\pi$?
 $$V^{\pi}(s) = \mathbb{E}_{\pi}\left[R_t \mid s_t = s\right]$$
 
 - The expected return, starting from $s$
-- It depends on the policy: a bad dog makes every state look bad
+- It depends on the policy: a random dog makes every state look a little worse
 
 ## State-action value function (Q function)
 
@@ -294,19 +321,25 @@ How good is it to **do** action $a$ in state $s$, and then follow policy $\pi$?
 
 $$Q^{\pi}(s, a) = \mathbb{E}_{\pi}\left[R_t \mid s_t = s, a_t = a\right]$$
 
-A Q table for the mini world could look like this:
+A Q table for the mini world could look like this. The dog is in cell 1 and the sheep is in cell 3:
+
+| 1 | 2 | 3 | 4 | 5 |
+|:-:|:-:|:-:|:-:|:-:|
+| D | . | S | . | P |
 
 | State | Action | Value |
 |:-:|:-:|:-:|
-| (1, 3) | left | 7.5 |
-| (1, 3) | stay | 8.1 |
-| (1, 3) | right | 8.9 |
+| `D . S . P` (1, 3) | left | 7.5 |
+| `D . S . P` (1, 3) | stay | 8.1 |
+| `D . S . P` (1, 3) | right | 8.9 |
 
 ## Why Q and not V?
 
+:::{.incremental}
 - With $V$ you know how good each state is. But to choose an action, you need to know **where each action leads** ($P^a_{ss'}$): a map
-- With $Q$ the consequence of each action is already in the table: just pick the action with the highest value.
-- So if we do **not** know $P^a_{ss'}$, we can learn $Q$, and thereby also the best policy $\pi^*(s) = \arg\max_a Q(s, a)$
+- With $Q$ the consequence of each action is already in the table: just pick the action with the highest value
+- So if we do **not** know $P^a_{ss'}$, we can learn $Q$, and then act by picking the action with the highest value: $\pi(s) = \arg\max_a Q(s, a)$
+:::
 
 ## Where are we?
 
@@ -314,9 +347,19 @@ So far we have described the herding task as an **MDP**:
 
 - the states $S$, the actions $A$, the transition probabilities $P^a_{ss'}$, the rewards $R^a_{ss'}$, and the discount factor $\gamma$
 
-The goal of the dog is to find the **policy** $\pi$ that gives the highest **return**. To find it, we want to know how good each state ($V$) or each action in a state ($Q$) is. If we know $Q$, the best policy is easy: in every state, pick the action with the highest $Q$ value.
+. . .
+
+The goal of the dog is to find the **policy** $\pi$ that gives the highest **return**.
+
+. . .
+
+To find it, we want to know how good each state ($V$) or each action in a state ($Q$) is. If we know $Q$, the best policy is easy: in every state, pick the action with the highest $Q$ value.
+
+. . .
 
 So the question is: how do we compute $V$ or $Q$?
+
+. . .
 
 If we know the **entire MDP** (so also $P^a_{ss'}$ and $R^a_{ss'}$), we can compute them exactly, using the **Bellman equation**.
 
@@ -328,7 +371,7 @@ $$V^{\pi}(s) = \sum_a \pi(s, a) \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma V^{\
 
 $$Q^{\pi}(s, a) = \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma \sum_{a'} \pi(s', a') Q^{\pi}(s', a')\right]$$
 
-- An infinite sum (the return) becomes a relation between **neighbouring** states
+- So we dont have to look at the whole future at once: each state only needs to "look" one step ahead (the information will propagate if we repeat this for all states over and over)
 - If we know $P^a_{ss'}$ and $R^a_{ss'}$, we can solve it (dynamic programming, not covered)
 
 ## The Bellman equation is nested {.smaller}
@@ -339,11 +382,18 @@ $$R_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \dots = r_{t+1} + \gamma \
 
 So the return now is the reward now, plus the discounted return from the next step.
 
+. . .
+
 The Bellman equation uses the same trick for values. You can read it from the outside in:
 
-$$V^{\pi}(s) = \underbrace{\sum_a \pi(s, a)}_{\text{what the dog does}} \; \underbrace{\sum_{s'} P^a_{ss'}}_{\text{what the sheep does}} \Big[\underbrace{R^a_{ss'}}_{\text{reward now}} + \gamma \underbrace{V^{\pi}(s')}_{\text{the same equation again}}\Big]$$
+$$V^{\pi}(s) = \underbrace{\sum_a \pi(s, a)}_{\text{what the dog does}} \; \underbrace{\sum_{s'} P^a_{ss'}}_{\text{what the sheep/environment does}} \Big[\underbrace{R^a_{ss'}}_{\text{reward now}} + \gamma \underbrace{V^{\pi}(s')}_{\text{the same equation again}}\Big]$$
+
+. . .
 
 - The value of $s$ depends on the value of $s'$, which depends on the value of $s''$, and so on
+
+. . .
+
 - So we never have to add up the whole future at once: each state only needs to "look" one step ahead
 
 ## Finding the best policy with Bellman {.smaller}
@@ -362,42 +412,96 @@ Then the best policy is: in every state, pick the action with the highest value
 
 $$\pi^*(s) = \arg\max_a \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma V^*(s')\right]$$
 
-- In the mini world, the dog learns that stepping right in $(1, 3)$ is worth $8.9$, more than staying
+- In the mini world, after the first sweep $V(2,4) = 10$. In the second sweep, $(1,3)$ uses that value, so stepping right is worth $8.9$, more than staying
 
 ## Bellman in the mini world
 
-The dog is in cell 1, the sheep in cell 3, and the dog steps right. We use $\gamma = 0.9$. From $(2,4)$ the dog will pen the sheep in the next step, so $V(2,4) = 10$:
+## Bellman in the mini world
 
-$$Q((1,3), right) = 1 \times [-0.1 + 0.9 \times 10] = 8.9$$
+The dog is in cell 1, the sheep in cell 3, and the dog steps right:
 
-- With a random sheep there would be more next states, and we would weight each one by its probability
+| 1 | 2 | 3 | 4 | 5 |
+|:-:|:-:|:-:|:-:|:-:|
+| D | . | S | . | P |
+
+. . .
+
+The dog is now next to the sheep, so the sheep always steps away. We end up in $(2, 4)$ with probability 1:
+
+| 1 | 2 | 3 | 4 | 5 |
+|:-:|:-:|:-:|:-:|:-:|
+| . | D | . | S | P |
+
+. . .
+
+We use $\gamma = 0.9$. From $(2,4)$ the dog will pen the sheep in the next step, so $V(2,4) = 10$:
+
+$$Q((1,3), right) = \underbrace{1}_{P^a_{ss'}} \times [\underbrace{-0.1}_{R^a_{ss'}} + 0.9 \times \underbrace{10}_{V(2,4)}] = 8.9$$
+
+- With a random sheep, more next states possible
 
 ## But what if we do not know $P^a_{ss'}$ and $R^a_{ss'}$?
 
-- Real dogs do not know how the sheep will react
-- So we **estimate** the values from experience: try things, and see what happens
-- That is reinforcement learning
-- Two ways today:
-  - **Monte Carlo**: play a whole episode, and look back
-  - **Temporal difference (TD)**: learn after every step
+In the mini world, **we** know $P^a_{ss'}$ and $R^a_{ss'}$, because we wrote the sheep rules ourselves.
 
-## Remember Intro to AI2 from year 1!
+. . .
 
+But the dog does not get these rules. It only sees what happens after it acts.
+
+. . .
+
+And in a more complex world, nobody can write them down: think of a real sheep, or a board where humans control their actions in a noisy way, or think about the real world (flying a helicopter).
+
+. . .
+
+So we **estimate** the values from experience: try things, and see what happens. That is reinforcement learning.
+
+. . .
+
+Two ways today:
+
+- **Monte Carlo**: play a whole episode, and look back
+- **Temporal difference (TD)**: learn after every step
+
+## Remember Intro to AI2 from year 1! 
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+::: {.incremental}
 - Let an agent **wander randomly** through a grid world (many episodes)
 - For every (state, action): compute the **reward-to-go** (= the return $R_t$)
 - Average them: the **Q table** (of the random policy!)
-- Then act **greedily**: always the action with the highest value
+- Then act whatever had the best next state (**greedily**): always the action with the highest value
+:::
 
+::: {.fragment}
 What went wrong? The agent sometimes kept bumping into the same wall:
+:::
 
+::: {.incremental}
 - It only learned from random wandering, and never **while acting**
 - It never **explored** anymore once it acted greedily
+:::
+
+:::
+
+::: {.column width="20%"}
+![](images/introai2.png)
+:::
+
+::::
 
 ## Current methods -> Exploration: epsilon-greedy
 
+::: {.incremental}
 - **Greedy**: always pick the action with the highest Q value so far
 - But maybe there is a better action we never tried
 - **Epsilon-greedy**: with probability $\epsilon$ a random action, otherwise the best one
+:::
+
+. . .
 
 ```python
 def epsilon_greedy_policy(state, epsilon):
@@ -407,6 +511,14 @@ def epsilon_greedy_policy(state, epsilon):
         return max(actions, key=lambda a: Q[(state, a)])        # exploit
 ```
 
+. . .
+
+In other words, the policy is:
+
+$$\pi(s) = \begin{cases} \text{a random action from } A & \text{with probability } \epsilon \\ \arg\max_a Q(s, a) & \text{with probability } 1 - \epsilon \end{cases}$$
+
+. . .
+
 - We use this in **both** methods today
 
 # Method 1: Monte Carlo
@@ -415,16 +527,26 @@ def epsilon_greedy_policy(state, epsilon):
 
 - Play a **whole episode** with epsilon-greedy
 - At the end, compute the return $R_t$ for every step
-- Update $Q(s, a)$ towards the return. In our notebooks, a running average:
+- Update $Q(s, a)$ towards the return. In our notebooks, with a fixed learning rate $\alpha$, so recent episodes count more than old ones:
 
 $$Q(s, a) \leftarrow Q(s, a) + \alpha\,(R_t - Q(s, a))$$
 
 - **First visit**: if $(s, a)$ occurs several times in an episode, only the first time counts
 - **On-policy**: we learn about the policy we follow, exploration included
 
-## Monte Carlo in the mini world (1)
+## Monte Carlo in the mini world (1) {.smaller}
 
-Same episode, $\gamma = 0.9$. We compute the returns **backwards**: $R_t = r_{t+1} + \gamma R_{t+1}$
+One episode with three steps. The dog first bumps into the wall, then steps right twice, and the sheep walks into the pen:
+
+| step | world | action |
+|:-:|:-:|:-:|
+| 0 | `D . S . P` | left (bumps into the wall) |
+| 1 | `D . S . P` | right |
+| 2 | `. D . S P` | right, the sheep walks into the pen |
+
+. . .
+
+At the end of the episode we compute the returns **backwards**, with $\gamma = 0.9$: $R_t = r_{t+1} + \gamma R_{t+1}$
 
 | $t$ | $(s_t, a_t)$ | $r_{t+1}$ | $R_t$ |
 |:-:|:-:|:-:|:-:|
@@ -432,48 +554,109 @@ Same episode, $\gamma = 0.9$. We compute the returns **backwards**: $R_t = r_{t+
 | 1 | ((1, 3), right) | -0.1 | $-0.1 + 0.9 \times 10 = 8.9$ |
 | 0 | ((1, 3), left) | -0.1 | $-0.1 + 0.9 \times 8.9 = 7.91$ |
 
+. . .
+
 - Steps close to the success get a high return, steps far away a lower one
 
-## Monte Carlo in the mini world (2)
+## Monte Carlo in the mini world (2) 
 
-All Q values start at 0, $\alpha = 0.1$:
+After this episode, we update Q with these returns. We use $\alpha = 0.1$ and the update rule:
 
-| $(s, a)$ | update | new $Q(s, a)$ |
-|:-:|:-:|:-:|
-| ((2, 4), right) | $0 + 0.1\,(10 - 0)$ | 1.0 |
-| ((1, 3), right) | $0 + 0.1\,(8.9 - 0)$ | 0.89 |
-| ((1, 3), left) | $0 + 0.1\,(7.91 - 0)$ | 0.791 |
+$$Q(s, a) \leftarrow Q(s, a) + \alpha\,(R_t - Q(s, a))$$
 
+. . .
+
+| $(s, a)$ | initial $Q(s, a)$ | $R_t$ | update | new $Q(s, a)$ |
+|:-:|:-:|:-:|:-:|:-:|
+| ((2, 4), right) | 0 | 10 | $0 + 0.1\,(10 - 0)$ | 1.0 |
+| ((1, 3), right) | 0 | 8.9 | $0 + 0.1\,(8.9 - 0)$ | 0.89 |
+| ((1, 3), left) | 0 | 7.91 | $0 + 0.1\,(7.91 - 0)$ | 0.791 |
+
+. . .
+
+::: {.incremental}
 - Note: "left" (bumping into the wall) also got credit, because the episode ended well
+- Each return is exact for this one episode. The averaging happens across episodes: every new episode moves $Q(s, a)$ a bit towards its new return
 - Only over many episodes does this average out
+:::
 
 ## Monte Carlo: what it needs
 
 - An **end** of the episode: only then do we know the return
 - Notebook 1: the pen in the corner, plus a maximum of 200 steps (otherwise an untrained dog may wander for a very long time)
 - During an episode, the dog learns **nothing**. It only remembers what it did
+- Lets take a look at the monte carlo model!
+
+## But what if the task never ends?
+
+## Task 1, variant 2: get the sheep in, and keep it there {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+<video data-autoplay loop muted src="images/herding2.mp4" style="max-height: 480px; max-width: 100%;"></video>
+:::
+
+::: {.column width="45%"}
+- Now the pen is in the middle of the field, and it is open on all sides
+- The sheep can walk in, but it can also walk out again
+- The task never ends
+:::
+
+::::
+
+## Task 2: balancing a ball on a board {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+<video data-autoplay loop muted src="images/ballonboard.mp4" style="max-height: 480px; max-width: 100%;"></video>
+:::
+
+::: {.column width="45%"}
+- Two agents hold a round board
+- 9 actions: height (low, middle, high) x rotation (backward, neutral, forward)
+- The movements are noisy, and bigger movements are noisier
+- An agent sees the ball's position and velocity, but not what the other agent does
+:::
+
+::::
+
 
 # Method 2: TD learning with SARSA
 
-## Bellman as an estimate
+## From Monte Carlo to TD
 
-Recall: value now = reward + discounted value next. We do not know the true values, but we have our **estimates**:
+Monte Carlo moves $Q(s, a)$ towards the real return:
 
-$$V(s) \leftarrow V(s) + \alpha\,\big(r + \gamma V(s') - V(s)\big)$$
+$$Q(s, a) \leftarrow Q(s, a) + \alpha\,(R_t - Q(s, a))$$
 
-- $r + \gamma V(s')$: **one real step**, plus an estimate of the rest
-- $r + \gamma V(s') - V(s)$: the **TD error**. Was it better or worse than we expected?
-- We do not wait for the end: we learn after **every step**
+. . .
+
+The problem: we only know $R_t$ at the end of the episode. But remember that the return is nested:
+
+$$R_t = r_{t+1} + \gamma R_{t+1}$$
+
+. . .
+
+After one step we already know $r_{t+1}$. For the rest, $R_{t+1}$, we use our own estimate: the Q value of where we are now, $Q(s', a')$.
+
+. . .
+
+$$Q(s, a) \leftarrow Q(s, a) + \alpha\,\big(\underbrace{r + \gamma Q(s', a')}_{\text{instead of } R_t} - Q(s, a)\big)$$
 
 ## SARSA
 
-The same idea for Q. It uses **S**tate, **A**ction, **R**eward, next **S**tate, next **A**ction:
+This rule uses **S**tate, **A**ction, **R**eward, next **S**tate, next **A**ction:
 
 $$Q(s, a) \leftarrow Q(s, a) + \alpha\,\big(r + \gamma Q(s', a') - Q(s, a)\big)$$
 
-- $a'$ is the action we will **really** do next (chosen with epsilon-greedy)
-- So SARSA is **on-policy**, like our Monte Carlo
-- No episodes needed. That is why it works for variant 2 (the pen in the middle, no end)
+::: {.incremental}
+- $r + \gamma Q(s', a')$: **one real step**, plus an estimate of the rest (bootstrapping)
+- $r + \gamma Q(s', a') - Q(s, a)$: the **TD error**. Was it better or worse than we expected?
+- $a'$ is the action we will **really** do next (chosen with epsilon-greedy), like our Monte Carlo
+- We do not wait for the end: we learn after **every step**. That is why it works for variant 2 (the pen in the middle, no end)
+:::
 
 ## SARSA in the mini world {.smaller}
 
@@ -483,12 +666,25 @@ Variant 2: the pen is in the **middle** (cell 3). $+1$ for every step the sheep 
 |:-:|:-:|:-:|:-:|:-:|
 | D | S | P | . | . |
 
+. . .
+
 - $s = (1, 2)$, $a$ = stay. The dog is next to the sheep, so it steps into the pen: $r = +1$, $s' = (1, 3)$
-- Epsilon-greedy picks $a'$ = stay. Current values: $Q((1,2), stay) = 0.2$, $Q((1,3), stay) = 0.5$
+
+| 1 | 2 | 3 | 4 | 5 |
+|:-:|:-:|:-:|:-:|:-:|
+| D | . | S | . | . |
+
+. . .
+
+- Epsilon-greedy picks $a'$ = stay. Suppose the dog has already learned for a while, and its table says: $Q((1,2), stay) = 0.2$, $Q((1,3), stay) = 0.5$
+
+. . .
 
 $$Q((1,2), stay) = 0.2 + 0.1\,\big(1 + 0.9 \times 0.5 - 0.2\big) = 0.2 + 0.1 \times 1.25 = 0.325$$
 
-- Note: if the dog now steps right, it pushes the sheep out again. The dog has to learn to **stay back**
+. . .
+
+$$\underbrace{Q(s, a)}_{0.2} \leftarrow \underbrace{Q(s, a)}_{0.2} + \underbrace{\alpha}_{0.1}\,\big(\underbrace{r}_{1} + \underbrace{\gamma}_{0.9}\,\underbrace{Q(s', a')}_{0.5} - \underbrace{Q(s, a)}_{0.2}\big)$$
 
 ## Monte Carlo versus SARSA {.smaller}
 
@@ -506,7 +702,7 @@ $$Q((1,2), stay) = 0.2 + 0.1\,\big(1 + 0.9 \times 0.5 - 0.2\big) = 0.2 + 0.1 \ti
 - **Reward**: closer to the center is better, $-1$ when the ball falls off
 - Exactly the same SARSA update. Each hand has its own Q table, and does not see the other hand
 
-# What we are missing, what are the limits
+## What we are missing, what are the limits
 - Monte carlo and SARSA are actually two extremes of a spectrum of methods
   - We can do something more balanced, captured by TD ($\lambda$), eligibility traces, and n-step methods)
 - We are basically working with giant tables: one entry for every (state, action) pair.

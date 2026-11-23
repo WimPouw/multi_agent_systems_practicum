@@ -200,7 +200,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Bonus Lecture: Reinforcement learning</h1>
-  <p class="subtitle">Monte Carlo and Temporal Difference methods (SARSA)</p>
+  <p class="subtitle">Monte Carlo and Temporal Difference methods (SARSA)<br><br><br><strong>DOWNLOAD MODELS <a href="https://wimpouw.github.io/multi_agent_systems_practicum/models/reinforcement_learning_python.zip">HERE</a></strong></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -219,14 +219,14 @@ Wim Pouw
 <section id="rule-based-agents" class="slide level2">
 <h2>Rule-based agents</h2>
 <ul>
-<li>In this course you built agents that follow rules: boids, El Farol bar goers</li>
-<li>That works when <strong>we</strong> know the rules
+<li class="fragment">In this course you built agents that followed rules: boids, El Farol bar goers</li>
+<li class="fragment">That works when <strong>we</strong> know the rules
 <ul>
-<li>But where do those rules come from?</li>
-<li>Smart organisms are not born with them. They <strong>learn</strong> them from experience</li>
-<li>Some rules are hard to write down!</li>
+<li class="fragment">But where do those rules come from?</li>
+<li class="fragment">Smart organisms are not born with them. They <strong>learn</strong> them from experience</li>
+<li class="fragment">Some rules are hard to write down!</li>
 </ul></li>
-<li>Reinforcement learning: the agent learns what to do <strong>from rewards alone</strong></li>
+<li class="fragment">Reinforcement learning: the agent learns what to do <strong>from rewards alone</strong></li>
 </ul>
 </section>
 <section id="task-1-variant-1-get-the-sheep-in-the-pen" class="slide level2 smaller">
@@ -273,8 +273,8 @@ Wim Pouw
 </ul>
 </div></div>
 </section>
-<section id="caveat" class="slide level2">
-<h2>Caveat</h2>
+<section id="goal" class="slide level2">
+<h2>Goal</h2>
 <ul>
 <li>We do <em>not</em> do the full theory (e.g., why and when these methods converge)</li>
 <li>The goal for today: understand the basic principles of reinforcement learning</li>
@@ -292,18 +292,20 @@ Wim Pouw
 <h2>The reinforcement learning loop</h2>
 <p>At every step, the agent and the environment take turns:</p>
 <ol type="1">
-<li>The agent sees the <strong>state</strong> <span class="math inline">\(s_t\)</span> of the environment</li>
-<li>The agent chooses an <strong>action</strong> <span class="math inline">\(a_t\)</span></li>
-<li>The environment changes to a new state <span class="math inline">\(s_{t+1}\)</span>, and gives the agent a <strong>reward</strong> <span class="math inline">\(r_{t+1}\)</span></li>
+<li class="fragment">The agent sees the <strong>state</strong> <span class="math inline">\(s_t\)</span> of the environment</li>
+<li class="fragment">The agent chooses an <strong>action</strong> <span class="math inline">\(a_t\)</span></li>
+<li class="fragment">The environment changes to a new state <span class="math inline">\(s_{t+1}\)</span>, and gives the agent a <strong>reward</strong> <span class="math inline">\(r_{t+1}\)</span></li>
 </ol>
+<div class="fragment">
+<p>We often write <span class="math inline">\(s\)</span> for the state now and <span class="math inline">\(s'\)</span> for the next state, so <span class="math inline">\(s'\)</span> is the same as <span class="math inline">\(s_{t+1}\)</span>.</p>
+</div>
+<div class="fragment">
 <p>The goal of the agent is not to get the biggest reward right now, but the biggest <strong>total reward over time</strong>. We call this total the <strong>return</strong>.</p>
-<ul>
-<li>In the herding task, the dog is the agent. The sheep, the field and the pen are the environment</li>
-<li>The dog gets a small penalty for every step, and a big reward when the sheep is in the pen</li>
-</ul>
-</section>
-<section id="the-reinforcement-learning-loop-1" class="slide level2 smaller">
-<h2>The reinforcement learning loop</h2>
+</div>
+</section></section>
+<section>
+<section id="the-reinforcement-learning-loop-1" class="title-slide slide level1 smaller center">
+<h1>The reinforcement learning loop</h1>
 
 <img data-src="images/rl_loop_general.png" style="width:30.0%" class="r-stretch"><p>At every step, the agent and the environment take turns. The agent sees the <strong>state</strong> <span class="math inline">\(s_t\)</span> and chooses an <strong>action</strong> <span class="math inline">\(a_t\)</span>. The environment then changes to a new state <span class="math inline">\(s_{t+1}\)</span>, and gives the agent a <strong>reward</strong> <span class="math inline">\(r_{t+1}\)</span>.</p>
 <p>The goal of the agent is not to get the biggest reward right now, but the biggest <strong>total reward over time</strong>. We call this total the <strong>return</strong>.</p>
@@ -377,11 +379,11 @@ Wim Pouw
 <h2>Markov Decision Process (MDP)</h2>
 <p>Now we add an agent that <strong>decides</strong>. An MDP has five elements:</p>
 <ul>
-<li>A set of states <span class="math inline">\(S\)</span></li>
-<li>A set of actions <span class="math inline">\(A\)</span></li>
-<li>A transition probability <span class="math inline">\(P^a_{ss'}\)</span>: the probability of moving from state <span class="math inline">\(s\)</span> to state <span class="math inline">\(s'\)</span> by performing action <span class="math inline">\(a\)</span></li>
-<li>A reward function <span class="math inline">\(R^a_{ss'}\)</span>: the expected reward for moving from <span class="math inline">\(s\)</span> to <span class="math inline">\(s'\)</span> by performing action <span class="math inline">\(a\)</span></li>
-<li>A discount factor <span class="math inline">\(\gamma\)</span>: how important are future rewards compared to immediate rewards</li>
+<li class="fragment">A set of states <span class="math inline">\(S\)</span></li>
+<li class="fragment">A set of actions <span class="math inline">\(A\)</span></li>
+<li class="fragment">A transition probability <span class="math inline">\(P^a_{ss'}\)</span>: the probability of moving from state <span class="math inline">\(s\)</span> to state <span class="math inline">\(s'\)</span> by performing action <span class="math inline">\(a\)</span></li>
+<li class="fragment">A reward function <span class="math inline">\(R^a_{ss'}\)</span>: the expected reward for moving from <span class="math inline">\(s\)</span> to <span class="math inline">\(s'\)</span> by performing action <span class="math inline">\(a\)</span></li>
+<li class="fragment">A discount factor <span class="math inline">\(\gamma\)</span>: how important are future rewards compared to immediate rewards</li>
 </ul>
 </section>
 <section id="our-mini-herding-world" class="slide level2">
@@ -407,7 +409,10 @@ Wim Pouw
 </tr>
 </tbody>
 </table>
+<div class="fragment">
 <p>The dog is our agent: it learns what to do. The sheep is part of the <strong>environment</strong>, just like the corridor and the pen, and it follows these rules:</p>
+</div>
+<div class="fragment">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -439,7 +444,11 @@ Wim Pouw
 </tr>
 </tbody>
 </table>
-<p>The episode ends when the sheep is in the pen.</p>
+</div>
+<div class="fragment">
+<p>The episode terminates when the sheep is in the pen (terminal state).</p>
+<p>:::</p>
+</div>
 </section>
 <section id="mdp-element-1-states-s" class="slide level2 smaller">
 <h2>MDP element 1: states <span class="math inline">\(S\)</span></h2>
@@ -464,7 +473,7 @@ Wim Pouw
 </tbody>
 </table>
 <ul>
-<li>A state describes the environment the dog sees: <span class="math inline">\(s\)</span> = (dog position, sheep position)</li>
+<li>A state describes the environment the agent (dog) sees: <span class="math inline">\(s\)</span> = (dog position, sheep position)</li>
 <li>In the picture, the state is <span class="math inline">\(s = (1, 3)\)</span></li>
 <li>The set of states <span class="math inline">\(S\)</span> contains all combinations of positions:</li>
 </ul>
@@ -703,6 +712,19 @@ Wim Pouw
 <li><span class="math inline">\(\gamma = 0\)</span>: only the next reward counts. <span class="math inline">\(\gamma\)</span> close to 1: the far future counts too</li>
 </ul>
 </section>
+<section id="mdp-describes-the-problem-not-the-solution" class="slide level2">
+<h2>MDP describes the problem, not the solution</h2>
+<ul>
+<li>The 5 elements, <span class="math inline">\(S\)</span>, <span class="math inline">\(A\)</span>, <span class="math inline">\(P^a_{ss'}\)</span>, <span class="math inline">\(R^a_{ss'}\)</span>, and <span class="math inline">\(\gamma\)</span>, describe the <strong>problem</strong> the agent faces</li>
+<li>But what is the solution, what should the agent do? That is the <strong>policy</strong> <span class="math inline">\(\pi\)</span>.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>The same MDP allows many policies: a lazy dog, a random dog, a clever dog</li>
+<li>Next: how do we measure how good a policy is? That is what <span class="math inline">\(V\)</span> and <span class="math inline">\(Q\)</span> do</li>
+</ul>
+</div>
+</section>
 <section id="policy" class="slide level2">
 <h2>Policy</h2>
 <ul>
@@ -717,14 +739,34 @@ Wim Pouw
 <p><span class="math display">\[V^{\pi}(s) = \mathbb{E}_{\pi}\left[R_t \mid s_t = s\right]\]</span></p>
 <ul>
 <li>The expected return, starting from <span class="math inline">\(s\)</span></li>
-<li>It depends on the policy: a bad dog makes every state look bad</li>
+<li>It depends on the policy: a random dog makes every state look a little worse</li>
 </ul>
 </section>
 <section id="state-action-value-function-q-function" class="slide level2">
 <h2>State-action value function (Q function)</h2>
 <p>How good is it to <strong>do</strong> action <span class="math inline">\(a\)</span> in state <span class="math inline">\(s\)</span>, and then follow policy <span class="math inline">\(\pi\)</span>?</p>
 <p><span class="math display">\[Q^{\pi}(s, a) = \mathbb{E}_{\pi}\left[R_t \mid s_t = s, a_t = a\right]\]</span></p>
-<p>A Q table for the mini world could look like this:</p>
+<p>A Q table for the mini world could look like this. The dog is in cell 1 and the sheep is in cell 3:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">P</td>
+</tr>
+</tbody>
+</table>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -735,17 +777,17 @@ Wim Pouw
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">(1, 3)</td>
+<td style="text-align: center;"><code>D . S . P</code> (1, 3)</td>
 <td style="text-align: center;">left</td>
 <td style="text-align: center;">7.5</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">(1, 3)</td>
+<td style="text-align: center;"><code>D . S . P</code> (1, 3)</td>
 <td style="text-align: center;">stay</td>
 <td style="text-align: center;">8.1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">(1, 3)</td>
+<td style="text-align: center;"><code>D . S . P</code> (1, 3)</td>
 <td style="text-align: center;">right</td>
 <td style="text-align: center;">8.9</td>
 </tr>
@@ -755,9 +797,9 @@ Wim Pouw
 <section id="why-q-and-not-v" class="slide level2">
 <h2>Why Q and not V?</h2>
 <ul>
-<li>With <span class="math inline">\(V\)</span> you know how good each state is. But to choose an action, you need to know <strong>where each action leads</strong> (<span class="math inline">\(P^a_{ss'}\)</span>): a map</li>
-<li>With <span class="math inline">\(Q\)</span> the consequence of each action is already in the table: just pick the action with the highest value.</li>
-<li>So if we do <strong>not</strong> know <span class="math inline">\(P^a_{ss'}\)</span>, we can learn <span class="math inline">\(Q\)</span>, and thereby also the best policy <span class="math inline">\(\pi^*(s) = \arg\max_a Q(s, a)\)</span></li>
+<li class="fragment">With <span class="math inline">\(V\)</span> you know how good each state is. But to choose an action, you need to know <strong>where each action leads</strong> (<span class="math inline">\(P^a_{ss'}\)</span>): a map</li>
+<li class="fragment">With <span class="math inline">\(Q\)</span> the consequence of each action is already in the table: just pick the action with the highest value</li>
+<li class="fragment">So if we do <strong>not</strong> know <span class="math inline">\(P^a_{ss'}\)</span>, we can learn <span class="math inline">\(Q\)</span>, and then act by picking the action with the highest value: <span class="math inline">\(\pi(s) = \arg\max_a Q(s, a)\)</span></li>
 </ul>
 </section>
 <section id="where-are-we" class="slide level2">
@@ -766,9 +808,18 @@ Wim Pouw
 <ul>
 <li>the states <span class="math inline">\(S\)</span>, the actions <span class="math inline">\(A\)</span>, the transition probabilities <span class="math inline">\(P^a_{ss'}\)</span>, the rewards <span class="math inline">\(R^a_{ss'}\)</span>, and the discount factor <span class="math inline">\(\gamma\)</span></li>
 </ul>
-<p>The goal of the dog is to find the <strong>policy</strong> <span class="math inline">\(\pi\)</span> that gives the highest <strong>return</strong>. To find it, we want to know how good each state (<span class="math inline">\(V\)</span>) or each action in a state (<span class="math inline">\(Q\)</span>) is. If we know <span class="math inline">\(Q\)</span>, the best policy is easy: in every state, pick the action with the highest <span class="math inline">\(Q\)</span> value.</p>
+<div class="fragment">
+<p>The goal of the dog is to find the <strong>policy</strong> <span class="math inline">\(\pi\)</span> that gives the highest <strong>return</strong>.</p>
+</div>
+<div class="fragment">
+<p>To find it, we want to know how good each state (<span class="math inline">\(V\)</span>) or each action in a state (<span class="math inline">\(Q\)</span>) is. If we know <span class="math inline">\(Q\)</span>, the best policy is easy: in every state, pick the action with the highest <span class="math inline">\(Q\)</span> value.</p>
+</div>
+<div class="fragment">
 <p>So the question is: how do we compute <span class="math inline">\(V\)</span> or <span class="math inline">\(Q\)</span>?</p>
+</div>
+<div class="fragment">
 <p>If we know the <strong>entire MDP</strong> (so also <span class="math inline">\(P^a_{ss'}\)</span> and <span class="math inline">\(R^a_{ss'}\)</span>), we can compute them exactly, using the <strong>Bellman equation</strong>.</p>
+</div>
 </section>
 <section id="the-bellman-equation" class="slide level2">
 <h2>The Bellman equation</h2>
@@ -776,7 +827,7 @@ Wim Pouw
 <p><span class="math display">\[V^{\pi}(s) = \sum_a \pi(s, a) \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma V^{\pi}(s')\right]\]</span></p>
 <p><span class="math display">\[Q^{\pi}(s, a) = \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma \sum_{a'} \pi(s', a') Q^{\pi}(s', a')\right]\]</span></p>
 <ul>
-<li>An infinite sum (the return) becomes a relation between <strong>neighbouring</strong> states</li>
+<li>So we dont have to look at the whole future at once: each state only needs to “look” one step ahead (the information will propagate if we repeat this for all states over and over)</li>
 <li>If we know <span class="math inline">\(P^a_{ss'}\)</span> and <span class="math inline">\(R^a_{ss'}\)</span>, we can solve it (dynamic programming, not covered)</li>
 </ul>
 </section>
@@ -785,12 +836,20 @@ Wim Pouw
 <p>Look at the return again. If we take <span class="math inline">\(\gamma\)</span> out of all rewards after the first one, what is left between the brackets is the return of the next step:</p>
 <p><span class="math display">\[R_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \dots = r_{t+1} + \gamma \underbrace{\big(r_{t+2} + \gamma r_{t+3} + \dots\big)}_{R_{t+1}} = r_{t+1} + \gamma R_{t+1}\]</span></p>
 <p>So the return now is the reward now, plus the discounted return from the next step.</p>
+<div class="fragment">
 <p>The Bellman equation uses the same trick for values. You can read it from the outside in:</p>
-<p><span class="math display">\[V^{\pi}(s) = \underbrace{\sum_a \pi(s, a)}_{\text{what the dog does}} \; \underbrace{\sum_{s'} P^a_{ss'}}_{\text{what the sheep does}} \Big[\underbrace{R^a_{ss'}}_{\text{reward now}} + \gamma \underbrace{V^{\pi}(s')}_{\text{the same equation again}}\Big]\]</span></p>
+<p><span class="math display">\[V^{\pi}(s) = \underbrace{\sum_a \pi(s, a)}_{\text{what the dog does}} \; \underbrace{\sum_{s'} P^a_{ss'}}_{\text{what the sheep/environment does}} \Big[\underbrace{R^a_{ss'}}_{\text{reward now}} + \gamma \underbrace{V^{\pi}(s')}_{\text{the same equation again}}\Big]\]</span></p>
+</div>
+<div class="fragment">
 <ul>
 <li>The value of <span class="math inline">\(s\)</span> depends on the value of <span class="math inline">\(s'\)</span>, which depends on the value of <span class="math inline">\(s''\)</span>, and so on</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li>So we never have to add up the whole future at once: each state only needs to “look” one step ahead</li>
 </ul>
+</div>
 </section>
 <section id="finding-the-best-policy-with-bellman" class="slide level2 smaller">
 <h2>Finding the best policy with Bellman</h2>
@@ -805,59 +864,130 @@ Wim Pouw
 <p>Then the best policy is: in every state, pick the action with the highest value</p>
 <p><span class="math display">\[\pi^*(s) = \arg\max_a \sum_{s'} P^a_{ss'}\left[R^a_{ss'} + \gamma V^*(s')\right]\]</span></p>
 <ul>
-<li>In the mini world, the dog learns that stepping right in <span class="math inline">\((1, 3)\)</span> is worth <span class="math inline">\(8.9\)</span>, more than staying</li>
+<li>In the mini world, after the first sweep <span class="math inline">\(V(2,4) = 10\)</span>. In the second sweep, <span class="math inline">\((1,3)\)</span> uses that value, so stepping right is worth <span class="math inline">\(8.9\)</span>, more than staying</li>
 </ul>
 </section>
 <section id="bellman-in-the-mini-world" class="slide level2">
 <h2>Bellman in the mini world</h2>
-<p>The dog is in cell 1, the sheep in cell 3, and the dog steps right. We use <span class="math inline">\(\gamma = 0.9\)</span>. From <span class="math inline">\((2,4)\)</span> the dog will pen the sheep in the next step, so <span class="math inline">\(V(2,4) = 10\)</span>:</p>
-<p><span class="math display">\[Q((1,3), right) = 1 \times [-0.1 + 0.9 \times 10] = 8.9\]</span></p>
+</section>
+<section id="bellman-in-the-mini-world-1" class="slide level2">
+<h2>Bellman in the mini world</h2>
+<p>The dog is in cell 1, the sheep in cell 3, and the dog steps right:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">P</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>The dog is now next to the sheep, so the sheep always steps away. We end up in <span class="math inline">\((2, 4)\)</span> with probability 1:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">P</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>We use <span class="math inline">\(\gamma = 0.9\)</span>. From <span class="math inline">\((2,4)\)</span> the dog will pen the sheep in the next step, so <span class="math inline">\(V(2,4) = 10\)</span>:</p>
+<p><span class="math display">\[Q((1,3), right) = \underbrace{1}_{P^a_{ss'}} \times [\underbrace{-0.1}_{R^a_{ss'}} + 0.9 \times \underbrace{10}_{V(2,4)}] = 8.9\]</span></p>
 <ul>
-<li>With a random sheep there would be more next states, and we would weight each one by its probability</li>
+<li>With a random sheep, more next states possible</li>
 </ul>
+</div>
 </section>
 <section id="but-what-if-we-do-not-know-pa_ss-and-ra_ss" class="slide level2">
 <h2>But what if we do not know <span class="math inline">\(P^a_{ss'}\)</span> and <span class="math inline">\(R^a_{ss'}\)</span>?</h2>
-<ul>
-<li>Real dogs do not know how the sheep will react</li>
-<li>So we <strong>estimate</strong> the values from experience: try things, and see what happens</li>
-<li>That is reinforcement learning</li>
-<li>Two ways today:
+<p>In the mini world, <strong>we</strong> know <span class="math inline">\(P^a_{ss'}\)</span> and <span class="math inline">\(R^a_{ss'}\)</span>, because we wrote the sheep rules ourselves.</p>
+<div class="fragment">
+<p>But the dog does not get these rules. It only sees what happens after it acts.</p>
+</div>
+<div class="fragment">
+<p>And in a more complex world, nobody can write them down: think of a real sheep, or a board where humans control their actions in a noisy way, or think about the real world (flying a helicopter).</p>
+</div>
+<div class="fragment">
+<p>So we <strong>estimate</strong> the values from experience: try things, and see what happens. That is reinforcement learning.</p>
+</div>
+<div class="fragment">
+<p>Two ways today:</p>
 <ul>
 <li><strong>Monte Carlo</strong>: play a whole episode, and look back</li>
 <li><strong>Temporal difference (TD)</strong>: learn after every step</li>
-</ul></li>
 </ul>
+</div>
 </section>
 <section id="remember-intro-to-ai2-from-year-1" class="slide level2">
 <h2>Remember Intro to AI2 from year 1!</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
 <ul>
-<li>Let an agent <strong>wander randomly</strong> through a grid world (many episodes)</li>
-<li>For every (state, action): compute the <strong>reward-to-go</strong> (= the return <span class="math inline">\(R_t\)</span>)</li>
-<li>Average them: the <strong>Q table</strong> (of the random policy!)</li>
-<li>Then act <strong>greedily</strong>: always the action with the highest value</li>
+<li class="fragment">Let an agent <strong>wander randomly</strong> through a grid world (many episodes)</li>
+<li class="fragment">For every (state, action): compute the <strong>reward-to-go</strong> (= the return <span class="math inline">\(R_t\)</span>)</li>
+<li class="fragment">Average them: the <strong>Q table</strong> (of the random policy!)</li>
+<li class="fragment">Then act whatever had the best next state (<strong>greedily</strong>): always the action with the highest value</li>
 </ul>
+<div class="fragment">
 <p>What went wrong? The agent sometimes kept bumping into the same wall:</p>
+</div>
 <ul>
-<li>It only learned from random wandering, and never <strong>while acting</strong></li>
-<li>It never <strong>explored</strong> anymore once it acted greedily</li>
+<li class="fragment">It only learned from random wandering, and never <strong>while acting</strong></li>
+<li class="fragment">It never <strong>explored</strong> anymore once it acted greedily</li>
 </ul>
+</div><div class="column" style="width:20%;">
+<p><img data-src="images/introai2.png"></p>
+</div></div>
 </section>
 <section id="current-methods---exploration-epsilon-greedy" class="slide level2">
 <h2>Current methods -&gt; Exploration: epsilon-greedy</h2>
 <ul>
-<li><strong>Greedy</strong>: always pick the action with the highest Q value so far</li>
-<li>But maybe there is a better action we never tried</li>
-<li><strong>Epsilon-greedy</strong>: with probability <span class="math inline">\(\epsilon\)</span> a random action, otherwise the best one</li>
+<li class="fragment"><strong>Greedy</strong>: always pick the action with the highest Q value so far</li>
+<li class="fragment">But maybe there is a better action we never tried</li>
+<li class="fragment"><strong>Epsilon-greedy</strong>: with probability <span class="math inline">\(\epsilon\)</span> a random action, otherwise the best one</li>
 </ul>
+<div class="fragment">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="kw">def</span> epsilon_greedy_policy(state, epsilon):</span>
 <span id="cb1-2"><a href=""></a>    <span class="cf">if</span> random.uniform(<span class="dv">0</span>, <span class="dv">1</span>) <span class="op">&lt;</span> epsilon:</span>
 <span id="cb1-3"><a href=""></a>        <span class="cf">return</span> random_action()                                  <span class="co"># explore</span></span>
 <span id="cb1-4"><a href=""></a>    <span class="cf">else</span>:</span>
 <span id="cb1-5"><a href=""></a>        <span class="cf">return</span> <span class="bu">max</span>(actions, key<span class="op">=</span><span class="kw">lambda</span> a: Q[(state, a)])        <span class="co"># exploit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>In other words, the policy is:</p>
+<p><span class="math display">\[\pi(s) = \begin{cases} \text{a random action from } A &amp; \text{with probability } \epsilon \\ \arg\max_a Q(s, a) &amp; \text{with probability } 1 - \epsilon \end{cases}\]</span></p>
+</div>
+<div class="fragment">
 <ul>
 <li>We use this in <strong>both</strong> methods today</li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="method-1-monte-carlo" class="title-slide slide level1 center">
@@ -869,7 +999,7 @@ Wim Pouw
 <ul>
 <li>Play a <strong>whole episode</strong> with epsilon-greedy</li>
 <li>At the end, compute the return <span class="math inline">\(R_t\)</span> for every step</li>
-<li>Update <span class="math inline">\(Q(s, a)\)</span> towards the return. In our notebooks, a running average:</li>
+<li>Update <span class="math inline">\(Q(s, a)\)</span> towards the return. In our notebooks, with a fixed learning rate <span class="math inline">\(\alpha\)</span>, so recent episodes count more than old ones:</li>
 </ul>
 <p><span class="math display">\[Q(s, a) \leftarrow Q(s, a) + \alpha\,(R_t - Q(s, a))\]</span></p>
 <ul>
@@ -877,9 +1007,37 @@ Wim Pouw
 <li><strong>On-policy</strong>: we learn about the policy we follow, exploration included</li>
 </ul>
 </section>
-<section id="monte-carlo-in-the-mini-world-1" class="slide level2">
+<section id="monte-carlo-in-the-mini-world-1" class="slide level2 smaller">
 <h2>Monte Carlo in the mini world (1)</h2>
-<p>Same episode, <span class="math inline">\(\gamma = 0.9\)</span>. We compute the returns <strong>backwards</strong>: <span class="math inline">\(R_t = r_{t+1} + \gamma R_{t+1}\)</span></p>
+<p>One episode with three steps. The dog first bumps into the wall, then steps right twice, and the sheep walks into the pen:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">step</th>
+<th style="text-align: center;">world</th>
+<th style="text-align: center;">action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><code>D . S . P</code></td>
+<td style="text-align: center;">left (bumps into the wall)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>D . S . P</code></td>
+<td style="text-align: center;">right</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><code>. D . S P</code></td>
+<td style="text-align: center;">right, the sheep walks into the pen</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>At the end of the episode we compute the returns <strong>backwards</strong>, with <span class="math inline">\(\gamma = 0.9\)</span>: <span class="math inline">\(R_t = r_{t+1} + \gamma R_{t+1}\)</span></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -910,17 +1068,24 @@ Wim Pouw
 </tr>
 </tbody>
 </table>
+</div>
+<div class="fragment">
 <ul>
 <li>Steps close to the success get a high return, steps far away a lower one</li>
 </ul>
+</div>
 </section>
 <section id="monte-carlo-in-the-mini-world-2" class="slide level2">
 <h2>Monte Carlo in the mini world (2)</h2>
-<p>All Q values start at 0, <span class="math inline">\(\alpha = 0.1\)</span>:</p>
+<p>After this episode, we update Q with these returns. We use <span class="math inline">\(\alpha = 0.1\)</span> and the update rule:</p>
+<p><span class="math display">\[Q(s, a) \leftarrow Q(s, a) + \alpha\,(R_t - Q(s, a))\]</span></p>
+<div class="fragment">
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"><span class="math inline">\((s, a)\)</span></th>
+<th style="text-align: center;">initial <span class="math inline">\(Q(s, a)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(R_t\)</span></th>
 <th style="text-align: center;">update</th>
 <th style="text-align: center;">new <span class="math inline">\(Q(s, a)\)</span></th>
 </tr>
@@ -928,25 +1093,35 @@ Wim Pouw
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">((2, 4), right)</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">10</td>
 <td style="text-align: center;"><span class="math inline">\(0 + 0.1\,(10 - 0)\)</span></td>
 <td style="text-align: center;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">((1, 3), right)</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">8.9</td>
 <td style="text-align: center;"><span class="math inline">\(0 + 0.1\,(8.9 - 0)\)</span></td>
 <td style="text-align: center;">0.89</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">((1, 3), left)</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">7.91</td>
 <td style="text-align: center;"><span class="math inline">\(0 + 0.1\,(7.91 - 0)\)</span></td>
 <td style="text-align: center;">0.791</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="fragment">
 <ul>
-<li>Note: “left” (bumping into the wall) also got credit, because the episode ended well</li>
-<li>Only over many episodes does this average out</li>
+<li class="fragment">Note: “left” (bumping into the wall) also got credit, because the episode ended well</li>
+<li class="fragment">Each return is exact for this one episode. The averaging happens across episodes: every new episode moves <span class="math inline">\(Q(s, a)\)</span> a bit towards its new return</li>
+<li class="fragment">Only over many episodes does this average out</li>
 </ul>
+</div>
 </section>
 <section id="monte-carlo-what-it-needs" class="slide level2">
 <h2>Monte Carlo: what it needs</h2>
@@ -954,31 +1129,70 @@ Wim Pouw
 <li>An <strong>end</strong> of the episode: only then do we know the return</li>
 <li>Notebook 1: the pen in the corner, plus a maximum of 200 steps (otherwise an untrained dog may wander for a very long time)</li>
 <li>During an episode, the dog learns <strong>nothing</strong>. It only remembers what it did</li>
+<li>Lets take a look at the monte carlo model!</li>
 </ul>
+</section>
+<section id="but-what-if-the-task-never-ends" class="slide level2">
+<h2>But what if the task never ends?</h2>
+</section>
+<section id="task-1-variant-2-get-the-sheep-in-and-keep-it-there-1" class="slide level2 smaller">
+<h2>Task 1, variant 2: get the sheep in, and keep it there</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<video data-autoplay="" loop="" muted="" src="images/herding2.mp4" style="max-height: 480px; max-width: 100%;">
+</video>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>Now the pen is in the middle of the field, and it is open on all sides</li>
+<li>The sheep can walk in, but it can also walk out again</li>
+<li>The task never ends</li>
+</ul>
+</div></div>
+</section>
+<section id="task-2-balancing-a-ball-on-a-board-1" class="slide level2 smaller">
+<h2>Task 2: balancing a ball on a board</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<video data-autoplay="" loop="" muted="" src="images/ballonboard.mp4" style="max-height: 480px; max-width: 100%;">
+</video>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>Two agents hold a round board</li>
+<li>9 actions: height (low, middle, high) x rotation (backward, neutral, forward)</li>
+<li>The movements are noisy, and bigger movements are noisier</li>
+<li>An agent sees the ball’s position and velocity, but not what the other agent does</li>
+</ul>
+</div></div>
 </section></section>
 <section>
 <section id="method-2-td-learning-with-sarsa" class="title-slide slide level1 center">
 <h1>Method 2: TD learning with SARSA</h1>
 
 </section>
-<section id="bellman-as-an-estimate" class="slide level2">
-<h2>Bellman as an estimate</h2>
-<p>Recall: value now = reward + discounted value next. We do not know the true values, but we have our <strong>estimates</strong>:</p>
-<p><span class="math display">\[V(s) \leftarrow V(s) + \alpha\,\big(r + \gamma V(s') - V(s)\big)\]</span></p>
-<ul>
-<li><span class="math inline">\(r + \gamma V(s')\)</span>: <strong>one real step</strong>, plus an estimate of the rest</li>
-<li><span class="math inline">\(r + \gamma V(s') - V(s)\)</span>: the <strong>TD error</strong>. Was it better or worse than we expected?</li>
-<li>We do not wait for the end: we learn after <strong>every step</strong></li>
-</ul>
+<section id="from-monte-carlo-to-td" class="slide level2">
+<h2>From Monte Carlo to TD</h2>
+<p>Monte Carlo moves <span class="math inline">\(Q(s, a)\)</span> towards the real return:</p>
+<p><span class="math display">\[Q(s, a) \leftarrow Q(s, a) + \alpha\,(R_t - Q(s, a))\]</span></p>
+<div class="fragment">
+<p>The problem: we only know <span class="math inline">\(R_t\)</span> at the end of the episode. But remember that the return is nested:</p>
+<p><span class="math display">\[R_t = r_{t+1} + \gamma R_{t+1}\]</span></p>
+</div>
+<div class="fragment">
+<p>After one step we already know <span class="math inline">\(r_{t+1}\)</span>. For the rest, <span class="math inline">\(R_{t+1}\)</span>, we use our own estimate: the Q value of where we are now, <span class="math inline">\(Q(s', a')\)</span>.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[Q(s, a) \leftarrow Q(s, a) + \alpha\,\big(\underbrace{r + \gamma Q(s', a')}_{\text{instead of } R_t} - Q(s, a)\big)\]</span></p>
+</div>
 </section>
 <section id="sarsa" class="slide level2">
 <h2>SARSA</h2>
-<p>The same idea for Q. It uses <strong>S</strong>tate, <strong>A</strong>ction, <strong>R</strong>eward, next <strong>S</strong>tate, next <strong>A</strong>ction:</p>
+<p>This rule uses <strong>S</strong>tate, <strong>A</strong>ction, <strong>R</strong>eward, next <strong>S</strong>tate, next <strong>A</strong>ction:</p>
 <p><span class="math display">\[Q(s, a) \leftarrow Q(s, a) + \alpha\,\big(r + \gamma Q(s', a') - Q(s, a)\big)\]</span></p>
 <ul>
-<li><span class="math inline">\(a'\)</span> is the action we will <strong>really</strong> do next (chosen with epsilon-greedy)</li>
-<li>So SARSA is <strong>on-policy</strong>, like our Monte Carlo</li>
-<li>No episodes needed. That is why it works for variant 2 (the pen in the middle, no end)</li>
+<li class="fragment"><span class="math inline">\(r + \gamma Q(s', a')\)</span>: <strong>one real step</strong>, plus an estimate of the rest (bootstrapping)</li>
+<li class="fragment"><span class="math inline">\(r + \gamma Q(s', a') - Q(s, a)\)</span>: the <strong>TD error</strong>. Was it better or worse than we expected?</li>
+<li class="fragment"><span class="math inline">\(a'\)</span> is the action we will <strong>really</strong> do next (chosen with epsilon-greedy), like our Monte Carlo</li>
+<li class="fragment">We do not wait for the end: we learn after <strong>every step</strong>. That is why it works for variant 2 (the pen in the middle, no end)</li>
 </ul>
 </section>
 <section id="sarsa-in-the-mini-world" class="slide level2 smaller">
@@ -1004,14 +1218,42 @@ Wim Pouw
 </tr>
 </tbody>
 </table>
+<div class="fragment">
 <ul>
 <li><span class="math inline">\(s = (1, 2)\)</span>, <span class="math inline">\(a\)</span> = stay. The dog is next to the sheep, so it steps into the pen: <span class="math inline">\(r = +1\)</span>, <span class="math inline">\(s' = (1, 3)\)</span></li>
-<li>Epsilon-greedy picks <span class="math inline">\(a'\)</span> = stay. Current values: <span class="math inline">\(Q((1,2), stay) = 0.2\)</span>, <span class="math inline">\(Q((1,3), stay) = 0.5\)</span></li>
 </ul>
-<p><span class="math display">\[Q((1,2), stay) = 0.2 + 0.1\,\big(1 + 0.9 \times 0.5 - 0.2\big) = 0.2 + 0.1 \times 1.25 = 0.325\]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
 <ul>
-<li>Note: if the dog now steps right, it pushes the sheep out again. The dog has to learn to <strong>stay back</strong></li>
+<li>Epsilon-greedy picks <span class="math inline">\(a'\)</span> = stay. Suppose the dog has already learned for a while, and its table says: <span class="math inline">\(Q((1,2), stay) = 0.2\)</span>, <span class="math inline">\(Q((1,3), stay) = 0.5\)</span></li>
 </ul>
+</div>
+<div class="fragment">
+<p><span class="math display">\[Q((1,2), stay) = 0.2 + 0.1\,\big(1 + 0.9 \times 0.5 - 0.2\big) = 0.2 + 0.1 \times 1.25 = 0.325\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\underbrace{Q(s, a)}_{0.2} \leftarrow \underbrace{Q(s, a)}_{0.2} + \underbrace{\alpha}_{0.1}\,\big(\underbrace{r}_{1} + \underbrace{\gamma}_{0.9}\,\underbrace{Q(s', a')}_{0.5} - \underbrace{Q(s, a)}_{0.2}\big)\]</span></p>
+</div>
 </section>
 <section id="monte-carlo-versus-sarsa" class="slide level2 smaller">
 <h2>Monte Carlo versus SARSA</h2>
@@ -1060,10 +1302,9 @@ Wim Pouw
 <li><strong>Reward</strong>: closer to the center is better, <span class="math inline">\(-1\)</span> when the ball falls off</li>
 <li>Exactly the same SARSA update. Each hand has its own Q table, and does not see the other hand</li>
 </ul>
-</section></section>
-<section>
-<section id="what-we-are-missing-what-are-the-limits" class="title-slide slide level1 center">
-<h1>What we are missing, what are the limits</h1>
+</section>
+<section id="what-we-are-missing-what-are-the-limits" class="slide level2">
+<h2>What we are missing, what are the limits</h2>
 <ul>
 <li>Monte carlo and SARSA are actually two extremes of a spectrum of methods
 <ul>

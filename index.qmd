@@ -129,7 +129,7 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Reporting:** Save results and find the combination with lowest median prediction error.
 * **In class:** Code up parameter sweeps and data collection.
 
-## Practicum 6a {.active}
+## Practicum 6a 
 
 * **Group projects:** Overview of custom visualization resources.
 * **Agent-sets:** Introduced via the Wolf-Sheep predator-prey model.
@@ -143,7 +143,7 @@ We have a limited amount of time in this course. Therefore, we will not cover al
 * **Workflow:** Discuss the ABM analysis workflow you can reuse in your group project.
 * **In class:** Finish the analysis and visualization, plus Q&A.
 
-## Practicum 7
+## Practicum 7 {.active}
 
 * **Practicum 7 (advanced):** A practical introduction to (multi-agent) reinforcement learning.
 
@@ -642,7 +642,7 @@ Examples of models with custom space and plot visualizations (e.g., creating ani
 
 :::
 
-::: {.callout-note .callout-download collapse="False"}
+::: {.callout-note .callout-download collapse=true"}
 
 ## Full functionality grid model
 * [Download Full Functionality Overview Model Folder Python](./models/fullfunc_grid_python_model.zip){download=""}
@@ -703,7 +703,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 * [Amphor Model Folder Netlogo](./models/amphor_model_netlogo.zip){download=""}
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Wolf-Sheep Model
 * [Wolf-Sheep Model Folder Python](./models/wolfsheep_model_python.zip){download=""}
 * [Wolf-Sheep Model Folder Python (checkpoint 2026)](./models/wolfsheep_model_python_checkpoint20262027.zip)
@@ -711,7 +711,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 * [Wolf-Sheep Folder Netlogo](./models/wolfsheep_model_netlogo.zip){download=""}
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Model-free On-policy Reinforcement learning
 * [Monte Carlo and SARSA models](./models/reinforcement_learning_python.zip){download=""}
 :::
@@ -818,7 +818,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Slides Practicum 6b
 
 
@@ -828,7 +828,7 @@ For the final fully implemented one one we are going to give you a hint and you 
 
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Slides Reinforcement Learning
 
 <iframe src="slides_practicals/Practical7_reinforcementlearning.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
@@ -905,7 +905,7 @@ This book chapter goes into the [flocking](#model-library-for-this-course)
 [Download PDF](./pdfs/Smaldino_ModelingSocialBehavior_Chapter_2.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="false"}
+::: {.callout-note .callout-download collapse="true"}
 ## Book chapters about wolf-sheep model
 ## Chapter 4 [@wilenskyIntroductionAgentBasedModeling2015]
 This book chapter goes into the [wolf sheep model](#model-library-for-this-course)
@@ -931,7 +931,7 @@ This book chapter goes into the [amphor model](#model-library-for-this-course)
 [Download PDF](./pdfs/Romanowska_ABMA_Chapter_6.pdf)
 :::
 
-::: {.callout-note .callout-download collapse="true"}
+::: {.callout-note .callout-download collapse="false"}
 ## Book for intro to Reinforcement Learning
 This book is open sources and a classic for understanding reinforcement learning [@suttonReinforcementLearningIntroduction2018].
 

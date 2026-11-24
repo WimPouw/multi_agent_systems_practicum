@@ -2,23 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Wim Pouw (www.wimpouw.com)">
 <meta name="author" content="Travis Wiltshire (travisjwiltshire.com)">
-<meta name="dcterms.date" content="2026-11-23">
+<meta name="dcterms.date" content="2026-11-24">
 
 <title>Landing Page Practicum Multi-agent Systems</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -90,10 +93,10 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-c8f2428bac9de090b75e5af75f169569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-8fd0a66505689c34dc5b7c06239434da.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="index_files/libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="index_files/libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script src="index_files/libs/quarto-contrib/videojs/video.min.js"></script>
@@ -171,7 +174,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 23, 2026</p>
+      <p class="date">November 24, 2026</p>
     </div>
   </div>
   
@@ -2347,6 +2350,26 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdGhcblxuc3Rl
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reinforcement Learning (Bonus Lecture)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-58" class="callout-58-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5481d64f-cdef-4d59-b62c-b4ac00a3dc8c">Recording link to Panopto</a></p>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5481d64f-cdef-4d59-b62c-b4ac00a3dc8c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;" allowfullscreen="" allow="autoplay" aria-label="Practical 3a MAS 2026/2027">
+</iframe>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
@@ -2415,224 +2438,443 @@ Wilensky, Uri, and W. Rand. 2015. <em>An <span>Introduction</span> to <span>Agen
 </div></section></div></main>
 <!-- /main column -->
 <!-- Standalone annotation overlay for Quarto HTML pages.
+
      Drop in via:  format: html: include-after-body: theme/chalk-controls.html
+
      No reveal.js dependency. -->
 
+
+
 <style>
+
   .wpchalk-canvas {
+
     position: fixed;
+
     inset: 0;
+
     z-index: 9998;
+
     pointer-events: none;
+
     touch-action: none;
+
   }
+
   .wpchalk-canvas.is-active { pointer-events: auto; cursor: crosshair; }
 
+
+
   .wpchalk-veil {
+
     position: fixed;
+
     inset: 0;
+
     z-index: 9997;
+
     background: #14181c;
+
     opacity: 0;
+
     pointer-events: none;
+
     transition: opacity .18s ease;
+
   }
+
   .wpchalk-veil.is-on { opacity: .82; }
 
+
+
   .wpchalk-bar {
+
     position: fixed;
+
     right: 1rem;
+
     bottom: 1rem;
+
     z-index: 9999;
+
     display: flex;
+
     align-items: center;
+
     gap: .35rem;
+
     padding: .35rem;
+
     border-radius: 999px;
+
     background: #22282e;
+
     box-shadow: 0 2px 14px rgba(0,0,0,.28);
+
     font: 500 12px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+
     color: #dfe4e8;
+
   }
+
+
 
   .wpchalk-bar button {
+
     all: unset;
+
     box-sizing: border-box;
+
     height: 30px;
+
     min-width: 30px;
+
     padding: 0 .6rem;
+
     border-radius: 999px;
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     cursor: pointer;
+
     color: inherit;
+
     white-space: nowrap;
+
   }
+
   .wpchalk-bar button:hover { background: #313941; }
+
   .wpchalk-bar button:focus-visible { outline: 2px solid #7cc7ff; outline-offset: 2px; }
+
   .wpchalk-bar button[aria-pressed="true"] { background: #3d4752; color: #fff; }
 
+
+
   .wpchalk-tools { display: none; align-items: center; gap: .35rem; }
+
   .wpchalk-tools.is-open { display: flex; }
 
+
+
   .wpchalk-swatch {
+
     width: 22px; height: 22px;
+
     min-width: 22px;
+
     padding: 0 !important;
+
     border-radius: 50% !important;
+
     border: 2px solid transparent !important;
+
   }
+
   .wpchalk-swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px #dfe4e8; }
+
   .wpchalk-swatch:hover { background: none !important; }
+
+
 
   .wpchalk-sep { width: 1px; height: 18px; background: #3d4752; }
 
+
+
   @media (prefers-reduced-motion: reduce) {
+
     .wpchalk-veil { transition: none; }
+
   }
+
   @media print { .wpchalk-bar, .wpchalk-canvas, .wpchalk-veil { display: none !important; } }
+
 </style>
 
+
+
 <div class="wpchalk-veil" id="wpchalkVeil"></div>
+
 <canvas class="wpchalk-canvas" id="wpchalkCanvas"></canvas>
 
+
+
 <div class="wpchalk-bar" role="toolbar" aria-label="Annotation tools">
+
   <div class="wpchalk-tools" id="wpchalkTools">
+
     <button class="wpchalk-swatch" data-color="#e8453c" style="background:#e8453c" aria-pressed="true" title="Red" aria-label="Red pen"></button>
+
     <button class="wpchalk-swatch" data-color="#2b7fd4" style="background:#2b7fd4" aria-pressed="false" title="Blue" aria-label="Blue pen"></button>
+
     <button class="wpchalk-swatch" data-color="#f2c744" style="background:#f2c744" aria-pressed="false" title="Yellow" aria-label="Yellow pen"></button>
+
     <button class="wpchalk-swatch" data-color="#f4f1ea" style="background:#f4f1ea" aria-pressed="false" title="Chalk" aria-label="Chalk pen"></button>
+
     <span class="wpchalk-sep"></span>
+
     <button id="wpchalkErase" aria-pressed="false" title="Eraser">Erase</button>
+
     <button id="wpchalkBoard" aria-pressed="false" title="Dim the page behind your marks">Board</button>
+
     <button id="wpchalkClear" title="Clear all marks">Clear</button>
+
     <span class="wpchalk-sep"></span>
+
   </div>
+
   <button id="wpchalkToggle" aria-pressed="false" title="Toggle annotation (Alt+A)">Annotate</button>
+
 </div>
 
+
+
 <script>
+
 (function () {
+
   var canvas  = document.getElementById('wpchalkCanvas');
+
   var veil    = document.getElementById('wpchalkVeil');
+
   var tools   = document.getElementById('wpchalkTools');
+
   var toggle  = document.getElementById('wpchalkToggle');
+
   var eraseBt = document.getElementById('wpchalkErase');
+
   var boardBt = document.getElementById('wpchalkBoard');
+
   var clearBt = document.getElementById('wpchalkClear');
+
   var swatches = Array.prototype.slice.call(document.querySelectorAll('.wpchalk-swatch'));
 
+
+
   var ctx = canvas.getContext('2d');
+
   var on = false, erasing = false, drawing = false;
+
   var color = '#e8453c', width = 3;
 
+
+
   function sizeCanvas() {
+
     var snapshot = canvas.width ? canvas.toDataURL() : null;
+
     var dpr = window.devicePixelRatio || 1;
+
     canvas.width  = Math.round(window.innerWidth  * dpr);
+
     canvas.height = Math.round(window.innerHeight * dpr);
+
     canvas.style.width  = window.innerWidth  + 'px';
+
     canvas.style.height = window.innerHeight + 'px';
+
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
     ctx.lineCap = 'round';
+
     ctx.lineJoin = 'round';
+
     if (snapshot) {
+
       var img = new Image();
+
       img.onload = function () {
+
         ctx.drawImage(img, 0, 0, window.innerWidth, window.innerHeight);
+
       };
+
       img.src = snapshot;
+
     }
+
   }
+
   sizeCanvas();
+
   window.addEventListener('resize', sizeCanvas);
 
+
+
   function setMode(state) {
+
     on = state;
+
     canvas.classList.toggle('is-active', on);
+
     tools.classList.toggle('is-open', on);
+
     toggle.setAttribute('aria-pressed', String(on));
+
     toggle.textContent = on ? 'Done' : 'Annotate';
+
   }
+
+
 
   toggle.addEventListener('click', function () { setMode(!on); });
 
+
+
   swatches.forEach(function (s) {
+
     s.addEventListener('click', function () {
+
       color = s.dataset.color;
+
       erasing = false;
+
       eraseBt.setAttribute('aria-pressed', 'false');
+
       swatches.forEach(function (o) {
+
         o.setAttribute('aria-pressed', String(o === s));
+
       });
+
     });
+
   });
+
+
 
   eraseBt.addEventListener('click', function () {
+
     erasing = !erasing;
+
     eraseBt.setAttribute('aria-pressed', String(erasing));
+
   });
+
+
 
   boardBt.addEventListener('click', function () {
+
     var lit = veil.classList.toggle('is-on');
+
     boardBt.setAttribute('aria-pressed', String(lit));
+
     if (lit) {
+
       // chalk reads better on the dimmed page
+
       var chalk = swatches[swatches.length - 1];
+
       chalk.click();
+
     }
+
   });
+
+
 
   clearBt.addEventListener('click', function () {
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   });
+
+
 
   function point(e) {
+
     var r = canvas.getBoundingClientRect();
+
     return { x: e.clientX - r.left, y: e.clientY - r.top };
+
   }
+
+
 
   function stroke(e) {
+
     var p = point(e);
+
     ctx.lineTo(p.x, p.y);
+
     ctx.stroke();
+
   }
 
+
+
   canvas.addEventListener('pointerdown', function (e) {
+
     if (!on) return;
+
     drawing = true;
+
     canvas.setPointerCapture(e.pointerId);
+
     ctx.globalCompositeOperation = erasing ? 'destination-out' : 'source-over';
+
     ctx.strokeStyle = color;
+
     ctx.lineWidth = erasing ? 28 : width;
+
     ctx.beginPath();
+
     var p = point(e);
+
     ctx.moveTo(p.x, p.y);
+
     // a dot, so a tap leaves a mark
+
     ctx.lineTo(p.x + 0.01, p.y);
+
     ctx.stroke();
+
   });
+
+
 
   canvas.addEventListener('pointermove', function (e) {
+
     if (drawing) stroke(e);
+
   });
+
+
 
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+
     canvas.addEventListener(ev, function () {
+
       drawing = false;
+
       ctx.globalCompositeOperation = 'source-over';
+
     });
+
   });
 
+
+
   document.addEventListener('keydown', function (e) {
+
     var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable;
+
     if (typing) return;
+
     if (e.altKey && e.key.toLowerCase() === 'a') { e.preventDefault(); setMode(!on); }
+
     if (e.altKey && e.key.toLowerCase() === 'c') { e.preventDefault(); clearBt.click(); }
+
     if (e.key === 'Escape' && on) setMode(false);
+
   });
+
 })();
+
 </script>
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
@@ -2737,16 +2979,16 @@ window._ojs.runtime.interpretFromScriptTags();
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -5209,9 +5451,24 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb19-2161"><a href="#cb19-2161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb19-2162"><a href="#cb19-2162" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-2163"><a href="#cb19-2163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-2164"><a href="#cb19-2164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-2165"><a href="#cb19-2165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-2166"><a href="#cb19-2166" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb19-2164"><a href="#cb19-2164" aria-hidden="true" tabindex="-1"></a>::: {.callout-note .callout-download collapse="true"}</span>
+<span id="cb19-2165"><a href="#cb19-2165" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reinforcement Learning (Bonus Lecture)</span></span>
+<span id="cb19-2166"><a href="#cb19-2166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2167"><a href="#cb19-2167" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Recording link to Panopto</span><span class="co">](https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5481d64f-cdef-4d59-b62c-b4ac00a3dc8c)</span></span>
+<span id="cb19-2168"><a href="#cb19-2168" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb19-2169"><a href="#cb19-2169" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;"&gt;</span></span>
+<span id="cb19-2170"><a href="#cb19-2170" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;iframe src="https://tilburguniversity.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5481d64f-cdef-4d59-b62c-b4ac00a3dc8c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span></span>
+<span id="cb19-2171"><a href="#cb19-2171" aria-hidden="true" tabindex="-1"></a><span class="in">style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;"</span></span>
+<span id="cb19-2172"><a href="#cb19-2172" aria-hidden="true" tabindex="-1"></a><span class="in">allowfullscreen</span></span>
+<span id="cb19-2173"><a href="#cb19-2173" aria-hidden="true" tabindex="-1"></a><span class="in">allow="autoplay"</span></span>
+<span id="cb19-2174"><a href="#cb19-2174" aria-hidden="true" tabindex="-1"></a><span class="in">aria-label="Practical 3a MAS 2026/2027"&gt;</span></span>
+<span id="cb19-2175"><a href="#cb19-2175" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/iframe&gt;</span></span>
+<span id="cb19-2176"><a href="#cb19-2176" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb19-2177"><a href="#cb19-2177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-2178"><a href="#cb19-2178" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-2179"><a href="#cb19-2179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2180"><a href="#cb19-2180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2181"><a href="#cb19-2181" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
